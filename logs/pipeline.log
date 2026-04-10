@@ -1,0 +1,37 @@
+[2025-10-25 01:58:21] 📂 Working dir: C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper
+[2025-10-25 01:58:21] 📁 Data dir   : C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\sattaboss-data\data
+[2025-10-25 01:58:21] PYTHONPATH = C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper
+[2025-10-25 01:58:21] FIREBASE_ADMIN_KEY = C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\serviceAccount.json
+[2025-10-25 01:58:21] FIREBASE_RTDB_URL  = https://sattamatkaai-77102-default-rtdb.firebaseio.com/
+[2025-10-25 01:58:21] ▶️ Running: C:\Users\VCOM\AppData\Local\Programs\Python\Python313\python.exe multi_market_scraperrr.py
+[2025-10-25 03:02:08] ❌ multi_market_scraperrr.py failed (exit 1) after 3826.4s
+[2025-10-25 03:47:57] 📂 Working dir: C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper
+[2025-10-25 03:47:57] 📁 Data dir   : C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\sattaboss-data\data
+[2025-10-25 03:47:57] PYTHONPATH = C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper
+[2025-10-25 03:47:57] FIREBASE_ADMIN_KEY = C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\serviceAccount.json
+[2025-10-25 03:47:57] FIREBASE_RTDB_URL  = https://sattamatkaai-77102-default-rtdb.firebaseio.com/
+[2025-10-25 03:47:57] ▶️ Running: C:\Users\VCOM\AppData\Local\Programs\Python\Python313\python.exe multi_market_scraperrr.py
+[2025-10-25 05:10:08] ✅ multi_market_scraperrr.py completed in 82.19 min
+[2025-10-25 05:10:08] ▶️ Running: C:\Users\VCOM\AppData\Local\Programs\Python\Python313\python.exe aggregate_history.py
+[2025-10-25 05:10:14] ✅ aggregate_history.py completed in 0.10 min
+[2025-10-25 05:10:14] ▶️ Running: C:\Users\VCOM\AppData\Local\Programs\Python\Python313\python.exe prediction_engine_v4.py
+[2025-10-25 05:10:15] ✅ prediction_engine_v4.py completed in 0.01 min
+[2025-10-25 05:10:15] 📄 todays_predictions: Copied C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\todays_predictions.json → C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\sattaboss-data\data\todays_predictions.json
+[2025-10-25 05:10:15] ▶️ Running: C:\Users\VCOM\AppData\Local\Programs\Python\Python313\python.exe score_only_json_verbose.py
+[2025-10-25 05:10:26] ✅ score_only_json_verbose.py completed in 0.19 min
+[2025-10-25 05:10:26] 📄 prediction_score_report: Copied C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\output\prediction_score_report.json → C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\sattaboss-data\data\prediction_score_report.json
+[2025-10-25 05:10:26] ▶️ Running: C:\Users\VCOM\AppData\Local\Programs\Python\Python313\python.exe generate_yesterday_results.py
+[2025-10-25 05:10:27] ✅ generate_yesterday_results.py completed in 0.01 min
+[2025-10-25 05:10:27] 📄 yesterday_results: Copied C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\output\yesterday_results.json → C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\sattaboss-data\data\yesterday_results.json
+[2025-10-25 05:10:27] 🛑 Yesterday stays GitHub-only — no RTDB upload as per spec.
+[2025-10-25 05:10:27] ▶️ Running: C:\Users\VCOM\AppData\Local\Programs\Python\Python313\python.exe auto_tune_params.py
+[2025-10-25 05:10:27] ✅ auto_tune_params.py completed in 0.00 min
+[2025-10-25 05:10:27] 
+[2025-10-25 05:10:27] 🎉 Pipeline complete.
+[2025-10-25 05:10:27] RTDB (pushed by your internal uploaders):
+[2025-10-25 05:10:27]   • app_data/todays_predictions            ✅
+[2025-10-25 05:10:27]   • app_data/prediction_score_report       ✅
+[2025-10-25 05:10:27] GitHub (static JSONs in repo):
+[2025-10-25 05:10:27]   • sattaboss-data\data\todays_predictions.json
+[2025-10-25 05:10:27]   • sattaboss-data\data\prediction_score_report.json
+[2025-10-25 05:10:27]   • sattaboss-data\data\yesterday_results.json   (GitHub only)

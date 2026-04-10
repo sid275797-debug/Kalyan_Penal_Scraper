@@ -1,0 +1,104 @@
+# .github/workflows/update-data.yml
+name: update-data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * *'  # runs daily at 02:00 UTC
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo (persist credentials, full history)
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Show working tree (debug)
+        run: |
+          set -euo pipefail
+          echo "PWD: $(pwd)"
+          ls -la || true
+          echo "---- list sattaboss-data ----------------"
+          ls -la sattaboss-data || true
+
+      - name: Run full pipeline (from repo root)
+        run: |
+          set -euo pipefail
+          # keep this the same as before; adjust the command below if your pipeline entrypoint is different
+          python3 data/run_full_pipeline.py || python3 Desktop/Kalyan_Penal_Scraper/run_full_pipeline.py || true
+          # pipeline should produce JSON outputs somewhere in the repo
+
+      - name: Find generated JSON files (todays_predictions / score report / score_hits / yesterday_results)
+        id: findjson
+        run: |
+          set -euo pipefail
+          echo "Searching for generated JSON files..."
+          # search for likely filenames (case-insensitive)
+          find . -type f \( -iname "todays_predictions.json" -o -iname "prediction_score_report.json" -o -iname "prediction_score_report*.json" -o -iname "score_hits.json" -o -iname "yesterday_results.json" \) -print > found_paths.txt || true
+          echo "Found paths:"
+          cat found_paths.txt || true
+          echo "----"
+          wc -l found_paths.txt || true
+          # Save as output for next step
+          paths=$(cat found_paths.txt | tr '\n' '|' | sed 's/|$//')
+          echo "paths=$paths" >> $GITHUB_OUTPUT
+
+      - name: Create target data/ folder
+        run: |
+          set -euo pipefail
+          mkdir -p sattaboss-data/data
+          ls -la sattaboss-data/data || true
+
+      - name: Copy discovered files into sattaboss-data/data/
+        run: |
+          set -euo pipefail
+          if [ -s found_paths.txt ]; then
+            while IFS= read -r p; do
+              if [ -n "$p" ]; then
+                fname=$(basename "$p")
+                echo "Copying: $p -> sattaboss-data/data/$fname"
+                cp -f "$p" "sattaboss-data/data/$fname" || echo "copy failed for $p"
+              fi
+            done < found_paths.txt
+          else
+            echo "No generated JSON files found - nothing copied."
+          fi
+          echo "Resulting files in sattaboss-data/data/:"
+          ls -la sattaboss-data/data || true
+
+      - name: Commit copied files to a new branch (safe)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          # create a timestamped branch to avoid updating main directly
+          now=$(date -u +"%Y%m%d_%H%M%S")
+          branch="fix/data-update-$now"
+          git checkout -b "$branch"
+          git add sattaboss-data/data/*.json || true
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git commit -m "chore: copy generated JSONs into sattaboss-data/data/ (diagnostic) [$now]"
+            git push --set-upstream origin "$branch"
+            echo "BRANCH_PUSHED::$branch"
+          else
+            echo "NO_FILES_TO_COMMIT"
+          fi
+
+      - name: Upload found_paths.txt as artifact (for review)
+        uses: actions/upload-artifact@v4
+        with:
+          name: found-paths
+          path: found_paths.txt

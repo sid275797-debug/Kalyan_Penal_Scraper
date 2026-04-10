@@ -1,0 +1,101 @@
+// lib/services/prediction_service.dart
+// RTDB-first loader with fallback to asset (since uploader writes to RTDB)
+
+import 'dart:convert';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:firebase_database/firebase_database.dart';
+import '../models/prediction.dart';
+
+class PredictionService {
+  // Use RTDB URL WITHOUT trailing .json
+  static const String _rtdbUrl =
+      'https://sattamatkaai-77102-default-rtdb.firebaseio.com/app_data/todays_predictions';
+  static const String _assetPath = 'assets/todays_predictions.json';
+
+  /// Loads predictions — tries RTDB first, then the bundled asset.
+  /// Returns an empty list if nothing can be parsed.
+  Future<List<Prediction>> load() async {
+    List<dynamic> listData = [];
+
+    // 1) Try Realtime Database (RTDB)
+    try {
+      final ref = FirebaseDatabase.instance.refFromURL(_rtdbUrl);
+      final snap = await ref.get();
+      print('[PredictionService] RTDB snap exists=${snap.exists}, type=${snap.value.runtimeType}');
+      if (snap.exists && snap.value != null) {
+        final decoded = snap.value;
+        // uploader writes wrapper: { generated_at, source, data: [...] }
+        if (decoded is Map && decoded['data'] is List) {
+          listData = List<dynamic>.from(decoded['data'] as List);
+        } else if (decoded is Map && decoded['markets'] is List) {
+          listData = List<dynamic>.from(decoded['markets'] as List);
+        } else if (decoded is List) {
+          listData = decoded;
+        } else if (decoded is Map) {
+          // If a map of numbered entries or a single map, try collect map values that are maps
+          final vals = decoded.values.where((v) => v is Map || v is List).toList();
+          if (vals.isNotEmpty) {
+            // convert Maps safely (Map<dynamic,dynamic> -> Map<String, dynamic>)
+            listData = vals.map((v) {
+              if (v is Map) return Map<String, dynamic>.from(v.map((k, val) => MapEntry(k.toString(), val)));
+              return v;
+            }).toList();
+          } else {
+            print('[PredictionService] RTDB: decoded map had no map/list values. Value: $decoded');
+          }
+        } else {
+          print('[PredictionService] RTDB: unexpected snap.value type: ${decoded.runtimeType} -> $decoded');
+        }
+      }
+    } catch (e, st) {
+      print('[PredictionService] RTDB read failed: $e\n$st');
+      // ignore and try asset fallback
+    }
+
+    // 2) Fallback to local JSON asset if RTDB gave nothing.
+    if (listData.isEmpty) {
+      try {
+        final raw = await rootBundle.loadString(_assetPath);
+        final localDecoded = json.decode(raw);
+        if (localDecoded is Map<String, dynamic> && localDecoded['data'] is List) {
+          listData = List<dynamic>.from(localDecoded['data'] as List);
+        } else if (localDecoded is Map<String, dynamic> && localDecoded['markets'] is List) {
+          listData = List<dynamic>.from(localDecoded['markets'] as List);
+        } else if (localDecoded is List) {
+          listData = localDecoded;
+        } else if (localDecoded is Map<String, dynamic>) {
+          final vals = localDecoded.values.where((v) => v is Map).toList();
+          if (vals.isNotEmpty) listData = vals;
+        }
+      } catch (e, st) {
+        print('[PredictionService] Asset fallback failed: $e\n$st');
+        // asset load failed -> return empty
+        return <Prediction>[];
+      }
+    }
+
+    // 3) Parse into Prediction objects
+    final List<Prediction> out = <Prediction>[];
+    for (final e in listData) {
+      try {
+        if (e is Map<String, dynamic>) {
+          out.add(Prediction.fromJson(e));
+        } else if (e is String) {
+          final decoded = json.decode(e);
+          if (decoded is Map<String, dynamic>) out.add(Prediction.fromJson(decoded));
+        } else if (e is Map) {
+          // sometimes snapshot yields Map<dynamic,dynamic>
+          final m = Map<String, dynamic>.from(e.map((k, v) => MapEntry(k.toString(), v)));
+          out.add(Prediction.fromJson(m));
+        } else {
+          print('[PredictionService] Skipping unsupported entry type: ${e.runtimeType}');
+        }
+      } catch (err, st) {
+        print('[PredictionService] Skipping invalid entry: $err');
+      }
+    }
+
+    print('[PredictionService] returning ${out.length} predictions');
+    return out;
+  }
+}

@@ -1,0 +1,223 @@
+// lib/services/score_service.dart
+//
+// Robust ScoreService for the app UI.
+//
+// Behavior:
+//  - Prefer a single canonical RTDB node (prediction_score_report) which contains 'generated_at' and 'markets'.
+//  - If not present, try dated /app_data/score_hits (pick latest date key).
+//  - Then try legacy /scores/current (or similar).
+//  - Finally fallback to bundled asset 'assets/score_hits.json'.
+//  - Always returns a normalized map:
+//      { "generated_at": "...", "hits": [ {market:..., hits: {...}, predicted:..., actual:...}, ... ] }
+//
+import 'dart:convert';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:firebase_database/firebase_database.dart';
+
+class ScoreService {
+  // Single-truth node (where the scoring script should write the full report)
+  static const String _rtdbFullReport =
+      'https://sattamatkaai-77102-default-rtdb.firebaseio.com/app_data/prediction_score_report';
+
+  // Dated hits (older or alternative writer) -> keys like "2025-10-21": { generated_at, hits: [...] }
+  static const String _rtdbScoreHits =
+      'https://sattamatkaai-77102-default-rtdb.firebaseio.com/app_data/score_hits';
+
+  // Legacy / alternate location where script may push current hits
+  static const String _rtdbScoresCurrent =
+      'https://sattamatkaai-77102-default-rtdb.firebaseio.com/scores/current';
+
+  // Local fallback asset (make sure this file exists in pubspec assets)
+  static const String _assetPath = 'assets/score_hits.json';
+
+  /// Loads & normalizes score data.
+  /// Returns: { "generated_at": String, "hits": List<Map<String, dynamic>> }
+  Future<Map<String, dynamic>> load() async {
+    final empty = {'generated_at': DateTime.now().toIso8601String(), 'hits': <Map<String, dynamic>>[]};
+
+    // Candidate URLs in order of preference
+    final candidates = [_rtdbFullReport, _rtdbScoreHits, _rtdbScoresCurrent];
+
+    for (final url in candidates) {
+      try {
+        final ref = FirebaseDatabase.instance.refFromURL(url);
+        final snap = await ref.get();
+        print('[ScoreService] RTDB fetch: $url -> exists=${snap.exists}, type=${snap.value?.runtimeType}');
+
+        if (!snap.exists || snap.value == null) {
+          print('[ScoreService] snapshot empty for $url');
+          continue;
+        }
+
+        final dynamic raw = snap.value;
+
+        // 1) Full report shape: { generated_at, markets: { marketKey: { hits:..., predicted:..., actual:... }, ... } }
+        if (raw is Map && raw.containsKey('markets')) {
+          final mapRoot = Map<String, dynamic>.from(raw);
+          final gen = mapRoot['generated_at']?.toString() ?? DateTime.now().toIso8601String();
+          final markets = mapRoot['markets'];
+          final hits = _marketsToList(markets);
+          print('[ScoreService] normalized from full report ($url) -> hits=${hits.length}');
+          return {'generated_at': gen, 'hits': hits};
+        }
+
+        // 2) Dated scores: /app_data/score_hits -> { "2025-10-21": { generated_at, hits: [...] }, ... }
+        if (raw is Map && url == _rtdbScoreHits) {
+          final sortedKeys = raw.keys.whereType<String>().toList()..sort();
+          if (sortedKeys.isNotEmpty) {
+            final latest = sortedKeys.last;
+            final entry = raw[latest];
+            if (entry is Map) {
+              final gen = entry['generated_at']?.toString() ?? latest;
+              final dhits = entry['hits'];
+              if (dhits is List) {
+                final out = _listToMapList(dhits);
+                print('[ScoreService] using dated score_hits latest=$latest -> hits=${out.length}');
+                return {'generated_at': gen, 'hits': out};
+              } else if (dhits is Map) {
+                final out = _mapValuesToList(dhits);
+                print('[ScoreService] using dated score_hits.latest=$latest (map->list) -> hits=${out.length}');
+                return {'generated_at': gen, 'hits': out};
+              } else if (entry.containsKey('markets')) {
+                final out = _marketsToList(entry['markets']);
+                print('[ScoreService] using dated score_hits.latest.markets=$latest -> hits=${out.length}');
+                return {'generated_at': gen, 'hits': out};
+              }
+            }
+          }
+          // if can't parse dated node, continue to next candidate
+        }
+
+        // 3) Simple { generated_at, hits: [...] } shape or hits map
+        if (raw is Map && (raw.containsKey('hits') || raw.containsKey('generated_at'))) {
+          final root = Map<String, dynamic>.from(raw);
+          final gen = root['generated_at']?.toString() ?? DateTime.now().toIso8601String();
+          final dhits = root['hits'];
+          if (dhits is List) {
+            final out = _listToMapList(dhits);
+            print('[ScoreService] loaded hits list from $url -> ${out.length}');
+            return {'generated_at': gen, 'hits': out};
+          } else if (dhits is Map) {
+            final out = _mapValuesToList(dhits);
+            print('[ScoreService] loaded hits map->list from $url -> ${out.length}');
+            return {'generated_at': gen, 'hits': out};
+          } else {
+            // wrap the whole root as a single hit entry
+            final wrapped = <Map<String, dynamic>>[Map<String, dynamic>.from(root)];
+            print('[ScoreService] wrapping root map as single hit from $url');
+            return {'generated_at': gen, 'hits': wrapped};
+          }
+        }
+
+        // 4) If raw is a List -> normalize list entries
+        if (raw is List) {
+          final out = _listToMapList(raw);
+          print('[ScoreService] normalized raw list from $url -> hits=${out.length}');
+          return {'generated_at': DateTime.now().toIso8601String(), 'hits': out};
+        }
+
+        // 5) If raw is a keyed map of markets/hits -> convert to list
+        if (raw is Map) {
+          final out = _mapValuesToList(raw);
+          print('[ScoreService] normalized unknown map shape from $url -> hits=${out.length}');
+          return {'generated_at': DateTime.now().toIso8601String(), 'hits': out};
+        }
+
+        // Not recognized shape -> try next
+        print('[ScoreService] unexpected snapshot type for $url -> ${raw.runtimeType}');
+      } catch (e, st) {
+        print('[ScoreService] RTDB fetch error for $url: $e\n$st');
+        // try next candidate
+      }
+    }
+
+    // Asset fallback
+    try {
+      final rawStr = await rootBundle.loadString(_assetPath);
+      final decoded = json.decode(rawStr);
+      if (decoded is Map<String, dynamic>) {
+        if (decoded.containsKey('markets')) {
+          final markets = decoded['markets'];
+          final hits = _marketsToList(markets);
+          print('[ScoreService] loaded markets from asset -> hits=${hits.length}');
+          return {'generated_at': decoded['generated_at']?.toString() ?? DateTime.now().toIso8601String(), 'hits': hits};
+        }
+        if (decoded.containsKey('hits')) {
+          final dhits = decoded['hits'];
+          if (dhits is List) {
+            final out = _listToMapList(dhits);
+            return {'generated_at': decoded['generated_at']?.toString() ?? DateTime.now().toIso8601String(), 'hits': out};
+          } else if (dhits is Map) {
+            final out = _mapValuesToList(dhits);
+            return {'generated_at': decoded['generated_at']?.toString() ?? DateTime.now().toIso8601String(), 'hits': out};
+          }
+        }
+      } else if (decoded is List) {
+        final out = _listToMapList(decoded);
+        return {'generated_at': DateTime.now().toIso8601String(), 'hits': out};
+      }
+      print('[ScoreService] asset fallback had unexpected shape: ${decoded.runtimeType}');
+    } catch (e, st) {
+      print('[ScoreService] Asset fallback failed: $e\n$st');
+    }
+
+    print('[ScoreService] No data found; returning empty');
+    return empty;
+  }
+
+  // --- Helpers to normalize shapes into List<Map<String,dynamic>> ---
+
+  List<Map<String, dynamic>> _marketsToList(dynamic markets) {
+    final out = <Map<String, dynamic>>[];
+    if (markets == null) return out;
+    if (markets is Map) {
+      markets.forEach((k, v) {
+        if (v is Map) {
+          final copy = Map<String, dynamic>.from(v.map((kk, vv) => MapEntry(kk.toString(), vv)));
+          if (!copy.containsKey('market')) copy['market'] = k.toString();
+          out.add(copy);
+
+          if (!copy.containsKey('score_details') && v.containsKey('score_details')) {
+            copy['score_details'] = v['score_details'];
+          }
+
+        } else {
+          out.add({'market': k.toString(), 'value': v});
+        }
+      });
+    } else if (markets is List) {
+      for (final item in markets) {
+        if (item is Map) {
+          out.add(Map<String, dynamic>.from(item.map((k, v) => MapEntry(k.toString(), v))));
+        }
+      }
+    }
+    return out;
+  }
+
+  List<Map<String, dynamic>> _mapValuesToList(Map<dynamic, dynamic> m) {
+    final list = <Map<String, dynamic>>[];
+    m.forEach((k, v) {
+      if (v is Map) {
+        final copy = Map<String, dynamic>.from(v.map((kk, vv) => MapEntry(kk.toString(), vv)));
+        if (!copy.containsKey('market')) copy['market'] = k.toString();
+        list.add(copy);
+      } else {
+        list.add({'market': k.toString(), 'value': v});
+      }
+    });
+    return list;
+  }
+
+  List<Map<String, dynamic>> _listToMapList(List<dynamic> inList) {
+    final out = <Map<String, dynamic>>[];
+    for (final item in inList) {
+      if (item is Map) {
+        out.add(Map<String, dynamic>.from(item.map((k, v) => MapEntry(k.toString(), v))));
+      } else {
+        out.add({'value': item});
+      }
+    }
+    return out;
+  }
+}

@@ -1,0 +1,2858 @@
+{
+  "meta": {
+    "generated_at": "2026-01-07T17:50:33.723287",
+    "engine": "v11"
+  },
+  "markets": [
+    {
+      "market": "amar_jyoti_penal_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "1",
+          "4",
+          "6"
+        ],
+        "Close Digits": [
+          "7",
+          "0",
+          "3"
+        ],
+        "Open Pannas": [
+          "119",
+          "128",
+          "290",
+          "560",
+          "789",
+          "149",
+          "699",
+          "590"
+        ],
+        "Close Pannas": [
+          "370",
+          "247",
+          "578",
+          "368",
+          "127",
+          "467",
+          "389",
+          "120"
+        ],
+        "Jodis": [
+          "17",
+          "67",
+          "60",
+          "47",
+          "63",
+          "10",
+          "40",
+          "13",
+          "43"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "bombay_night_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "6",
+          "2",
+          "0"
+        ],
+        "Close Digits": [
+          "9",
+          "7",
+          "3"
+        ],
+        "Open Pannas": [
+          "246",
+          "268",
+          "460",
+          "138",
+          "280",
+          "660",
+          "390",
+          "259"
+        ],
+        "Close Pannas": [
+          "269",
+          "359",
+          "247",
+          "890",
+          "180",
+          "135",
+          "580",
+          "270"
+        ],
+        "Jodis": [
+          "07",
+          "63",
+          "29",
+          "27",
+          "69",
+          "67",
+          "23",
+          "09",
+          "03"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "chetak_day_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "2",
+          "1",
+          "7"
+        ],
+        "Close Digits": [
+          "3",
+          "8",
+          "0"
+        ],
+        "Open Pannas": [
+          "890",
+          "227",
+          "156",
+          "589",
+          "700",
+          "678",
+          "138",
+          "200"
+        ],
+        "Close Pannas": [
+          "346",
+          "235",
+          "260",
+          "779",
+          "157",
+          "468",
+          "800",
+          "238"
+        ],
+        "Jodis": [
+          "10",
+          "23",
+          "13",
+          "73",
+          "78",
+          "70",
+          "28",
+          "20",
+          "18"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "chetak_night_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "5",
+          "4",
+          "6"
+        ],
+        "Close Digits": [
+          "8",
+          "3",
+          "2"
+        ],
+        "Open Pannas": [
+          "169",
+          "277",
+          "456",
+          "267",
+          "230",
+          "249",
+          "880",
+          "122"
+        ],
+        "Close Pannas": [
+          "156",
+          "670",
+          "147",
+          "468",
+          "589",
+          "233",
+          "189",
+          "580"
+        ],
+        "Jodis": [
+          "58",
+          "53",
+          "52",
+          "48",
+          "43",
+          "42",
+          "68",
+          "63",
+          "62"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "dabra_night_penal_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "0",
+          "4",
+          "5"
+        ],
+        "Close Digits": [
+          "6",
+          "9",
+          "1"
+        ],
+        "Open Pannas": [
+          "235",
+          "257",
+          "149",
+          "590",
+          "479",
+          "249",
+          "789",
+          "127"
+        ],
+        "Close Pannas": [
+          "678",
+          "478",
+          "146",
+          "150",
+          "379",
+          "126",
+          "349",
+          "199"
+        ],
+        "Jodis": [
+          "01",
+          "51",
+          "09",
+          "49",
+          "59",
+          "41",
+          "46",
+          "56",
+          "06"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "dabra_penal_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "7",
+          "0",
+          "1"
+        ],
+        "Close Digits": [
+          "5",
+          "4",
+          "6"
+        ],
+        "Open Pannas": [
+          "146",
+          "677",
+          "236",
+          "290",
+          "128",
+          "124",
+          "458",
+          "245"
+        ],
+        "Close Pannas": [
+          "159",
+          "330",
+          "122",
+          "149",
+          "556",
+          "349",
+          "178",
+          "799"
+        ],
+        "Jodis": [
+          "14",
+          "16",
+          "05",
+          "04",
+          "15",
+          "75",
+          "74",
+          "06",
+          "76"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "dadar_day_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "1",
+          "2",
+          "0"
+        ],
+        "Close Digits": [
+          "4",
+          "8",
+          "7"
+        ],
+        "Open Pannas": [
+          "460",
+          "255",
+          "578",
+          "147",
+          "136",
+          "156",
+          "677",
+          "560"
+        ],
+        "Close Pannas": [
+          "368",
+          "160",
+          "347",
+          "239",
+          "130",
+          "248",
+          "266",
+          "279"
+        ],
+        "Jodis": [
+          "18",
+          "17",
+          "27",
+          "24",
+          "14",
+          "28",
+          "04",
+          "08",
+          "07"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "deluxe_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "8",
+          "0",
+          "9"
+        ],
+        "Close Digits": [
+          "7",
+          "6",
+          "3"
+        ],
+        "Open Pannas": [
+          "144",
+          "235",
+          "170",
+          "126",
+          "450",
+          "136",
+          "667",
+          "369"
+        ],
+        "Close Pannas": [
+          "788",
+          "890",
+          "160",
+          "359",
+          "238",
+          "337",
+          "139",
+          "367"
+        ],
+        "Jodis": [
+          "93",
+          "87",
+          "86",
+          "07",
+          "97",
+          "06",
+          "96",
+          "83",
+          "03"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "dhan_express_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "8",
+          "5",
+          "6"
+        ],
+        "Close Digits": [
+          "1",
+          "0",
+          "2"
+        ],
+        "Open Pannas": [
+          "267",
+          "690",
+          "477",
+          "350",
+          "279",
+          "459",
+          "448",
+          "258"
+        ],
+        "Close Pannas": [
+          "380",
+          "235",
+          "499",
+          "488",
+          "550",
+          "136",
+          "589",
+          "255"
+        ],
+        "Jodis": [
+          "60",
+          "52",
+          "81",
+          "51",
+          "61",
+          "62",
+          "80",
+          "82",
+          "50"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "kalyan_morning_penal_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "9",
+          "1",
+          "4"
+        ],
+        "Close Digits": [
+          "6",
+          "2",
+          "7"
+        ],
+        "Open Pannas": [
+          "347",
+          "236",
+          "239",
+          "470",
+          "469",
+          "146",
+          "245",
+          "588"
+        ],
+        "Close Pannas": [
+          "589",
+          "600",
+          "124",
+          "156",
+          "778",
+          "480",
+          "250",
+          "340"
+        ],
+        "Jodis": [
+          "92",
+          "17",
+          "42",
+          "47",
+          "96",
+          "97",
+          "16",
+          "12",
+          "46"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "kalyan_night_penal_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "6",
+          "3",
+          "9"
+        ],
+        "Close Digits": [
+          "2",
+          "1",
+          "7"
+        ],
+        "Open Pannas": [
+          "580",
+          "126",
+          "670",
+          "150",
+          "148",
+          "337",
+          "379",
+          "289"
+        ],
+        "Close Pannas": [
+          "269",
+          "345",
+          "336",
+          "560",
+          "278",
+          "660",
+          "236",
+          "470"
+        ],
+        "Jodis": [
+          "67",
+          "32",
+          "31",
+          "37",
+          "97",
+          "61",
+          "92",
+          "91",
+          "62"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "kalyan_penal_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "4",
+          "1",
+          "5"
+        ],
+        "Close Digits": [
+          "3",
+          "0",
+          "7"
+        ],
+        "Open Pannas": [
+          "588",
+          "167",
+          "447",
+          "248",
+          "230",
+          "239",
+          "236",
+          "258"
+        ],
+        "Close Pannas": [
+          "368",
+          "779",
+          "599",
+          "145",
+          "226",
+          "337",
+          "700",
+          "670"
+        ],
+        "Jodis": [
+          "43",
+          "53",
+          "57",
+          "40",
+          "17",
+          "47",
+          "10",
+          "50",
+          "13"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "kanak_day_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "2",
+          "4",
+          "7"
+        ],
+        "Close Digits": [
+          "9",
+          "8",
+          "1"
+        ],
+        "Open Pannas": [
+          "890",
+          "660",
+          "458",
+          "789",
+          "278",
+          "147",
+          "250",
+          "130"
+        ],
+        "Close Pannas": [
+          "134",
+          "289",
+          "128",
+          "125",
+          "669",
+          "378",
+          "388",
+          "360"
+        ],
+        "Jodis": [
+          "29",
+          "21",
+          "41",
+          "79",
+          "78",
+          "71",
+          "49",
+          "28",
+          "48"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "MIRROR",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "karnataka_day_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "9",
+          "5",
+          "7"
+        ],
+        "Close Digits": [
+          "8",
+          "6",
+          "1"
+        ],
+        "Open Pannas": [
+          "690",
+          "379",
+          "360",
+          "249",
+          "568",
+          "289",
+          "357",
+          "456"
+        ],
+        "Close Pannas": [
+          "290",
+          "100",
+          "150",
+          "245",
+          "125",
+          "468",
+          "128",
+          "240"
+        ],
+        "Jodis": [
+          "78",
+          "91",
+          "51",
+          "98",
+          "56",
+          "71",
+          "96",
+          "58",
+          "76"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "MIRROR",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "karnataka_night_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "9",
+          "2",
+          "4"
+        ],
+        "Close Digits": [
+          "8",
+          "7",
+          "1"
+        ],
+        "Open Pannas": [
+          "680",
+          "257",
+          "130",
+          "138",
+          "336",
+          "225",
+          "667",
+          "455"
+        ],
+        "Close Pannas": [
+          "290",
+          "378",
+          "335",
+          "250",
+          "233",
+          "278",
+          "890",
+          "179"
+        ],
+        "Jodis": [
+          "41",
+          "91",
+          "98",
+          "28",
+          "21",
+          "48",
+          "47",
+          "97",
+          "27"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "kbc_bombay_penal_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "7",
+          "2",
+          "3"
+        ],
+        "Close Digits": [
+          "8",
+          "6",
+          "5"
+        ],
+        "Open Pannas": [
+          "345",
+          "890",
+          "256",
+          "490",
+          "340",
+          "679",
+          "580",
+          "110"
+        ],
+        "Close Pannas": [
+          "358",
+          "170",
+          "799",
+          "558",
+          "466",
+          "369",
+          "260",
+          "268"
+        ],
+        "Jodis": [
+          "26",
+          "25",
+          "38",
+          "78",
+          "36",
+          "76",
+          "28",
+          "35",
+          "75"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "khajana_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "1",
+          "9",
+          "0"
+        ],
+        "Close Digits": [
+          "5",
+          "6",
+          "4"
+        ],
+        "Open Pannas": [
+          "235",
+          "289",
+          "470",
+          "145",
+          "137",
+          "389",
+          "460",
+          "117"
+        ],
+        "Close Pannas": [
+          "149",
+          "268",
+          "114",
+          "356",
+          "457",
+          "277",
+          "339",
+          "358"
+        ],
+        "Jodis": [
+          "14",
+          "95",
+          "06",
+          "15",
+          "96",
+          "04",
+          "16",
+          "94",
+          "05"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "madhur_day_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "1",
+          "9",
+          "8"
+        ],
+        "Close Digits": [
+          "3",
+          "5",
+          "0"
+        ],
+        "Open Pannas": [
+          "279",
+          "568",
+          "260",
+          "270",
+          "126",
+          "146",
+          "459",
+          "236"
+        ],
+        "Close Pannas": [
+          "148",
+          "346",
+          "230",
+          "249",
+          "127",
+          "580",
+          "500",
+          "788"
+        ],
+        "Jodis": [
+          "13",
+          "10",
+          "93",
+          "90",
+          "80",
+          "83",
+          "15",
+          "95",
+          "85"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "madhur_morning_penal_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "9",
+          "4",
+          "6"
+        ],
+        "Close Digits": [
+          "3",
+          "2",
+          "5"
+        ],
+        "Open Pannas": [
+          "268",
+          "577",
+          "144",
+          "257",
+          "699",
+          "667",
+          "900",
+          "478"
+        ],
+        "Close Pannas": [
+          "346",
+          "129",
+          "249",
+          "490",
+          "500",
+          "258",
+          "799",
+          "778"
+        ],
+        "Jodis": [
+          "43",
+          "63",
+          "65",
+          "42",
+          "93",
+          "95",
+          "92",
+          "62",
+          "45"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "madhur_night_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "2",
+          "9",
+          "8"
+        ],
+        "Close Digits": [
+          "4",
+          "5",
+          "1"
+        ],
+        "Open Pannas": [
+          "138",
+          "679",
+          "499",
+          "225",
+          "200",
+          "279",
+          "468",
+          "589"
+        ],
+        "Close Pannas": [
+          "168",
+          "112",
+          "789",
+          "357",
+          "230",
+          "100",
+          "258",
+          "249"
+        ],
+        "Jodis": [
+          "21",
+          "24",
+          "84",
+          "91",
+          "25",
+          "94",
+          "81",
+          "95",
+          "85"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "maharani_day_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "1",
+          "3",
+          "8"
+        ],
+        "Close Digits": [
+          "4",
+          "0",
+          "2"
+        ],
+        "Open Pannas": [
+          "224",
+          "459",
+          "120",
+          "369",
+          "350",
+          "490",
+          "445",
+          "599"
+        ],
+        "Close Pannas": [
+          "680",
+          "460",
+          "145",
+          "479",
+          "677",
+          "370",
+          "679",
+          "660"
+        ],
+        "Jodis": [
+          "80",
+          "30",
+          "84",
+          "10",
+          "32",
+          "82",
+          "14",
+          "12",
+          "34"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "MIRROR",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "maharani_night_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "5",
+          "4",
+          "6"
+        ],
+        "Close Digits": [
+          "3",
+          "0",
+          "2"
+        ],
+        "Open Pannas": [
+          "167",
+          "446",
+          "780",
+          "680",
+          "690",
+          "358",
+          "699",
+          "447"
+        ],
+        "Close Pannas": [
+          "779",
+          "228",
+          "136",
+          "660",
+          "346",
+          "569",
+          "229",
+          "139"
+        ],
+        "Jodis": [
+          "40",
+          "60",
+          "62",
+          "52",
+          "53",
+          "50",
+          "63",
+          "42",
+          "43"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "maharani_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "5",
+          "2",
+          "3"
+        ],
+        "Close Digits": [
+          "8",
+          "7",
+          "4"
+        ],
+        "Open Pannas": [
+          "456",
+          "490",
+          "499",
+          "390",
+          "138",
+          "690",
+          "688",
+          "689"
+        ],
+        "Close Pannas": [
+          "356",
+          "250",
+          "566",
+          "170",
+          "590",
+          "350",
+          "125",
+          "789"
+        ],
+        "Jodis": [
+          "58",
+          "57",
+          "28",
+          "24",
+          "27",
+          "54",
+          "37",
+          "34",
+          "38"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "main_bazar_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "3",
+          "6",
+          "2"
+        ],
+        "Close Digits": [
+          "5",
+          "1",
+          "4"
+        ],
+        "Open Pannas": [
+          "345",
+          "147",
+          "129",
+          "600",
+          "337",
+          "247",
+          "157",
+          "880"
+        ],
+        "Close Pannas": [
+          "267",
+          "356",
+          "456",
+          "348",
+          "560",
+          "137",
+          "339",
+          "230"
+        ],
+        "Jodis": [
+          "25",
+          "24",
+          "31",
+          "65",
+          "61",
+          "21",
+          "35",
+          "64",
+          "34"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "main_bombay_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "5",
+          "0",
+          "8"
+        ],
+        "Close Digits": [
+          "3",
+          "6",
+          "9"
+        ],
+        "Open Pannas": [
+          "889",
+          "690",
+          "369",
+          "230",
+          "288",
+          "339",
+          "190",
+          "567"
+        ],
+        "Close Pannas": [
+          "379",
+          "466",
+          "148",
+          "337",
+          "457",
+          "358",
+          "234",
+          "580"
+        ],
+        "Jodis": [
+          "59",
+          "53",
+          "56",
+          "09",
+          "83",
+          "86",
+          "89",
+          "03",
+          "06"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "main_ratan_penal_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "3",
+          "6",
+          "7"
+        ],
+        "Close Digits": [
+          "5",
+          "8",
+          "1"
+        ],
+        "Open Pannas": [
+          "178",
+          "358",
+          "467",
+          "340",
+          "359",
+          "240",
+          "367",
+          "148"
+        ],
+        "Close Pannas": [
+          "489",
+          "560",
+          "889",
+          "369",
+          "378",
+          "335",
+          "168",
+          "267"
+        ],
+        "Jodis": [
+          "31",
+          "38",
+          "65",
+          "71",
+          "68",
+          "61",
+          "35",
+          "78",
+          "75"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "matashri_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "6",
+          "4",
+          "8"
+        ],
+        "Close Digits": [
+          "7",
+          "3",
+          "0"
+        ],
+        "Open Pannas": [
+          "880",
+          "224",
+          "130",
+          "123",
+          "158",
+          "248",
+          "347",
+          "477"
+        ],
+        "Close Pannas": [
+          "578",
+          "460",
+          "334",
+          "127",
+          "377",
+          "689",
+          "238",
+          "890"
+        ],
+        "Jodis": [
+          "63",
+          "60",
+          "43",
+          "87",
+          "83",
+          "80",
+          "67",
+          "47",
+          "40"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "milan_day_penal_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "2",
+          "8",
+          "5"
+        ],
+        "Close Digits": [
+          "4",
+          "3",
+          "1"
+        ],
+        "Open Pannas": [
+          "440",
+          "390",
+          "129",
+          "147",
+          "570",
+          "113",
+          "456",
+          "690"
+        ],
+        "Close Pannas": [
+          "146",
+          "470",
+          "779",
+          "220",
+          "120",
+          "158",
+          "670",
+          "335"
+        ],
+        "Jodis": [
+          "54",
+          "23",
+          "51",
+          "21",
+          "53",
+          "83",
+          "81",
+          "24",
+          "84"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "MIRROR",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "milan_night_penal_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "2",
+          "1",
+          "9"
+        ],
+        "Close Digits": [
+          "7",
+          "5",
+          "0"
+        ],
+        "Open Pannas": [
+          "289",
+          "290",
+          "469",
+          "579",
+          "129",
+          "380",
+          "135",
+          "388"
+        ],
+        "Close Pannas": [
+          "226",
+          "500",
+          "230",
+          "366",
+          "145",
+          "578",
+          "458",
+          "460"
+        ],
+        "Jodis": [
+          "25",
+          "95",
+          "27",
+          "10",
+          "97",
+          "15",
+          "90",
+          "17",
+          "20"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "morning_syndicate_penal_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "1",
+          "0",
+          "7"
+        ],
+        "Close Digits": [
+          "2",
+          "4",
+          "6"
+        ],
+        "Open Pannas": [
+          "278",
+          "160",
+          "467",
+          "359",
+          "124",
+          "579",
+          "280",
+          "145"
+        ],
+        "Close Pannas": [
+          "480",
+          "156",
+          "169",
+          "167",
+          "123",
+          "330",
+          "789",
+          "589"
+        ],
+        "Jodis": [
+          "04",
+          "12",
+          "06",
+          "76",
+          "02",
+          "16",
+          "14",
+          "72",
+          "74"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "MIRROR",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "prabhat_night_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "1",
+          "7",
+          "2"
+        ],
+        "Close Digits": [
+          "0",
+          "5",
+          "9"
+        ],
+        "Open Pannas": [
+          "133",
+          "223",
+          "156",
+          "250",
+          "146",
+          "458",
+          "137",
+          "589"
+        ],
+        "Close Pannas": [
+          "234",
+          "280",
+          "127",
+          "677",
+          "578",
+          "456",
+          "230",
+          "360"
+        ],
+        "Jodis": [
+          "15",
+          "10",
+          "79",
+          "20",
+          "19",
+          "75",
+          "25",
+          "70",
+          "29"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "prabhat_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "9",
+          "4",
+          "1"
+        ],
+        "Close Digits": [
+          "5",
+          "6",
+          "0"
+        ],
+        "Open Pannas": [
+          "180",
+          "220",
+          "126",
+          "158",
+          "789",
+          "236",
+          "478",
+          "335"
+        ],
+        "Close Pannas": [
+          "389",
+          "249",
+          "357",
+          "145",
+          "258",
+          "456",
+          "159",
+          "123"
+        ],
+        "Jodis": [
+          "90",
+          "10",
+          "40",
+          "96",
+          "45",
+          "95",
+          "46",
+          "15",
+          "16"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "raja_rani_morning_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "9",
+          "0",
+          "2"
+        ],
+        "Close Digits": [
+          "7",
+          "6",
+          "5"
+        ],
+        "Open Pannas": [
+          "190",
+          "280",
+          "234",
+          "225",
+          "469",
+          "136",
+          "679",
+          "480"
+        ],
+        "Close Pannas": [
+          "799",
+          "340",
+          "500",
+          "780",
+          "160",
+          "178",
+          "269",
+          "556"
+        ],
+        "Jodis": [
+          "97",
+          "06",
+          "96",
+          "25",
+          "95",
+          "26",
+          "07",
+          "27",
+          "05"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "rajdhani_day_penal_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "1",
+          "2",
+          "5"
+        ],
+        "Close Digits": [
+          "3",
+          "6",
+          "0"
+        ],
+        "Open Pannas": [
+          "456",
+          "380",
+          "499",
+          "336",
+          "335",
+          "128",
+          "267",
+          "780"
+        ],
+        "Close Pannas": [
+          "148",
+          "346",
+          "389",
+          "300",
+          "556",
+          "466",
+          "445",
+          "367"
+        ],
+        "Jodis": [
+          "16",
+          "50",
+          "13",
+          "10",
+          "23",
+          "20",
+          "26",
+          "53",
+          "56"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "rajdhani_night_penal_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "0",
+          "2",
+          "3"
+        ],
+        "Close Digits": [
+          "6",
+          "4",
+          "1"
+        ],
+        "Open Pannas": [
+          "280",
+          "490",
+          "479",
+          "127",
+          "337",
+          "589",
+          "688",
+          "148"
+        ],
+        "Close Pannas": [
+          "150",
+          "380",
+          "678",
+          "158",
+          "455",
+          "790",
+          "290",
+          "466"
+        ],
+        "Jodis": [
+          "04",
+          "31",
+          "21",
+          "06",
+          "24",
+          "34",
+          "01",
+          "36",
+          "26"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "rithi_sridevi_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "0",
+          "8",
+          "7"
+        ],
+        "Close Digits": [
+          "4",
+          "2",
+          "3"
+        ],
+        "Open Pannas": [
+          "369",
+          "389",
+          "479",
+          "569",
+          "550",
+          "460",
+          "668",
+          "359"
+        ],
+        "Close Pannas": [
+          "590",
+          "147",
+          "779",
+          "139",
+          "347",
+          "256",
+          "157",
+          "570"
+        ],
+        "Jodis": [
+          "03",
+          "84",
+          "72",
+          "04",
+          "82",
+          "83",
+          "02",
+          "74",
+          "73"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "sivaji_night_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "0",
+          "4",
+          "1"
+        ],
+        "Close Digits": [
+          "6",
+          "7",
+          "3"
+        ],
+        "Open Pannas": [
+          "155",
+          "128",
+          "335",
+          "127",
+          "167",
+          "245",
+          "227",
+          "579"
+        ],
+        "Close Pannas": [
+          "359",
+          "114",
+          "178",
+          "346",
+          "269",
+          "458",
+          "166",
+          "457"
+        ],
+        "Jodis": [
+          "03",
+          "17",
+          "13",
+          "46",
+          "47",
+          "43",
+          "06",
+          "07",
+          "16"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "sivaji_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "1",
+          "6",
+          "3"
+        ],
+        "Close Digits": [
+          "8",
+          "9",
+          "5"
+        ],
+        "Open Pannas": [
+          "470",
+          "457",
+          "114",
+          "330",
+          "678",
+          "380",
+          "344",
+          "259"
+        ],
+        "Close Pannas": [
+          "357",
+          "456",
+          "289",
+          "360",
+          "379",
+          "369",
+          "567",
+          "113"
+        ],
+        "Jodis": [
+          "18",
+          "68",
+          "65",
+          "39",
+          "15",
+          "69",
+          "19",
+          "38",
+          "35"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "special_sridevi_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "5",
+          "7",
+          "4"
+        ],
+        "Close Digits": [
+          "9",
+          "0",
+          "1"
+        ],
+        "Open Pannas": [
+          "258",
+          "690",
+          "357",
+          "160",
+          "356",
+          "149",
+          "278",
+          "557"
+        ],
+        "Close Pannas": [
+          "399",
+          "388",
+          "245",
+          "126",
+          "244",
+          "569",
+          "190",
+          "678"
+        ],
+        "Jodis": [
+          "79",
+          "50",
+          "70",
+          "71",
+          "59",
+          "49",
+          "40",
+          "51",
+          "41"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "sridevi_morning_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "9",
+          "8",
+          "3"
+        ],
+        "Close Digits": [
+          "4",
+          "7",
+          "0"
+        ],
+        "Open Pannas": [
+          "450",
+          "139",
+          "468",
+          "180",
+          "445",
+          "900",
+          "247",
+          "126"
+        ],
+        "Close Pannas": [
+          "569",
+          "278",
+          "149",
+          "455",
+          "557",
+          "334",
+          "700",
+          "244"
+        ],
+        "Jodis": [
+          "37",
+          "97",
+          "90",
+          "84",
+          "80",
+          "94",
+          "87",
+          "34",
+          "30"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "MIRROR",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "sridevi_night_satta_penal_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "0",
+          "8",
+          "2"
+        ],
+        "Close Digits": [
+          "7",
+          "5",
+          "1"
+        ],
+        "Open Pannas": [
+          "378",
+          "440",
+          "567",
+          "345",
+          "237",
+          "468",
+          "288",
+          "134"
+        ],
+        "Close Pannas": [
+          "100",
+          "159",
+          "267",
+          "230",
+          "890",
+          "566",
+          "557",
+          "179"
+        ],
+        "Jodis": [
+          "01",
+          "07",
+          "81",
+          "87",
+          "21",
+          "85",
+          "05",
+          "25",
+          "27"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "sridevi_satta_penal_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "0",
+          "6",
+          "2"
+        ],
+        "Close Digits": [
+          "5",
+          "3",
+          "9"
+        ],
+        "Open Pannas": [
+          "460",
+          "138",
+          "127",
+          "569",
+          "550",
+          "390",
+          "244",
+          "389"
+        ],
+        "Close Pannas": [
+          "667",
+          "126",
+          "199",
+          "690",
+          "366",
+          "469",
+          "780",
+          "689"
+        ],
+        "Jodis": [
+          "29",
+          "69",
+          "23",
+          "09",
+          "03",
+          "65",
+          "63",
+          "05",
+          "25"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "MIRROR",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "star_morning_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "9",
+          "0",
+          "1"
+        ],
+        "Close Digits": [
+          "5",
+          "2",
+          "6"
+        ],
+        "Open Pannas": [
+          "489",
+          "578",
+          "190",
+          "155",
+          "245",
+          "389",
+          "118",
+          "280"
+        ],
+        "Close Pannas": [
+          "240",
+          "880",
+          "246",
+          "168",
+          "589",
+          "169",
+          "889",
+          "123"
+        ],
+        "Jodis": [
+          "92",
+          "96",
+          "02",
+          "06",
+          "95",
+          "12",
+          "05",
+          "15",
+          "16"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "supreme_day_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "0",
+          "1",
+          "2"
+        ],
+        "Close Digits": [
+          "7",
+          "3",
+          "5"
+        ],
+        "Open Pannas": [
+          "677",
+          "235",
+          "290",
+          "480",
+          "129",
+          "336",
+          "200",
+          "460"
+        ],
+        "Close Pannas": [
+          "229",
+          "670",
+          "467",
+          "580",
+          "366",
+          "689",
+          "355",
+          "157"
+        ],
+        "Jodis": [
+          "15",
+          "07",
+          "05",
+          "13",
+          "25",
+          "03",
+          "23",
+          "17",
+          "27"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "supreme_night_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "0",
+          "1",
+          "8"
+        ],
+        "Close Digits": [
+          "6",
+          "2",
+          "7"
+        ],
+        "Open Pannas": [
+          "389",
+          "370",
+          "468",
+          "190",
+          "489",
+          "488",
+          "668",
+          "678"
+        ],
+        "Close Pannas": [
+          "345",
+          "240",
+          "700",
+          "124",
+          "269",
+          "250",
+          "114",
+          "123"
+        ],
+        "Jodis": [
+          "06",
+          "07",
+          "87",
+          "02",
+          "12",
+          "17",
+          "82",
+          "86",
+          "16"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "syndicate_night_penal_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "1",
+          "9",
+          "4"
+        ],
+        "Close Digits": [
+          "2",
+          "3",
+          "5"
+        ],
+        "Open Pannas": [
+          "347",
+          "380",
+          "257",
+          "137",
+          "239",
+          "489",
+          "388",
+          "450"
+        ],
+        "Close Pannas": [
+          "255",
+          "246",
+          "249",
+          "168",
+          "156",
+          "157",
+          "113",
+          "357"
+        ],
+        "Jodis": [
+          "12",
+          "13",
+          "95",
+          "15",
+          "93",
+          "43",
+          "42",
+          "92",
+          "45"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "time_bazar_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "1",
+          "0",
+          "5"
+        ],
+        "Close Digits": [
+          "3",
+          "2",
+          "8"
+        ],
+        "Open Pannas": [
+          "227",
+          "339",
+          "578",
+          "122",
+          "389",
+          "690",
+          "258",
+          "230"
+        ],
+        "Close Pannas": [
+          "139",
+          "390",
+          "779",
+          "166",
+          "246",
+          "157",
+          "558",
+          "490"
+        ],
+        "Jodis": [
+          "08",
+          "13",
+          "03",
+          "02",
+          "53",
+          "12",
+          "18",
+          "52",
+          "58"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "tirtha_day_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "5",
+          "9",
+          "6"
+        ],
+        "Close Digits": [
+          "8",
+          "2",
+          "4"
+        ],
+        "Open Pannas": [
+          "349",
+          "259",
+          "277",
+          "339",
+          "447",
+          "330",
+          "450",
+          "126"
+        ],
+        "Close Pannas": [
+          "390",
+          "480",
+          "688",
+          "589",
+          "570",
+          "468",
+          "110",
+          "338"
+        ],
+        "Jodis": [
+          "54",
+          "98",
+          "92",
+          "58",
+          "52",
+          "68",
+          "62",
+          "94",
+          "64"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "tirtha_night_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "0",
+          "4",
+          "6"
+        ],
+        "Close Digits": [
+          "9",
+          "2",
+          "8"
+        ],
+        "Open Pannas": [
+          "150",
+          "590",
+          "347",
+          "358",
+          "789",
+          "158",
+          "190",
+          "460"
+        ],
+        "Close Pannas": [
+          "350",
+          "667",
+          "260",
+          "360",
+          "468",
+          "390",
+          "129",
+          "180"
+        ],
+        "Jodis": [
+          "42",
+          "48",
+          "62",
+          "09",
+          "69",
+          "02",
+          "08",
+          "68",
+          "49"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    },
+    {
+      "market": "worli_day_panel_chart",
+      "predictions": {
+        "Date": "2026-01-07",
+        "Open Digits": [
+          "7",
+          "9",
+          "5"
+        ],
+        "Close Digits": [
+          "6",
+          "8",
+          "3"
+        ],
+        "Open Pannas": [
+          "135",
+          "500",
+          "250",
+          "450",
+          "577",
+          "568",
+          "269",
+          "113"
+        ],
+        "Close Pannas": [
+          "300",
+          "125",
+          "170",
+          "790",
+          "556",
+          "238",
+          "367",
+          "880"
+        ],
+        "Jodis": [
+          "76",
+          "98",
+          "96",
+          "58",
+          "78",
+          "56",
+          "93",
+          "53",
+          "73"
+        ]
+      },
+      "meta": {
+        "block": {
+          "block_type": "NEUTRAL",
+          "block_start": null,
+          "block_age": 0,
+          "dominant_digits": [],
+          "entropy": 0.0
+        },
+        "ml_meta": null
+      }
+    }
+  ]
+}

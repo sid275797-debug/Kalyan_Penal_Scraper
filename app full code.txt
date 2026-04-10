@@ -1,0 +1,832 @@
+import 'dart:convert';
+import 'dart:ui';                        // ← for ImageFilter.blur()
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';   // ← for rootBundle
+import 'package:http/http.dart' as http; // ← for live fetch
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:firebase_core/firebase_core.dart';            // 🔥 ADDED FOR FCM
+import 'package:firebase_messaging/firebase_messaging.dart';  // 🔥 ADDED FOR FCM
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp();  // 🔥 ADDED FOR FCM
+
+  // Initialize the Google Mobile Ads SDK
+  await MobileAds.instance.initialize();
+
+  // Register test devices
+  MobileAds.instance.updateRequestConfiguration(
+    RequestConfiguration(testDeviceIds: [
+      '49FFEB599B975DC23EFA4E8CBF729C35',
+      'EMULATOR',
+    ]),
+  );
+
+  // 🔔 FCM Token + permissions
+  await FirebaseMessaging.instance.requestPermission();
+  final token = await FirebaseMessaging.instance.getToken();
+  print("🔔 FCM Token: $token");
+
+  runApp(const SattaBossApp());
+}
+
+class SattaBossApp extends StatelessWidget {
+  const SattaBossApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'SattaMatkaAI',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark().copyWith(
+        primaryColor: Colors.deepPurple,
+        scaffoldBackgroundColor: Colors.black,
+        textTheme: const TextTheme(bodyMedium: TextStyle(color: Colors.white)),
+      ),
+      home: const HomeScreen(),
+    );
+  }
+}
+
+/// ————————————————————————————————————————————————
+/// Models
+/// ————————————————————————————————————————————————
+
+class UnlockCode {
+  final String code;
+  final String tier;
+  final DateTime expires;
+  UnlockCode({
+    required this.code,
+    required this.tier,
+    required this.expires,
+  });
+  factory UnlockCode.fromJson(Map<String, dynamic> j) {
+    return UnlockCode(
+      code: (j['code'] as String).trim(),
+      tier: j['tier'] as String,
+      expires: DateTime.parse(j['expires'] as String),
+    );
+  }
+}
+
+class Prediction {
+  final String marketKey;
+  final Map<String, List<String>> p;
+  Prediction({required this.marketKey, required this.p});
+  factory Prediction.fromJson(Map<String, dynamic> j) {
+    final key = (j['market'] as String).toLowerCase();
+    final raw = j['predictions'] as Map<String, dynamic>;
+    final map = <String, List<String>>{};
+    raw.forEach((k, v) {
+      map[k] = (v as List).map((x) => x.toString()).toList();
+    });
+    return Prediction(marketKey: key, p: map);
+  }
+}
+
+class Yesterday {
+  final String marketKey;
+  final String openDigit, closeDigit, openPanna, closePanna, jodi;
+  Yesterday({
+    required this.marketKey,
+    required this.openDigit,
+    required this.closeDigit,
+    required this.openPanna,
+    required this.closePanna,
+    required this.jodi,
+  });
+  factory Yesterday.fromJson(Map<String, dynamic> j) {
+    final key = (j['market'] as String).toLowerCase();
+    return Yesterday(
+      marketKey: key,
+      openDigit: j['Open Digit'].toString(),
+      closeDigit: j['Close Digit'].toString(),
+      openPanna: j['Open Panna'].toString(),
+      closePanna: j['Close Panna'].toString(),
+      jodi: j['Jodi'].toString(),
+    );
+  }
+}
+
+/// ————————————————————————————————————————————————
+/// Data Services (remote → fallback)
+/// ————————————————————————————————————————————————
+
+class PredictionService {
+  static const _remoteUrl =
+      'https://pranitborkar98.github.io/sattaboss-data/data/todays_predictions.json';
+
+  static Future<List<Prediction>> load() async {
+    try {
+      final resp = await http.get(Uri.parse(_remoteUrl));
+      if (resp.statusCode == 200) {
+        final list = json.decode(resp.body) as List<dynamic>;
+        return list.map((e) => Prediction.fromJson(e)).toList();
+      }
+    } catch (_) {}
+    // fallback
+    final raw = await rootBundle.loadString('assets/todays_predictions.json');
+    final list = json.decode(raw) as List<dynamic>;
+    return list.map((e) => Prediction.fromJson(e)).toList();
+  }
+}
+
+class YesterdayService {
+  static const _remoteUrl =
+      'https://pranitborkar98.github.io/sattaboss-data/data/yesterday_results.json';
+
+  static Future<List<Yesterday>> load() async {
+    try {
+      final resp = await http.get(Uri.parse(_remoteUrl));
+      if (resp.statusCode == 200) {
+        final list = json.decode(resp.body) as List<dynamic>;
+        return list.map((e) => Yesterday.fromJson(e)).toList();
+      }
+    } catch (_) {}
+    // fallback
+    final raw = await rootBundle.loadString('assets/yesterday_results.json');
+    final list = json.decode(raw) as List<dynamic>;
+    return list.map((e) => Yesterday.fromJson(e)).toList();
+  }
+}
+
+/// ————————————————————————————————————————————————
+/// Home Screen
+/// ————————————————————————————————————————————————
+
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
+  late final TabController _tabController;
+  bool _loading = true;
+
+  // data
+  List<Prediction> _allPreds = [];
+  List<Yesterday> _allYest = [];
+  late Map<String, Prediction> _predByKey;
+  late Map<String, Yesterday> _histByKey;
+  late List<Prediction> _freePreds;
+  late List<Prediction> _premiumPreds;
+
+  // subscription
+  bool _isPremiumUnlocked = false;
+  DateTime? _subscriptionExpiry;
+  final Set<String> _usedCodes = {};
+  List<UnlockCode> _codes = [];
+  final TextEditingController _codeController = TextEditingController();
+
+  // ads
+  late BannerAd _bannerAd;
+  bool _isBannerAdReady = false;
+  RewardedAd? _rewardedAd;
+  bool _isRewardedAdReady = false;
+
+  final _premiumPatterns = [
+    'kalyan',
+    'rajdhani',
+    'milan',
+    'main_bazar',
+    'main_bombay',
+    'time_bazar',
+    'supreme'
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 4, vsync: this);
+    _loadAllData();
+    _loadCodesAndSubscription();
+    _loadBannerAd();
+    _loadRewardedAd();
+    _initFirebaseMessaging(); // 🔥 ADDED FOR FCM
+  }
+
+  void _initFirebaseMessaging() {
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      final notif = message.notification;
+      if (notif != null && notif.title != null) {
+        _showSnack('${notif.title}: ${notif.body ?? ''}');
+      }
+    });
+
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      final notif = message.notification;
+      if (notif != null && notif.title != null) {
+        _showSnack("Tapped: ${notif.title}");
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    _codeController.dispose();
+    _bannerAd.dispose();
+    _rewardedAd?.dispose();
+    super.dispose();
+  }
+
+  /// ✅ Crash-proof loader
+  Future<void> _loadAllData() async {
+    List<Prediction> preds = [];
+    List<Yesterday> yest = [];
+    List<UnlockCode> unlockCodes = [];
+
+    Future<String?> _loadAsset(String path) async {
+      try {
+        return await rootBundle.loadString(path);
+      } catch (e) {
+        debugPrint('ASSET MISSING: $path -> $e');
+        _showSnack('Missing asset: $path');
+        return null;
+      }
+    }
+
+    dynamic _safeJsonDecode(String src, String label) {
+      try {
+        return json.decode(src);
+      } catch (e) {
+        debugPrint('JSON DECODE FAILED ($label): $e\nFirst 120: ${src.length > 120 ? src.substring(0, 120) : src}');
+        _showSnack('Corrupt $label JSON');
+        return null;
+      }
+    }
+
+    try {
+      preds = await PredictionService.load();
+    } catch (e) {
+      debugPrint('PredictionService error: $e');
+    }
+
+    try {
+      yest = await YesterdayService.load();
+    } catch (e) {
+      debugPrint('YesterdayService error: $e');
+    }
+
+    final rawCodes = await _loadAsset('assets/unlock_codes.json');
+    if (rawCodes != null) {
+      final decoded = _safeJsonDecode(rawCodes, 'unlock_codes');
+      if (decoded is List) {
+        try {
+          unlockCodes = decoded
+              .whereType<Map<String, dynamic>>()
+              .map((e) => UnlockCode.fromJson(e))
+              .toList();
+        } catch (e) {
+          debugPrint('UnlockCode bulk parse failed: $e. Falling back per-entry.');
+          unlockCodes = [];
+          for (final row in decoded) {
+            try {
+              if (row is Map<String, dynamic>) {
+                unlockCodes.add(UnlockCode.fromJson(row));
+              }
+            } catch (e) {
+              debugPrint('Skipping bad unlock code row: $e  row=$row');
+            }
+          }
+        }
+      } else {
+        debugPrint('unlock_codes.json is not a JSON array; ignoring.');
+      }
+    }
+
+    final predMap = {for (var p in preds) p.marketKey: p};
+    final histMap = {for (var h in yest) h.marketKey: h};
+    final prem = preds
+        .where((p) => _premiumPatterns.any((pat) => p.marketKey.contains(pat)))
+        .toList();
+    final free = preds.where((p) => !prem.contains(p)).toList();
+
+    setState(() {
+      _allPreds = preds;
+      _allYest = yest;
+      _predByKey = predMap;
+      _histByKey = histMap;
+      _premiumPreds = prem;
+      _freePreds = free;
+      _codes = unlockCodes;
+      _loading = false;
+    });
+
+    debugPrint(
+      'Loaded OK → preds=${preds.length}, yest=${yest.length}, codes=${unlockCodes.length}'
+          '${unlockCodes.isNotEmpty ? ', first=${unlockCodes.first.code} exp=${unlockCodes.first.expires}' : ''}',
+    );
+  }
+
+  Future<void> _loadCodesAndSubscription() async {
+    final prefs = await SharedPreferences.getInstance();
+    final used = prefs.getStringList('usedCodes') ?? [];
+    final expString = prefs.getString('subscriptionExpiry');
+    DateTime? exp;
+    if (expString != null) {
+      exp = DateTime.tryParse(expString);
+      if (exp != null && exp.isAfter(DateTime.now())) {
+        _isPremiumUnlocked = true;
+        _subscriptionExpiry = exp;
+      } else {
+        await prefs.remove('usedCodes');
+        await prefs.remove('subscriptionExpiry');
+      }
+    }
+    setState(() => _usedCodes.addAll(used));
+  }
+
+  void _loadBannerAd() {
+    _bannerAd = BannerAd(
+      adUnitId: 'ca-app-pub-3940256099942544/6300978111',
+      request: const AdRequest(),
+      size: AdSize.banner,
+      listener: BannerAdListener(
+        onAdLoaded: (_) => setState(() => _isBannerAdReady = true),
+        onAdFailedToLoad: (ad, err) {
+          ad.dispose();
+          debugPrint('BannerAd failed to load: $err');
+        },
+      ),
+    )..load();
+  }
+
+  void _loadRewardedAd() {
+    RewardedAd.load(
+      adUnitId: 'ca-app-pub-3940256099942544/5224354917',
+      request: const AdRequest(),
+      rewardedAdLoadCallback: RewardedAdLoadCallback(
+        onAdLoaded: (ad) {
+          _rewardedAd = ad;
+          _isRewardedAdReady = true;
+        },
+        onAdFailedToLoad: (err) {
+          debugPrint('RewardedAd failed: $err');
+          _isRewardedAdReady = false;
+        },
+      ),
+    );
+  }
+
+  void _showRewardedAd(VoidCallback onCompletion) {
+    if (_isRewardedAdReady && _rewardedAd != null) {
+      _rewardedAd!.fullScreenContentCallback =
+          FullScreenContentCallback(
+            onAdDismissedFullScreenContent: (ad) {
+              ad.dispose();
+              _loadRewardedAd();
+              onCompletion();
+            },
+            onAdFailedToShowFullScreenContent: (ad, err) {
+              ad.dispose();
+              _loadRewardedAd();
+              onCompletion();
+            },
+          );
+      _rewardedAd!.show(onUserEarnedReward: (_, __) {});
+    } else {
+      onCompletion();
+    }
+  }
+
+  Future<void> _launch(String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
+  }
+
+  Future<void> _unlockWithCode(String code) async {
+    // Normalize user input
+    final rawInput = code;
+    code = code.trim().toUpperCase();
+
+    // 1) Sanity: did we even load codes?
+    if (_codes.isEmpty) {
+      debugPrint('UNLOCK: No codes loaded. Check asset bundling.');
+      _showSnack('No unlock codes loaded. Rebuild with assets.');
+      return;
+    }
+
+    // 2) Try to find the code regardless of expiry (so we can show precise reason)
+    final found = _codes.where((u) => u.code == code).toList();
+    if (found.isEmpty) {
+      debugPrint('UNLOCK: Code not found. input="$rawInput" normalized="$code" '
+          'loadedCodes=${_codes.length} exampleFirst="${_codes.first.code}"');
+      _showSnack('Code not found');
+      return;
+    }
+
+    final match = found.first;
+
+    // 3) Expiry check with clear message
+    final now = DateTime.now();
+    if (!match.expires.isAfter(now)) {
+      debugPrint('UNLOCK: Code found but expired. code=$code '
+          'now=$now expires=${match.expires}');
+      _showSnack('Code expired on ${match.expires.toLocal().toShortDateString()}');
+      return;
+    }
+
+    // 4) Already used?
+    if (_usedCodes.contains(code)) {
+      debugPrint('UNLOCK: Code already used. code=$code');
+      _showSnack('Already used');
+      return;
+    }
+
+    // 5) Persist usage + expiry
+    final prefs = await SharedPreferences.getInstance();
+    _usedCodes.add(code);
+    await prefs.setStringList('usedCodes', _usedCodes.toList());
+    await prefs.setString('subscriptionExpiry', match.expires.toIso8601String());
+
+    setState(() {
+      _isPremiumUnlocked = true;
+      _subscriptionExpiry = match.expires;
+    });
+
+    debugPrint('UNLOCK: Success. code=$code expires=${match.expires}');
+    _showSnack('Unlocked until ${match.expires.toLocal().toShortDateString()}');
+    _tabController.animateTo(0);
+  }
+
+
+  void _showSnack(String msg) =>
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));
+
+  String _display(String key) => key
+      .replaceAll(RegExp(r'_(panel|penal)_chart'), '')
+      .split('_')
+      .map((w) => w[0].toUpperCase() + w.substring(1))
+      .join(' ');
+
+  Widget _predictionCard(Prediction p, {required bool premium}) {
+    final y = _histByKey[p.marketKey];
+    final color = premium ? Colors.purple.shade700 : Colors.deepOrange.shade400;
+    Widget card = Card(
+      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      color: color,
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(_display(p.marketKey),
+                style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white)),
+            const SizedBox(height: 6),
+            Text('Open Digits: ${p.p['open_digits']?.join(', ') ?? '-'}',
+                style: const TextStyle(color: Colors.white)),
+            Text('Close Digits: ${p.p['close_digits']?.join(', ') ?? '-'}',
+                style: const TextStyle(color: Colors.white)),
+            Text('Open Pannas: ${p.p['open_pannas']?.join(', ') ?? '-'}',
+                style: const TextStyle(color: Colors.white)),
+            Text('Close Pannas: ${p.p['close_pannas']?.join(', ') ?? '-'}',
+                style: const TextStyle(color: Colors.white)),
+            Text('Jodis: ${p.p['jodis']?.join(', ') ?? '-'}',
+                style: const TextStyle(color: Colors.white)),
+            if (y != null) ...[
+              const Divider(color: Colors.white38),
+              Text(
+                'Yesterday → O${y.openDigit}/C${y.closeDigit}   '
+                    'P${y.openPanna}/P${y.closePanna}   J${y.jodi}',
+                style: const TextStyle(fontSize: 14, color: Colors.white),
+              ),
+            ]
+          ],
+        ),
+      ),
+    );
+
+    if (premium && !_isPremiumUnlocked) {
+      return Stack(children: [
+        card,
+        Positioned.fill(
+          child: ClipRect(
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+              child: Container(color: Colors.black.withOpacity(0.5)),
+            ),
+          ),
+        ),
+        Positioned.fill(
+          child: Center(
+            child: IconButton(
+              icon: const Icon(Icons.lock, size: 40, color: Colors.white70),
+              onPressed: () {
+                showModalBottomSheet(
+                    context: context, builder: (_) => _unlockWidget());
+              },
+            ),
+          ),
+        ),
+      ]);
+    }
+
+    return card;
+  }
+
+  Widget _historyCard(Yesterday y) => Card(
+    margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+    shape:
+    RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    color: Colors.deepPurple.shade700,
+    child: Padding(
+      padding: const EdgeInsets.all(12),
+      child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(_display(y.marketKey),
+                style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white)),
+            const SizedBox(height: 6),
+            Text('Open: ${y.openDigit}, Close: ${y.closeDigit}',
+                style: const TextStyle(color: Colors.white)),
+            Text('Panna: ${y.openPanna}, Jodi: ${y.jodi}',
+                style: const TextStyle(color: Colors.white)),
+            Text('Close Panna: ${y.closePanna}',
+                style: const TextStyle(color: Colors.white)),
+          ]),
+    ),
+  );
+
+  Widget _sectionTitle(String t) => Padding(
+    padding: const EdgeInsets.symmetric(vertical: 12),
+    child: Center(
+        child: Text(t,
+            style: const TextStyle(
+                fontSize: 20, fontWeight: FontWeight.bold))),
+  );
+
+  Widget _infoCard(String title, String body) => Card(
+    color: Colors.grey.shade900,
+    margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    shape:
+    RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    child: Padding(
+      padding: const EdgeInsets.all(16),
+      child:
+      Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Text(title,
+            style: const TextStyle(
+                fontSize: 18, fontWeight: FontWeight.bold)),
+        const SizedBox(height: 8),
+        Text(body, style: const TextStyle(fontSize: 16)),
+      ]),
+    ),
+  );
+
+  Widget _unlockWidget() => Padding(
+    padding: const EdgeInsets.all(16),
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Text(
+          'Scan QR below to pay ₹500/Week',
+          style: TextStyle(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Image.asset('assets/qr.png', height: 180),
+        const SizedBox(height: 12),
+        TextField(
+          controller: _codeController,
+          style: const TextStyle(color: Colors.white),
+          decoration: InputDecoration(
+            hintText: 'Enter one-time unlock code',
+            hintStyle: const TextStyle(color: Colors.white38),
+            filled: true,
+            fillColor: Colors.white12,
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(8),
+              borderSide: BorderSide.none,
+            ),
+          ),
+        ),
+        const SizedBox(height: 12),
+        ElevatedButton(
+          onPressed: () => _unlockWithCode(_codeController.text),
+          child: const Text('Unlock Premium'),
+        ),
+
+        // 👇 DEBUG INFO ADDED HERE
+        if (_codes.isNotEmpty)
+          Column(
+            children: [
+              const SizedBox(height: 8),
+              Text(
+                'Loaded ${_codes.length} codes. First few: ' +
+                    _codes.take(3).map((c) => c.code).join(', '),
+                style: const TextStyle(color: Colors.white70, fontSize: 12),
+              ),
+            ],
+          ),
+
+        const SizedBox(height: 16),
+      ],
+    ),
+  );
+
+
+  Widget _socialFABs() => Padding(
+    padding: const EdgeInsets.only(bottom: 16, right: 16),
+    child: Column(mainAxisSize: MainAxisSize.min, children: [
+      FloatingActionButton(
+        heroTag: 'wa',
+        mini: true,
+        backgroundColor: Colors.green,
+        child: const FaIcon(FontAwesomeIcons.whatsapp),
+        onPressed: () => _launch('https://wa.me/839038783'),
+      ),
+      const SizedBox(height: 12),
+      FloatingActionButton(
+        heroTag: 'tg',
+        mini: true,
+        backgroundColor: Colors.blue,
+        child: const FaIcon(FontAwesomeIcons.telegram),
+        onPressed: () => _launch('https://t.me/SattamatkaAi'),
+      ),
+      const SizedBox(height: 12),
+      FloatingActionButton(
+        heroTag: 'ig',
+        mini: true,
+        backgroundColor: Colors.pink,
+        child: const FaIcon(FontAwesomeIcons.instagram),
+        onPressed: () => _launch('https://www.instagram.com/sattamatkaai?igsh=MWhreDlqNWZ2cDNqcw=='),
+      ),
+      const SizedBox(height: 12),
+      FloatingActionButton(
+        heroTag: 'fb',
+        mini: true,
+        backgroundColor: Colors.indigo,
+        child: const FaIcon(FontAwesomeIcons.facebook),
+        onPressed: () => _launch('https://www.facebook.com/share/19mHUCgNjY/'),
+      ),
+      const SizedBox(height: 12),
+      FloatingActionButton(
+        heroTag: 'yt',
+        mini: true,
+        backgroundColor: Colors.red,
+        child: const FaIcon(FontAwesomeIcons.youtube),
+        onPressed: () => _launch('https://www.youtube.com/@SattaMatkaAI'),
+      ),
+    ]),
+  );
+
+  Widget _buildHome() => ListView(children: [
+    _sectionTitle("🔮 Top Free Predictions (${_freePreds.length})"),
+    ..._freePreds.take(7).map((p) => _predictionCard(p, premium: false)),
+    Center(
+      child: TextButton(
+        onPressed: () => _showRewardedAd(() => _tabController.animateTo(1)),
+        child: const Text("Show more free markets",
+            style: TextStyle(color: Colors.deepOrange)),
+      ),
+    ),
+    const SizedBox(height: 16),
+    _sectionTitle("⭐ Top Premium Predictions (${_premiumPreds.length})"),
+    ..._premiumPreds.take(7).map((p) => _predictionCard(p, premium: true)),
+    Center(
+      child: TextButton(
+        onPressed: () => _showRewardedAd(() => _tabController.animateTo(2)),
+        child: const Text("Show more premium markets",
+            style: TextStyle(color: Colors.purpleAccent)),
+      ),
+    ),
+    const SizedBox(height: 16),
+    _sectionTitle("🏆 Top Yesterday’s Winners (${_allYest.length})"),
+    ..._allYest.take(8).map(_historyCard),
+    Center(
+      child: TextButton(
+        onPressed: () => _showRewardedAd(() => _tabController.animateTo(3)),
+        child: const Text("Show more history",
+            style: TextStyle(color: Colors.lightBlueAccent)),
+      ),
+    ),
+    const SizedBox(height: 24),
+    _sectionTitle("🔓 How to Unlock Premium"),
+    const SizedBox(height: 18),
+    _infoCard(
+      'Unlock Premium Markets',
+      '▶ Tap the lock on a premium card\n'
+          '▶ Scan QR to pay ₹500/Week\n'
+          '▶ Enter your one-time code to unlock',
+    ),
+    const SizedBox(height: 16),
+    _unlockWidget(),
+    const SizedBox(height: 32),
+    const SizedBox(height: 16),
+    _sectionTitle("🧠 How It Works"),
+    _infoCard(
+      'AI Prediction Strategy',
+      'Our ML engine analyzes decades of Matka data, simulates traps—fake repeats, misleading pannas—and applies frequency analysis to forecast digits, pannas & jodis. Probabilistic, not guaranteed.',
+    ),
+    const SizedBox(height: 16),
+    _sectionTitle("⚠️ Disclaimer"),
+    _infoCard(
+      'Responsible Use Notice',
+      'For educational & entertainment purposes only. Satta Matka may be illegal in some jurisdictions. We are not responsible for financial losses. Play responsibly and within legal guidelines.',
+    ),
+    const SizedBox(height: 80),
+  ]);
+
+  Widget _buildListTab(List<Widget> cards, String title) {
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(50),
+        child: AppBar(title: Text(title)),
+      ),
+      body: ListView(children: [
+        if (cards.isEmpty)
+          const Padding(
+            padding: EdgeInsets.all(32),
+            child: Center(
+              child:
+              Text('No data available', style: TextStyle(color: Colors.white70)),
+            ),
+          )
+        else ...cards,
+        const SizedBox(height: 24),
+        _sectionTitle("🔓 Unlock Premium"),
+        _unlockWidget(),
+        const SizedBox(height: 16),
+      ]),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    if (_loading) {
+      return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    }
+    return Scaffold(
+      drawer: Drawer(
+        child: ListView(padding: EdgeInsets.zero, children: [
+          const DrawerHeader(
+            decoration: BoxDecoration(color: Colors.deepPurple),
+            child: Text('SattaBoss Menu',
+                style: TextStyle(color: Colors.white, fontSize: 24)),
+          ),
+          ListTile(leading: const Icon(Icons.home), title: const Text('Home')),
+          ListTile(leading: const Icon(Icons.list), title: const Text('Free Markets')),
+          ListTile(leading: const Icon(Icons.star), title: const Text('Premium Markets')),
+          ListTile(leading: const Icon(Icons.history), title: const Text('History')),
+        ]),
+      ),
+      appBar: AppBar(
+        title: const Text('SattaMatkaAI'),
+        bottom: TabBar(controller: _tabController, tabs: const [
+          Tab(icon: Icon(Icons.home), text: 'Home'),
+          Tab(icon: Icon(Icons.list), text: 'Free Markets'),
+          Tab(icon: Icon(Icons.star), text: 'Premium'),
+          Tab(icon: Icon(Icons.history), text: 'History'),
+        ]),
+      ),
+      body: TabBarView(controller: _tabController, children: [
+        _buildHome(),
+        _buildListTab(
+            _freePreds.map((p) => _predictionCard(p, premium: false)).toList(),
+            'All Free Markets'),
+        _buildListTab(
+            _premiumPreds.map((p) => _predictionCard(p, premium: true)).toList(),
+            'All Premium Markets'),
+        _buildListTab(_allYest.map(_historyCard).toList(), 'All Yesterday Winners'),
+      ]),
+      bottomNavigationBar: _isBannerAdReady
+          ? SizedBox(
+        width: _bannerAd.size.width.toDouble(),
+        height: _bannerAd.size.height.toDouble(),
+        child: AdWidget(ad: _bannerAd),
+      )
+          : null,
+      floatingActionButton: _socialFABs(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+    );
+  }
+}
+
+/// Helper to format dates
+extension on DateTime {
+  String toShortDateString() {
+    return '${year.toString().padLeft(4, '0')}-'
+        '${month.toString().padLeft(2, '0')}-'
+        '${day.toString().padLeft(2, '0')}';
+  }
+}

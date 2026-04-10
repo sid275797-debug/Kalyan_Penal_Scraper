@@ -1,0 +1,727 @@
+[
+  {
+    "name": "andhra_day",
+    "slug": "andhra-day",
+    "url": "https://dpboss.boston/panel-chart-record/andhra-day.php"
+  },
+  {
+    "name": "andhra_morning",
+    "slug": "andhra-morning",
+    "url": "https://dpboss.boston/panel-chart-record/andhra-morning.php"
+  },
+  {
+    "name": "andhra_night",
+    "slug": "andhra-night",
+    "url": "https://dpboss.boston/panel-chart-record/andhra-night.php"
+  },
+  {
+    "name": "apla_bazar_day",
+    "slug": "apla-bazar-day",
+    "url": "https://dpboss.boston/panel-chart-record/apla-bazar-day.php"
+  },
+  {
+    "name": "apla_bazar_night",
+    "slug": "apla-bazar-night",
+    "url": "https://dpboss.boston/panel-chart-record/apla-bazar-night.php"
+  },
+  {
+    "name": "asha_bazar",
+    "slug": "asha-bazar",
+    "url": "https://dpboss.boston/panel-chart-record/asha-bazar.php"
+  },
+  {
+    "name": "bombay_day",
+    "slug": "bombay-day",
+    "url": "https://dpboss.boston/panel-chart-record/bombay-day.php"
+  },
+  {
+    "name": "bombay_night",
+    "slug": "bombay-night",
+    "url": "https://dpboss.boston/panel-chart-record/bombay-night.php"
+  },
+  {
+    "name": "bombay_rajshree_day",
+    "slug": "bombay-rajshree-day",
+    "url": "https://dpboss.boston/panel-chart-record/bombay-rajshree-day.php"
+  },
+  {
+    "name": "bombay_rajshree_night",
+    "slug": "bombay-rajshree-night",
+    "url": "https://dpboss.boston/panel-chart-record/bombay-rajshree-night.php"
+  },
+  {
+    "name": "cb",
+    "slug": "cb",
+    "url": "https://dpboss.boston/panel-chart-record/cb.php"
+  },
+  {
+    "name": "central_bombay",
+    "slug": "central-bombay",
+    "url": "https://dpboss.boston/panel-chart-record/central-bombay.php"
+  },
+  {
+    "name": "central_mumbai",
+    "slug": "central-mumbai",
+    "url": "https://dpboss.boston/panel-chart-record/central-mumbai.php"
+  },
+  {
+    "name": "chandni_morning",
+    "slug": "chandni-morning",
+    "url": "https://dpboss.boston/panel-chart-record/chandni-morning.php"
+  },
+  {
+    "name": "country_bazar",
+    "slug": "country-bazar",
+    "url": "https://dpboss.boston/panel-chart-record/country-bazar.php"
+  },
+  {
+    "name": "day_bombay",
+    "slug": "day-bombay",
+    "url": "https://dpboss.boston/panel-chart-record/day-bombay.php"
+  },
+  {
+    "name": "delhi_bazar",
+    "slug": "delhi-bazar",
+    "url": "https://dpboss.boston/panel-chart-record/delhi-bazar.php"
+  },
+  {
+    "name": "diamond",
+    "slug": "diamond",
+    "url": "https://dpboss.boston/panel-chart-record/diamond.php"
+  },
+  {
+    "name": "diamond_night",
+    "slug": "diamond-night",
+    "url": "https://dpboss.boston/panel-chart-record/diamond-night.php"
+  },
+  {
+    "name": "durga_night",
+    "slug": "durga-night",
+    "url": "https://dpboss.boston/panel-chart-record/durga-night.php"
+  },
+  {
+    "name": "geeta_morning",
+    "slug": "geeta-morning",
+    "url": "https://dpboss.boston/panel-chart-record/geeta-morning.php"
+  },
+  {
+    "name": "gowa",
+    "slug": "gowa",
+    "url": "https://dpboss.boston/panel-chart-record/gowa.php"
+  },
+  {
+    "name": "gujrat_morning",
+    "slug": "gujrat-morning",
+    "url": "https://dpboss.boston/panel-chart-record/gujrat-morning.php"
+  },
+  {
+    "name": "gujrat_night",
+    "slug": "gujrat-night",
+    "url": "https://dpboss.boston/panel-chart-record/gujrat-night.php"
+  },
+  {
+    "name": "janta_day",
+    "slug": "janta-day",
+    "url": "https://dpboss.boston/panel-chart-record/janta-day.php"
+  },
+  {
+    "name": "janta_morning",
+    "slug": "janta-morning",
+    "url": "https://dpboss.boston/panel-chart-record/janta-morning.php"
+  },
+  {
+    "name": "jay_shree_day",
+    "slug": "jay-shree-day",
+    "url": "https://dpboss.boston/panel-chart-record/jay-shree-day.php"
+  },
+  {
+    "name": "kaali",
+    "slug": "kaali",
+    "url": "https://dpboss.boston/panel-chart-record/kaali.php"
+  },
+  {
+    "name": "kalyan",
+    "slug": "kalyan",
+    "url": "https://dpboss.boston/panel-chart-record/kalyan.php"
+  },
+  {
+    "name": "kalyan_day",
+    "slug": "kalyan-day",
+    "url": "https://dpboss.boston/panel-chart-record/kalyan-day.php"
+  },
+  {
+    "name": "kalyan_express",
+    "slug": "kalyan-express",
+    "url": "https://dpboss.boston/panel-chart-record/kalyan-express.php"
+  },
+  {
+    "name": "kalyan_morning",
+    "slug": "kalyan-morning",
+    "url": "https://dpboss.boston/panel-chart-record/kalyan-morning.php"
+  },
+  {
+    "name": "kalyan_night",
+    "slug": "kalyan-night",
+    "url": "https://dpboss.boston/panel-chart-record/kalyan-night.php"
+  },
+  {
+    "name": "kalyan_sai_day",
+    "slug": "kalyan-sai-day",
+    "url": "https://dpboss.boston/panel-chart-record/kalyan-sai-day.php"
+  },
+  {
+    "name": "kalyan_sridevi",
+    "slug": "kalyan-sridevi",
+    "url": "https://dpboss.boston/panel-chart-record/kalyan-sridevi.php"
+  },
+  {
+    "name": "kalyan_sridevi_night",
+    "slug": "kalyan-sridevi-night",
+    "url": "https://dpboss.boston/panel-chart-record/kalyan-sridevi-night.php"
+  },
+  {
+    "name": "kamal_day",
+    "slug": "kamal-day",
+    "url": "https://dpboss.boston/panel-chart-record/kamal-day.php"
+  },
+  {
+    "name": "kamal_morning",
+    "slug": "kamal-morning",
+    "url": "https://dpboss.boston/panel-chart-record/kamal-morning.php"
+  },
+  {
+    "name": "kamal_night",
+    "slug": "kamal-night",
+    "url": "https://dpboss.boston/panel-chart-record/kamal-night.php"
+  },
+  {
+    "name": "karnataka_day",
+    "slug": "karnataka-day",
+    "url": "https://dpboss.boston/panel-chart-record/karnataka-day.php"
+  },
+  {
+    "name": "khatri_morning",
+    "slug": "khatri-morning",
+    "url": "https://dpboss.boston/panel-chart-record/khatri-morning.php"
+  },
+  {
+    "name": "laxmi_day",
+    "slug": "laxmi-day",
+    "url": "https://dpboss.boston/panel-chart-record/laxmi-day.php"
+  },
+  {
+    "name": "laxmi_night",
+    "slug": "laxmi-night",
+    "url": "https://dpboss.boston/panel-chart-record/laxmi-night.php"
+  },
+  {
+    "name": "lokseva_day",
+    "slug": "lokseva-day",
+    "url": "https://dpboss.boston/panel-chart-record/lokseva-day.php"
+  },
+  {
+    "name": "madhur_day",
+    "slug": "madhur-day",
+    "url": "https://dpboss.boston/panel-chart-record/madhur-day.php"
+  },
+  {
+    "name": "madhur_morning",
+    "slug": "madhur-morning",
+    "url": "https://dpboss.boston/panel-chart-record/madhur-morning.php"
+  },
+  {
+    "name": "madhur_night",
+    "slug": "madhur-night",
+    "url": "https://dpboss.boston/panel-chart-record/madhur-night.php"
+  },
+  {
+    "name": "madhuri",
+    "slug": "madhuri",
+    "url": "https://dpboss.boston/panel-chart-record/madhuri.php"
+  },
+  {
+    "name": "madhuri_night",
+    "slug": "madhuri-night",
+    "url": "https://dpboss.boston/panel-chart-record/madhuri-night.php"
+  },
+  {
+    "name": "mahadevi",
+    "slug": "mahadevi",
+    "url": "https://dpboss.boston/panel-chart-record/mahadevi.php"
+  },
+  {
+    "name": "mahadevi_morning",
+    "slug": "mahadevi-morning",
+    "url": "https://dpboss.boston/panel-chart-record/mahadevi-morning.php"
+  },
+  {
+    "name": "mahadevi_night",
+    "slug": "mahadevi-night",
+    "url": "https://dpboss.boston/panel-chart-record/mahadevi-night.php"
+  },
+  {
+    "name": "maharani",
+    "slug": "maharani",
+    "url": "https://dpboss.boston/panel-chart-record/maharani.php"
+  },
+  {
+    "name": "maharani_day",
+    "slug": "maharani-day",
+    "url": "https://dpboss.boston/panel-chart-record/maharani-day.php"
+  },
+  {
+    "name": "maharani_night",
+    "slug": "maharani-night",
+    "url": "https://dpboss.boston/panel-chart-record/maharani-night.php"
+  },
+  {
+    "name": "main_bazar",
+    "slug": "main-bazar",
+    "url": "https://dpboss.boston/panel-chart-record/main-bazar.php"
+  },
+  {
+    "name": "main_bazar_day",
+    "slug": "main-bazar-day",
+    "url": "https://dpboss.boston/panel-chart-record/main-bazar-day.php"
+  },
+  {
+    "name": "main_bazar_morning",
+    "slug": "main-bazar-morning",
+    "url": "https://dpboss.boston/panel-chart-record/main-bazar-morning.php"
+  },
+  {
+    "name": "main_mumbai_night",
+    "slug": "main-mumbai-night",
+    "url": "https://dpboss.boston/panel-chart-record/main-mumbai-night.php"
+  },
+  {
+    "name": "main_mumbai_rk",
+    "slug": "main-mumbai-rk",
+    "url": "https://dpboss.boston/panel-chart-record/main-mumbai-rk.php"
+  },
+  {
+    "name": "mangal_bazar",
+    "slug": "mangal-bazar",
+    "url": "https://dpboss.boston/panel-chart-record/mangal-bazar.php"
+  },
+  {
+    "name": "mangal_day",
+    "slug": "mangal-day",
+    "url": "https://dpboss.boston/panel-chart-record/mangal-day.php"
+  },
+  {
+    "name": "mangal_morning",
+    "slug": "mangal-morning",
+    "url": "https://dpboss.boston/panel-chart-record/mangal-morning.php"
+  },
+  {
+    "name": "mangal_night",
+    "slug": "mangal-night",
+    "url": "https://dpboss.boston/panel-chart-record/mangal-night.php"
+  },
+  {
+    "name": "maya_bazar",
+    "slug": "maya-bazar",
+    "url": "https://dpboss.boston/panel-chart-record/maya-bazar.php"
+  },
+  {
+    "name": "meena_bazar",
+    "slug": "meena-bazar",
+    "url": "https://dpboss.boston/panel-chart-record/meena-bazar.php"
+  },
+  {
+    "name": "meena_bazar_day",
+    "slug": "meena-bazar-day",
+    "url": "https://dpboss.boston/panel-chart-record/meena-bazar-day.php"
+  },
+  {
+    "name": "meena_bazar_night",
+    "slug": "meena-bazar-night",
+    "url": "https://dpboss.boston/panel-chart-record/meena-bazar-night.php"
+  },
+  {
+    "name": "meena_morning",
+    "slug": "meena-morning",
+    "url": "https://dpboss.boston/panel-chart-record/meena-morning.php"
+  },
+  {
+    "name": "milan_bazar_day",
+    "slug": "milan-bazar-day",
+    "url": "https://dpboss.boston/panel-chart-record/milan-bazar-day.php"
+  },
+  {
+    "name": "milan_bazar_morning",
+    "slug": "milan-bazar-morning",
+    "url": "https://dpboss.boston/panel-chart-record/milan-bazar-morning.php"
+  },
+  {
+    "name": "milan_bazar_night",
+    "slug": "milan-bazar-night",
+    "url": "https://dpboss.boston/panel-chart-record/milan-bazar-night.php"
+  },
+  {
+    "name": "milan_day",
+    "slug": "milan-day",
+    "url": "https://dpboss.boston/panel-chart-record/milan-day.php"
+  },
+  {
+    "name": "milan_morning",
+    "slug": "milan-morning",
+    "url": "https://dpboss.boston/panel-chart-record/milan-morning.php"
+  },
+  {
+    "name": "milan_night",
+    "slug": "milan-night",
+    "url": "https://dpboss.boston/panel-chart-record/milan-night.php"
+  },
+  {
+    "name": "mohini",
+    "slug": "mohini",
+    "url": "https://dpboss.boston/panel-chart-record/mohini.php"
+  },
+  {
+    "name": "mumbai_bazar",
+    "slug": "mumbai-bazar",
+    "url": "https://dpboss.boston/panel-chart-record/mumbai-bazar.php"
+  },
+  {
+    "name": "mumbai_morning",
+    "slug": "mumbai-morning",
+    "url": "https://dpboss.boston/panel-chart-record/mumbai-morning.php"
+  },
+  {
+    "name": "new_time_bazar",
+    "slug": "new-time-bazar",
+    "url": "https://dpboss.boston/panel-chart-record/new-time-bazar.php"
+  },
+  {
+    "name": "night_bombay",
+    "slug": "night-bombay",
+    "url": "https://dpboss.boston/panel-chart-record/night-bombay.php"
+  },
+  {
+    "name": "ntr_day",
+    "slug": "ntr-day",
+    "url": "https://dpboss.boston/panel-chart-record/ntr-day.php"
+  },
+  {
+    "name": "ntr_morning",
+    "slug": "ntr-morning",
+    "url": "https://dpboss.boston/panel-chart-record/ntr-morning.php"
+  },
+  {
+    "name": "ntr_night",
+    "slug": "ntr-night",
+    "url": "https://dpboss.boston/panel-chart-record/ntr-night.php"
+  },
+  {
+    "name": "old_main_mumbai",
+    "slug": "old-main-mumbai",
+    "url": "https://dpboss.boston/panel-chart-record/old-main-mumbai.php"
+  },
+  {
+    "name": "padmavathi",
+    "slug": "padmavathi",
+    "url": "https://dpboss.boston/panel-chart-record/padmavathi.php"
+  },
+  {
+    "name": "padmavathi_night",
+    "slug": "padmavathi-night",
+    "url": "https://dpboss.boston/panel-chart-record/padmavathi-night.php"
+  },
+  {
+    "name": "parel_day",
+    "slug": "parel-day",
+    "url": "https://dpboss.boston/panel-chart-record/parel-day.php"
+  },
+  {
+    "name": "parvati",
+    "slug": "parvati",
+    "url": "https://dpboss.boston/panel-chart-record/parvati.php"
+  },
+  {
+    "name": "prabhat",
+    "slug": "prabhat",
+    "url": "https://dpboss.boston/panel-chart-record/prabhat.php"
+  },
+  {
+    "name": "prabhat_night",
+    "slug": "prabhat-night",
+    "url": "https://dpboss.boston/panel-chart-record/prabhat-night.php"
+  },
+  {
+    "name": "puna_bazar",
+    "slug": "puna-bazar",
+    "url": "https://dpboss.boston/panel-chart-record/puna-bazar.php"
+  },
+  {
+    "name": "puna_night_main",
+    "slug": "puna-night-main",
+    "url": "https://dpboss.boston/panel-chart-record/puna-night-main.php"
+  },
+  {
+    "name": "rajdhani_day",
+    "slug": "rajdhani-day",
+    "url": "https://dpboss.boston/panel-chart-record/rajdhani-day.php"
+  },
+  {
+    "name": "rajdhani_morning_main",
+    "slug": "rajdhani-morning-main",
+    "url": "https://dpboss.boston/panel-chart-record/rajdhani-morning-main.php"
+  },
+  {
+    "name": "rajdhani_night",
+    "slug": "rajdhani-night",
+    "url": "https://dpboss.boston/panel-chart-record/rajdhani-night.php"
+  },
+  {
+    "name": "rakhi_morning",
+    "slug": "rakhi-morning",
+    "url": "https://dpboss.boston/panel-chart-record/rakhi-morning.php"
+  },
+  {
+    "name": "ratan_khatri",
+    "slug": "ratan-khatri",
+    "url": "https://dpboss.boston/panel-chart-record/ratan-khatri.php"
+  },
+  {
+    "name": "ratna_day",
+    "slug": "ratna-day",
+    "url": "https://dpboss.boston/panel-chart-record/ratna-day.php"
+  },
+  {
+    "name": "ratna_morning",
+    "slug": "ratna-morning",
+    "url": "https://dpboss.boston/panel-chart-record/ratna-morning.php"
+  },
+  {
+    "name": "ratna_night",
+    "slug": "ratna-night",
+    "url": "https://dpboss.boston/panel-chart-record/ratna-night.php"
+  },
+  {
+    "name": "rose_bazar_day",
+    "slug": "rose-bazar-day",
+    "url": "https://dpboss.boston/panel-chart-record/rose-bazar-day.php"
+  },
+  {
+    "name": "rose_bazar_night",
+    "slug": "rose-bazar-night",
+    "url": "https://dpboss.boston/panel-chart-record/rose-bazar-night.php"
+  },
+  {
+    "name": "sahara",
+    "slug": "sahara",
+    "url": "https://dpboss.boston/panel-chart-record/sahara.php"
+  },
+  {
+    "name": "samrat_bazar",
+    "slug": "samrat-bazar",
+    "url": "https://dpboss.boston/panel-chart-record/samrat-bazar.php"
+  },
+  {
+    "name": "shri_day",
+    "slug": "shri-day",
+    "url": "https://dpboss.boston/panel-chart-record/shri-day.php"
+  },
+  {
+    "name": "shri_night",
+    "slug": "shri-night",
+    "url": "https://dpboss.boston/panel-chart-record/shri-night.php"
+  },
+  {
+    "name": "sita_day",
+    "slug": "sita-day",
+    "url": "https://dpboss.boston/panel-chart-record/sita-day.php"
+  },
+  {
+    "name": "sita_morning",
+    "slug": "sita-morning",
+    "url": "https://dpboss.boston/panel-chart-record/sita-morning.php"
+  },
+  {
+    "name": "sita_night",
+    "slug": "sita-night",
+    "url": "https://dpboss.boston/panel-chart-record/sita-night.php"
+  },
+  {
+    "name": "sitara_bazar",
+    "slug": "sitara-bazar",
+    "url": "https://dpboss.boston/panel-chart-record/sitara-bazar.php"
+  },
+  {
+    "name": "sri_dhanalaxmi",
+    "slug": "sri-dhanalaxmi",
+    "url": "https://dpboss.boston/panel-chart-record/sri-dhanalaxmi.php"
+  },
+  {
+    "name": "sridevi",
+    "slug": "sridevi",
+    "url": "https://dpboss.boston/panel-chart-record/sridevi.php"
+  },
+  {
+    "name": "sridevi_day",
+    "slug": "sridevi-day",
+    "url": "https://dpboss.boston/panel-chart-record/sridevi-day.php"
+  },
+  {
+    "name": "sridevi_morning",
+    "slug": "sridevi-morning",
+    "url": "https://dpboss.boston/panel-chart-record/sridevi-morning.php"
+  },
+  {
+    "name": "sridevi_night",
+    "slug": "sridevi-night",
+    "url": "https://dpboss.boston/panel-chart-record/sridevi-night.php"
+  },
+  {
+    "name": "srilakshmi",
+    "slug": "srilakshmi",
+    "url": "https://dpboss.boston/panel-chart-record/srilakshmi.php"
+  },
+  {
+    "name": "srilaxmi_day",
+    "slug": "srilaxmi-day",
+    "url": "https://dpboss.boston/panel-chart-record/srilaxmi-day.php"
+  },
+  {
+    "name": "star_tara_day",
+    "slug": "star-tara-day",
+    "url": "https://dpboss.boston/panel-chart-record/star-tara-day.php"
+  },
+  {
+    "name": "star_tara_morning",
+    "slug": "star-tara-morning",
+    "url": "https://dpboss.boston/panel-chart-record/star-tara-morning.php"
+  },
+  {
+    "name": "star_tara_night",
+    "slug": "star-tara-night",
+    "url": "https://dpboss.boston/panel-chart-record/star-tara-night.php"
+  },
+  {
+    "name": "sunday_bazar",
+    "slug": "sunday-bazar",
+    "url": "https://dpboss.boston/panel-chart-record/sunday-bazar.php"
+  },
+  {
+    "name": "super_day",
+    "slug": "super-day",
+    "url": "https://dpboss.boston/panel-chart-record/super-day.php"
+  },
+  {
+    "name": "super_goa_day",
+    "slug": "super-goa-day",
+    "url": "https://dpboss.boston/panel-chart-record/super-goa-day.php"
+  },
+  {
+    "name": "super_king",
+    "slug": "super-king",
+    "url": "https://dpboss.boston/panel-chart-record/super-king.php"
+  },
+  {
+    "name": "super_king_night",
+    "slug": "super-king-night",
+    "url": "https://dpboss.boston/panel-chart-record/super-king-night.php"
+  },
+  {
+    "name": "super_milan_day",
+    "slug": "super-milan-day",
+    "url": "https://dpboss.boston/panel-chart-record/super-milan-day.php"
+  },
+  {
+    "name": "super_milan_night",
+    "slug": "super-milan-night",
+    "url": "https://dpboss.boston/panel-chart-record/super-milan-night.php"
+  },
+  {
+    "name": "super_morning",
+    "slug": "super-morning",
+    "url": "https://dpboss.boston/panel-chart-record/super-morning.php"
+  },
+  {
+    "name": "super_night",
+    "slug": "super-night",
+    "url": "https://dpboss.boston/panel-chart-record/super-night.php"
+  },
+  {
+    "name": "super_time",
+    "slug": "super-time",
+    "url": "https://dpboss.boston/panel-chart-record/super-time.php"
+  },
+  {
+    "name": "supreme_day",
+    "slug": "supreme-day",
+    "url": "https://dpboss.boston/panel-chart-record/supreme-day.php"
+  },
+  {
+    "name": "supreme_night",
+    "slug": "supreme-night",
+    "url": "https://dpboss.boston/panel-chart-record/supreme-night.php"
+  },
+  {
+    "name": "tara_mumbai_day",
+    "slug": "tara-mumbai-day",
+    "url": "https://dpboss.boston/panel-chart-record/tara-mumbai-day.php"
+  },
+  {
+    "name": "tara_mumbai_night",
+    "slug": "tara-mumbai-night",
+    "url": "https://dpboss.boston/panel-chart-record/tara-mumbai-night.php"
+  },
+  {
+    "name": "teen_patti",
+    "slug": "teen-patti",
+    "url": "https://dpboss.boston/panel-chart-record/teen-patti.php"
+  },
+  {
+    "name": "time_bazar",
+    "slug": "time-bazar",
+    "url": "https://dpboss.boston/panel-chart-record/time-bazar.php"
+  },
+  {
+    "name": "time_bazar_day",
+    "slug": "time-bazar-day",
+    "url": "https://dpboss.boston/panel-chart-record/time-bazar-day.php"
+  },
+  {
+    "name": "time_bazar_morning",
+    "slug": "time-bazar-morning",
+    "url": "https://dpboss.boston/panel-chart-record/time-bazar-morning.php"
+  },
+  {
+    "name": "time_night",
+    "slug": "time-night",
+    "url": "https://dpboss.boston/panel-chart-record/time-night.php"
+  },
+  {
+    "name": "tulsi_morning",
+    "slug": "tulsi-morning",
+    "url": "https://dpboss.boston/panel-chart-record/tulsi-morning.php"
+  },
+  {
+    "name": "worli_morning",
+    "slug": "worli-morning",
+    "url": "https://dpboss.boston/panel-chart-record/worli-morning.php"
+  },
+  {
+    "name": "worli_mumbai",
+    "slug": "worli-mumbai",
+    "url": "https://dpboss.boston/panel-chart-record/worli-mumbai.php"
+  },
+  {
+    "name": "worli_mumbai_day",
+    "slug": "worli-mumbai-day",
+    "url": "https://dpboss.boston/panel-chart-record/worli-mumbai-day.php"
+  },
+  {
+    "name": "worli_mumbai_night",
+    "slug": "worli-mumbai-night",
+    "url": "https://dpboss.boston/panel-chart-record/worli-mumbai-night.php"
+  },
+  {
+    "name": "worli_night",
+    "slug": "worli-night",
+    "url": "https://dpboss.boston/panel-chart-record/worli-night.php"
+  }
+]

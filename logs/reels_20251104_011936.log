@@ -1,0 +1,5 @@
+==== Reels builder started Tue 11/04/2025  1:19:36.18 ==== 
+\u274c Failed to locate JSON in C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\output: 'charmap' codec can't encode character '\U0001f4c4' in position 0: character maps to <undefined>
+[ERROR] reels_builder_all_markets.py failed (code 1
+[OK] reels_builder_all_markets.py completed successfully. 
+==== Finished Tue 11/04/2025  1:19:36.69 ==== 

@@ -1,0 +1,703 @@
+Microsoft Windows [Version 10.0.19045.6332]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\VCOM\AndroidStudioProjects\multi_market_predictions_v3>flutter run
+Launching lib\main.dart on A142 in debug mode...
+Running Gradle task 'assembleDebug'...                             14.9s
+√ Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk...           3.3s
+I/flutter (25397): [IMPORTANT:flutter/shell/platform/android/android_context_vk_impeller.cc(61)] Using the Impeller rendering backend (Vulkan).
+I/flutter (25397): 🔔 FCM Token: eR2mdQkmRdSLf_ToavZ8-E:APA91bHDj32xfGRe4bRLawMT4b1QanEyDris4Fc7Vt2_kR_HuOy3YGJ95hvA5Wvktgve3yI0rwB5yiWZggoAKoxcV75gVROEo7wp8HqZ7NldE8Bt336ZsDk
+I/flutter (25397): [PredictionService] RTDB snap exists=true, type=_Map<Object?, Object?>
+I/flutter (25397): [PredictionService] returning 50 predictions
+I/flutter (25397): 🔎 PredictionService returned 50 items
+I/flutter (25397): 🔎 first item JSON: {market: amar_jyoti_penal_chart, p: {Close Pannas: [115, 360, 450, 278, 680, 479, 146], Close Digits: [9, 7, 0], Open Digits: [9, 2, 4], Open Pannas: [112, 200, 289, 110, 347, 346, 236], Date: [2025-10-16], Jodis: [90, 49, 29, 20, 99, 27]}, score: 0.0, passed: false}
+W/Ads     (25397): Invoke Firebase method getInstance error.
+W/Ads     (25397): The Google Mobile Ads SDK will not integrate with Firebase. Admob/Firebase integration requires the latest Firebase SDK jar, but Firebase SDK is either missing or out of date
+W/ServiceBindIntentUtils(25397): Dynamic lookup for intent failed for action: com.google.android.gms.ads.service.CACHE
+E/BLASTBufferQueue(25397): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+I/DynamiteModule(25397): Considering local module com.google.android.gms.ads.dynamite:0 and remote module com.google.android.gms.ads.dynamite:253405700
+I/DynamiteModule(25397): Selected remote version of com.google.android.gms.ads.dynamite, version >= 253405700
+V/DynamiteModule(25397): Dynamite loader version >= 2, using loadModule2NoCrashUtils
+E/BLASTBufferQueue(25397): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+D/nativeloader(25397): Configuring clns-14 for other apk . target_sdk_version=35, uses_libraries=ALL, library_path=, permitted_path=/data:/mnt/expand
+D/nativeloader(25397): Extending system_exposed_libraries: libapuwareapusys.mtk.so:libapuwareapusys_v2.mtk.so:libapuwarexrp.mtk.so:libapuwarexrp_v2.mtk.so:libapuwareutils.mtk.so:libapuwareutils_v2.mtk.so:libapuwarehmp.mtk.so:libneuron_graph_delegate.mtk.so:libneuronusdk_adapter.mtk.so:libtflite_mtk.mtk.so:libarmnn_ndk.mtk.so:libcmdl_ndk.mtk.so:libnir_neon_driver_ndk.mtk.so:libmvpu_runtime.mtk.so:libmvpu_runtime_pub.mtk.so:libmvpu_engine_pub.mtk.so:libmvpu_pattern_pub.mtk.so:libmvpuop_mtk_cv.mtk.so:libmvpuop_mtk_nn.mtk.so:libmvpu_runtime_25.mtk.so:libmvpu_runtime_25_pub.mtk.so:libmvpu_engine_25_pub.mtk.so:libmvpu_pattern_25_pub.mtk.so:libmvpuop25_mtk_cv.mtk.so:libmvpuop25_mtk_nn.mtk.so:libmvpu_config.mtk.so:libteeservice_client.trustonic.so
+D/nativeloader(25397): Load /data/user/0/com.example.multi_market_predictions_v3/app_pccache/5/E47C86B2C77009FBA9F0C961D11E60B330CFF68E/pcam.jar!/libd73DE1F8A8062.so using isolated ns clns-14 (caller=/data/user/0/com.example.multi_market_predictions_v3/app_pccache/5/E47C86B2C77009FBA9F0C961D11E60B330CFF68E/pcam.jar): ok
+I/Ads     (25397): This request is sent from a test device.
+W/Ads     (25397): Not retrying to fetch app settings
+W/Ads     (25397): Not retrying to fetch app settings
+W/ServiceBindIntentUtils(25397): Dynamic lookup for intent failed for action: com.google.android.gms.ads.service.START
+I/flutter (25397): [PredictionService] RTDB snap exists=true, type=_Map<Object?, Object?>
+I/flutter (25397): [PredictionService] returning 50 predictions
+I/flutter (25397): 🌐 RTDB read test — exists: true
+I/flutter (25397): 🌐 RTDB snapshot value type: _Map<Object?, Object?>
+I/flutter (25397): 🌐 RTDB snapshot value: {data: [{market: amar_jyoti_penal_chart, predictions: {Close Pannas: [115, 360, 450, 278, 680, 479, 146], Close Digits: [9, 7, 0], Open Digits: [9, 2, 4], Open Pannas: [112, 200, 289, 110, 347, 346, 236], Date: 2025-10-16, Jodis: [90, 49, 29, 20, 99, 27]}}, {market: bombay_night_panel_chart, predictions: {Close Pannas: [256, 100, 227, 230, 111, 145, 123], Close Digits: [5, 3, 0], Open Digits: [5, 3, 6], Open Pannas: [113, 780, 788, 138, 110, 377, 123], Date: 2025-10-16, Jodis: [50, 35, 53, 30, 60, 33]}}, {market: chetak_day_panel_chart, predictions: {Close Pannas: [777, 115, 168, 340, 799, 140, 344], Close Digits: [7, 5, 3], Open Digits: [1, 5, 9], Open Pannas: [113, 100, 560, 500, 350, 490, 189], Date: 2025-10-16, Jodis: [57, 15, 97, 13, 53, 55]}}, {market: chetak_night_panel_chart, predictions: {Close Pannas: [112, 348, 355, 780, 455, 167, 199], Close Digits: [4, 9, 2], Open Digits: [8, 6, 9], Open Pannas: [100, 279, 150, 228, 220, 117, 146], Date: 2025-10-16, Jodis: [94, 69, 92,
+I/flutter (25417): main start
+D/FlutterBmfbasePlugin(25417): init sdk success
+D/FlutterGeolocator(25417): Creating service.
+D/FlutterGeolocator(25417): Binding to location service.
+D/FlutterGeolocator(25417): Flutter engine connected. Connected engine count 1
+I/Choreographer(25397): Skipped 175 frames!  The application may be doing too much work on its main thread.
+D/ProfileInstaller(25397): Installing profile for com.example.multi_market_predictions_v3
+I/Ads     (25397): JS: The jsLoaded GMSG has been sent (https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html:997)
+I/chromium(25397): [INFO:CONSOLE:997] "The jsLoaded GMSG has been sent", source: https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html (997)
+I/Choreographer(25397): Skipped 32 frames!  The application may be doing too much work on its main thread.
+E/Ads     (25397): JS: Error: <svg> attribute viewBox: Expected number, "0 0 413px 232px". (https://googleads.g.doubleclick.net/mads/gma?eid=318500618%2C318486317%2C318491267%2C95368592%2C318482077%2C318483611%2C318484497%2C318503826%2C318512168%2C318515546%2C318522350%2C318522186%2C318516088&format=interstitial_mb&heap_free=25997904&heap_max=268435456&heap_total=67108864&js=afma-sdk-a-v253405999.250930000.1&msid=com.example.multi_market_predictions_v3&preqs=1&seq_num=2&target_api=35#eid=318500618%252C318486317%252C318491267%252C95368592%252C318482077%252C318483611%252C318484497%252C318503826%252C318512168%252C318515546%252C318522350%252C318522186%252C318516088&format=interstitial_mb&heap_free=25997904&heap_max=268435456&heap_total=67108864&js=afma-sdk-a-v253405999.250930000.1&msid=com.example.multi_market_predictions_v3&preqs=1&seq_num=2&target_api=35:1)
+I/chromium(25397): [INFO:CONSOLE:1] "Error: <svg> attribute viewBox: Expected number, "0 0 413px 232px".", source: https://googleads.g.doubleclick.net/mads/gma?eid=318500618%2C318486317%2C318491267%2C95368592%2C318482077%2C318483611%2C318484497%2C318503826%2C318512168%2C318515546%2C318522350%2C318522186%2C318516088&format=interstitial_mb&heap_free=25997904&heap_max=268435456&heap_total=67108864&js=afma-sdk-a-v253405999.250930000.1&msid=com.example.multi_market_predictions_v3&preqs=1&seq_num=2&target_api=35#eid=318500618%252C318486317%252C318491267%252C95368592%252C318482077%252C318483611%252C318484497%252C318503826%252C318512168%252C318515546%252C318522350%252C318522186%252C318516088&format=interstitial_mb&heap_free=25997904&heap_max=268435456&heap_total=67108864&js=afma-sdk-a-v253405999.250930000.1&msid=com.example.multi_market_predictions_v3&preqs=1&seq_num=2&target_api=35 (1)
+E/Ads     (25397): JS: Error: <svg> attribute viewBox: Expected number, "0 0 413px 232px". (https://googleads.g.doubleclick.net/mads/gma?eid=318500618%2C318486317%2C318491267%2C95368592%2C318482077%2C318483611%2C318484497%2C318503826%2C318512168%2C318515546%2C318522350%2C318522186%2C318516088&format=interstitial_mb&heap_free=25997904&heap_max=268435456&heap_total=67108864&js=afma-sdk-a-v253405999.250930000.1&msid=com.example.multi_market_predictions_v3&preqs=1&seq_num=2&target_api=35#eid=318500618%252C318486317%252C318491267%252C95368592%252C318482077%252C318483611%252C318484497%252C318503826%252C318512168%252C318515546%252C318522350%252C318522186%252C318516088&format=interstitial_mb&heap_free=25997904&heap_max=268435456&heap_total=67108864&js=afma-sdk-a-v253405999.250930000.1&msid=com.example.multi_market_predictions_v3&preqs=1&seq_num=2&target_api=35:1)
+I/chromium(25397): [INFO:CONSOLE:1] "Error: <svg> attribute viewBox: Expected number, "0 0 413px 232px".", source: https://googleads.g.doubleclick.net/mads/gma?eid=318500618%2C318486317%2C318491267%2C95368592%2C318482077%2C318483611%2C318484497%2C318503826%2C318512168%2C318515546%2C318522350%2C318522186%2C318516088&format=interstitial_mb&heap_free=25997904&heap_max=268435456&heap_total=67108864&js=afma-sdk-a-v253405999.250930000.1&msid=com.example.multi_market_predictions_v3&preqs=1&seq_num=2&target_api=35#eid=318500618%252C318486317%252C318491267%252C95368592%252C318482077%252C318483611%252C318484497%252C318503826%252C318512168%252C318515546%252C318522350%252C318522186%252C318516088&format=interstitial_mb&heap_free=25997904&heap_max=268435456&heap_total=67108864&js=afma-sdk-a-v253405999.250930000.1&msid=com.example.multi_market_predictions_v3&preqs=1&seq_num=2&target_api=35 (1)
+W/Ads     (25397): GET LOCATION COMPILED
+I/flutter (25417): Failed to write log through native channel: TimeoutException after 0:00:00.100000: Future not completed
+Syncing files to device A142...                                    725ms
+I/ExoPlayerImpl(25397): Init f0c59e0 [AndroidXMedia3/1.8.0] [Pacman, A142, Nothing, 35]
+I/_predictions_v3(25397): hiddenapi: Accessing hidden method Landroid/media/AudioTrack;->getLatency()I (runtime_flags=0, domain=platform, api=unsupported) from Lm84/we; (domain=app) using reflection: allowed
+I/Ads     (25397): ExoPlayerAdapter initialized.
+
+Flutter run key commands.
+r Hot reload.
+R Hot restart.
+h List all available interactive commands.
+d Detach (terminate "flutter run" but leave application running).
+c Clear the screen
+q Quit (terminate the application on the device).
+
+A Dart VM Service on A142 is available at: http://127.0.0.1:52314/tA8hkEc2Qls=/
+The Flutter DevTools debugger and profiler on A142 is available at:
+http://127.0.0.1:9102?uri=http://127.0.0.1:52314/tA8hkEc2Qls=/
+I/flutter (25417): NtLifecycle->registerObserver observer:Instance of 'BluetoothHelper',length:1
+I/flutter (25417): main end
+D/CompatChangeReporter(25397): Compat change id reported: 63938206; UID 10330; state: ENABLED
+I/flutter (25417): NtLifecycle->registerObserver observer:Instance of 'NtWatchWorker',length:2
+I/flutter (25417): NtLifecycle->registerObserver observer:Instance of 'NtWatchWorker',length:2
+I/DynamiteModule(25397): Considering local module com.google.android.gms.ads.dynamite:0 and remote module com.google.android.gms.ads.dynamite:253405700
+I/DynamiteModule(25397): Selected remote version of com.google.android.gms.ads.dynamite, version >= 253405700
+I/flutter (25417): NtQueueManager: Start queue, isActive: false
+I/flutter (25417): NtQueueManager: No more tasks to execute
+I/_predictions_v3(25397): Compiler allocated 4135KB to compile void android.widget.TextView.<init>(android.content.Context, android.util.AttributeSet, int, int)
+I/DMCodecAdapterFactory(25397): Creating an asynchronous MediaCodec adapter for track type audio
+D/MediaCodec(25397): CreateByComponentName: name c2.android.aac.decoder
+D/MediaCodec(25397): processName: com.example.multi_market_predictions_v3
+D/CCodecBufferChannel(25397): mBufferCountDebug=0 mIsUserLoad=1
+D/MBrainDateManager(25397): MBrainDataManager Constructor caller
+D/MBrainManager(25397): mMBrainSupport 0, return NULL
+D/MBrainDateManager(25397): mMBrainManager = nullptr
+D/CCodecBufferChannel(25397): new MBrainDataManager() fail
+D/MBrainDateManager(25397): MBrainDataManager Constructor clear
+D/MediaCodec(25397): [0xb4000073032800c0] init: CCodec 0xb40000725318ba40, CCodecBufferChannel 0xb40000743311be80
+D/MediaCodec(25397): [0xb4000073032800c0] setState: 1
+D/CCodec  (25397): allocate(c2.android.aac.decoder)
+I/Codec2Client(25397): Available Codec2 services: "default" "software"
+I/CCodec  (25397): setting up 'default' as default (vendor) store
+I/CCodec  (25397): Created component [c2.android.aac.decoder]
+D/CCodecBufferChannel(25397): [0xb40000743311be80] setComponent: mName c2.android.aac.decoder#645, mPipelineWatcher 0xb40000743311c368
+D/CCodecBufferChannel(25397): PipelineWatcher debug info [c2.android.aac.decoder#645] enable=0
+D/CCodecConfig(25397): read media type: audio/mp4a-latm
+D/ReflectedParamUpdater(25397): extent() != 1 for single value type: algo.buffers.max-count.values
+D/ReflectedParamUpdater(25397): extent() != 1 for single value type: output.subscribed-indices.values
+D/ReflectedParamUpdater(25397): extent() != 1 for single value type: input.buffers.allocator-ids.values
+D/ReflectedParamUpdater(25397): extent() != 1 for single value type: output.buffers.allocator-ids.values
+D/ReflectedParamUpdater(25397): extent() != 1 for single value type: algo.buffers.allocator-ids.values
+D/ReflectedParamUpdater(25397): extent() != 1 for single value type: output.buffers.pool-ids.values
+D/ReflectedParamUpdater(25397): extent() != 1 for single value type: algo.buffers.pool-ids.values
+I/CCodecConfig(25397): query failed after returning 21 values (BAD_INDEX)
+D/CCodecConfig(25397): c2 config diff is Dict {
+D/CCodecConfig(25397):   c2::u32 coded.aac-packaging.value = 0
+D/CCodecConfig(25397):   c2::u32 coded.bitrate.value = 64000
+D/CCodecConfig(25397):   c2::u32 coded.pl.level = 0
+D/CCodecConfig(25397):   c2::u32 coded.pl.profile = 8192
+D/CCodecConfig(25397):   c2::i32 coding.drc.album-mode.value = 0
+D/CCodecConfig(25397):   c2::float coding.drc.attenuation-factor.value = 1
+D/CCodecConfig(25397):   c2::float coding.drc.boost-factor.value = 1
+D/CCodecConfig(25397):   c2::i32 coding.drc.compression-mode.value = 3
+D/CCodecConfig(25397):   c2::i32 coding.drc.effect-type.value = 3
+D/CCodecConfig(25397):   c2::float coding.drc.encoded-level.value = 0.25
+D/CCodecConfig(25397):   c2::float coding.drc.reference-level.value = -16
+D/CCodecConfig(25397):   c2::u32 input.buffers.max-size.value = 8192
+D/CCodecConfig(25397):   c2::u32 input.delay.value = 0
+D/CCodecConfig(25397):   string input.media-type.value = "audio/mp4a-latm"
+D/CCodecConfig(25397):   c2::u32 output.delay.value = 2
+D/CCodecConfig(25397):   c2::float output.drc.output-loudness.value = 0.25
+D/CCodecConfig(25397):   c2::u32 output.large-frame.max-size = 0
+D/CCodecConfig(25397):   c2::u32 output.large-frame.threshold-size = 0
+D/CCodecConfig(25397):   string output.media-type.value = "audio/raw"
+D/CCodecConfig(25397):   c2::u32 raw.channel-count.value = 1
+D/CCodecConfig(25397):   c2::u32 raw.channel-mask.value = 0
+D/CCodecConfig(25397):   c2::u32 raw.max-channel-count.value = 8
+D/CCodecConfig(25397):   c2::u32 raw.sample-rate.value = 44100
+D/CCodecConfig(25397): }
+D/MediaCodec(25397): [0xb4000073032800c0] setState: 2
+I/MediaCodec(25397): MediaCodec will operate in async mode
+D/MediaCodec(25397): [0xb4000073032800c0] [c2.android.aac.decoder] configure
+D/MediaCodec(25397): [0xb4000073032800c0] setState: 3
+D/CCodec  (25397): [c2.android.aac.decoder] buffers are bound to CCodec for this session
+D/CCodecConfig(25397): no c2 equivalents for log-session-id
+D/CCodecConfig(25397): no c2 equivalents for importance
+D/CCodecConfig(25397): no c2 equivalents for flags
+D/CCodecConfig(25397): c2 config diff is   c2::u32 raw.channel-count.value = 2
+W/Codec2Client(25397): query -- param skipped: index = 1107298332.
+D/CCodec  (25397): client requested max input size 418, which is smaller than what component recommended (8192); overriding with component recommendation.
+W/CCodec  (25397): This behavior is subject to change. It is recommended that app developers double check whether the requested max input size is in reasonable range.
+D/CCodec  (25397): encoding statistics level = 0
+D/CCodec  (25397): setup formats input: AMessage(what = 0x00000000) = {
+D/CCodec  (25397):   int32_t aac-drc-album-mode = 0
+D/CCodec  (25397):   int32_t aac-drc-boost-level = 127
+D/CCodec  (25397):   int32_t aac-drc-cut-level = 127
+D/CCodec  (25397):   int32_t aac-drc-effect-type = 3
+D/CCodec  (25397):   int32_t aac-encoded-target-level = -1
+D/CCodec  (25397):   int32_t aac-max-output-channel_count = 8
+D/CCodec  (25397):   int32_t aac-target-ref-level = 64
+D/CCodec  (25397):   int32_t bitrate = 64000
+D/CCodec  (25397):   int32_t channel-count = 2
+D/CCodec  (25397):   int32_t channel-mask = 0
+D/CCodec  (25397):   int32_t level = 0
+D/CCodec  (25397):   int32_t max-input-size = 8192
+D/CCodec  (25397):   int32_t max-output-channel-count = 8
+D/CCodec  (25397):   string mime = "audio/mp4a-latm"
+D/CCodec  (25397):   int32_t profile = 2
+D/CCodec  (25397):   int32_t sample-rate = 44100
+D/CCodec  (25397): }
+D/CCodec  (25397): setup formats output: AMessage(what = 0x00000000) = {
+D/CCodec  (25397):   int32_t aac-drc-album-mode = 0
+D/CCodec  (25397):   int32_t aac-drc-boost-level = 127
+D/CCodec  (25397):   int32_t aac-drc-cut-level = 127
+D/CCodec  (25397):   int32_t aac-drc-effect-type = 3
+D/CCodec  (25397):   int32_t aac-drc-output-loudness = -1
+D/CCodec  (25397):   int32_t aac-encoded-target-level = -1
+D/CCodec  (25397):   int32_t aac-max-output-channel_count = 8
+D/CCodec  (25397):   int32_t aac-target-ref-level = 64
+D/CCodec  (25397):   int32_t buffer-batch-max-output-size = 0
+D/CCodec  (25397):   int32_t buffer-batch-threshold-output-size = 0
+D/CCodec  (25397):   int32_t channel-count = 2
+D/CCodec  (25397):   int32_t channel-mask = 0
+D/CCodec  (25397):   int32_t max-output-channel-count = 8
+D/CCodec  (25397):   string mime = "audio/raw"
+D/CCodec  (25397):   int32_t sample-rate = 44100
+D/CCodec  (25397):   int32_t android._config-pcm-encoding = 2
+D/CCodec  (25397): }
+I/CCodecConfig(25397): query failed after returning 21 values (BAD_INDEX)
+D/MediaCodec(25397): [0xb4000073032800c0] setState: 4
+D/MediaCodec(25397): keep callback message for reclaim
+D/MediaCodec(25397): [0xb4000073032800c0] setState: 5
+W/Codec2Client(25397): query -- param skipped: index = 1342179345.
+W/Codec2Client(25397): query -- param skipped: index = 2415921170.
+W/Codec2Client(25397): query -- param skipped: index = 1610614798.
+D/C2Store (25397): Using DMABUF Heaps
+D/CCodecBufferChannel(25397): [c2.android.aac.decoder#645] Created input block pool with allocatorID 16 => poolID 17 - OK (0)
+I/CCodecBufferChannel(25397): [c2.android.aac.decoder#645] Created output block pool with allocatorID 16 => poolID 3123 - OK
+D/CCodecBufferChannel(25397): [c2.android.aac.decoder#645] Configured output block pool ids 3123 => OK
+D/CCodecBufferChannel(25397): [0xb40000743311be80] [c2.android.aac.decoder#645] start: output->outputDelay 2, output->numSlots 6
+D/CCodecBuffers(25397): [c2.android.aac.decoder#645:1D-Output.Impl[N]] converted 0 buffers to array mode of 6
+I/DMABUFHEAPS(25397): Using DMA-BUF heap named: mtk_mm
+D/MediaCodec(25397): [0xb4000073032800c0] setState: 6
+D/CCodecBufferChannel(25397): The csd Sample queue
+I/DMCodecAdapterFactory(25397): Creating an asynchronous MediaCodec adapter for track type video
+D/MediaCodec(25397): CreateByComponentName: name c2.mtk.avc.decoder
+D/MediaCodec(25397): processName: com.example.multi_market_predictions_v3
+D/CCodecBufferChannel(25397): mBufferCountDebug=0 mIsUserLoad=1
+D/MBrainDateManager(25397): MBrainDataManager Constructor caller
+D/MBrainManager(25397): mMBrainSupport 0, return NULL
+D/MBrainDateManager(25397): mMBrainManager = nullptr
+D/CCodecBufferChannel(25397): new MBrainDataManager() fail
+D/MBrainDateManager(25397): MBrainDataManager Constructor clear
+D/MediaCodec(25397): [0xb400007303296a50] init: CCodec 0xb40000725310d080, CCodecBufferChannel 0xb40000743311fee0
+D/MediaCodec(25397): [0xb400007303296a50] setState: 1
+D/CCodec  (25397): allocate(c2.mtk.avc.decoder)
+I/CCodec  (25397): setting up 'default' as default (vendor) store
+I/CCodec  (25397): Created component [c2.mtk.avc.decoder]
+D/CCodecBufferChannel(25397): [0xb40000743311fee0] setComponent: mName c2.mtk.avc.decoder#793, mPipelineWatcher 0xb4000074331203c8
+D/CCodecBufferChannel(25397): PipelineWatcher debug info [c2.mtk.avc.decoder#793] enable=0
+D/CCodecConfig(25397): read media type: video/avc
+D/ReflectedParamUpdater(25397): extent() != 1 for single value type: algo.buffers.max-count.values
+D/ReflectedParamUpdater(25397): extent() != 1 for single value type: output.subscribed-indices.values
+D/ReflectedParamUpdater(25397): extent() != 1 for single value type: input.buffers.allocator-ids.values
+D/ReflectedParamUpdater(25397): extent() != 1 for single value type: output.buffers.allocator-ids.values
+D/ReflectedParamUpdater(25397): extent() != 1 for single value type: algo.buffers.allocator-ids.values
+D/ReflectedParamUpdater(25397): extent() != 1 for single value type: output.buffers.pool-ids.values
+D/ReflectedParamUpdater(25397): extent() != 1 for single value type: algo.buffers.pool-ids.values
+D/ReflectedParamUpdater(25397): ignored struct field coded.color-format.locations
+D/CCodecConfig(25397): ignoring local param raw.size (0xd2001800) as it is already supported
+D/CCodecConfig(25397): ignoring local param raw.crop (0xd2001801) as it is already supported
+D/CCodecConfig(25397): ignoring local param default.color (0x5200180b) as it is already supported
+D/CCodecConfig(25397): ignoring local param raw.hdr-static-info (0xd200180a) as it is already supported
+I/CCodecConfig(25397): query failed after returning 18 values (BAD_INDEX)
+D/CCodecConfig(25397): c2 config diff is Dict {
+D/CCodecConfig(25397):   c2::u32 algo.low-latency.value = 0
+D/CCodecConfig(25397):   c2::i32 algo.priority.value = 1
+D/CCodecConfig(25397):   c2::float algo.rate.value = 0
+D/CCodecConfig(25397):   c2::float coded.frame-rate.value = 0
+D/CCodecConfig(25397):   c2::u32 coded.pl.level = 20495
+D/CCodecConfig(25397):   c2::u32 coded.pl.profile = 20481
+D/CCodecConfig(25397):   c2::u32 coded.vui.color.matrix = 0
+D/CCodecConfig(25397):   c2::u32 coded.vui.color.primaries = 0
+D/CCodecConfig(25397):   c2::u32 coded.vui.color.range = 2
+D/CCodecConfig(25397):   c2::u32 coded.vui.color.transfer = 0
+D/CCodecConfig(25397):   c2::u32 default.color.matrix = 0
+D/CCodecConfig(25397):   c2::u32 default.color.primaries = 0
+D/CCodecConfig(25397):   c2::u32 default.color.range = 0
+D/CCodecConfig(25397):   c2::u32 default.color.transfer = 0
+D/CCodecConfig(25397):   c2::u32 input.buffers.max-size.value = 2097152
+D/CCodecConfig(25397):   c2::u32 input.delay.value = 0
+D/CCodecConfig(25397):   string input.media-type.value = "video/avc"
+D/CCodecConfig(25397):   c2::u32 output.delay.value = 12
+D/CCodecConfig(25397):   string output.media-type.value = "video/raw"
+D/CCodecConfig(25397):   c2::u32 raw.color.matrix = 0
+D/CCodecConfig(25397):   c2::u32 raw.color.primaries = 0
+D/CCodecConfig(25397):   c2::u32 raw.color.range = 2
+D/CCodecConfig(25397):   c2::u32 raw.color.transfer = 0
+D/CCodecConfig(25397):   c2::u32 raw.crop.height = 239
+D/CCodecConfig(25397):   c2::u32 raw.crop.left = 0
+D/CCodecConfig(25397):   c2::u32 raw.crop.top = 0
+D/CCodecConfig(25397):   c2::u32 raw.crop.width = 319
+D/CCodecConfig(25397):   c2::float raw.hdr-static-info.master
+W/ColorUtils(25397): expected specified color aspects (2:0:0:0)
+D/MediaCodec(25397): [0xb400007303296a50] setState: 2
+I/MediaCodec(25397): MediaCodec will operate in async mode
+D/MediaCodec(25397): [0xb400007303296a50] [c2.mtk.avc.decoder] configure
+D/BufferQueueConsumer(25397): [](id:633500000002,api:0,p:-1,c:25397) connect: controlledByApp=false
+D/MediaCodec(25397): [0xb400007303296a50] [c2.mtk.avc.decoder] connectToSurface: surface 0xb400007323134cb0, mSurface 0x0
+D/SurfaceUtils(25397): connecting to surface 0xb400007323134cc0, reason connectToSurface
+I/MediaCodec(25397): [c2.mtk.avc.decoder] setting surface generation to 26006529
+D/SurfaceUtils(25397): disconnecting from surface 0xb400007323134cc0, reason connectToSurface(reconnect)
+D/SurfaceUtils(25397): connecting to surface 0xb400007323134cb0, reason connectToSurface(reconnect-with-listener)
+D/MediaCodec(25397): [0xb400007303296a50] setState: 3
+D/MediaCodec(25397): [c2.mtk.avc.decoder] config set c2 sleep timeout 500 kC2SleepTimeoutMs=500
+D/CCodec  (25397): [c2.mtk.avc.decoder] buffers are bound to CCodec for this session
+D/CCodecConfig(25397): no c2 equivalents for log-session-id
+D/CCodecConfig(25397): no c2 equivalents for importance
+D/CCodecConfig(25397): no c2 equivalents for color-standard
+D/CCodecConfig(25397): no c2 equivalents for csd-1
+D/CCodecConfig(25397): no c2 equivalents for native-window
+D/CCodecConfig(25397): no c2 equivalents for native-window-generation
+D/CCodecConfig(25397): no c2 equivalents for flags
+D/CCodecConfig(25397): c2 config diff is   c2::i32 algo.priority.value = 0
+D/CCodecConfig(25397):   c2::float coded.frame-rate.value = 23.976
+D/CCodecConfig(25397):   c2::u32 default.color.matrix = 1
+D/CCodecConfig(25397):   c2::u32 default.color.primaries = 1
+D/CCodecConfig(25397):   c2::u32 default.color.range = 2
+D/CCodecConfig(25397):   c2::u32 default.color.transfer = 3
+D/CCodecConfig(25397):   c2::u32 input.buffers.max-size.value = 2094080
+D/CCodecConfig(25397):   c2::u32 raw.max-size.height = 360
+D/CCodecConfig(25397):   c2::u32 raw.max-size.width = 640
+D/CCodecConfig(25397):   c2::u32 raw.pixel-format.value = 34
+D/CCodecConfig(25397):   c2::u32 raw.size.height = 360
+D/CCodecConfig(25397):   c2::u32 raw.size.width = 640
+D/CCodecConfig(25397):   c2::u32 vendor.mtk.vdec.buffer.fetch.timeout.ms.value = 500
+W/Codec2Client(25397): query -- param skipped: index = 1107298332.
+D/CCodec  (25397): client requested max input size 50722, which is smaller than what component recommended (2094080); overriding with component recommendation.
+W/CCodec  (25397): This behavior is subject to change. It is recommended that app developers double check whether the requested max input size is in reasonable range.
+D/CCodec  (25397): encoding statistics level = 0
+D/CCodec  (25397): setup formats input: AMessage(what = 0x00000000) = {
+D/CCodec  (25397):   string mime = "video/avc"
+D/CCodec  (25397):   int32_t width = 640
+D/CCodec  (25397):   int32_t profile = 65536
+D/CCodec  (25397):   int32_t priority = 0
+D/CCodec  (25397):   int32_t frame-rate = 24
+D/CCodec  (25397):   int32_t height = 360
+D/CCodec  (25397):   int32_t level = 32768
+D/CCodec  (25397):   int32_t max-input-size = 2094080
+D/CCodec  (25397):   Rect crop(0, 0, 318, 238)
+D/CCodec  (25397): }
+D/CCodec  (25397): setup formats output: AMessage(what = 0x00000000) = {
+D/CCodec  (25397):   int32_t android._color-format = 2130708361
+D/CCodec  (25397):   int32_t android._video-scaling = 1
+D/CCodec  (25397):   int32_t sar-width = 1
+D/CCodec  (25397):   int32_t color-standard = 4
+D/CCodec  (25397):   int32_t color-range = 2
+D/CCodec  (25397):   int32_t color-transfer = 3
+D/CCodec  (25397):   int32_t android._dataspace = 259
+D/CCodec  (25397):   int32_t width = 640
+D/CCodec  (25397):   int32_t rotation-degrees = 0
+D/CCodec  (25397):   int32_t sar-height = 1
+D/CCodec  (25397):   int32_t max-width = 640
+D/CCodec  (25397):   int32_t max-height = 360
+D/CCodec  (25397):   int32_t priority = 0
+D/CCodec  (25397):   string mime = "video/raw"
+D/CCodec  (25397):   Rect crop(0, 0, 318, 238)
+D/CCodec  (25397):   Buffer hdr-static-info = {
+D/CCodec  (25397):     00000000:  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  ................
+D/CCodec  (25397):     00000010:  00 00 00 00 00 00 00 00  00                       .........
+D/CCodec  (25397):   }
+D/CCodec  (25397):   int32_t frame-rate = 24
+D/CCodec  (25397):   int32_t height = 360
+D/CCodec  (25397):   int32_t color-format = 2130708361
+D/CCodec  (25397): }
+I/CCodecConfig(25397): query failed after returning 19 values (BAD_INDEX)
+D/CCodecConfig(25397): c2 config diff is   c2::u32 raw.color.matrix = 1
+D/CCodecConfig(25397):   c2::u32 raw.color.primaries = 1
+D/CCodecConfig(25397):   c2::u32 raw.color.transfer = 3
+D/MediaCodec(25397): [0xb400007303296a50] setState: 4
+D/MediaCodec(25397): keep callback message for reclaim
+D/MediaCodec(25397): [0xb400007303296a50] setState: 5
+W/Codec2Client(25397): query -- param skipped: index = 1342179345.
+W/Codec2Client(25397): query -- param skipped: index = 2415921170.
+W/Codec2Client(25397): query -- param skipped: index = 1610614798.
+D/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#793] Created input block pool with allocatorID 16 => poolID 18 - OK (0)
+D/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#793] Query output surface allocator returned 0 params => BAD_INDEX (6)
+I/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#793] Created output block pool with allocatorID 18 => poolID 621 - OK
+D/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#793] Configured output block pool ids 621 => OK
+D/CCodecBufferChannel(25397): [0xb40000743311fee0] [c2.mtk.avc.decoder#793] start: output->outputDelay 12, output->numSlots 16
+D/Codec2-OutputBufferQueue(25397): remote graphic buffer migration 0/0
+D/Codec2Client(25397): setOutputSurface -- generation=26006529 consumer usage=0x900
+D/Codec2Client(25397): Surface configure completed
+D/MediaCodec(25397): [0xb400007303296a50] setState: 6
+D/CCodecBufferChannel(25397): The csd Sample queue
+D/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#793] send inputSlots num:4 to codec
+D/CCodecBufferChannel(25397): The csd Sample queue
+D/CCodecConfig(25397): c2 config diff is   c2::u32 input.delay.value = 4
+D/CCodecConfig(25397): c2 config diff is   c2::u32 output.delay.value = 14
+D/Codec2-OutputBufferQueue(25397): set max dequeue count 21 from update
+D/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#793] Ignoring stale input buffer done callback: last flush index = 0, frameIndex = 0
+D/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#793] send inputSlots num:8 to codec
+D/CCodecConfig(25397): c2 config diff is   c2::u32 raw.crop.height = 360
+D/CCodecConfig(25397):   c2::u32 raw.crop.width = 640
+D/CCodecConfig(25397):   c2::u32 raw.pixel-format.value = 4096
+D/CCodecBuffers(25397): [c2.mtk.avc.decoder#793:2D-Output] popFromStashAndRegister: at 1000000000000us, output format changed to AMessage(what = 0x00000000) = {
+D/CCodecBuffers(25397):   int32_t android._color-format = 4096
+D/CCodecBuffers(25397):   int32_t android._video-scaling = 1
+D/CCodecBuffers(25397):   int32_t sar-width = 1
+D/CCodecBuffers(25397):   int32_t color-standard = 1
+D/CCodecBuffers(25397):   int32_t color-range = 2
+D/CCodecBuffers(25397):   int32_t color-transfer = 3
+D/CCodecBuffers(25397):   int32_t android._dataspace = 260
+D/CCodecBuffers(25397):   int32_t width = 640
+D/CCodecBuffers(25397):   int32_t rotation-degrees = 0
+D/CCodecBuffers(25397):   int32_t sar-height = 1
+D/CCodecBuffers(25397):   int32_t max-width = 640
+D/CCodecBuffers(25397):   int32_t max-height = 360
+D/CCodecBuffers(25397):   int32_t priority = 0
+D/CCodecBuffers(25397):   string mime = "video/raw"
+D/CCodecBuffers(25397):   Rect crop(0, 0, 639, 359)
+D/CCodecBuffers(25397):   Buffer hdr-static-info = {
+D/CCodecBuffers(25397):     00000000:  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  ................
+D/CCodecBuffers(25397):     00000010:  00 00 00 00 00 00 00 00  00                       .........
+D/CCodecBuffers(25397):   }
+D/CCodecBuffers(25397):   int32_t frame-rate = 24
+D/CCodecBuffers(25397):   int32_t height = 360
+D/CCodecBuffers(25397):   int32_t color-format = 2130708361
+D/CCodecBuffers(25397): }
+D/CCodecConfig(25397): c2 config diff is   c2::u32 raw.channel-mask.value = 12
+D/CCodecBuffers(25397): [c2.android.aac.decoder#645:Output[N]] popFromStashAndRegister: at 1000000000000us, output format changed to AMessage(what = 0x00000000) = {
+D/CCodecBuffers(25397):   int32_t aac-drc-album-mode = 0
+D/CCodecBuffers(25397):   int32_t aac-drc-boost-level = 127
+D/CCodecBuffers(25397):   int32_t aac-drc-cut-level = 127
+D/CCodecBuffers(25397):   int32_t aac-drc-effect-type = 3
+D/CCodecBuffers(25397):   int32_t aac-drc-output-loudness = -1
+D/CCodecBuffers(25397):   int32_t aac-encoded-target-level = -1
+D/CCodecBuffers(25397):   int32_t aac-max-output-channel_count = 8
+D/CCodecBuffers(25397):   int32_t aac-target-ref-level = 64
+D/CCodecBuffers(25397):   int32_t buffer-batch-max-output-size = 0
+D/CCodecBuffers(25397):   int32_t buffer-batch-threshold-output-size = 0
+D/CCodecBuffers(25397):   int32_t channel-count = 2
+D/CCodecBuffers(25397):   int32_t channel-mask = 12
+D/CCodecBuffers(25397):   int32_t max-output-channel-count = 8
+D/CCodecBuffers(25397):   string mime = "audio/raw"
+D/CCodecBuffers(25397):   int32_t sample-rate = 44100
+D/CCodecBuffers(25397):   int32_t android._config-pcm-encoding = 2
+D/CCodecBuffers(25397): }
+D/AudioTrack(25397): INSP: type=audio,case=1,set=0xb4000074330d3e30,stream_type=-1,sample_rate=44100,format=0x1,channel_mask=0x3,frame_count=22620,flags=0x0,notification_frames=0,session_id=15185,transfer_type=3,uid=10330,pid=25397
+D/AudioTrack(25397): INSP: type=audio,case=1,attributes=1,content_type=0,usage=1,source=-1,flags=0xa00
+D/AudioTrack(25397): set(): streamType -1, sampleRate 44100, format 0x1, channelMask 0x3, frameCount 22620, flags 0, notificationFrames 0, sessionId 15185, transferType 3, uid 10330, pid 25397
+D/AudioTrack(25397): createTrack_l(3282): 0xb4000074330d3e30, mCblk = 0x7077c8e000, mLatency = 640, mAfLatency = 128, frameCount = 22620, mSampleRate = 44100, mFlags = 0x8, mReqFrameCount = 22620, mNotificationFramesAct = 1881
+E/AudioTrack(25397): createTrack_l(3282) on outputId 21 : 0xb4000074330d3e30, mCblk = 0x7077c8e000, mLatency = 640, mAfLatency = 128, frameCount = 22620, mSampleRate = 44100, mFlags = 00000008, mReqFrameCount = 22620, mNotificationFramesAct = 1881
+D/AudioTrack(25397): setVolume(3282): 0xb4000074330d3e30, left = 1.000000, right = 1.000000
+D/AudioSystem(25397): +setParameters(): MAGT-Process=25397;MAGT-AudioThread=25891
+D/PipelineWatcher(25397): [0xb40000743311c368] pipelineFull: too many frames in pipeline (6)
+D/PipelineWatcher(25397): [0xb40000743311c368] pipelineFull: too many frames in pipeline (6)
+I/flutter (25417): NtLifecycle->scheduledWakeUp tag:KeepAlive,length:Instance of 'BluetoothHelper',Instance of 'NtWatchWorker'
+D/PipelineWatcher(25397): onWorkDone: frameIndex not found (0); ignored
+D/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#793] receive c2 sleep hint!
+D/PipelineWatcher(25397): onWorkDone: frameIndex not found (0); ignored
+D/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#793] ignore dup c2 sleep hint!
+I/flutter (25417): channel  reconnect device dartVMReady
+I/Choreographer(25397): Skipped 281 frames!  The application may be doing too much work on its main thread.
+D/VRI[MainActivity](25397): visibilityChanged oldVisibility=true newVisibility=false
+D/BLASTBufferQueue(25397): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:0,a:4) destructor()
+D/BufferQueueConsumer(25397): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1(BLAST Consumer)1](id:633500000001,api:0,p:-1,c:25397) disconnect
+I/flutter (25417): NtLifecycle->scheduledWakeUp tag:KeepAlive,length:Instance of 'BluetoothHelper',Instance of 'NtWatchWorker'
+I/PlatformViewsController(25397): Hosting view in view hierarchy for platform view: 0
+I/_predictions_v3(25397): NativeAlloc concurrent mark compact GC freed 36MB AllocSpace bytes, 140(15MB) LOS objects, 75% free, 10MB/42MB, paused 24.993ms,78.561ms total 1.031s
+I/PlatformViewsController(25397): PlatformView is using SurfaceProducer backend
+D/BufferQueueConsumer(25397): [](id:633500000003,api:0,p:-1,c:25397) connect: controlledByApp=true
+D/Surface (25397): lockHardwareCanvas
+W/_predictions_v3(25397): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~_cnfQtSmvpRF50C_aPELQw==/com.google.android.webview-2aHEXxPF1Q6fkFtEil_gWQ==/base.apk' with 2 weak references
+I/Choreographer(25397): Skipped 97 frames!  The application may be doing too much work on its main thread.
+D/BLASTBufferQueue(25397): [VRI[MainActivity]#0](f:0,a:1) destructor()
+D/BufferQueueConsumer(25397): [VRI[MainActivity]#0(BLAST Consumer)0](id:633500000000,api:0,p:-1,c:25397) disconnect
+I/Choreographer(25397): Skipped 38 frames!  The application may be doing too much work on its main thread.
+I/DynamiteModule(25397): Considering local module com.google.android.gms.ads.dynamite:0 and remote module com.google.android.gms.ads.dynamite:253405700
+I/DynamiteModule(25397): Selected remote version of com.google.android.gms.ads.dynamite, version >= 253405700
+W/Ads     (25397): GET LOCATION COMPILED
+D/AudioManager(25397): getDevices, flags = 2
+D/BufferQueueConsumer(25397): [](id:633500000004,api:0,p:-1,c:25397) connect: controlledByApp=true
+I/cr_MediaCodecBridge(25397): create MediaCodec video decoder, mime video/avc, decoder name c2.mtk.avc.decoder, block_model=false
+D/MediaCodec(25397): CreateByComponentName: name c2.mtk.avc.decoder
+D/MediaCodec(25397): processName: com.example.multi_market_predictions_v3
+D/CCodecBufferChannel(25397): mBufferCountDebug=0 mIsUserLoad=1
+D/MBrainDateManager(25397): MBrainDataManager Constructor caller
+D/MBrainManager(25397): mMBrainSupport 0, return NULL
+D/MBrainDateManager(25397): mMBrainManager = nullptr
+D/CCodecBufferChannel(25397): new MBrainDataManager() fail
+D/MBrainDateManager(25397): MBrainDataManager Constructor clear
+D/MediaCodec(25397): [0xb40000730312d150] init: CCodec 0xb4000072531580b0, CCodecBufferChannel 0xb4000074331197e0
+D/MediaCodec(25397): [0xb40000730312d150] setState: 1
+D/CCodec  (25397): allocate(c2.mtk.avc.decoder)
+I/CCodec  (25397): setting up 'default' as default (vendor) store
+I/CCodec  (25397): Created component [c2.mtk.avc.decoder]
+D/CCodecBufferChannel(25397): [0xb4000074331197e0] setComponent: mName c2.mtk.avc.decoder#816, mPipelineWatcher 0xb400007433119cc8
+D/CCodecBufferChannel(25397): PipelineWatcher debug info [c2.mtk.avc.decoder#816] enable=0
+D/CCodecConfig(25397): read media type: video/avc
+D/ReflectedParamUpdater(25397): extent() != 1 for single value type: algo.buffers.max-count.values
+D/ReflectedParamUpdater(25397): extent() != 1 for single value type: output.subscribed-indices.values
+D/ReflectedParamUpdater(25397): extent() != 1 for single value type: input.buffers.allocator-ids.values
+D/ReflectedParamUpdater(25397): extent() != 1 for single value type: output.buffers.allocator-ids.values
+D/ReflectedParamUpdater(25397): extent() != 1 for single value type: algo.buffers.allocator-ids.values
+D/ReflectedParamUpdater(25397): extent() != 1 for single value type: output.buffers.pool-ids.values
+D/ReflectedParamUpdater(25397): extent() != 1 for single value type: algo.buffers.pool-ids.values
+D/ReflectedParamUpdater(25397): ignored struct field coded.color-format.locations
+D/CCodecConfig(25397): ignoring local param raw.size (0xd2001800) as it is already supported
+D/CCodecConfig(25397): ignoring local param raw.crop (0xd2001801) as it is already supported
+D/CCodecConfig(25397): ignoring local param default.color (0x5200180b) as it is already supported
+D/CCodecConfig(25397): ignoring local param raw.hdr-static-info (0xd200180a) as it is already supported
+I/CCodecConfig(25397): query failed after returning 18 values (BAD_INDEX)
+D/CCodecConfig(25397): c2 config diff is Dict {
+D/CCodecConfig(25397):   c2::u32 algo.low-latency.value = 0
+D/CCodecConfig(25397):   c2::i32 algo.priority.value = 1
+D/CCodecConfig(25397):   c2::float algo.rate.value = 0
+D/CCodecConfig(25397):   c2::float coded.frame-rate.value = 0
+D/CCodecConfig(25397):   c2::u32 coded.pl.level = 20495
+D/CCodecConfig(25397):   c2::u32 coded.pl.profile = 20481
+D/CCodecConfig(25397):   c2::u32 coded.vui.color.matrix = 0
+D/CCodecConfig(25397):   c2::u32 coded.vui.color.primaries = 0
+D/CCodecConfig(25397):   c2::u32 coded.vui.color.range = 2
+D/CCodecConfig(25397):   c2::u32 coded.vui.color.transfer = 0
+D/CCodecConfig(25397):   c2::u32 default.color.matrix = 0
+D/CCodecConfig(25397):   c2::u32 default.color.primaries = 0
+D/CCodecConfig(25397):   c2::u32 default.color.range = 0
+D/CCodecConfig(25397):   c2::u32 default.color.transfer = 0
+D/CCodecConfig(25397):   c2::u32 input.buffers.max-size.value = 2097152
+D/CCodecConfig(25397):   c2::u32 input.delay.value = 0
+D/CCodecConfig(25397):   string input.media-type.value = "video/avc"
+D/CCodecConfig(25397):   c2::u32 output.delay.value = 12
+D/CCodecConfig(25397):   string output.media-type.value = "video/raw"
+D/CCodecConfig(25397):   c2::u32 raw.color.matrix = 0
+D/CCodecConfig(25397):   c2::u32 raw.color.primaries = 0
+D/CCodecConfig(25397):   c2::u32 raw.color.range = 2
+D/CCodecConfig(25397):   c2::u32 raw.color.transfer = 0
+D/CCodecConfig(25397):   c2::u32 raw.crop.height = 239
+D/CCodecConfig(25397):   c2::u32 raw.crop.left = 0
+D/CCodecConfig(25397):   c2::u32 raw.crop.top = 0
+D/CCodecConfig(25397):   c2::u32 raw.crop.width = 319
+D/CCodecConfig(25397):   c2::float raw.hdr-static-info.master
+W/ColorUtils(25397): expected specified color aspects (2:0:0:0)
+D/MediaCodec(25397): [0xb40000730312d150] setState: 2
+I/MediaCodec(25397): MediaCodec will operate in async mode
+D/MediaCodec(25397): [0xb40000730312d150] [c2.mtk.avc.decoder] configure
+D/MediaCodec(25397): [0xb40000730312d150] [c2.mtk.avc.decoder] connectToSurface: surface 0xb40000732314c360, mSurface 0x0
+D/SurfaceUtils(25397): connecting to surface 0xb40000732314c370, reason connectToSurface
+I/MediaCodec(25397): [c2.mtk.avc.decoder] setting surface generation to 26006530
+D/SurfaceUtils(25397): disconnecting from surface 0xb40000732314c370, reason connectToSurface(reconnect)
+D/SurfaceUtils(25397): connecting to surface 0xb40000732314c360, reason connectToSurface(reconnect-with-listener)
+D/MediaCodec(25397): [0xb40000730312d150] setState: 3
+D/MediaCodec(25397): [c2.mtk.avc.decoder] config set c2 sleep timeout 500 kC2SleepTimeoutMs=500
+D/CCodec  (25397): [c2.mtk.avc.decoder] buffers are bound to CCodec for this session
+D/CCodecConfig(25397): no c2 equivalents for csd-1
+D/CCodecConfig(25397): no c2 equivalents for native-window
+D/CCodecConfig(25397): no c2 equivalents for native-window-generation
+D/CCodecConfig(25397): no c2 equivalents for flags
+D/CCodecConfig(25397): c2 config diff is   c2::u32 input.buffers.max-size.value = 2094080
+D/CCodecConfig(25397):   c2::u32 raw.max-size.height = 360
+D/CCodecConfig(25397):   c2::u32 raw.max-size.width = 640
+D/CCodecConfig(25397):   c2::u32 raw.pixel-format.value = 34
+D/CCodecConfig(25397):   c2::u32 raw.size.height = 360
+D/CCodecConfig(25397):   c2::u32 raw.size.width = 640
+D/CCodecConfig(25397):   c2::u32 vendor.mtk.vdec.buffer.fetch.timeout.ms.value = 500
+W/Codec2Client(25397): query -- param skipped: index = 1107298332.
+D/CCodec  (25397): client requested max input size 176640, which is smaller than what component recommended (2094080); overriding with component recommendation.
+W/CCodec  (25397): This behavior is subject to change. It is recommended that app developers double check whether the requested max input size is in reasonable range.
+D/CCodec  (25397): encoding statistics level = 0
+D/CCodec  (25397): setup formats input: AMessage(what = 0x00000000) = {
+D/CCodec  (25397):   string mime = "video/avc"
+D/CCodec  (25397):   int32_t width = 640
+D/CCodec  (25397):   int32_t profile = 65536
+D/CCodec  (25397):   int32_t priority = -1
+D/CCodec  (25397):   int32_t frame-rate = 0
+D/CCodec  (25397):   int32_t height = 360
+D/CCodec  (25397):   int32_t level = 32768
+D/CCodec  (25397):   int32_t max-input-size = 2094080
+D/CCodec  (25397):   Rect crop(0, 0, 318, 238)
+D/CCodec  (25397): }
+D/CCodec  (25397): setup formats output: AMessage(what = 0x00000000) = {
+D/CCodec  (25397):   int32_t android._color-format = 2130708361
+D/CCodec  (25397):   int32_t android._video-scaling = 1
+D/CCodec  (25397):   int32_t sar-width = 1
+D/CCodec  (25397):   int32_t color-standard = 4
+D/CCodec  (25397):   int32_t color-range = 2
+D/CCodec  (25397):   int32_t color-transfer = 3
+D/CCodec  (25397):   int32_t android._dataspace = 259
+D/CCodec  (25397):   int32_t width = 640
+D/CCodec  (25397):   int32_t rotation-degrees = 0
+D/CCodec  (25397):   int32_t sar-height = 1
+D/CCodec  (25397):   int32_t max-width = 640
+D/CCodec  (25397):   int32_t max-height = 360
+D/CCodec  (25397):   int32_t priority = -1
+D/CCodec  (25397):   string mime = "video/raw"
+D/CCodec  (25397):   Rect crop(0, 0, 318, 238)
+D/CCodec  (25397):   Buffer hdr-static-info = {
+D/CCodec  (25397):     00000000:  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  ................
+D/CCodec  (25397):     00000010:  00 00 00 00 00 00 00 00  00                       .........
+D/CCodec  (25397):   }
+D/CCodec  (25397):   int32_t frame-rate = 0
+D/CCodec  (25397):   int32_t height = 360
+D/CCodec  (25397):   int32_t color-format = 2130708361
+D/CCodec  (25397): }
+I/CCodecConfig(25397): query failed after returning 19 values (BAD_INDEX)
+D/MediaCodec(25397): [0xb40000730312d150] setState: 4
+D/MediaCodec(25397): keep callback message for reclaim
+D/MediaCodec(25397): [0xb40000730312d150] setState: 5
+W/Codec2Client(25397): query -- param skipped: index = 1342179345.
+W/Codec2Client(25397): query -- param skipped: index = 2415921170.
+W/Codec2Client(25397): query -- param skipped: index = 1610614798.
+D/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#816] Created input block pool with allocatorID 16 => poolID 19 - OK (0)
+D/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#816] Query output surface allocator returned 0 params => BAD_INDEX (6)
+I/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#816] Created output block pool with allocatorID 18 => poolID 622 - OK
+D/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#816] Configured output block pool ids 622 => OK
+D/CCodecBufferChannel(25397): [0xb4000074331197e0] [c2.mtk.avc.decoder#816] start: output->outputDelay 12, output->numSlots 16
+D/Codec2-OutputBufferQueue(25397): remote graphic buffer migration 0/0
+D/Codec2Client(25397): setOutputSurface -- generation=26006530 consumer usage=0x900
+D/Codec2Client(25397): Surface configure completed
+D/MediaCodec(25397): [0xb40000730312d150] setState: 6
+D/CCodecBufferChannel(25397): The csd Sample queue
+D/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#816] send inputSlots num:4 to codec
+D/CCodecBufferChannel(25397): The csd Sample queue
+D/CCodecConfig(25397): c2 config diff is   c2::u32 input.delay.value = 4
+D/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#816] send inputSlots num:8 to codec
+D/CCodecConfig(25397): c2 config diff is   c2::u32 raw.color.matrix = 1
+D/CCodecConfig(25397):   c2::u32 raw.color.primaries = 1
+D/CCodecConfig(25397):   c2::u32 raw.color.transfer = 3
+D/Codec2-OutputBufferQueue(25397): set max dequeue count 19 from update
+D/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#816] Ignoring stale input buffer done callback: last flush index = 0, frameIndex = 0
+D/CCodecConfig(25397): c2 config diff is   c2::u32 raw.crop.height = 360
+D/CCodecConfig(25397):   c2::u32 raw.crop.width = 640
+D/CCodecConfig(25397):   c2::u32 raw.pixel-format.value = 4096
+D/CCodecBuffers(25397): [c2.mtk.avc.decoder#816:2D-Output] popFromStashAndRegister: at 0us, output format changed to AMessage(what = 0x00000000) = {
+D/CCodecBuffers(25397):   int32_t android._color-format = 4096
+D/CCodecBuffers(25397):   int32_t android._video-scaling = 1
+D/CCodecBuffers(25397):   int32_t sar-width = 1
+D/CCodecBuffers(25397):   int32_t color-standard = 1
+D/CCodecBuffers(25397):   int32_t color-range = 2
+D/CCodecBuffers(25397):   int32_t color-transfer = 3
+D/CCodecBuffers(25397):   int32_t android._dataspace = 260
+D/CCodecBuffers(25397):   int32_t width = 640
+D/CCodecBuffers(25397):   int32_t rotation-degrees = 0
+D/CCodecBuffers(25397):   int32_t sar-height = 1
+D/CCodecBuffers(25397):   int32_t max-width = 640
+D/CCodecBuffers(25397):   int32_t max-height = 360
+D/CCodecBuffers(25397):   int32_t priority = -1
+D/CCodecBuffers(25397):   string mime = "video/raw"
+D/CCodecBuffers(25397):   Rect crop(0, 0, 639, 359)
+D/CCodecBuffers(25397):   Buffer hdr-static-info = {
+D/CCodecBuffers(25397):     00000000:  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  ................
+D/CCodecBuffers(25397):     00000010:  00 00 00 00 00 00 00 00  00                       .........
+D/CCodecBuffers(25397):   }
+D/CCodecBuffers(25397):   int32_t frame-rate = 0
+D/CCodecBuffers(25397):   int32_t height = 360
+D/CCodecBuffers(25397):   int32_t color-format = 2130708361
+D/CCodecBuffers(25397): }
+D/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#816] first render dataSpace=260
+W/cr_MediaCodecBridge(25397): Releasing: c2.mtk.avc.decoder
+D/MediaCodec(25397): [0xb40000730312d150] [c2.mtk.avc.decoder] releaseAsync
+D/BufferQueueConsumer(25397): [](id:633500000005,api:0,p:-1,c:25397) connect: controlledByApp=false
+D/MediaCodec(25397): [0xb40000730312d150] [c2.mtk.avc.decoder] connectToSurface: surface 0xb4000073230b0cd0, mSurface 0xb40000732314c360
+D/SurfaceUtils(25397): connecting to surface 0xb4000073230b0ce0, reason connectToSurface
+I/MediaCodec(25397): [c2.mtk.avc.decoder] setting surface generation to 26006531
+D/SurfaceUtils(25397): disconnecting from surface 0xb4000073230b0ce0, reason connectToSurface(reconnect)
+D/SurfaceUtils(25397): connecting to surface 0xb4000073230b0cd0, reason connectToSurface(reconnect-with-listener)
+D/Codec2-OutputBufferQueue(25397): remote graphic buffer migration 0/0
+D/Codec2Client(25397): setOutputSurface -- generation=26006531 consumer usage=0x900
+D/Codec2Client(25397): Surface configure completed
+D/MediaCodec(25397): [0xb40000730312d150] [c2.mtk.avc.decoder] disconnectFromSurface: mSurface 0xb40000732314c360
+D/SurfaceUtils(25397): disconnecting from surface 0xb40000732314c370, reason disconnectFromSurface
+D/MediaCodec(25397): [0xb40000730312d150] setState: 10
+D/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#816] MediaCodec discarded an unknown buffer
+D/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#816] MediaCodec discarded an unknown buffer
+D/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#816] MediaCodec discarded an unknown buffer
+D/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#816] MediaCodec discarded an unknown buffer
+D/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#816] MediaCodec discarded an unknown buffer
+D/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#816] MediaCodec discarded an unknown buffer
+D/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#816] MediaCodec discarded an unknown buffer
+D/CCodecBufferChannel(25397): [c2.mtk.avc.decoder#816] MediaCodec discarded an unknown buffer
+W/cr_MediaCodecBridge(25397): Codec released
+D/MediaCodec(25397): [0xb40000730312d150] [c2.mtk.avc.decoder] kWhatReleaseCompleted
+D/MediaCodec(25397): [0xb40000730312d150] setState: 0
+D/MediaCodec(25397): [0xb40000730312d150] [c2.mtk.avc.decoder] disconnectFromSurface: mSurface 0xb4000073230b0cd0
+D/SurfaceUtils(25397): disconnecting from surface 0xb4000073230b0ce0, reason disconnectFromSurface
+I/hw-BpHwBinder(25397): onLastStrongRef automatically unlinking death recipients
+D/BufferPoolAccessor2.0(25397): bufferpool2 0xb40000725310d9e8 : 0(0 size) total buffers - 0(0 size) used buffers - 19/25 (recycle/alloc) - 6/25 (fetch/transfer)
+D/BufferPoolAccessor2.0(25397): evictor expired: 1, evicted: 1
+D/BufferPoolAccessor2.0(25397): bufferpool2 0xb400007253173148 : 8(16752640 size) total buffers - 8(16752640 size) used buffers - 23/32 (recycle/alloc) - 9/32 (fetch/transfer)
+D/BufferPoolAccessor2.0(25397): evictor expired: 1, evicted: 1
+D/BufferPoolAccessor2.0(25397): bufferpool2 0xb4000072531269f8 : 0(0 size) total buffers - 0(0 size) used buffers - 15/24 (recycle/alloc) - 9/16 (fetch/transfer)
+D/BufferPoolAccessor2.0(25397): evictor expired: 1, evicted: 1
+
+Performing hot reload...
+Reloaded 0 libraries in 941ms (compile: 16 ms, reload: 0 ms, reassemble: 491 ms).
+I/_predictions_v3(25397): hiddenapi: Accessing hidden method Ldalvik/system/VMStack;->getStackClass2()Ljava/lang/Class; (runtime_flags=0, domain=core-platform, api=unsupported) from LWV/u6; (domain=app) using reflection: allowed
+E/FilePhenotypeFlags(25397): Config package com.google.android.gms.clearcut_client#com.example.multi_market_predictions_v3 cannot use FILE backing without declarative registration. See go/phenotype-android-integration#phenotype for more information. This will lead to stale flags.
+D/BufferQueueConsumer(25397): [](id:633500000006,api:0,p:-1,c:25397) connect: controlledByApp=false
+D/BLASTBufferQueue(25397): [VRI[MainActivity]#2](f:0,a:0) constructor()
+D/BLASTBufferQueue(25397): [VRI[MainActivity]#2](f:0,a:0) update width=1084 height=2412 format=-3 mTransformHint=0
+D/BufferQueueConsumer(25397): [](id:633500000007,api:0,p:-1,c:25397) connect: controlledByApp=false
+D/BLASTBufferQueue(25397): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:0,a:0) constructor()
+D/BLASTBufferQueue(25397): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:0,a:0) update width=1084 height=2412 format=4 mTransformHint=0
+E/mali_gralloc(25397): ERROR: Format allocation info not found for format: 38
+E/mali_gralloc(25397): ERROR: Format allocation info not found for format: 0
+E/_predictions_v3(25397): Invalid base format! req_base_format = 0x0, req_format = 0x38
+E/mali_gralloc(25397): ERROR: Unrecognized and/or unsupported format 0x38 and usage 0xb00
+E/mali_gralloc(25397): ERROR: Format allocation info not found for format: 3b
+E/mali_gralloc(25397): ERROR: Format allocation info not found for format: 0
+E/_predictions_v3(25397): Invalid base format! req_base_format = 0x0, req_format = 0x3b
+E/mali_gralloc(25397): ERROR: Unrecognized and/or unsupported format 0x3b and usage 0xb00
+E/mali_gralloc(25397): ERROR: Format allocation info not found for format: 38
+E/mali_gralloc(25397): ERROR: Format allocation info not found for format: 0
+E/_predictions_v3(25397): Invalid base format! req_base_format = 0x0, req_format = 0x38
+E/mali_gralloc(25397): ERROR: Unrecognized and/or unsupported format 0x38 and usage 0xb00
+E/mali_gralloc(25397): ERROR: Format allocation info not found for format: 3b
+E/mali_gralloc(25397): ERROR: Format allocation info not found for format: 0
+E/_predictions_v3(25397): Invalid base format! req_base_format = 0x0, req_format = 0x3b
+E/mali_gralloc(25397): ERROR: Unrecognized and/or unsupported format 0x3b and usage 0xb00
+I/SurfaceView(25397): surfaceview vote min fps
+D/BufferQueueConsumer(25397): [](id:633500000008,api:0,p:-1,c:25397) connect: controlledByApp=true
+D/Surface (25397): lockHardwareCanvas
+D/BLASTBufferQueue(25397): [VRI[MainActivity]#2](f:0,a:1) acquireNextBufferLocked size=1084x2412 mFrameNumber=1 applyTransaction=true mTimestamp=108472873855387(auto) mPendingTransactions.size=0 graphicBufferId=109079284416644 transform=0
+I/ContentCaptureHelper(25397): Setting logging level to OFF
+I/Choreographer(25397): Skipped 38 frames!  The application may be doing too much work on its main thread.
+D/Surface (25397): lockHardwareCanvas
+D/BLASTBufferQueue(25397): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:0,a:1) acquireNextBufferLocked size=1084x2412 mFrameNumber=1 applyTransaction=true mTimestamp=108472985113157(auto) mPendingTransactions.size=0 graphicBufferId=109079284416635 transform=0
+D/Surface (25397): lockHardwareCanvas
+E/GPUAUX  (25397): [AUX]GuiExtAuxCheckAuxPath:682: Null anb
+D/BufferQueueConsumer(25397): [ImageReader-1x1f22m6-25397-0](id:633500000003,api:0,p:-1,c:25397) disconnect
+D/NtViewRootImpl(25397): mPopUpViewOffsets: offset=(0.0, 0.0), scale=(1.0, 1.0)
+D/Surface (25397): lockHardwareCanvas
+D/Surface (25397): lockHardwareCanvas
+D/Surface (25397): lockHardwareCanvas
+D/Surface (25397): lockHardwareCanvas
+D/Surface (25397): lockHardwareCanvas
+D/Surface (25397): lockHardwareCanvas
+D/Surface (25397): lockHardwareCanvas
+D/Surface (25397): lockHardwareCanvas
+W/ImageReader_JNI(25397): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (25397): lockHardwareCanvas
+W/ImageReader_JNI(25397): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (25397): lockHardwareCanvas
+D/Surface (25397): lockHardwareCanvas
+D/Surface (25397): lockHardwareCanvas
+D/Surface (25397): lockHardwareCanvas
+D/Surface (25397): lockHardwareCanvas
+D/Surface (25397): lockHardwareCanvas
+D/Surface (25397): lockHardwareCanvas
+W/ImageReader_JNI(25397): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (25397): lockHardwareCanvas
+D/Surface (25397): lockHardwareCanvas
+Lost connection to device.
+
+C:\Users\VCOM\AndroidStudioProjects\multi_market_predictions_v3>

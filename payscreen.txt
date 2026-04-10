@@ -1,0 +1,152 @@
+import 'package:flutter/material.dart';
+import 'package:qr_flutter/qr_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+class PayScreen extends StatelessWidget {
+  final String upiVpa;
+  final String upiName;
+  final int amount;      // dynamic: 100 / 500 / 800 / 1500
+  final String note;     // e.g., "Premium 7 Days (7 दिन)"
+
+  const PayScreen({
+    super.key,
+    required this.upiVpa,
+    required this.upiName,
+    required this.amount,
+    required this.note,
+  });
+
+  Uri get _upiUri => Uri.parse('upi://pay').replace(queryParameters: {
+    'pa': upiVpa,
+    'pn': upiName,
+    'am': amount.toString(),
+    'cu': 'INR',
+    'tn': note,
+  });
+
+  Future<void> _openAnyUpiApp() async {
+    final qp = _upiUri.queryParameters;
+
+    // Try specific apps first
+    final candidates = <Uri>[
+      Uri.parse('tez://upi/pay').replace(queryParameters: qp),     // Google Pay
+      Uri.parse('phonepe://pay').replace(queryParameters: qp),     // PhonePe
+      Uri.parse('paytm://upi/pay').replace(queryParameters: qp),   // Paytm
+      Uri.parse(
+        'https://gpay.app.goo.gl/pay'
+            '?pa=${Uri.encodeComponent(upiVpa)}'
+            '&pn=${Uri.encodeComponent(upiName)}'
+            '&am=$amount&cu=INR'
+            '&tn=${Uri.encodeComponent(note)}',
+      ),
+      _upiUri, // generic upi://pay chooser
+    ];
+
+    for (final uri in candidates) {
+      if (await canLaunchUrl(uri)) {
+        final ok = await launchUrl(uri, mode: LaunchMode.externalApplication);
+        if (ok) return;
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final upiUrl = _upiUri.toString();
+
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('UPI Payment'),
+        backgroundColor: Colors.deepPurpleAccent,
+      ),
+      backgroundColor: const Color(0xFF0F0F0F),
+      body: ListView(
+        padding: const EdgeInsets.all(20),
+        children: [
+          const SizedBox(height: 4),
+          Text(
+            'Pay ₹$amount to $upiName',
+            textAlign: TextAlign.center,
+            style: const TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600),
+          ),
+          const SizedBox(height: 6),
+          Text(
+            'VPA: $upiVpa',
+            textAlign: TextAlign.center,
+            style: const TextStyle(color: Colors.white70),
+          ),
+          const SizedBox(height: 4),
+          Text(
+            'Note: $note',
+            textAlign: TextAlign.center,
+            style: const TextStyle(color: Colors.white54, fontSize: 12),
+          ),
+
+          const SizedBox(height: 20),
+
+          // QR (tap to zoom handled by dialog here)
+          GestureDetector(
+            onTap: () => showDialog(
+              context: context,
+              builder: (_) => Dialog(
+                backgroundColor: Colors.black87,
+                child: InteractiveViewer(
+                  minScale: 0.8, maxScale: 5,
+                  child: QrImageView(data: upiUrl, backgroundColor: Colors.white),
+                ),
+              ),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: QrImageView(
+                data: upiUrl,
+                size: 220,
+                backgroundColor: Colors.white,
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 16),
+
+          // Open UPI app
+          ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.deepPurpleAccent,
+              padding: const EdgeInsets.symmetric(vertical: 14),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+            ),
+            onPressed: _openAnyUpiApp,
+            icon: const Icon(Icons.account_balance_wallet_outlined),
+            label: const Text('Open UPI App'),
+          ),
+
+          const SizedBox(height: 10),
+
+          // Fallback: open raw URI (some ROMs only accept generic)
+          OutlinedButton.icon(
+            onPressed: () => launchUrl(Uri.parse(upiUrl), mode: LaunchMode.externalApplication),
+            icon: const Icon(Icons.open_in_new),
+            label: const Text('Try Generic UPI Link'),
+          ),
+
+          const SizedBox(height: 24),
+
+          const Text('After payment', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+          const SizedBox(height: 6),
+          const Text(
+            '• Share payment screenshot on Telegram for quick code\n'
+                '• You will receive a one-time unlock code\n'
+                '• Enter the code on the Home screen to activate Premium',
+            style: TextStyle(color: Colors.white70),
+          ),
+          const SizedBox(height: 12),
+          ElevatedButton.icon(
+            onPressed: () => launchUrl(Uri.parse('https://t.me/SattaMatkaAI'), mode: LaunchMode.externalApplication),
+            icon: const Icon(Icons.send),
+            label: const Text('Open Telegram'),
+          ),
+        ],
+      ),
+    );
+  }
+}

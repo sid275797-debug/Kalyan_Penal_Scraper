@@ -1,0 +1,2642 @@
+// lib/main.dart
+// FULL file — restored design + fixes + sangam=3 + persistence(12h) + rewarded gating
+import 'dart:convert';
+import 'dart:ui';
+import 'dart:math';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:http/http.dart' as http;
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'models/prediction.dart';
+import 'services/prediction_service.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'widgets/coming_soon.dart';
+import 'pay_screen.dart';
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ===== Bilingual Titles & Subtitles (inline constants) =====
+class AppTitles {
+  static const String homeFreeTitle =
+      '🔮 Free Satta Matka Markets (फ्री सत्ता मटका मार्केट्स)';
+  static const String homePremiumTitle =
+      '⭐ Premium AI Markets (प्रीमियम एआई मार्केट्स)';
+  static const String homeScoreTitle =
+      '🔥 AI Score Predictor (एआई स्कोर प्रेडिक्टर)';
+  static const String homeYesterdayTitle =
+      '🏆 Yesterday’s Top Winners (कल के टॉप विनर्स)';
+  static const String homeSangamTitle =
+      '✨ Lucky Sangam Preview (लक़ी संगम प्रीव्यू)';
+  static const String homeUnlockTitle =
+      '🔓 Unlock Premium Access (प्रीमियम एक्सेस अनलॉक करें)';
+  static const String homeHowItWorksTitle =
+      '🧠 How AI Predictions Work (एआई प्रेडिक्शन कैसे काम करता है)';
+  static const String homeDisclaimerTitle =
+      '⚠️ Responsible Use Notice (जिम्मेदारी से उपयोग करें)';
+  static const String tabHome = 'Home (होम)';
+  static const String tabFree = 'All Free Markets (सभी फ्री मार्केट्स)';
+  static const String tabPremium = 'Premium Markets (प्रीमियम मार्केट्स)';
+  static const String tabScore = 'AI Score Predictor (एआई स्कोर प्रेडिक्टर)';
+  static const String tabYesterday = 'Yesterday Winners (कल के विनर्स)';
+  static const String tabSangam = 'Lucky Sangam (लक़ी संगम)';
+}
+
+class AppSubtitles {
+  static const String homeFreeSubtitle =
+      'AI-selected daily free markets (एआई द्वारा चुने गए आज के फ्री मार्केट्स)';
+  static const String homePremiumSubtitle =
+      'Exclusive & high accuracy predictions (एक्सक्लूसिव और हाई एक्युरेसी प्रेडिक्शन)';
+  static const String homeScoreSubtitle =
+      'Markets that passed today’s accuracy test (आज के एआई टेस्ट में पास हुए मार्केट्स)';
+  static const String homeYesterdaySubtitle =
+      'Verified results from previous day (पिछले दिन के सत्यापित परिणाम)';
+  static const String homeSangamSubtitle =
+      'AI-selected rare winning combinations (एआई द्वारा चुने गए विनिंग कॉम्बिनेशन)';
+  static const String homeUnlockSubtitle =
+      'Scan QR & enter code to unlock (क्यूआर स्कैन करें और कोड डालकर एक्सेस पाएं)';
+  static const String homeHowItWorksSubtitle =
+      'Machine learning simulates owner patterns (मशीन लर्निंग मार्केट पैटर्न सिम्युलेट करती है)';
+  static const String homeDisclaimerSubtitle =
+      'Educational & entertainment purpose only (केवल शैक्षिक और मनोरंजन उद्देश्यों के लिए)';
+  static const String tabHomeSubtitle = 'Daily Highlights (आज की हाइलाइट्स)';
+  static const String tabFreeSubtitle =
+      'All AI Predictions (सभी एआई प्रेडिक्शन)';
+  static const String tabPremiumSubtitle =
+      'Locked High-Accuracy Markets (हाई एक्युरेसी मार्केट्स)';
+  static const String tabScoreSubtitle =
+      'Markets passed AI test (एआई टेस्ट पास मार्केट्स)';
+  static const String tabYesterdaySubtitle = 'Latest Results (नवीनतम परिणाम)';
+  static const String tabSangamSubtitle = '3 Best Sangams (3 बेस्ट संगम)';
+}
+// ===== end bilingual constants =====
+
+
+
+
+
+
+
+
+
+
+
+
+String _prettyMarketName(String raw) {
+  var s = (raw ?? '').toString();
+  s = s.replaceAll(RegExp(r'[_\.]+'), ' ').trim();
+  final parts = s.split(' ').where((w) => w.isNotEmpty).toList();
+  return parts.map((w) => w[0].toUpperCase() + w.substring(1)).join(' ');
+}
+// --- Compatibility helpers for Prediction shapes -----------------------
+// These helpers accept either a `Prediction` instance (if your model class
+// exposes fields) or a plain Map (Map<String,dynamic>) coming from RTDB.
+// They use `dynamic` to avoid compile-time brittle access and provide a
+// normalized Map<String,dynamic> representation we can safely mutate/read.
+
+Map<String, dynamic> _predictionToMap(dynamic p) {
+  // If it's already a Map, copy and return
+  try {
+    if (p is Map<String, dynamic>) return Map<String, dynamic>.from(p);
+    if (p is Map) return Map<String, dynamic>.from(p.map((k, v) => MapEntry(k.toString(), v)));
+  } catch (_) {}
+
+  // If it's an object (Prediction class), try dynamic access (toJson(), fields)
+  try {
+    final dyn = p as dynamic;
+    // prefer .toJson() if available
+    try {
+      final j = dyn.toJson();
+      if (j is Map) return Map<String, dynamic>.from(j.map((k, v) => MapEntry(k.toString(), v)));
+    } catch (_) {}
+    // fallback: try common property names
+    final market = (dyn.market ?? dyn.marketKey ?? dyn.name) ?? '';
+    final payload = (dyn.p ?? dyn.predictions ?? dyn.data) ?? <String, dynamic>{};
+    final score = (dyn.score ?? 0.0);
+    final passed = (dyn.passed ?? false);
+    return {
+      'market': market,
+      'p': payload is Map ? Map<String, dynamic>.from(payload.map((k, v) => MapEntry(k.toString(), v))) : payload,
+      'score': score,
+      'passed': passed,
+    };
+  } catch (_) {}
+
+  // ultimate fallback
+  return <String, dynamic>{'market': '', 'p': <String, dynamic>{}, 'score': 0.0, 'passed': false};
+}
+
+/// Create a Prediction instance from a dynamic/map if your Prediction has
+/// a fromJson factory. If not, this attempts to call Prediction.fromJson
+/// and otherwise just returns the input (best-effort).
+dynamic _mapToPrediction(Map<String, dynamic> m) {
+  try {
+    // try to call the constructor via dynamic (works if fromJson exists)
+    final ctor = (Prediction as dynamic).fromJson;
+    if (ctor != null) {
+      return (Prediction as dynamic).fromJson(m);
+    }
+  } catch (_) {}
+  // if no fromJson or something else, return the raw map (app code might handle it)
+  return m;
+}
+
+/// Safely get the inner predictions map (the field often named `p`)
+Map<String, dynamic> _getInnerP(dynamic pObj) {
+  try {
+    final dyn = pObj as dynamic;
+    // if pObj is Prediction instance
+    if (pObj is! Map) {
+      final candidate = (dyn.p ?? dyn.predictions ?? dyn.data);
+      if (candidate is Map) return Map<String, dynamic>.from(candidate.map((k, v) => MapEntry(k.toString(), v)));
+      if (candidate is List) return {'list': candidate};
+    } else {
+      // if it's already a map
+      final m = (pObj as Map).map((k, v) => MapEntry(k.toString(), v));
+      if (m.containsKey('p')) {
+        final inner = m['p'];
+        if (inner is Map) return Map<String, dynamic>.from(inner.map((k, v) => MapEntry(k.toString(), v)));
+      }
+      // maybe already contains keys like "Open Digits" at top-level
+      return Map<String, dynamic>.from(m);
+    }
+  } catch (_) {}
+  return <String, dynamic>{};
+}
+
+/// Helper to coerce any list-like field into List<String>
+List<String> toStrList(dynamic v) {
+  if (v == null) return <String>[];
+  if (v is List) return v.map((e) => e?.toString() ?? '').where((s) => s.isNotEmpty).toList();
+  if (v is String) return <String>[v];
+  return <String>[];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  await MobileAds.instance.initialize();
+  MobileAds.instance.updateRequestConfiguration(
+    RequestConfiguration(testDeviceIds: ['49FFEB599B975DC23EFA4E8CBF729C35', 'EMULATOR']),
+  );
+  await FirebaseMessaging.instance.requestPermission();
+  final token = await FirebaseMessaging.instance.getToken();
+  print("🔔 FCM Token: $token");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// debug: load predictions before runApp so we can see what's returned
+  try {
+    final preds = await PredictionService().loadOnce();
+    print('🔎 PredictionService returned ${preds.length} items');
+    if (preds.isNotEmpty) {
+      // use toJson() to avoid any getter naming mismatch
+      print('🔎 first item JSON: ${preds.first.toJson()}');
+    }
+  } catch (e, st) {
+    print('❌ PredictionService.load() failed: $e\n$st');
+  }
+
+  runApp(const SattaBossApp());
+}
+
+// 🔹 Firestore connection test
+Future<void> _testRTDBRead() async {
+  try {
+    final ref = FirebaseDatabase.instance.ref('app_data/todays_predictions');
+    final snap = await ref.get();
+    print('🌐 RTDB read test — exists: ${snap.exists}');
+    if (snap.exists) {
+      print('🌐 RTDB snapshot value type: ${snap.value.runtimeType}');
+      print('🌐 RTDB snapshot value: ${snap.value}');
+    } else {
+      print('❌ RTDB node not found — check if your Python uploader wrote data to this path.');
+    }
+  } catch (e, st) {
+    print('❌ RTDB read error: $e\n$st');
+  }
+}
+class SattaBossApp extends StatelessWidget {
+  const SattaBossApp({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'SattaMatkaAI',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData.dark().copyWith(
+        primaryColor: Colors.deepPurple,
+        scaffoldBackgroundColor: const Color(0xFF07070A),
+        cardColor: const Color(0xFF0F0F13),
+        textTheme: const TextTheme(bodyMedium: TextStyle(color: Colors.white)),
+      ),
+      home: const HomeScreen(),
+    );
+  }
+}
+
+/// Models & Services
+class UnlockCode {
+  final String code;
+  final String tier;
+  final DateTime expires;
+  UnlockCode({required this.code, required this.tier, required this.expires});
+  factory UnlockCode.fromJson(Map<String, dynamic> j) {
+    return UnlockCode(code: (j['code'] as String).trim(), tier: j['tier'] as String, expires: DateTime.parse(j['expires'] as String));
+  }
+}
+
+
+class Yesterday {
+  final String marketKey;
+  final String openDigit, closeDigit, openPanna, closePanna, jodi;
+  Yesterday({required this.marketKey, required this.openDigit, required this.closeDigit, required this.openPanna, required this.closePanna, required this.jodi});
+  factory Yesterday.fromJson(Map<String, dynamic> j) {
+    final key = (j['market'] as String).toLowerCase();
+    return Yesterday(
+      marketKey: key,
+      openDigit: j['Open Digit'].toString(),
+      closeDigit: j['Close Digit'].toString(),
+      openPanna: j['Open Panna'].toString(),
+      closePanna: j['Close Panna'].toString(),
+      jodi: j['Jodi'].toString(),
+    );
+  }
+}
+
+
+
+class ScorePredictor {
+  final double threshold;
+  ScorePredictor({this.threshold = 0.2});
+
+  /// Annotate predictions immutably (returning a list of updated Prediction objects)
+  /// and then return only those that pass the threshold.
+  List<Prediction> annotateAndFilter(List<Prediction> preds) {
+    // create annotated (copied) list with score & passed fields set via copyWith
+    final annotated = preds.map((p) {
+      final double s = computeScoreFromPrediction(p);
+      final bool passed = s >= threshold;
+
+
+// old: return p.copyWith(score: s, passed: passed);
+
+// new:
+      final Map<String, dynamic> _pmap = _predictionToMap(p);
+      _pmap['score'] = s;
+      _pmap['passed'] = passed;
+      final dynamic newPred = _mapToPrediction(_pmap);
+      return newPred;    }).toList();
+
+    print('[ScorePredictor] annotated count=${annotated.length}');
+
+
+
+    // keep a separate list containing annotated items that passed
+// old: return annotated.where((p) => p.passed).toList();
+
+// new:
+    final filtered = annotated.where((item) {
+      try {
+        final dyn = item as dynamic;
+        final val = (dyn.passed ?? (item is Map ? item['passed'] : null));
+        return val == true;
+      } catch (_) {
+        return false;
+      }
+    }).toList();
+    print('[ScorePredictor] filtered (passed) count=${filtered.length}');
+
+
+// Ensure result is List<Prediction> if possible
+    final List<Prediction> outList = <Prediction>[];
+    for (final item in filtered) {
+      if (item is Prediction) {
+        outList.add(item);
+      } else if (item is Map) {
+        final p = _mapToPrediction(Map<String, dynamic>.from(item));
+        if (p is Prediction) outList.add(p);
+      }
+    }
+
+    print('[ScorePredictor] returning ${outList.length} items to UI');
+
+// If we couldn't map to Prediction, but we still need to return something of that type,
+// returning the map list will likely cause a static type mismatch — but usually
+// your UI expects either Prediction or compatible map. If your code requires
+// strict typing, change function signature to return List<dynamic>.
+    return outList;  }
+
+
+
+
+  double computeScoreFromPrediction(Prediction p) {
+    // Helper to coerce many shapes into a List<dynamic>
+    List<dynamic> toList(dynamic v) {
+      if (v == null) return <dynamic>[];
+      if (v is List) return v;
+      // sometimes value might be a String like "2025-10-15" or a single number
+      return <dynamic>[v];
+    }
+
+    // Use safe lookup; p.p is now an alias to predictions (map)
+    final Map<String, dynamic> m = _getInnerP(p);
+    final openDigits = toList(m['open_digits']).map((e) => e?.toString()).whereType<String>().toList();
+    final closeDigits = toList(m['close_digits']).map((e) => e?.toString()).whereType<String>().toList();
+    final openPannas = toList(m['open_pannas']).map((e) => e?.toString()).whereType<String>().toList();
+    final closePannas = toList(m['close_pannas']).map((e) => e?.toString()).whereType<String>().toList();
+    final jodis = toList(m['jodis']).map((e) => e?.toString()).whereType<String>().toList();
+
+    // date may be a list or a single string — pick first safely
+    final dateList = toList(m['date']);
+    final dateStr = dateList.isNotEmpty ? dateList.first.toString() : '';
+
+    // Example scoring logic (keeps your previous logic intent).
+    // Change weighting according to your original algorithm.
+    double score = 0.0;
+    // + some points for non-empty fields
+    if (openDigits.isNotEmpty) score += 0.25;
+    if (closeDigits.isNotEmpty) score += 0.20;
+    if (openPannas.isNotEmpty) score += 0.20;
+    if (closePannas.isNotEmpty) score += 0.20;
+    if (jodis.isNotEmpty) score += 0.10;
+
+    // tiny boost if date exists
+    if (dateStr.isNotEmpty) score += 0.01;
+
+    // clamp to <= 1.0
+    if (score > 1.0) score = 1.0;
+    return score;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class ScoreHit {
+  final String metric;
+  final dynamic value;
+  final String display;
+  ScoreHit({required this.metric, required this.value, required this.display});
+}
+
+
+
+
+
+
+
+
+
+
+class ScoreMarket {
+  final String market;
+  final String key;
+  final bool premium;
+  final Map<String, ScoreHit> hits;
+  ScoreMarket({required this.market, required this.key, required this.premium, required this.hits});
+}
+
+class SangamMarket {
+  final String market;
+  final bool premium;
+  final List<String> sangams;
+  SangamMarket({required this.market, required this.premium, required this.sangams});
+}
+
+/// Home screen
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> with SingleTickerProviderStateMixin {
+  late final TabController _tabController;
+  bool _loading = true;
+
+// ---- Score Predictor state ----
+  bool _scoresLoading = true;
+  Map<String, dynamic>? scoreData;
+  String? scoreError;
+
+
+
+
+
+
+
+
+
+
+  // domain
+  List<Prediction> _allPreds = [];
+  List<Yesterday> _allYest = [];
+  late Map<String, Prediction> _predByKey;
+  late Map<String, Yesterday> _histByKey;
+  late List<Prediction> _freePreds;
+  late List<Prediction> _premiumPreds;
+
+  // gating
+  final Set<int> _tabsUnlocked = {0};
+
+  // score
+  List<Prediction> _scorePassed = [];
+  late ScorePredictor _scorePredictor;
+
+  List<ScoreMarket> _scoreMarkets = [];
+  bool _scoreAssetLoaded = true;
+
+  // sangam
+  List<SangamMarket> _sangamData = [];
+  bool _sangamsGenerated = false;
+
+  // subscription
+  bool _isPremiumUnlocked = false;
+  DateTime? _subscriptionExpiry;
+  final Set<String> _usedCodes = {};
+  List<UnlockCode> _codes = [];
+  final TextEditingController _codeController = TextEditingController();
+
+
+
+
+  // --- Brand colors
+  final Color _tg = const Color(0xFF2AABEE); // Telegram
+  final Color _wa = const Color(0xFF25D366); // WhatsApp
+
+  Widget _filledBrandPill({
+    required Color color,
+    required IconData icon,
+    required String labelEn,
+    required String labelHi,
+    required VoidCallback onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(18),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(18),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              color.withOpacity(0.95),
+              color.withOpacity(0.80),
+            ],
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: color.withOpacity(0.35),
+              blurRadius: 20,
+              spreadRadius: 0,
+              offset: const Offset(0, 8),
+            )
+          ],
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, color: Colors.black, size: 20),
+            const SizedBox(width: 10),
+            Text(
+              '$labelEn ($labelHi)',
+              style: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.w800,
+                letterSpacing: 0.2,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _socialTwoBrandPills() {
+    return Wrap(
+      spacing: 12,
+      runSpacing: 10,
+      children: [
+        _filledBrandPill(
+          color: _tg,
+          icon: Icons.send,
+          labelEn: 'Open Telegram',
+          labelHi: 'टेलीग्राम खोलें',
+          onTap: () => launchUrl(
+            Uri.parse('https://t.me/SattaMatkaAI'),
+            mode: LaunchMode.externalApplication,
+          ),
+        ),
+        _filledBrandPill(
+          color: _wa,
+          icon: Icons.chat, // swap for FaIcon(FontAwesomeIcons.whatsapp) if you want
+          labelEn: 'WhatsApp',
+          labelHi: 'व्हाट्सएप',
+          onTap: _openWhatsAppSupport, // your WA opener
+        ),
+      ],
+    );
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // ===== VVIP PREMIUM CONFIG (plans + UPI) =====
+  final List<Map<String, dynamic>> _premiumPlans = [
+    {'id': 'd1',  'labelEn': '1 Day',  'labelHi': '1 दिन',  'amount': 100,  'days': 1},
+    {'id': 'w1',  'labelEn': '7 Days', 'labelHi': '7 दिन',  'amount': 500,  'days': 7},
+    {'id': 'd15', 'labelEn': '15 Days','labelHi': '15 दिन', 'amount': 1000, 'days': 15},
+    {'id': 'm1',  'labelEn': '30 Days','labelHi': '30 दिन', 'amount': 2000, 'days': 30},
+  ];  int _selectedPlanIndex = 1; // default weekly
+
+// ✅ UPI – your real VPA + display name
+  static const String _upiVpa  = 'paytm.s1ai0xt@pty';
+  static const String _upiName = 'SattaMatkaAI';
+
+
+  Color _payColorFor(int i) {
+    switch (i) {
+      case 0: return const Color(0xFFEF5DA8); // 1 Day → Pink
+      case 1: return const Color(0xFF43A047); // 7 Days → Green
+      case 2: return const Color(0xFFFFB300); // 15 Days → Amber
+      case 3: return const Color(0xFF7C4DFF); // 30 Days → Deep Purple
+      default: return Theme.of(context).colorScheme.primary;
+    }
+  }
+
+
+// Optional unique refs
+  String get _txnRef => 'TR${DateTime.now().millisecondsSinceEpoch}';
+  String get _txnId  => 'TID${DateTime.now().millisecondsSinceEpoch}';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // ads
+  late BannerAd _bannerAd;
+  bool _isBannerAdReady = false;
+  RewardedAd? _rewardedAd;
+  bool _isRewardedAdReady = false;
+
+  final _premiumPatterns = ['kalyan', 'rajdhani', 'milan', 'main_bazar', 'main_bombay', 'time_bazar', 'supreme'];
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 5, vsync: this);
+    _scorePredictor = ScorePredictor(threshold: 0.2);
+    _loadAllData();
+    _loadCodesAndSubscription();
+    _loadBannerAd();
+    _loadRewardedAd();
+    _initFirebaseMessaging();
+    _testRTDBRead();
+    _listenYesterdayRTDB();
+
+
+
+
+
+    // 🔴 LIVE RTDB Listener — replaces manual reloads
+    final svc = PredictionService();
+    svc.streamPredictions().listen((items) {
+      if (!mounted) return;
+      setState(() {
+        _allPreds = items;
+        _premiumPreds = items
+            .where((p) => _premiumPatterns.any(
+              (pat) => p.marketKey.toLowerCase().contains(pat),
+        ))
+            .toList();
+        _freePreds = items
+            .where((p) => !_premiumPatterns.any(
+              (pat) => p.marketKey.toLowerCase().contains(pat),
+        ))
+            .toList();
+      });
+      debugPrint("🔁 Live update received: ${items.length} predictions");
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    _tabController.addListener(() {
+      if (!_tabController.indexIsChanging) return;
+      final targetIndex = _tabController.index;
+      if (targetIndex == 0) return;
+      if (!_tabsUnlocked.contains(targetIndex)) {
+        final prev = _tabController.previousIndex;
+        _tabController.index = prev;
+        _showRewardedAd(() {
+          _tabsUnlocked.add(targetIndex);
+          _tabController.animateTo(targetIndex);
+        });
+      }
+    });
+  }
+
+  void _initFirebaseMessaging() {
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      final notif = message.notification;
+      if (notif != null && notif.title != null) {
+        _showSnack('${notif.title}: ${notif.body ?? ''}');
+      }
+    });
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      final notif = message.notification;
+      if (notif != null && notif.title != null) {
+        _showSnack("Tapped: ${notif.title}");
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    _codeController.dispose();
+    _bannerAd.dispose();
+    _rewardedAd?.dispose();
+    super.dispose();
+  }
+
+  Future<void> _loadAllData() async {
+    List<Prediction> preds = [];
+    List<Yesterday> yest = [];
+    List<UnlockCode> unlockCodes = [];
+
+    Future<String?> loadAsset(String path) async {
+      try {
+        return await rootBundle.loadString(path);
+      } catch (e) {
+        debugPrint('ASSET MISSING: $path -> $e');
+        _showSnack('Missing asset: $path');
+        return null;
+      }
+    }
+
+    dynamic safeJsonDecode(String src, String label) {
+      try {
+        return json.decode(src);
+      } catch (e) {
+        debugPrint('JSON DECODE FAILED ($label): $e\nFirst 120: ${src.length > 120 ? src.substring(0, 120) : src}');
+        _showSnack('Corrupt $label JSON');
+        return null;
+      }
+    }
+
+    try { preds = await PredictionService().loadOnce(); } catch (e) { debugPrint('PredictionService error: $e'); }
+    try {
+      setState(() {
+        _scoresLoading = false;
+      });
+    } catch (e) {
+      debugPrint('ScoreService load failed: $e');
+      setState(() {
+        scoreError = e.toString();
+        _scoresLoading = false;
+      });
+    }
+
+    final rawCodes = await loadAsset('assets/unlock_codes.json');
+    if (rawCodes != null) {
+      final decoded = safeJsonDecode(rawCodes, 'unlock_codes');
+      if (decoded is List) {
+        try {
+          unlockCodes = decoded.whereType<Map<String, dynamic>>().map((e) => UnlockCode.fromJson(e)).toList();
+        } catch (e) {
+          debugPrint('UnlockCode bulk parse failed: $e. Falling back per-entry.');
+          unlockCodes = [];
+          for (final row in decoded) {
+            try { if (row is Map<String, dynamic>) unlockCodes.add(UnlockCode.fromJson(row)); } catch (e) { debugPrint('Skipping bad unlock code row: $e  row=$row'); }
+          }
+        }
+      } else {
+        debugPrint('unlock_codes.json is not a JSON array; ignoring.');
+      }
+    }
+
+    final predMap = <String, Prediction>{};
+    for (var p in preds) {
+      final key = (_predictionToMap(p)['market'] ?? '').toString();
+      if (key.isNotEmpty && p is Prediction) predMap[key] = p;
+    }
+    final histMap = {for (var h in yest) h.marketKey: h};
+    final prem = preds.where((p) => _premiumPatterns.any((pat) => p.marketKey.contains(pat))).toList();
+    final free = preds.where((p) => !prem.contains(p)).toList();
+    final passed = _scorePredictor.annotateAndFilter(preds);
+
+    setState(() {
+      _allPreds = preds;
+      _predByKey = predMap;
+      _histByKey = histMap;
+      _premiumPreds = prem;
+      _freePreds = free;
+      _codes = unlockCodes;
+      _scorePassed = passed;
+      _loading = false;
+    });
+
+    await _loadSangamsFromPrefs();
+  }
+
+
+
+  Future<void> _loadPredictions() async {
+    // existing code...
+  }
+
+  Future<void> _loadYesterday() async {
+    // existing code...
+  }
+
+// ✅ paste this block exactly below the above functions:
+// Replace existing _loadScores() with this improved version:
+
+
+
+
+
+// Replace existing _loadScores() completely with this version
+
+  String _mapMetricToActualKey(String metric) => metric;
+
+
+  Future<void> _loadCodesAndSubscription() async {
+    final prefs = await SharedPreferences.getInstance();
+    final used = prefs.getStringList('usedCodes') ?? [];
+    final expString = prefs.getString('subscription_expiry'); // <-- consistent key
+    DateTime? exp;
+    if (expString != null) {
+      exp = DateTime.tryParse(expString);
+      if (exp != null && exp.isAfter(DateTime.now())) {
+        // mark premium unlocked and keep expiry
+        _isPremiumUnlocked = true;
+        _subscriptionExpiry = exp;
+      } else {
+        // expiry passed or invalid - clear stored values
+        await prefs.remove('usedCodes');
+        await prefs.remove('subscription_expiry');
+        _isPremiumUnlocked = false;
+        _subscriptionExpiry = null;
+      }
+    }
+    setState(() {
+      _usedCodes.clear();
+      _usedCodes.addAll(used);
+    });
+  }
+  void _loadBannerAd() {
+    _bannerAd = BannerAd(
+      adUnitId: 'ca-app-pub-3940256099942544/6300978111',
+      request: const AdRequest(),
+      size: AdSize.banner,
+      listener: BannerAdListener(
+        onAdLoaded: (_) => setState(() => _isBannerAdReady = true),
+        onAdFailedToLoad: (ad, err) {
+          ad.dispose();
+          debugPrint('BannerAd failed to load: $err');
+        },
+      ),
+    )..load();
+  }
+
+  void _loadRewardedAd() {
+    RewardedAd.load(
+      adUnitId: 'ca-app-pub-3940256099942544/5224354917',
+      request: const AdRequest(),
+      rewardedAdLoadCallback: RewardedAdLoadCallback(
+        onAdLoaded: (ad) {
+          _rewardedAd = ad;
+          _isRewardedAdReady = true;
+        },
+        onAdFailedToLoad: (err) {
+          debugPrint('RewardedAd failed: $err');
+          _isRewardedAdReady = false;
+        },
+      ),
+    );
+  }
+
+  void _showRewardedAd(VoidCallback onCompletion) {
+    if (_isRewardedAdReady && _rewardedAd != null) {
+      _rewardedAd!.fullScreenContentCallback = FullScreenContentCallback(
+        onAdDismissedFullScreenContent: (ad) {
+          ad.dispose();
+          _loadRewardedAd();
+          onCompletion();
+        },
+        onAdFailedToShowFullScreenContent: (ad, err) {
+          ad.dispose();
+          _loadRewardedAd();
+          onCompletion();
+        },
+      );
+      // show expects a callback with two params; using (ad, reward)
+      _rewardedAd!.show(onUserEarnedReward: (ad, reward) {});
+    } else {
+      onCompletion();
+    }
+  }
+
+  Future<void> _launch(String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
+  }
+
+
+
+
+
+
+
+
+
+  void _openImageViewer(String heroTag, ImageProvider image) {
+    showGeneralDialog(
+      context: context,
+      barrierDismissible: true,
+      barrierLabel: 'Close',
+      barrierColor: Colors.black.withOpacity(0.85),
+      transitionDuration: const Duration(milliseconds: 220),
+      pageBuilder: (_, __, ___) {
+        return SafeArea(
+          child: Stack(
+            children: [
+              Center(
+                child: Hero(
+                  tag: heroTag,
+                  child: InteractiveViewer(
+                    panEnabled: true,
+                    minScale: 0.8,
+                    maxScale: 5.0,
+                    child: Image(image: image),
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 12,
+                right: 12,
+                child: IconButton(
+                  icon: const Icon(Icons.close, color: Colors.white, size: 28),
+                  onPressed: () => Navigator.of(context).pop(),
+                  tooltip: 'Close',
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+      transitionBuilder: (_, anim, __, child) {
+        return FadeTransition(
+          opacity: anim,
+          child: ScaleTransition(
+            scale: Tween<double>(begin: 0.98, end: 1.0).animate(anim),
+            child: child,
+          ),
+        );
+      },
+    );
+  }
+
+
+
+
+
+
+
+
+
+  Uri _buildUpiUri({required int amount, required String note}) {
+    return Uri.parse('upi://pay').replace(queryParameters: {
+      'pa': _upiVpa,          // payee VPA
+      'pn': _upiName,         // payee name
+      'am': amount.toString(),
+      'cu': 'INR',
+      'tn': note,
+      'tr': _txnRef,
+      'tid': _txnId,
+    });
+  }
+
+
+
+
+  Map<String, String> _upiParams({required int amount, required String note}) => {
+    'pa': _upiVpa,
+    'pn': _upiName,
+    'am': amount.toString(),
+    'cu': 'INR',
+    'tn': note,
+    'tr': _txnRef,
+    'tid': _txnId,
+  };
+
+  Uri _upiGenericUri(Map<String, String> qp) =>
+      Uri(scheme: 'upi', host: 'pay', queryParameters: qp);
+
+  Uri _gpayUri(Map<String, String> qp)    => Uri.parse('tez://upi/pay').replace(queryParameters: qp);
+  Uri _phonePeUri(Map<String, String> qp) => Uri.parse('phonepe://pay').replace(queryParameters: qp);
+  Uri _paytmUri(Map<String, String> qp)   => Uri.parse('paytm://upi/pay').replace(queryParameters: qp);
+
+  Uri _gpayWebUri(int amount, String note) => Uri.parse(
+    'https://gpay.app.goo.gl/pay'
+        '?pa=${Uri.encodeComponent(_upiVpa)}'
+        '&pn=${Uri.encodeComponent(_upiName)}'
+        '&am=$amount&cu=INR'
+        '&tn=${Uri.encodeComponent(note)}',
+  );
+
+  Future<List<Map<String, dynamic>>> _availableUpiApps({
+    required int amount,
+    required String note,
+  }) async {
+    final qp = _upiParams(amount: amount, note: note);
+    final candidates = [
+      {'label': 'Google Pay', 'uri': _gpayUri(qp)},
+      {'label': 'PhonePe',    'uri': _phonePeUri(qp)},
+      {'label': 'Paytm',      'uri': _paytmUri(qp)},
+    ];
+    final available = <Map<String, dynamic>>[];
+    for (final c in candidates) {
+      if (await canLaunchUrl(c['uri'] as Uri)) available.add(c);
+    }
+    available.add({'label': 'Other UPI app (chooser)', 'uri': _upiGenericUri(qp), 'chooser': true});
+    return available;
+  }
+
+  Future<void> _openUpiDirectForSelectedPlan() async {
+    final plan = _premiumPlans[_selectedPlanIndex];
+    final amt  = plan['amount'] as int;
+    final lbl  = '${plan["labelEn"]} (${plan["labelHi"]})';
+    final note = 'Premium $lbl';
+
+    // ✅ Use the generic UPI URI — this triggers Android's chooser and
+    // opens the selected app directly on its payment page with the
+    // amount and note pre-filled.
+    final uri = Uri(
+      scheme: 'upi',
+      host: 'pay',
+      queryParameters: {
+        'pa': _upiVpa,               // paytm.s1ai0xt@pty
+        'pn': _upiName,              // SattaMatkaAI
+        'am': amt.toString(),        // 100 / 500 / 800 / 1500
+        'cu': 'INR',
+        'tn': note,                  // "Premium 7 Days (7 दिन)" etc.
+        'tr': _txnRef,               // optional, good practice
+        'tid': _txnId,               // optional, good practice
+      },
+    );
+
+    // Try chooser → if it fails, fallback to your PayScreen (QR/manual)
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      _showSnack('No UPI app found. Opening payment instructions…');
+      _openLegacyPayScreen(amt: amt, note: note);
+    }
+  }
+
+
+
+
+  Future<bool> _tryLaunch(Uri uri) async {
+    if (await canLaunchUrl(uri)) {
+      final ok = await launchUrl(uri, mode: LaunchMode.externalApplication);
+      if (ok) return true;
+    }
+    return false;
+  }
+
+
+  // Brand colors
+  final Color _tgColor = const Color(0xFF2AABEE); // Telegram
+  final Color _waColor = const Color(0xFF25D366); // WhatsApp
+
+
+
+  Future<void> _openWhatsAppSupport() async {
+    const phone = '+918850446348';
+    final message = Uri.encodeComponent(
+        'Hello SattaMatkaAI Team 👋\nI have completed my payment. Please verify and share my unlock code.');
+
+    final whatsappUrl = Uri.parse('https://wa.me/$phone?text=$message');
+
+    if (await canLaunchUrl(whatsappUrl)) {
+      await launchUrl(whatsappUrl, mode: LaunchMode.externalApplication);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Could not open WhatsApp')),
+      );
+    }
+  }
+
+
+
+
+
+  Widget _brandPill({
+    required Color color,
+    required IconData icon,
+    required String labelEn,
+    required String labelHi,
+    required VoidCallback onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(16),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        decoration: BoxDecoration(
+          color: color.withOpacity(0.12),                // subtle tint fill
+          borderRadius: BorderRadius.circular(16),
+          border: Border.all(color: color.withOpacity(0.65), width: 1.2),
+          boxShadow: [
+            BoxShadow(
+              color: color.withOpacity(0.18),
+              blurRadius: 14,
+              offset: const Offset(0, 6),
+            ),
+          ],
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, color: color),
+            const SizedBox(width: 10),
+            Text(
+              '$labelEn ($labelHi)',
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+
+
+
+
+
+
+
+
+
+  Future<void> _openUpiForPlan() async {
+    final plan = _premiumPlans[_selectedPlanIndex];
+    final amt  = plan['amount'] as int;
+    final lbl  = '${plan["labelEn"]} (${plan["labelHi"]})';
+
+    // Build the standard UPI query params once
+    final qp = _buildUpiUri(amount: amt, note: 'Premium $lbl').queryParameters;
+
+    // 1️⃣ Try known UPI apps in order
+    final gpay    = Uri.parse('tez://upi/pay').replace(queryParameters: qp);
+    final phonepe = Uri.parse('phonepe://pay').replace(queryParameters: qp);
+    final paytm   = Uri.parse('paytm://upi/pay').replace(queryParameters: qp);
+
+    if (await _tryLaunch(gpay)) return;
+    if (await _tryLaunch(phonepe)) return;
+    if (await _tryLaunch(paytm)) return;
+
+    // 2️⃣ GPay web-to-app fallback
+    final gpayWeb = Uri.parse(
+      'https://gpay.app.goo.gl/pay'
+          '?pa=${Uri.encodeComponent(_upiVpa)}'
+          '&pn=${Uri.encodeComponent(_upiName)}'
+          '&am=$amt'
+          '&cu=INR'
+          '&tn=${Uri.encodeComponent('Premium $lbl')}',
+    );
+    if (await _tryLaunch(gpayWeb)) return;
+
+    // 3️⃣ Final fallback → open your PayScreen
+    _showSnack('No UPI app found. Opening payment screen…');
+    _openLegacyPayScreen(amt: amt, note: 'Premium $lbl');
+  }
+
+  void _openLegacyPayScreen({required int amt, required String note}) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (_) => PayScreen(
+          upiVpa: _upiVpa,
+          upiName: _upiName,
+          amount: amt,
+          note: note,
+        ),
+      ),
+    );
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  // --- Paste this function INSIDE the _HomeScreenState class ---
+  Future<void> _unlockWithCode(String inputCode) async {
+    if (inputCode.trim().isEmpty) {
+      _showSnack('Please enter a code');
+      return;
+    }
+
+    final code = inputCode.replaceAll(RegExp(r'\s+'), '').toUpperCase();
+    debugPrint('🔓 Trying unlock code: $code');
+
+    if (_codes.isEmpty) {
+      _showSnack('Unlock codes not loaded yet');
+      debugPrint('⚠️ No unlock codes loaded');
+      return;
+    }
+
+    final found = _codes.where((u) {
+      try {
+        final stored = ((u as dynamic).code ?? '').toString().replaceAll(RegExp(r'\s+'), '').toUpperCase();
+        return stored == code;
+      } catch (e) {
+        return false;
+      }
+    }).toList();
+
+    if (found.isEmpty) {
+      _showSnack('Code not found');
+      debugPrint('❌ Code not found: $code');
+      return;
+    }
+
+    final unlock = found.first;
+
+    // expiry check
+    try {
+      final dyn = unlock as dynamic;
+      final expiresVal = dyn.expires ?? dyn.expiry ?? dyn.expiresAt;
+      if (expiresVal != null) {
+        final expiry = DateTime.tryParse(expiresVal.toString());
+        if (expiry != null && expiry.isBefore(DateTime.now())) {
+          _showSnack('This code has expired');
+          debugPrint('⚠️ Expired code: ${dyn.code}');
+          return;
+        }
+      }
+    } catch (e) {
+      debugPrint('Expiry check error: $e');
+      // continue — don't block unlock for parse failure
+    }
+
+    // used-check (try common properties)
+    try {
+      final dyn = unlock as dynamic;
+      var isUsed = false;
+      try {
+        if ((dyn.used ?? false) == true) isUsed = true;
+      } catch (_) {}
+      try {
+        if ((dyn.isUsed ?? false) == true) isUsed = true;
+      } catch (_) {}
+      try {
+        if ((dyn.usedAt ?? '').toString().isNotEmpty) isUsed = true;
+      } catch (_) {}
+      if (isUsed || _usedCodes.contains(code)) {
+        _showSnack('This code has already been used');
+        debugPrint('⚠️ Code already used: ${dyn.code}');
+        return;
+      }
+    } catch (e) {
+      debugPrint('Used-check error (non-fatal): $e');
+    }
+
+    // --- APPLY UNLOCK: mark expiry, persist and update UI state ---
+    try {
+      DateTime unlockUntil;
+      try {
+        final dyn = (unlock as dynamic);
+        final expiresVal = dyn.expires ?? dyn.expiry ?? dyn.expiresAt;
+        if (expiresVal != null) {
+          final parsed = DateTime.tryParse(expiresVal.toString());
+          unlockUntil = parsed ?? DateTime.now().add(const Duration(days: 365));
+        } else {
+          unlockUntil = DateTime.now().add(const Duration(days: 365));
+        }
+      } catch (_) {
+        unlockUntil = DateTime.now().add(const Duration(days: 365));
+      }
+
+      // Persist expiry and usedCodes
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString('subscription_expiry', unlockUntil.toIso8601String()); // consistent key
+      // add code to usedCodes list and persist
+      _usedCodes.add(code);
+      await prefs.setStringList('usedCodes', _usedCodes.toList());
+
+      // mark as used on the unlock entry if possible (non-fatal)
+      try {
+        final dyn = unlock as dynamic;
+        try { dyn.used = true; } catch (_) {}
+        try { dyn.isUsed = true; } catch (_) {}
+        try { dyn.usedAt = DateTime.now().toIso8601String(); } catch (_) {}
+      } catch (_) {}
+
+      // Update runtime flags and UI
+      setState(() {
+        _subscriptionExpiry = unlockUntil;
+        _isPremiumUnlocked = true;
+      });
+
+      final formattedDate = '${unlockUntil.year}-${unlockUntil.month.toString().padLeft(2, '0')}-${unlockUntil.day.toString().padLeft(2, '0')}';
+      _showSnack('Premium unlocked until $formattedDate');
+      debugPrint('✅ Unlock success: ${(unlock as dynamic).code ?? "unknown"} → $formattedDate');
+
+    } catch (e) {
+      debugPrint('❌ Unlock apply failed: $e');
+      _showSnack('Unlock failed, try again');
+    }
+  }
+  void _showSnack(String msg) => ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(msg)));
+
+  String _display(String? key) {
+    final raw = (key ?? '').toString();
+    // remove known suffixes (case-insensitive)
+    var s = raw.replaceAll(RegExp(r'_(panel|penal)_chart', caseSensitive: false), '');
+    s = s.replaceAll(RegExp(r'[_\s\-]+'), '_').trim();
+
+    if (s.isEmpty) return 'Unknown market';
+
+    return s
+        .split(RegExp(r'[_\s]+'))
+        .where((w) => w.isNotEmpty)
+        .map((w) => w[0].toUpperCase() + (w.length > 1 ? w.substring(1) : ''))
+        .join(' ');
+  }
+  // ------------------- Fancy UI helpers -------------------
+  Widget _fancyTitle(String title, {String? subtitle, Color? accent}) {
+    final accentColor = accent ?? Colors.pinkAccent;
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 14),
+      child: Row(children: [
+        Expanded(
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            TweenAnimationBuilder<double>(
+              tween: Tween(begin: 0.0, end: 1.0),
+              duration: const Duration(milliseconds: 700),
+              builder: (context, v, child) {
+                return ShaderMask(
+                  shaderCallback: (rect) {
+                    return LinearGradient(
+                      colors: [accentColor.withOpacity(0.9 * v), Colors.white.withOpacity(0.85 * v)],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ).createShader(rect);
+                  },
+                  child: Text(title, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white)),
+                );
+              },
+            ),
+            if (subtitle != null) const SizedBox(height: 4),
+            if (subtitle != null) Text(subtitle, style: const TextStyle(color: Colors.white70, fontSize: 12)),
+          ]),
+        ),
+        Container(width: 48, height: 36, decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), gradient: LinearGradient(colors: [accentColor.withOpacity(0.95), accentColor.withOpacity(0.6)])), child: const Icon(Icons.flash_on, color: Colors.black))
+      ]),
+    );
+  }
+
+  Widget _infoChip(IconData icon, String label, {Color? bg}) {
+    final bgc = bg ?? Colors.white10;
+    return Container(
+      decoration: BoxDecoration(boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.25), blurRadius: 6, offset: const Offset(0, 3))]),
+      child: Chip(
+        avatar: CircleAvatar(backgroundColor: Colors.white12, child: Icon(icon, color: Colors.white, size: 14)),
+        label: Text(label, style: const TextStyle(color: Colors.white, fontSize: 13)),
+        backgroundColor: bgc,
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+      ),
+    );
+  }
+
+  Widget _predictionCard(Prediction p, {required bool premium}) {
+    final y = _histByKey[p.marketKey];
+    final displayName = _display(p.marketKey);
+    final gradient = premium
+        ? LinearGradient(colors: [Colors.deepPurple.shade700, Colors.purpleAccent.shade200], begin: Alignment.topLeft, end: Alignment.bottomRight)
+        : LinearGradient(colors: [Colors.deepOrange.shade400, Colors.orange.shade700], begin: Alignment.topLeft, end: Alignment.bottomRight);
+    final outerGlow = premium
+        ? [BoxShadow(color: Colors.purpleAccent.withOpacity(0.18), blurRadius: 18, spreadRadius: 1, offset: const Offset(0, 6))]
+        : [BoxShadow(color: Colors.orangeAccent.withOpacity(0.12), blurRadius: 12, spreadRadius: 1, offset: const Offset(0, 4))];
+
+    // make sure p.p is a Map (defensive)
+    // normalize the inner predictions map so lookups are consistent regardless of casing/spacing
+    final Map<String, dynamic> _rawP = _getInnerP(p);
+    final Map<String, dynamic> pmap = <String, dynamic>{};
+    _rawP.forEach((k, v) {
+      final nk = k.toString().toLowerCase().replaceAll(RegExp(r'[_\s]+'), '_');
+      pmap[nk] = v;
+    });
+
+    // Use existing toStrList helper to coerce types to List<String>
+    final openDigits = toStrList(pmap['open_digits'] ?? pmap['open_digit'] ?? pmap['opendigits'] ?? pmap['opendigit'] ?? pmap['open']);
+    final closeDigits = toStrList(pmap['close_digits'] ?? pmap['close_digit'] ?? pmap['closedigits'] ?? pmap['closedigit'] ?? pmap['close']);
+    final openPannas = toStrList(pmap['open_pannas'] ?? pmap['open_panna'] ?? pmap['openpannas'] ?? pmap['openpanna'] ?? pmap['open_p']);
+    final closePannas = toStrList(pmap['close_pannas'] ?? pmap['close_panna'] ?? pmap['closepannas'] ?? pmap['closepanna'] ?? pmap['close_p']);
+    final jodis = toStrList(pmap['jodis'] ?? pmap['jodi'] ?? pmap['jodis_list'] ?? pmap['jodi_list']);
+    Widget content = Container(
+      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(gradient: gradient, borderRadius: BorderRadius.circular(14), boxShadow: outerGlow, border: Border.all(color: Colors.white12, width: 0.6)),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(14),
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Row(children: [
+              Expanded(child: Text(displayName, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white))),
+              Container(padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6), decoration: BoxDecoration(color: Colors.black26, borderRadius: BorderRadius.circular(8)), child: Text(premium ? 'Premium' : 'Free', style: const TextStyle(color: Colors.white70, fontWeight: FontWeight.w600))),
+            ]),
+            const SizedBox(height: 8),
+            Wrap(spacing: 8, runSpacing: 8, children: [
+              if (openDigits.isNotEmpty) _infoChip(Icons.filter_1, 'Open: ${openDigits.join(", ")}', bg: Colors.green.shade700.withOpacity(0.9)),
+              if (closeDigits.isNotEmpty) _infoChip(Icons.filter_2, 'Close: ${closeDigits.join(", ")}', bg: Colors.green.shade700.withOpacity(0.9)),
+              if (openPannas.isNotEmpty) _infoChip(Icons.arrow_upward, 'Open P: ${openPannas.take(8).join(", ")}', bg: Colors.orange.shade700.withOpacity(0.92)),
+              if (closePannas.isNotEmpty) _infoChip(Icons.arrow_forward, 'Close P: ${closePannas.take(8).join(", ")}', bg: Colors.orange.shade700.withOpacity(0.92)),
+              if (jodis.isNotEmpty) _infoChip(Icons.star, 'Jodi: ${jodis.join(", ")}', bg: Colors.purple.shade700.withOpacity(0.9)),
+            ]),
+            const SizedBox(height: 10),
+            Row(children: [
+              Text('Score: ${p.score.toStringAsFixed(3)}', style: const TextStyle(color: Colors.white70)),
+              const Spacer(),
+              if (y != null) Text('Y: O${y.openDigit}/C${y.closeDigit}', style: const TextStyle(color: Colors.white60, fontSize: 13)),
+            ]),
+          ]),
+        ),
+      ),
+    );
+
+    if (premium && !_isPremiumUnlocked) {
+      return Stack(children: [
+        content,
+        Positioned.fill(
+          child: ClipRect(
+            child: BackdropFilter(filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6), child: Container(color: Colors.black.withOpacity(0.42))),
+          ),
+        ),
+        Positioned.fill(
+          child: Center(
+            child: ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.deepPurpleAccent.withOpacity(0.95),
+                padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
+                elevation: 12,
+                shadowColor: Colors.purpleAccent,
+              ),
+              icon: const Icon(Icons.lock_open, color: Colors.white),
+              label: const Text('Unlock Premium', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+              onPressed: () {
+                showModalBottomSheet(
+                  context: context,
+                  isScrollControlled: true,                // allow tall content
+                  backgroundColor: Colors.transparent,
+                  builder: (ctx) {
+                    return FractionallySizedBox(
+                      heightFactor: 0.92,                  // cap height to avoid overflow
+                      child: SafeArea(
+                        top: false,
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+                          child: Material(
+                            color: Theme.of(context).colorScheme.surface,
+                            child: SingleChildScrollView(
+                              padding: EdgeInsets.only(
+                                left: 16, right: 16, top: 16,
+                                // keyboard/ad safe padding at bottom
+                                bottom: MediaQuery.of(ctx).viewInsets.bottom + 16,
+                              ),
+                              // 👇 your current sheet UI stays the same
+                              child: _unlockWidget(),
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },            ),
+          ),
+        ),
+      ]);
+    }
+
+    return content;
+  }
+
+  Widget _historyCard(Yesterday y) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(colors: [Colors.deepPurple.shade600, Colors.black.withOpacity(0.6)]),
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.4), blurRadius: 8, offset: const Offset(0, 4))],
+        border: Border.all(color: Colors.white12, width: 0.6),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text(_display(y.marketKey), style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white)),
+          const SizedBox(height: 8),
+          Row(children: [
+            _infoChip(Icons.history, 'Open: ${y.openDigit}', bg: Colors.green.shade700.withOpacity(0.95)),
+            const SizedBox(width: 8),
+            _infoChip(Icons.stop_circle, 'Close: ${y.closeDigit}', bg: Colors.red.shade700.withOpacity(0.9)),
+          ]),
+          const SizedBox(height: 8),
+          Row(children: [
+            _infoChip(Icons.crop_landscape, 'Panna: ${y.openPanna}', bg: Colors.orange.shade700.withOpacity(0.9)),
+            const SizedBox(width: 8),
+            _infoChip(Icons.star_border, 'Jodi: ${y.jodi}', bg: Colors.purple.shade700.withOpacity(0.9)),
+          ]),
+        ]),
+      ),
+    );
+  }
+
+  Widget _infoCard(String title, String body) => Card(
+    color: Colors.grey.shade900,
+    margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    child: Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        Text(title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+        const SizedBox(height: 8),
+        Text(body, style: const TextStyle(fontSize: 16)),
+      ]),
+    ),
+  );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Widget _unlockWidget() {
+    final accent = Colors.pinkAccent;
+    final plan   = _premiumPlans[_selectedPlanIndex];
+    final amt    = plan['amount'] as int;
+    final lblEn  = plan['labelEn'] as String;
+    final lblHi  = plan['labelHi'] as String;
+
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // Subtitle under your bilingual section title
+          const Text(
+            'Scan QR & enter code to unlock (क्यूआर स्कैन करें और कोड डालकर एक्सेस पाएं)',
+            style: TextStyle(color: Colors.white70, fontSize: 13),
+          ),
+          const SizedBox(height: 12),
+
+          // ——— Plan selector ———
+          const Text('Choose a plan • प्लान चुनें', style: TextStyle(color: Colors.white70)),
+          const SizedBox(height: 8),
+          Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            children: List.generate(_premiumPlans.length, (i) {
+              final p   = _premiumPlans[i];
+              final sel = i == _selectedPlanIndex;
+              final col = _payColorFor(i); // ✨ per-plan color
+              return ChoiceChip(
+                selected: sel,
+                showCheckmark: true,
+                checkmarkColor: Colors.black87,
+                label: Text('${p["labelEn"]} (${p["labelHi"]}) — ₹${p["amount"]}'),
+                selectedColor: col,                   // ✨ dynamic highlight
+                backgroundColor: Colors.white10,
+                side: sel
+                    ? BorderSide(color: col.withOpacity(0.85), width: 1.4)
+                    : const BorderSide(color: Colors.white24, width: 1.0),
+                labelStyle: TextStyle(color: sel ? Colors.black : Colors.white),
+                onSelected: (_) => setState(() => _selectedPlanIndex = i),
+              );
+            }),
+          ),
+          const SizedBox(height: 14),
+
+          // ——— Payment block (UPI button + QR zoom) ———
+          Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: Colors.black.withOpacity(0.28),
+              borderRadius: BorderRadius.circular(14),
+              border: Border.all(color: Colors.white12),
+              boxShadow: [BoxShadow(color: accent.withOpacity(0.12), blurRadius: 16, offset: const Offset(0, 6))],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(14),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Pay via UPI — ₹$amt / $lblEn (यूपीआई — ₹$amt / $lblHi)',
+                    style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                  ),
+                  const SizedBox(height: 10),
+
+                  // Method 1: UPI button
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton.icon(
+                      onPressed: _openUpiDirectForSelectedPlan,
+                      icon: const Icon(Icons.account_balance_wallet_outlined),
+                      label: const Text('Pay using UPI / GPay (यूपीआई से भुगतान)'),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: _payColorFor(_selectedPlanIndex),                        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+
+                  // Method 2: QR (tap to zoom)
+                  const Text('OR scan QR (या क्यूआर स्कैन करें)', style: TextStyle(color: Colors.white70)),
+                  const SizedBox(height: 8),
+                  Builder(builder: (_) {
+                    const heroTag = 'qr_premium_hero';
+                    return GestureDetector(
+                      onTap: () => _openImageViewer(heroTag, const AssetImage('assets/qr.png')),
+                      child: Hero(
+                        tag: heroTag,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.asset('assets/qr.png', height: 160),
+                        ),
+                      ),
+                    );
+                  }),
+                ],
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 16),
+
+          // ——— After payment steps ———
+          Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: Colors.grey.shade900,
+              borderRadius: BorderRadius.circular(12),
+              border: Border.all(color: Colors.white10),
+            ),
+            child: const Padding(
+              padding: EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('After Payment (पेमेंट के बाद)', style: TextStyle(fontWeight: FontWeight.w700)),
+                  SizedBox(height: 8),
+                  Text('1) Share payment screenshot on Telegram for quick verification.',
+                      style: TextStyle(color: Colors.white70)),
+                  Text('   1) पेमेंट स्क्रीनशॉट टेलीग्राम पर शेयर करें ताकि जल्दी वेरिफिकेशन हो सके।',
+                      style: TextStyle(color: Colors.white54)),
+                  SizedBox(height: 6),
+                  Text('2) You will receive a one-time unlock code from our team.',
+                      style: TextStyle(color: Colors.white70)),
+                  Text('   2) हमारी टीम आपको एक बार उपयोग होने वाला अनलॉक कोड देगी।',
+                      style: TextStyle(color: Colors.white54)),
+                  SizedBox(height: 6),
+                  Text('3) Enter that code below to activate Premium.',
+                      style: TextStyle(color: Colors.white70)),
+                  Text('   3) नीचे वह कोड डालें और प्रीमियम एक्टिवेट करें।',
+                      style: TextStyle(color: Colors.white54)),
+                ],
+              ),
+            ),
+          ),
+
+
+
+          const SizedBox(height: 12),
+          _socialTwoPills(),
+          const SizedBox(height: 16),
+
+
+
+
+
+
+
+          // ——— Code input + Unlock ———
+          TextField(
+            controller: _codeController,
+            style: const TextStyle(color: Colors.white),
+            decoration: InputDecoration(
+              hintText: 'Enter one-time unlock code (वन-टाइम अनलॉक कोड डालें)',
+              hintStyle: const TextStyle(color: Colors.white38),
+              filled: true,
+              fillColor: Colors.white12,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(8),
+                borderSide: BorderSide.none,
+              ),
+            ),
+          ),
+          const SizedBox(height: 12),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+              onPressed: () async {
+                final input = _codeController.text.trim();
+                if (input.isEmpty) {
+                  _showSnack('Please enter the unlock code');
+                  return;
+                }
+                await _unlockWithCode(input);
+              },
+              child: const Text('Unlock'),
+            ),
+          ),
+
+          const SizedBox(height: 8),
+
+          // ——— Trust note ———
+          const Text(
+            'Payments via UPI • Codes are issued manually after screenshot verification • Activation is instant once code is entered.\n'
+                'पेमेंट UPI से • स्क्रीनशॉट वेरिफिकेशन के बाद कोड मैन्युअली दिया जाता है • कोड डालते ही एक्टिवेशन तुरंत हो जाता है।',
+            style: TextStyle(color: Colors.white54, fontSize: 12),
+          ),
+        ],
+      ),
+    );
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Widget _socialFABs() => Padding(
+    padding: const EdgeInsets.only(bottom: 16, right: 16),
+    child: Column(mainAxisSize: MainAxisSize.min, children: [
+      FloatingActionButton(heroTag: 'wa', mini: true, backgroundColor: Colors.green, child: const FaIcon(FontAwesomeIcons.whatsapp), onPressed: () => _launch('https://wa.me/+918850446348')),
+      const SizedBox(height: 12),
+      FloatingActionButton(heroTag: 'tg', mini: true, backgroundColor: Colors.blue, child: const FaIcon(FontAwesomeIcons.telegram), onPressed: () => _launch('https://t.me/SattamatkaAi')),
+      const SizedBox(height: 12),
+      FloatingActionButton(heroTag: 'ig', mini: true, backgroundColor: Colors.pink, child: const FaIcon(FontAwesomeIcons.instagram), onPressed: () => _launch('https://www.instagram.com/sattamatkaai?igsh=MWhreDlqNWZ2cDNqcw==')),
+      const SizedBox(height: 12),
+      FloatingActionButton(heroTag: 'fb', mini: true, backgroundColor: Colors.indigo, child: const FaIcon(FontAwesomeIcons.facebook), onPressed: () => _launch('https://www.facebook.com/share/19mHUCgNjY/')),
+      const SizedBox(height: 12),
+      FloatingActionButton(heroTag: 'yt', mini: true, backgroundColor: Colors.red, child: const FaIcon(FontAwesomeIcons.youtube), onPressed: () => _launch('https://www.youtube.com/@SattaMatkaAI')),
+    ]),
+  );
+
+  // ---------------- build Home ----------------
+  Widget _buildHome() {
+    final premiumPreview = _premiumPreds.isNotEmpty ? _premiumPreds.first : (_allPreds.isNotEmpty ? _allPreds.first : null);
+
+    return ListView(padding: const EdgeInsets.only(bottom: 120), children: [
+      _fancyTitle(
+        AppTitles.homeFreeTitle,
+        subtitle: '${_freePreds.length} markets • ${AppSubtitles.homeFreeSubtitle}',
+        accent: Colors.deepOrangeAccent,
+      ),
+
+
+
+
+      Padding(padding: const EdgeInsets.symmetric(horizontal: 8), child: Column(children: _freePreds.take(7).map((p) => _predictionCard(p, premium: false)).toList())),
+      Center(child: TextButton(onPressed: () => _showRewardedAd(() { _tabController.animateTo(1); _tabsUnlocked.add(1); }), child: const Text("Show more free markets", style: TextStyle(color: Colors.deepOrange)))),
+      const SizedBox(height: 10),
+
+      _fancyTitle(
+        AppTitles.homePremiumTitle,
+        subtitle: '${_premiumPreds.length} markets • ${AppSubtitles.homePremiumSubtitle}',
+        accent: Colors.purpleAccent,
+      ),
+
+
+
+
+      Padding(padding: const EdgeInsets.symmetric(horizontal: 8), child: Column(children: _premiumPreds.take(7).map((p) => _predictionCard(p, premium: true)).toList())),
+      Center(child: TextButton(onPressed: () => _showRewardedAd(() { _tabController.animateTo(2); _tabsUnlocked.add(2); }), child: const Text("Show more premium markets", style: TextStyle(color: Colors.purpleAccent)))),
+      const SizedBox(height: 16),
+
+
+      const SizedBox(height: 18),
+
+      _fancyTitle(
+        AppTitles.homeYesterdayTitle,
+        subtitle: '${_allYest.length} results • ${AppSubtitles.homeYesterdaySubtitle}',
+        accent: Colors.lightBlueAccent,
+      ),
+      Padding(padding: const EdgeInsets.symmetric(horizontal: 8), child: Column(children: _allYest.take(8).map((y) => _historyCard(y)).toList())),
+      Center(child: TextButton(onPressed: () => _showRewardedAd(() { _tabsUnlocked.add(3); _tabController.animateTo(3); }), child: const Text("Show more history", style: TextStyle(color: Colors.lightBlueAccent)))),
+      const SizedBox(height: 10),
+      _fancyTitle(
+        AppTitles.homeSangamTitle,
+        subtitle: AppSubtitles.homeSangamSubtitle,
+        accent: Colors.pinkAccent,
+      ),
+
+
+      // 🔹 Lucky Sangam Preview Section
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        child: Builder(
+          builder: (_) {
+            final random = Random();
+            SangamMarket? previewMarket;
+
+            // Pick random sangam if already generated
+            if (_sangamData.isNotEmpty) {
+              previewMarket = _sangamData[random.nextInt(_sangamData.length)];
+            }
+            // Otherwise fallback to random prediction
+            else if (_allPreds.isNotEmpty) {
+              // fallback: pick a random prediction and show a short sangam preview
+              final allMarkets = _allPreds;
+              final picked = allMarkets[random.nextInt(allMarkets.length)];
+
+              // Determine premium via patterns (works for Prediction or Map shapes)
+              final dynPicked = picked as dynamic;
+              final String pickedKey = (_predictionToMap(picked)['market'] ?? '').toString().toLowerCase();
+              final bool isPrem = _premiumPatterns.any((pat) => pickedKey.contains(pat));
+
+              // Ensure we have an inner map of predictions
+              final Map<String, dynamic> _pp = _getInnerP(picked);
+
+              // Build preview sangams (safe conversion & take up to 3)
+              final List<String> previewSangams = toStrList(_pp['Open Pannas'] ?? _pp['open_pannas']).take(3).toList();
+
+              previewMarket = SangamMarket(
+                market: _display((_predictionToMap(picked)['market'] ?? '').toString()),
+                premium: isPrem,
+                sangams: previewSangams,
+              );
+            }
+            // No preview available
+            if (previewMarket == null) {
+              return Card(
+                margin: const EdgeInsets.symmetric(vertical: 8),
+                color: Colors.black.withOpacity(0.35),
+                child: const Padding(
+                  padding: EdgeInsets.all(12),
+                  child: Text(
+                    'No lucky sangam available',
+                    style: TextStyle(color: Colors.white70),
+                  ),
+                ),
+              );
+            }
+
+            // Render Lucky Sangam preview card
+            return Card(
+              margin: const EdgeInsets.symmetric(vertical: 8),
+              color: Colors.black.withOpacity(0.35),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+              child: Padding(
+                padding: const EdgeInsets.all(12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      previewMarket.market,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.amberAccent,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Wrap(
+                      spacing: 8,
+                      children: previewMarket.sangams
+                          .take(8)
+                          .map(
+                            (s) => Chip(
+                          label: Text(
+                            s,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          backgroundColor:
+                          Colors.pinkAccent.withOpacity(0.85),
+                          elevation: 4,
+                          shadowColor: Colors.amberAccent,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 6),
+                        ),
+                      )
+                          .toList(),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+
+      // 🔹 Show More Lucky Sangams Button (Rewarded Ad + Navigation)
+      const SizedBox(height: 8),
+      Center(
+        child: TextButton.icon(
+          onPressed: () {
+            // if premium already unlocked → jump directly to Sangam tab
+            if (_isPremiumUnlocked) {
+              _tabController.animateTo(4);
+              return;
+            }
+
+            // show rewarded ad → after closing, open Sangam tab
+            _showRewardedAd(() {
+              Future.delayed(const Duration(milliseconds: 300), () {
+                if (mounted) {
+                  setState(() => _tabController.index = 4);
+                }
+              });
+            });
+          },          icon: const Icon(Icons.play_arrow, color: Colors.pinkAccent),
+          label: const Text(
+            'Show more Lucky Sangams',
+            style: TextStyle(
+              color: Colors.white70,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          style: TextButton.styleFrom(
+            padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
+            backgroundColor: Colors.black.withOpacity(0.25),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12)),
+          ),
+        ),
+      ),
+      const SizedBox(height: 12),
+
+      _fancyTitle(
+        AppTitles.homeUnlockTitle,
+        subtitle: AppSubtitles.homeUnlockSubtitle,
+      ),
+      _infoCard('Unlock Premium Markets', '▶ Tap the lock on a premium card\n▶ Scan QR to pay ₹500/Week\n▶ Enter your one-time code to unlock'),
+      const SizedBox(height: 12),
+      _unlockWidget(),
+      const SizedBox(height: 32),
+      _fancyTitle(
+        AppTitles.homeHowItWorksTitle,
+        subtitle: AppSubtitles.homeHowItWorksSubtitle,
+      ),
+      _infoCard('AI Prediction Strategy', 'Our ML engine analyzes decades of Matka data, simulates traps—fake repeats, misleading pannas—and applies frequency analysis to forecast digits, pannas & jodis. Probabilistic, not guaranteed.'),
+      const SizedBox(height: 16),
+      _fancyTitle(
+        AppTitles.homeDisclaimerTitle,
+        subtitle: AppSubtitles.homeDisclaimerSubtitle,
+      ),
+      _infoCard('Responsible Use Notice', 'For educational & entertainment purposes only. Satta Matka may be illegal in some jurisdictions. We are not responsible for financial losses. Play responsibly and within legal guidelines.'),
+      const SizedBox(height: 120),
+    ]);
+  }
+
+  Widget _buildListTab(List<Widget> cards, String title) {
+    return Scaffold(
+      appBar: PreferredSize(preferredSize: const Size.fromHeight(60), child: AppBar(title: Text(title), centerTitle: true)),
+      body: ListView(children: [
+        _fancyTitle(title, subtitle: 'Tap card for details'),
+        if (cards.isEmpty)
+          const Padding(padding: EdgeInsets.all(32), child: Center(child: Text('No data available', style: TextStyle(color: Colors.white70)))),
+        if (cards.isNotEmpty) ...cards,
+        const SizedBox(height: 16),
+        const SizedBox(height: 18),
+        _sectionNoteUnlock(),
+        const SizedBox(height: 16),
+      ]),
+    );
+  }
+
+
+
+
+
+  void _listenYesterdayRTDB() {
+    final ref = FirebaseDatabase.instance.ref('sattaboss/yesterday_results');
+
+    ref.onValue.listen((event) {
+      if (!event.snapshot.exists) {
+        debugPrint('⚠️ No RTDB data for Yesterday Winners');
+        return;
+      }
+
+      final Map allDates = Map<String, dynamic>.from(event.snapshot.value as Map);
+      if (allDates.isEmpty) return;
+
+      // pick latest date node
+      final dates = allDates.keys.map((e) => e.toString()).toList()..sort();
+      final latest = dates.last;
+
+      final Map markets = Map<String, dynamic>.from(allDates[latest] as Map);
+
+      final list = markets.entries.map((e) {
+        final d = Map<String, dynamic>.from(e.value as Map);
+        return Yesterday(
+          marketKey: e.key,
+          openDigit: d['Open Digit']?.toString() ?? '',
+          closeDigit: d['Close Digit']?.toString() ?? '',
+          openPanna: d['Open Panna']?.toString() ?? '',
+          closePanna: d['Close Panna']?.toString() ?? '',
+          jodi: d['Jodi']?.toString() ?? '',
+        );
+      }).toList();
+
+      setState(() {
+        _allYest = list;
+        _histByKey = { for (final h in list) h.marketKey : h };
+      });
+
+      debugPrint('✅ RTDB: Loaded ${list.length} Yesterday markets for $latest');
+    });
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // paste this inside your State class (e.g. class _HomeScreenState extends State<HomeScreen>)
+
+// Replace the existing scoreSection() function body with this
+
+
+
+
+  Widget _smallBadge(String text) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: Colors.green.withOpacity(0.12),
+        borderRadius: BorderRadius.circular(6),
+        border: Border.all(color: Colors.green.withOpacity(0.4)),
+      ),
+      child: Text(text, style: const TextStyle(fontSize: 12, color: Colors.green)),
+    );
+  }
+
+
+
+// Helper: small colored badge widget used above
+
+
+
+  Widget _sectionNoteUnlock() => Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 16),
+    child: Card(
+      color: Colors.grey.shade900,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: const [
+          Text('Unlock Premium', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+          SizedBox(height: 6),
+          Text('Tap lock on a premium card or use the code to unlock full markets.', style: TextStyle(color: Colors.white70)),
+        ]),
+      ),
+    ),
+  );
+
+
+
+
+  // ---------- SOCIAL CONTACT BUTTONS (Telegram + WhatsApp) ----------
+
+  ButtonStyle get _ctaOutlineStyle => OutlinedButton.styleFrom(
+    foregroundColor: Colors.white,
+    side: const BorderSide(color: Colors.white24),
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+  );
+
+  Widget _socialPill({
+    required IconData icon,
+    required String labelEn,
+    required String labelHi,
+    required VoidCallback onTap,
+  }) {
+    return OutlinedButton.icon(
+      onPressed: onTap,
+      style: _ctaOutlineStyle,
+      icon: Icon(icon),
+      label: Text('$labelEn ($labelHi)'),
+    );
+  }
+
+  Widget _socialTwoPills() {
+    return Wrap(
+      spacing: 12,
+      runSpacing: 10,
+      alignment: WrapAlignment.center,
+      children: [
+        _socialPill(
+          icon: Icons.send,
+          labelEn: 'Open Telegram',
+          labelHi: 'टेलीग्राम खोलें',
+          onTap: () => launchUrl(
+            Uri.parse('https://t.me/SattaMatkaAI'),
+            mode: LaunchMode.externalApplication,
+          ),
+        ),
+        _socialPill(
+          icon: Icons.chat,
+          labelEn: 'WhatsApp',
+          labelHi: 'व्हाट्सएप',
+          onTap: () async {
+            const raw = '+918850446348';
+            final digits = raw.replaceAll(RegExp(r'\D'), '');
+            final msg = Uri.encodeComponent(
+                'Hi SattaMatkaAI, I have paid for Premium. Please verify and share my unlock code.');
+            final deep = Uri.parse('whatsapp://send?phone=$digits&text=$msg');
+            final waMe = Uri.parse('https://wa.me/$digits?text=$msg');
+
+            if (await canLaunchUrl(deep)) {
+              await launchUrl(deep, mode: LaunchMode.externalApplication);
+            } else if (await canLaunchUrl(waMe)) {
+              await launchUrl(waMe, mode: LaunchMode.externalApplication);
+            } else {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('WhatsApp not found on device')),
+              );
+            }
+          },
+        ),
+      ],
+    );
+  }
+
+
+
+
+
+
+  Color _chipColor(String metric) {
+    switch (metric) {
+      case 'open_digit':
+      case 'close_digit':
+        return Colors.green.shade700;
+      case 'open_panna':
+      case 'close_panna':
+        return Colors.orange.shade700;
+      case 'jodi':
+        return Colors.purple.shade700;
+      default:
+        return Colors.grey.shade700;
+    }
+  }
+
+  IconData _metricIcon(String metric) {
+    switch (metric) {
+      case 'open_digit':
+      case 'close_digit':
+        return Icons.arrow_upward;
+      case 'open_panna':
+      case 'close_panna':
+        return Icons.arrow_forward;
+      case 'jodi':
+        return Icons.star;
+      default:
+        return Icons.check;
+    }
+  }
+  String _metricLabel(String metric) {
+    switch (metric) {
+      case 'open_digit': return 'Open';
+      case 'close_digit': return 'Close';
+      case 'open_panna': return 'Open Panna';
+      case 'close_panna': return 'Close Panna';
+      case 'jodi': return 'Jodi';
+      default:
+        return metric.splitMapJoin(RegExp(r'_'), onMatch: (_) => ' ', onNonMatch: (s) => s).trim().split(' ').map((w) => w.isEmpty ? w : (w[0].toUpperCase() + w.substring(1))).join(' ');
+    }
+  }
+  String _uiDisplayFor(String metric, dynamic value) {
+    if (value == null) return '';
+    if (metric == 'open_digit' || metric == 'close_digit') return '↑ ${value.toString()} — PASS';
+    if (metric == 'open_panna' || metric == 'close_panna') return '→ ${value.toString()} — PASS';
+    if (metric == 'jodi') return '★ ${value.toString()} — PASS';
+    return value.toString();
+  }
+
+
+
+// ---------------- Sangam generation (3 per market) ----------------
+  List<SangamMarket> _generateSangamsForAllMarkets() {
+    final List<SangamMarket> result = [];
+    if (_allPreds.isEmpty) return result;
+
+    // -----------------------------
+    // FIXED PANNA MAP (LOCAL - your finalized lists)
+    // -----------------------------
+    final Map<int, List<String>> fixedPannasByDigit = {
+      0: ["118","127","136","145","190","226","235","244","280","334","370","460","550","299","389","479","488","569","578","668","677"],
+      1: ["100","119","128","137","146","155","227","236","245","290","335","344","380","470","560","399","489","579","588","669","678"],
+      2: ["110","200","129","138","147","156","228","237","246","255","336","345","390","480","570","660","499","589","679","688","778"],
+      3: ["777","444","120","300","111","139","148","157","166","229","238","247","256","337","346","355","445","490","580","670","599","689","779","788"],
+      4: ["112","130","220","400","149","158","167","239","248","257","266","338","347","356","446","455","590","680","770","699","789"],
+      5: ["113","122","140","230","500","159","168","177","249","258","267","339","348","357","366","447","456","690","780","799","889"],
+      6: ["888","555","114","123","150","240","330","600","222","169","178","259","268","277","349","358","367","448","457","466","556","790","880","899"],
+      7: ["115","124","133","160","223","250","340","700","179","188","269","278","359","368","377","449","458","467","557","566","890"],
+      8: ["116","125","134","170","224","233","260","350","440","800","189","279","288","369","378","459","468","477","558","567","990"],
+      9: ["199","289","379","388","469","478","559","568","577","667","999","666","117","126","135","144","180","225","234","270","360","450","900","333"],
+    };
+    // -----------------------------
+    // End of fixed panna map
+    // -----------------------------
+
+    // helper lists
+    final List<int> digitsPresent = fixedPannasByDigit.keys.toList();
+    final List<String> allFixedPannas = fixedPannasByDigit.values.expand((l) => l).toSet().toList();
+
+    // deterministic date seed (same day => same sangams)
+    final dateSeed = DateTime.now().toIso8601String().split('T').first;
+
+    // preserve your sort: premium markets first
+    final all = List<Prediction>.from(_allPreds);
+    all.sort((a, b) {
+      final aPrem = _premiumPatterns.any((pat) => a.marketKey.contains(pat));
+      final bPrem = _premiumPatterns.any((pat) => b.marketKey.contains(pat));
+      if (aPrem && !bPrem) return -1;
+      if (!aPrem && bPrem) return 1;
+      return a.marketKey.compareTo(b.marketKey);
+    });
+
+    // safe digit parser: extract an int 0..9 fallback to first available fixed digit
+    int parseDigitSafe(String d) {
+      final s = d.trim();
+      if (s.isEmpty) return digitsPresent.isNotEmpty ? digitsPresent.first : 0;
+      try {
+        final val = int.parse(s);
+        if (val >= 0 && val <= 9) return val;
+        // if multi-digit (like '10'), take last digit
+        return int.parse(s[s.length - 1]);
+      } catch (_) {
+        // try to extract last numeric char
+        final m = RegExp(r'\d').allMatches(s).map((e) => s[e.start]).toList();
+        if (m.isNotEmpty) {
+          try { return int.parse(m.last); } catch (_) {}
+        }
+        return digitsPresent.isNotEmpty ? digitsPresent.first : 0;
+      }
+    }
+
+    // pick panna from fixed list for digit, safe fallback to any fixed panna
+    String pickFromFixed(int digit, Random rng) {
+      final list = fixedPannasByDigit[digit] ?? [];
+      if (list.isNotEmpty) return list[rng.nextInt(list.length)];
+      // fallback
+      return allFixedPannas.isNotEmpty ? allFixedPannas[rng.nextInt(allFixedPannas.length)] : '000';
+    }
+
+    for (final p in all) {
+      // defensive extraction
+      final dynamic openPannasRaw = _getInnerP(p)['open_pannas'] ?? _getInnerP(p)['Open Pannas'];
+
+      final dynamic closePannasRaw = _getInnerP(p)['close_pannas'] ?? _getInnerP(p)['Close Pannas'];
+
+      final dynamic openDigitsRaw = _getInnerP(p)['open_digits'] ?? _getInnerP(p)['Open digits'];
+
+      final dynamic closeDigitsRaw = _getInnerP(p)['close_digits'] ?? _getInnerP(p)['close digits'];
+
+      final openPannas = <String>[];
+      final closePannas = <String>[];
+      final openDigits = <String>[];
+      final closeDigits = <String>[];
+
+      if (openPannasRaw != null && openPannasRaw is Iterable) {
+        for (final dynamic x in openPannasRaw) {
+          final s = x?.toString() ?? '';
+          if (s.trim().isNotEmpty) openPannas.add(s);
+        }
+      }
+      if (closePannasRaw != null && closePannasRaw is Iterable) {
+        for (final dynamic x in closePannasRaw) {
+          final s = x?.toString() ?? '';
+          if (s.trim().isNotEmpty) closePannas.add(s);
+        }
+      }
+      if (openDigitsRaw != null && openDigitsRaw is Iterable) {
+        for (final dynamic x in openDigitsRaw) {
+          final s = x?.toString() ?? '';
+          if (s.trim().isNotEmpty) openDigits.add(s);
+        }
+      }
+      if (closeDigitsRaw != null && closeDigitsRaw is Iterable) {
+        for (final dynamic x in closeDigitsRaw) {
+          final s = x?.toString() ?? '';
+          if (s.trim().isNotEmpty) closeDigits.add(s);
+        }
+      }
+
+      // If digits missing, skip
+      if (openDigits.isEmpty || closeDigits.isEmpty) continue;
+
+      // seeded RNG per market/day for deterministic output
+      final seedString = '${p.marketKey}::$dateSeed';
+      final int folded = seedString.runes.fold<int>(0, (int prev, int r) => prev * 31 + r);
+      final int seed = folded & 0x7fffffff;
+      final rng = Random(seed);
+
+      final Set<String> sangams = {};
+      final attemptsLimit = 60; // try to build 3 unique sangams
+
+      for (int attempt = 0; attempt < attemptsLimit && sangams.length < 3; attempt++) {
+        final oDStr = openDigits[rng.nextInt(openDigits.length)];
+        final cDStr = closeDigits[rng.nextInt(closeDigits.length)];
+        final oD = parseDigitSafe(oDStr);
+        final cD = parseDigitSafe(cDStr);
+
+        // PICK FROM FIXED lists only (no mismatch)
+        final oP = pickFromFixed(oD, rng);
+        final cP = pickFromFixed(cD, rng);
+
+        // final formatted sangam, e.g. '140-57-270' (openP - openDigitcloseDigit - closeP)
+        final sang = '$oP-${oD.toString()}${cD.toString()}-$cP';
+        sangams.add(sang);
+      }
+
+      if (sangams.isNotEmpty) {
+        final isPrem = _premiumPatterns.any((pat) => p.marketKey.contains(pat));
+        result.add(SangamMarket(market: _display(p.marketKey), premium: isPrem, sangams: sangams.toList().take(3).toList()));
+      }
+    }
+
+    return result;
+  } Future<void> _saveSangamsToPrefs() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final now = DateTime.now();
+      final expiry = now.add(const Duration(hours: 12)).toIso8601String();
+      final List<Map<String, dynamic>> serial = _sangamData.map((m) => {'market': m.market, 'premium': m.premium, 'sangams': m.sangams}).toList();
+      await prefs.setString('sangam_data_json', jsonEncode(serial));
+      await prefs.setString('sangam_data_expiry', expiry);
+      debugPrint('Saved sangams -> expiry=$expiry count=${serial.length}');
+    } catch (e) {
+      debugPrint('Failed to save sangams: $e');
+    }
+  }
+
+  Future<void> _loadSangamsFromPrefs() async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final raw = prefs.getString('sangam_data_json');
+      final expiryStr = prefs.getString('sangam_data_expiry');
+      if (raw == null || expiryStr == null) return;
+      final expiry = DateTime.tryParse(expiryStr);
+      if (expiry == null || expiry.isBefore(DateTime.now())) {
+        await prefs.remove('sangam_data_json');
+        await prefs.remove('sangam_data_expiry');
+        debugPrint('Saved sangams expired — cleared');
+        return;
+      }
+      final List<dynamic> decoded = json.decode(raw) as List<dynamic>;
+      final List<SangamMarket> loaded = decoded.map((e) {
+        final mm = e as Map<String, dynamic>;
+        return SangamMarket(market: mm['market'] as String, premium: mm['premium'] as bool, sangams: (mm['sangams'] as List<dynamic>).map((x) => x.toString()).toList());
+      }).toList();
+      setState(() {
+        _sangamData = loaded;
+        _sangamsGenerated = _sangamData.isNotEmpty;
+      });
+      debugPrint('Loaded saved sangams (${_sangamData.length}) — valid until $expiryStr');
+    } catch (e) {
+      debugPrint('Failed to load saved sangams: $e');
+    }
+  }
+
+  // -------------- Score tab UI --------------
+
+  // ---------------- Sangam tab UI ----------------
+  Widget _buildSangamTab() {
+    final gradient = const LinearGradient(colors: [Color(0xFF2A0061), Color(0xFF0B0B12), Color(0xFF12002B)], begin: Alignment.topLeft, end: Alignment.bottomRight);
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Container(
+        decoration: BoxDecoration(gradient: gradient),
+        child: _sangamsGenerated == false
+            ? Center(
+          child: ElevatedButton.icon(
+            style: ElevatedButton.styleFrom(backgroundColor: Colors.pinkAccent, padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 14), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)), elevation: 6),
+            icon: const Icon(Icons.auto_awesome, color: Colors.white),
+            label: const Text("✨ Reveal Your Lucky Sangams", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+            onPressed: () => _showRewardedAd(() async {
+              setState(() {
+                _sangamData = _generateSangamsForAllMarkets();
+                _sangamsGenerated = _sangamData.isNotEmpty;
+              });
+              if (_sangamsGenerated) await _saveSangamsToPrefs();
+            }),
+          ),
+        )
+            : ListView.builder(
+          padding: const EdgeInsets.all(12),
+          itemCount: _sangamData.length,
+          itemBuilder: (context, idx) {
+            final m = _sangamData[idx];
+            final card = Card(
+              color: Colors.black.withOpacity(0.35),
+              elevation: m.premium ? 10 : 3,
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+              child: Padding(
+                padding: const EdgeInsets.all(14),
+                child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Row(children: [
+                    Expanded(child: Text(m.market, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: m.premium ? Colors.amberAccent : Colors.white, shadows: [Shadow(color: Colors.pinkAccent.withOpacity(0.6), blurRadius: 8)]))),
+                    if (m.premium) Container(padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4), decoration: BoxDecoration(color: Colors.black.withOpacity(0.25), borderRadius: BorderRadius.circular(8)), child: const Text('PREMIUM', style: TextStyle(color: Colors.white70, fontSize: 12))),
+                  ]),
+                  const SizedBox(height: 10),
+                  Wrap(spacing: 8, runSpacing: 8, children: m.sangams.map((s) => AnimatedContainer(duration: const Duration(milliseconds: 420), curve: Curves.easeOut, child: Chip(label: Text(s, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)), backgroundColor: Colors.pinkAccent.withOpacity(0.85), elevation: 4, shadowColor: Colors.amberAccent, padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6)))).toList()),
+                  const SizedBox(height: 8),
+                  Align(alignment: Alignment.bottomRight, child: Text('Sangams: ${m.sangams.length}', style: const TextStyle(color: Colors.white54, fontSize: 12))),
+                ]),
+              ),
+            );
+
+            if (m.premium && !_isPremiumUnlocked) {
+              return Stack(children: [
+                card,
+                Positioned.fill(
+                  child: ClipRect(
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
+                      child: Container(color: Colors.black.withOpacity(0.45)),
+                    ),
+                  ),
+                ),
+                Positioned.fill(
+                  child: Center(
+                    child: ElevatedButton.icon(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.deepPurpleAccent.withOpacity(0.95),
+                        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 12),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(28)),
+                        elevation: 10,
+                        shadowColor: Colors.purpleAccent,
+                      ),
+                      icon: const Icon(Icons.lock_open, color: Colors.white),
+                      label: const Text(
+                        'Unlock Premium',
+                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+
+
+
+
+                      ),
+
+
+
+
+
+
+
+                      onPressed: () {
+                        showModalBottomSheet(
+                          context: context,
+                          isScrollControlled: true,                // allow tall content
+                          backgroundColor: _payColorFor(_selectedPlanIndex),                          builder: (ctx) {
+                            return FractionallySizedBox(
+                              heightFactor: 0.92,                  // cap height to avoid overflow
+                              child: SafeArea(
+                                top: false,
+                                child: ClipRRect(
+                                  borderRadius: const BorderRadius.vertical(top: Radius.circular(24)),
+                                  child: Material(
+                                    color: Theme.of(context).colorScheme.surface,
+                                    child: SingleChildScrollView(
+                                      padding: EdgeInsets.only(
+                                        left: 16, right: 16, top: 16,
+                                        // keyboard/ad safe padding at bottom
+                                        bottom: MediaQuery.of(ctx).viewInsets.bottom + 16,
+                                      ),
+                                      // 👇 your current sheet UI stays the same
+                                      child: _unlockWidget(),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    ),
+                  ),
+                ),
+              ]);
+            }            return card;
+          },
+        ),
+      ),
+      floatingActionButton: _sangamsGenerated ? FloatingActionButton(backgroundColor: Colors.amberAccent, child: const Icon(Icons.refresh, color: Colors.black), onPressed: () => _showRewardedAd(() async { setState(() { _sangamData = _generateSangamsForAllMarkets(); }); if (_sangamsGenerated) await _saveSangamsToPrefs(); })) : null,
+    );
+  }
+
+  // ---------------- App build ----------------
+  @override
+  Widget build(BuildContext context) {
+    if (_loading) return const Scaffold(body: Center(child: CircularProgressIndicator()));
+    return Scaffold(
+      drawer: Drawer(child: ListView(padding: EdgeInsets.zero, children: const [DrawerHeader(decoration: BoxDecoration(color: Colors.deepPurple), child: Text('SattaBoss Menu', style: TextStyle(color: Colors.white, fontSize: 24))), ListTile(leading: Icon(Icons.home), title: Text('Home')), ListTile(leading: Icon(Icons.list), title: Text('Free Markets')), ListTile(leading: Icon(Icons.star), title: Text('Premium Markets')), ListTile(leading: Icon(Icons.history), title: Text('History')),  ListTile(leading: Icon(Icons.auto_awesome), title: Text('Sangam'))])),
+      appBar: AppBar(title: const Text('SattaMatkaAI'), bottom: TabBar(controller: _tabController,
+          tabs: const [Tab(icon: Icon(Icons.home), text: 'Home'),
+            Tab(icon: Icon(Icons.list), text: 'Free Markets'), Tab(icon: Icon(Icons.star),
+                text: 'Premium'), Tab(icon: Icon(Icons.history), text: 'History'),
+
+            Tab(icon: Icon(Icons.auto_awesome), text: 'Sangam')])),
+      body: TabBarView(controller: _tabController, children: [
+        _buildHome(),
+        _buildListTab(_freePreds.map((p) => _predictionCard(p, premium: false)).toList(), 'All Free Markets'),
+        _buildListTab(_premiumPreds.map((p) => _predictionCard(p, premium: true)).toList(), 'All Premium Markets'),
+        _buildListTab(_allYest.map(_historyCard).toList(), 'All Yesterday Winners'),
+        _buildSangamTab(),
+      ]),
+      bottomNavigationBar: _isBannerAdReady ? SizedBox(width: _bannerAd.size.width.toDouble(), height: _bannerAd.size.height.toDouble(), child: AdWidget(ad: _bannerAd)) : null,
+      floatingActionButton: _socialFABs(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endDocked,
+    );
+  }
+}
+
+extension on DateTime {
+  String toShortDateString() {
+    return '${year.toString().padLeft(4, '0')}-${month.toString().padLeft(2, '0')}-${day.toString().padLeft(2, '0')}';
+  }
+}

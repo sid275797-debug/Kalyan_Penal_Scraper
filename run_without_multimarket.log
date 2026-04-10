@@ -1,0 +1,4 @@
+[04:27:37] 🚀 Starting pipeline (WITHOUT multi-market scraper)
+[04:27:37] ▶️ Running: python aggregate_history.py
+[04:27:51] ❌ Failed: python aggregate_history.py (rc=1)
+[04:27:51] ❌ Stopping pipeline due to failure.

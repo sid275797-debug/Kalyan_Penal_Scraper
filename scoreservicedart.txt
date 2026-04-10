@@ -1,0 +1,66 @@
+import 'dart:convert';
+import 'package:flutter/services.dart' show rootBundle;
+import 'package:firebase_database/firebase_database.dart';
+
+/// ✅ FINAL ScoreService (single true node)
+/// Reads `/app_data/score_hits/<latest_date>` and returns {generated_at, hits: [...]}
+class ScoreService {
+  static const String _rtdbUrl =
+      'https://sattamatkaai-77102-default-rtdb.firebaseio.com/app_data/score_hits';
+  static const String _assetPath = 'assets/score_hits.json';
+
+  Future<Map<String, dynamic>> load() async {
+    try {
+      final ref = FirebaseDatabase.instance.refFromURL(_rtdbUrl);
+      final snap = await ref.get();
+      print('🔥 [DEBUG] Fetched snapshot from Firebase: exists=${snap.exists}, value=${snap.value}');
+
+
+
+      if (snap.exists && snap.value != null) {
+        final value = snap.value;
+
+        // value is a dated map like { "2025-10-21": { generated_at, hits: [...] } }
+        if (value is Map) {
+          final dateKeys = value.keys.whereType<String>().toList()..sort();
+          final latestKey = dateKeys.isNotEmpty ? dateKeys.last : null;
+          if (latestKey != null && value[latestKey] is Map) {
+            final inner = Map<String, dynamic>.from(value[latestKey]);
+            if (inner.containsKey('hits')) {
+              final hits = inner['hits'];
+              if (hits is List) {
+                print('[ScoreService] Loaded ${hits.length} hits from dated node $latestKey');
+                return {
+                  'generated_at':
+                  inner['generated_at'] ?? DateTime.now().toIso8601String(),
+                  'hits': List<Map<String, dynamic>>.from(
+                      hits.whereType<Map>().map((e) => Map<String, dynamic>.from(e))),
+                };
+              }
+            }
+          }
+        }
+      }
+    } catch (e, st) {
+      print('[ScoreService] RTDB fetch failed: $e\n$st');
+    }
+
+    // fallback
+    try {
+      final raw = await rootBundle.loadString(_assetPath);
+      final decoded = json.decode(raw);
+      if (decoded is Map && decoded.containsKey('hits')) {
+        return {
+          'generated_at':
+          decoded['generated_at'] ?? DateTime.now().toIso8601String(),
+          'hits': List<Map<String, dynamic>>.from(
+              (decoded['hits'] as List).whereType<Map>()),
+        };
+      }
+    } catch (e) {
+      print('[ScoreService] Asset fallback failed: $e');
+    }
+
+    return {'generated_at': DateTime.now().toIso8601String(), 'hits': []};
+  }
+}

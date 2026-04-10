@@ -1,0 +1,28 @@
+=== SCORE_TRY3 START 2025-10-27T01:32:56Z ===
+C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\score_only_json_verbose.py:387: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "timestamp": datetime.utcnow().isoformat() + "Z",
+C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\score_only_json_verbose.py:452: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "generated_at": datetime.utcnow().isoformat(timespec="seconds") + "Z",
+C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\score_only_json_verbose.py:467: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  ts = datetime.utcnow().strftime("%Y%m%d")
+C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\score_only_json_verbose.py:472: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "generated_at": datetime.utcnow().isoformat(timespec="seconds") + "Z",
+C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\score_only_json_verbose.py:499: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  json.dump({"generated_at": datetime.utcnow().isoformat(timespec="seconds") + "Z", "hits": flat_hits_list}, f, ensure_ascii=False, indent=2)
+C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\score_only_json_verbose.py:510: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  tsd = datetime.utcnow().date().isoformat()
+C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\score_only_json_verbose.py:578: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  commit_msg = f"chore: automated JSON update ({datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')})"
+[fix/restore-structure eb5a852] chore: automated JSON update (2025-10-27 01:33:00 UTC)
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+To https://github.com/pranitborkar98/sattaboss-data.git
+   9cff5df..eb5a852  HEAD -> main
+EXCEPTION in score_try3: 'charmap' codec can't decode byte 0x9d in position 991: character maps to <undefined>
+Traceback (most recent call last):
+  File "C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\run_full_pipeline.py", line 118, in _run
+    line = proc.stdout.readline()
+  File "C:\Users\VCOM\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x9d in position 991: character maps to <undefined>
+

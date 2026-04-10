@@ -1,0 +1,10 @@
+=== AGGREGATE_TRY3 START 2025-10-27T01:31:42Z ===
+EXCEPTION in aggregate_try3: 'charmap' codec can't decode byte 0x81 in position 2813: character maps to <undefined>
+Traceback (most recent call last):
+  File "C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\run_full_pipeline.py", line 118, in _run
+    line = proc.stdout.readline()
+  File "C:\Users\VCOM\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x81 in position 2813: character maps to <undefined>
+

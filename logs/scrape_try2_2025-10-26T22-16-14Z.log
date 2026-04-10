@@ -1,0 +1,10 @@
+=== SCRAPE_TRY2 START 2025-10-26T22:16:14Z ===
+EXCEPTION in scrape_try2: 'charmap' codec can't decode byte 0x8d in position 5: character maps to <undefined>
+Traceback (most recent call last):
+  File "C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\run_full_pipeline.py", line 118, in _run
+    line = proc.stdout.readline()
+  File "C:\Users\VCOM\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 23, in decode
+    return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'charmap' codec can't decode byte 0x8d in position 5: character maps to <undefined>
+

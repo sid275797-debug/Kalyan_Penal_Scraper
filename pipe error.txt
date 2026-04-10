@@ -1,0 +1,870 @@
+
+▶️ Running: C:\Users\VCOM\AppData\Local\Programs\Python\Python313\python.exe multi_market_scraperrr.py
+
+DevTools listening on ws://127.0.0.1:53124/devtools/browser/72ff1f64-65ae-49ce-8095-267978cdf284
+
+🔍 Scraping raja_rani_morning_panel_chart...
+[11736:16844:1014/161927.330:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[11736:16844:1014/161949.775:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\raja_rani_morning_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:53216/devtools/browser/9e3320c4-f118-435c-a06d-91a16bf49bdf
+
+🔍 Scraping sridevi_morning_panel_chart...
+[12012:13048:1014/162033.660:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+✅ Saved: output\sridevi_morning_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:53281/devtools/browser/e3ad460c-fbee-454f-9f07-ab6f3d7a38f8
+
+🔍 Scraping karnataka_day_panel_chart...
+[10272:8600:1014/162052.274:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[10272:8600:1014/162115.719:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: QUOTA_EXCEEDED
+✅ Saved: output\karnataka_day_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:53409/devtools/browser/540253b4-0767-4538-a568-7f3010cc2654
+
+🔍 Scraping dhan_express_panel_chart...
+[16268:17904:1014/162236.522:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[16268:17904:1014/162257.340:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\dhan_express_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:53528/devtools/browser/189a853a-365f-406e-acdd-f407fd1c020a
+
+🔍 Scraping shagun_day_panel_chart...
+[9284:15304:1014/162339.960:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+⚠️ No data for shagun_day_panel_chart
+
+DevTools listening on ws://127.0.0.1:53595/devtools/browser/cc86274a-5ea3-4b5e-83db-33f23bf357e3
+
+🔍 Scraping madhur_morning_penal_chart...
+[4156:10772:1014/162403.168:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[4156:10772:1014/162433.009:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[4156:10772:1014/162527.480:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\madhur_morning_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:53762/devtools/browser/da81287a-2a33-4347-bcbc-d24d94792b0a
+
+🔍 Scraping sridevi_satta_penal_chart...
+[17692:16304:1014/162628.487:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[17692:16304:1014/162654.050:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[17692:16304:1014/162739.572:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\sridevi_satta_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:53940/devtools/browser/7c1cc9e7-d78e-4a44-807d-3b8e3def47ae
+
+🔍 Scraping special_sridevi_panel_chart...
+[14584:11880:1014/162857.961:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+✅ Saved: output\special_sridevi_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:54014/devtools/browser/20c62d97-23aa-4625-9bb3-644ab4c34967
+
+🔍 Scraping star_morning_panel_chart...
+[15756:18160:1014/162920.825:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[15756:18160:1014/162949.385:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\star_morning_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:54100/devtools/browser/59d2dcb4-3ac9-47f9-8a13-15cab0bf9bab
+
+🔍 Scraping sivaji_panel_chart...
+[2612:17740:1014/163027.161:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[2612:17740:1014/163050.289:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\sivaji_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:54198/devtools/browser/839ef08d-5051-464a-a238-2e65c4b4fc51
+
+🔍 Scraping matashri_panel_chart...
+[18092:16864:1014/163106.845:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+✅ Saved: output\matashri_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:54273/devtools/browser/e2b727bf-7363-4c29-82fd-97f0a322c717
+
+🔍 Scraping deluxe_panel_chart...
+[17856:15424:1014/163134.123:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[17856:15424:1014/163154.734:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[17856:15424:1014/163240.121:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\deluxe_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:54402/devtools/browser/e541b142-c223-42f9-8a03-21c08c562b46
+
+🔍 Scraping maharani_panel_chart...
+[12476:16928:1014/163325.105:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[12476:16928:1014/163350.120:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\maharani_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:54476/devtools/browser/3de29467-9721-4fc7-b7ed-2e7c99abaad1
+
+🔍 Scraping time_bazar_panel_chart...
+[4524:7756:1014/163408.266:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[4524:7756:1014/163435.249:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[4524:7756:1014/163529.248:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\time_bazar_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:54781/devtools/browser/e24be8af-4b17-4cbe-b5f8-0585afee85d3
+
+🔍 Scraping chetak_day_panel_chart...
+✅ Saved: output\chetak_day_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:54840/devtools/browser/4bf43e32-26cb-4459-8776-2af06e35bc81
+
+🔍 Scraping madhur_day_panel_chart...
+[8688:7328:1014/163724.594:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[8688:7328:1014/163753.546:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[8688:7328:1014/163848.269:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[8688:7328:1014/164036.797:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\madhur_day_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:55110/devtools/browser/f14ac5d2-6729-482f-b74a-5be825b31c4f
+
+🔍 Scraping kbc_bombay_penal_chart...
+[7556:16804:1014/164103.119:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[7556:16804:1014/164123.429:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[7556:16804:1014/164223.353:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\kbc_bombay_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:55284/devtools/browser/0ef8f259-6649-4dd0-95a6-e81ba628b690
+
+🔍 Scraping dabra_penal_chart...
+[13008:13560:1014/164321.804:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[13008:13560:1014/164343.448:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[13008:13560:1014/164435.091:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\dabra_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:55467/devtools/browser/e29cab41-5818-4132-a4e8-6524ed33b5c0
+
+🔍 Scraping dadar_day_panel_chart...
+[13556:11668:1014/164550.661:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+✅ Saved: output\dadar_day_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:55539/devtools/browser/c9ca10d4-65dd-44a9-9a6f-a19d6abe989b
+
+🔍 Scraping rithi_sridevi_panel_chart...
+[17348:11832:1014/164616.787:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+✅ Saved: output\rithi_sridevi_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:55611/devtools/browser/d33828df-841d-4eb7-aa47-4b26dcc4a027
+
+🔍 Scraping tirtha_day_panel_chart...
+[1868:17440:1014/164640.665:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[1868:17440:1014/164702.064:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\tirtha_day_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:55696/devtools/browser/e8dd7239-2b39-4c4b-b5e1-4e83f8cf684a
+
+🔍 Scraping morning_syndicate_penal_chart...
+[5792:15856:1014/164722.786:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[5792:15856:1014/164752.100:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[5792:15856:1014/164839.972:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\morning_syndicate_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:55895/devtools/browser/163e8f55-f4c1-443d-ad26-86b599687af9
+
+🔍 Scraping prabhat_panel_chart...
+[11568:3624:1014/165014.697:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+✅ Saved: output\prabhat_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:55969/devtools/browser/f8d90d1d-f7f6-4163-a657-fb66dc838438
+
+🔍 Scraping khajana_panel_chart...
+[7520:8196:1014/165051.564:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[7520:8196:1014/165118.053:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\khajana_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:56091/devtools/browser/79e5afd4-4674-407a-a3f4-8eada6e45ee5
+
+🔍 Scraping milan_day_penal_chart...
+[17844:12436:1014/165212.133:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[17844:12436:1014/165237.602:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[17844:12436:1014/165319.610:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\milan_day_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:56319/devtools/browser/36d10b1c-6ffc-46ad-a5ea-f9cff5b5f674
+
+🔍 Scraping kanak_day_panel_chart...
+[9296:9596:1014/165446.993:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR
+Created TensorFlow Lite XNNPACK delegate for CPU.
+✅ Saved: output\kanak_day_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:56393/devtools/browser/9a83978d-b083-4194-911d-bd8dfbf50a66
+
+🔍 Scraping rajdhani_day_penal_chart...
+✅ Saved: output\rajdhani_day_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:56560/devtools/browser/e67a2cac-69a6-4129-831f-d65420c69886
+
+🔍 Scraping supreme_day_panel_chart...
+[2064:7196:1014/165744.735:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[2064:7196:1014/165813.661:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[2064:7196:1014/165909.971:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\supreme_day_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:56732/devtools/browser/0643212f-5ea6-4ce4-b289-5ea148f1faaf
+
+🔍 Scraping amar_jyoti_penal_chart...
+[7840:10236:1014/170024.732:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[7840:10236:1014/170048.736:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[7840:10236:1014/170144.337:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\amar_jyoti_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:56878/devtools/browser/b65515f8-e389-4b8d-bd99-e98aa4c6d3d9
+
+🔍 Scraping worli_day_panel_chart...
+[15784:7992:1014/170243.297:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[15784:7992:1014/170304.181:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[15784:7992:1014/170402.425:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\worli_day_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:56990/devtools/browser/f0ccb42b-d224-49bf-b54e-516e9f7a97d3
+
+🔍 Scraping kalyan_penal_chart...
+[11408:10216:1014/170423.447:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[11408:10216:1014/170452.657:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[11408:10216:1014/170538.339:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[11408:10216:1014/170728.582:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\kalyan_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:57175/devtools/browser/3311f6e2-3c74-4618-91e9-b0bcd39d5440
+
+🔍 Scraping maharani_day_panel_chart...
+[11500:15028:1014/170755.772:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[11500:15028:1014/170822.583:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: QUOTA_EXCEEDED
+✅ Saved: output\maharani_day_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:57261/devtools/browser/c3c12e4c-1d9e-40d0-9b78-8a0e69536ff1
+
+🔍 Scraping karnataka_night_panel_chart...
+[11052:14584:1014/170836.134:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[11052:14584:1014/170857.310:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[11052:14584:1014/170939.131:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\karnataka_night_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:57388/devtools/browser/566d220f-ce48-4bfd-a60d-ea783a6dbc89
+
+🔍 Scraping sridevi_night_satta_penal_chart...
+[14504:3032:1014/171025.393:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[14504:3032:1014/171047.457:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[14504:3032:1014/171128.586:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\sridevi_night_satta_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:57576/devtools/browser/068d9487-574e-40df-a50b-c46a0e8e60e4
+
+🔍 Scraping sivaji_night_panel_chart...
+[16676:1968:1014/171235.892:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[16676:1968:1014/171257.537:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\sivaji_night_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:57658/devtools/browser/ef620d6a-dc21-4684-b4fb-c49bffc40787
+
+🔍 Scraping tirtha_night_panel_chart...
+[12080:4532:1014/171315.091:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+✅ Saved: output\tirtha_night_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:57739/devtools/browser/47131da7-75e4-442f-b0ce-3ccd11d4290c
+
+🔍 Scraping chetak_night_panel_chart...
+[1276:16932:1014/171343.225:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+✅ Saved: output\chetak_night_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:57822/devtools/browser/c3f291e2-2e8f-4f85-b1be-4d511c56c279
+
+🔍 Scraping prabhat_night_panel_chart...
+[10752:6656:1014/171407.211:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[10752:6656:1014/171407.258:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR
+[10752:6656:1014/171407.258:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR
+Created TensorFlow Lite XNNPACK delegate for CPU.
+✅ Saved: output\prabhat_night_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:57898/devtools/browser/7a9477ae-425b-4d65-9175-3c1d4db8dcfa
+
+🔍 Scraping supreme_night_panel_chart...
+[12776:16668:1014/171444.304:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[12776:16668:1014/171514.220:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[12776:16668:1014/171612.813:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\supreme_night_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:58073/devtools/browser/bb1db154-3305-41d4-a742-75fbce498385
+
+🔍 Scraping madhur_night_panel_chart...
+[6408:11336:1014/171726.016:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[6408:11336:1014/171751.668:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[6408:11336:1014/171839.511:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[6408:11336:1014/172010.386:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\madhur_night_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:58302/devtools/browser/c7cfb0ab-2fe9-44c9-af98-e3586fd47bb2
+
+🔍 Scraping milan_night_penal_chart...
+[15328:4724:1014/172036.620:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[15328:4724:1014/172103.527:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[15328:4724:1014/172202.092:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\milan_night_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:58485/devtools/browser/c5347db6-1e59-4dd4-9805-bae7c0f80d76
+
+🔍 Scraping bombay_night_panel_chart...
+[12320:8488:1014/172259.485:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+✅ Saved: output\bombay_night_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:58565/devtools/browser/0f63bb4f-0aef-409a-8c52-7075be29ef4e
+
+🔍 Scraping rajdhani_night_penal_chart...
+[6388:9668:1014/172336.945:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[6388:9668:1014/172406.746:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[6388:9668:1014/172503.595:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\rajdhani_night_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:58759/devtools/browser/1b93989b-2d59-4137-8ab7-595251f913a6
+
+🔍 Scraping kalyan_night_penal_chart...
+[12600:15880:1014/172554.795:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+❌ Error scraping kalyan_night_penal_chart: Message: no such element: Unable to locate element: {"method":"css selector","selector":"table.pchart"}
+  (Session info: chrome=141.0.7390.76); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+        GetHandleVerifier [0x0x7ff6e6e4e955+80021]
+        GetHandleVerifier [0x0x7ff6e6e4e9b0+80112]
+        (No symbol) [0x0x7ff6e6bd060f]
+        (No symbol) [0x0x7ff6e6c28854]
+        (No symbol) [0x0x7ff6e6c28b1c]
+        (No symbol) [0x0x7ff6e6c7c927]
+        (No symbol) [0x0x7ff6e6c5126f]
+        (No symbol) [0x0x7ff6e6c7968a]
+        (No symbol) [0x0x7ff6e6c51003]
+        (No symbol) [0x0x7ff6e6c195d1]
+        (No symbol) [0x0x7ff6e6c1a3f3]
+        GetHandleVerifier [0x0x7ff6e710dd0d+2960461]
+        GetHandleVerifier [0x0x7ff6e7107fca+2936586]
+        GetHandleVerifier [0x0x7ff6e7128a07+3070279]
+        GetHandleVerifier [0x0x7ff6e6e6843e+185214]
+        GetHandleVerifier [0x0x7ff6e6e6fe8f+216527]
+        GetHandleVerifier [0x0x7ff6e6e57b94+117460]
+        GetHandleVerifier [0x0x7ff6e6e57d4f+117903]
+        GetHandleVerifier [0x0x7ff6e6e3dc28+11112]
+        BaseThreadInitThunk [0x0x7ffd396d7374+20]
+        RtlUserThreadStart [0x0x7ffd3b6dcc91+33]
+
+⚠️ No data for kalyan_night_penal_chart
+
+DevTools listening on ws://127.0.0.1:58871/devtools/browser/f209b550-aa48-4bd2-a548-7a6cc9172996
+
+🔍 Scraping main_bazar_panel_chart...
+[15328:7692:1014/172608.755:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+❌ Error scraping main_bazar_panel_chart: Message: no such element: Unable to locate element: {"method":"css selector","selector":"table.pchart"}
+  (Session info: chrome=141.0.7390.76); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+        GetHandleVerifier [0x0x7ff6e6e4e955+80021]
+        GetHandleVerifier [0x0x7ff6e6e4e9b0+80112]
+        (No symbol) [0x0x7ff6e6bd060f]
+        (No symbol) [0x0x7ff6e6c28854]
+        (No symbol) [0x0x7ff6e6c28b1c]
+        (No symbol) [0x0x7ff6e6c7c927]
+        (No symbol) [0x0x7ff6e6c5126f]
+        (No symbol) [0x0x7ff6e6c7968a]
+        (No symbol) [0x0x7ff6e6c51003]
+        (No symbol) [0x0x7ff6e6c195d1]
+        (No symbol) [0x0x7ff6e6c1a3f3]
+        GetHandleVerifier [0x0x7ff6e710dd0d+2960461]
+        GetHandleVerifier [0x0x7ff6e7107fca+2936586]
+        GetHandleVerifier [0x0x7ff6e7128a07+3070279]
+        GetHandleVerifier [0x0x7ff6e6e6843e+185214]
+        GetHandleVerifier [0x0x7ff6e6e6fe8f+216527]
+        GetHandleVerifier [0x0x7ff6e6e57b94+117460]
+        GetHandleVerifier [0x0x7ff6e6e57d4f+117903]
+        GetHandleVerifier [0x0x7ff6e6e3dc28+11112]
+        BaseThreadInitThunk [0x0x7ffd396d7374+20]
+        RtlUserThreadStart [0x0x7ffd3b6dcc91+33]
+
+⚠️ No data for main_bazar_panel_chart
+
+DevTools listening on ws://127.0.0.1:58960/devtools/browser/e0c93c25-9669-44cd-91c1-7a87d671238a
+
+🔍 Scraping maharani_night_panel_chart...
+[17648:15036:1014/172621.948:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR
+❌ Error scraping maharani_night_panel_chart: Message: no such element: Unable to locate element: {"method":"css selector","selector":"table.pchart"}
+  (Session info: chrome=141.0.7390.76); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+        GetHandleVerifier [0x0x7ff6e6e4e955+80021]
+        GetHandleVerifier [0x0x7ff6e6e4e9b0+80112]
+        (No symbol) [0x0x7ff6e6bd060f]
+        (No symbol) [0x0x7ff6e6c28854]
+        (No symbol) [0x0x7ff6e6c28b1c]
+        (No symbol) [0x0x7ff6e6c7c927]
+        (No symbol) [0x0x7ff6e6c5126f]
+        (No symbol) [0x0x7ff6e6c7968a]
+        (No symbol) [0x0x7ff6e6c51003]
+        (No symbol) [0x0x7ff6e6c195d1]
+        (No symbol) [0x0x7ff6e6c1a3f3]
+        GetHandleVerifier [0x0x7ff6e710dd0d+2960461]
+        GetHandleVerifier [0x0x7ff6e7107fca+2936586]
+        GetHandleVerifier [0x0x7ff6e7128a07+3070279]
+        GetHandleVerifier [0x0x7ff6e6e6843e+185214]
+        GetHandleVerifier [0x0x7ff6e6e6fe8f+216527]
+        GetHandleVerifier [0x0x7ff6e6e57b94+117460]
+        GetHandleVerifier [0x0x7ff6e6e57d4f+117903]
+        GetHandleVerifier [0x0x7ff6e6e3dc28+11112]
+        BaseThreadInitThunk [0x0x7ffd396d7374+20]
+        RtlUserThreadStart [0x0x7ffd3b6dcc91+33]
+
+⚠️ No data for maharani_night_panel_chart
+
+DevTools listening on ws://127.0.0.1:59061/devtools/browser/6e9cc638-8735-4388-b8c6-942318756325
+
+🔍 Scraping syndicate_night_penal_chart...
+[6656:10052:1014/172637.180:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+❌ Error scraping syndicate_night_penal_chart: Message: no such element: Unable to locate element: {"method":"css selector","selector":"table.pchart"}
+  (Session info: chrome=141.0.7390.76); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Stacktrace:
+        GetHandleVerifier [0x0x7ff6e6e4e955+80021]
+        GetHandleVerifier [0x0x7ff6e6e4e9b0+80112]
+        (No symbol) [0x0x7ff6e6bd060f]
+        (No symbol) [0x0x7ff6e6c28854]
+        (No symbol) [0x0x7ff6e6c28b1c]
+        (No symbol) [0x0x7ff6e6c7c927]
+        (No symbol) [0x0x7ff6e6c5126f]
+        (No symbol) [0x0x7ff6e6c7968a]
+        (No symbol) [0x0x7ff6e6c51003]
+        (No symbol) [0x0x7ff6e6c195d1]
+        (No symbol) [0x0x7ff6e6c1a3f3]
+        GetHandleVerifier [0x0x7ff6e710dd0d+2960461]
+        GetHandleVerifier [0x0x7ff6e7107fca+2936586]
+        GetHandleVerifier [0x0x7ff6e7128a07+3070279]
+        GetHandleVerifier [0x0x7ff6e6e6843e+185214]
+        GetHandleVerifier [0x0x7ff6e6e6fe8f+216527]
+        GetHandleVerifier [0x0x7ff6e6e57b94+117460]
+        GetHandleVerifier [0x0x7ff6e6e57d4f+117903]
+        GetHandleVerifier [0x0x7ff6e6e3dc28+11112]
+        BaseThreadInitThunk [0x0x7ffd396d7374+20]
+        RtlUserThreadStart [0x0x7ffd3b6dcc91+33]
+
+⚠️ No data for syndicate_night_penal_chart
+
+DevTools listening on ws://127.0.0.1:59160/devtools/browser/a1af2cc6-6cff-48b3-995f-d5d8d8851542
+
+🔍 Scraping dabra_night_penal_chart...
+[15592:15216:1014/172657.937:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[15592:15216:1014/172727.024:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\dabra_night_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:52536/devtools/browser/da70a24d-98ce-40f5-b0a0-434e80784340
+
+🔍 Scraping kalyan_penal_chart...
+[17076:15232:1014/172750.493:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[17076:15232:1014/172818.721:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: QUOTA_EXCEEDED
+[17076:6864:1014/173040.776:ERROR:services\on_device_model\public\cpp\service_client.cc:36] Unexpected on_device_model service disconnect: Error loading backend.
+✅ Saved: output\kalyan_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:52778/devtools/browser/46e5b1ab-ed45-4047-85d4-cc1a132c5283
+
+🔍 Scraping main_bazar_panel_chart...
+[9172:12848:1014/173141.137:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[9172:12848:1014/173204.217:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: QUOTA_EXCEEDED
+✅ Saved: output\main_bazar_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:52882/devtools/browser/314f9f2a-136e-42a4-af2e-b927a12c2cca
+
+🔍 Scraping main_ratan_penal_chart...
+[6044:2232:1014/173329.268:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[6044:2232:1014/173355.179:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[6044:2232:1014/173451.482:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\main_ratan_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:52990/devtools/browser/7ec703d6-a6d7-464e-b5f7-bf12748dde38
+
+🔍 Scraping main_bombay_panel_chart...
+[11448:16752:1014/173521.184:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[11448:16752:1014/173549.750:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\main_bombay_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:53056/devtools/browser/4ba966b3-a790-4519-b61d-6233f4147b0e
+
+🔍 Scraping time_bazar_panel_chart...
+[15720:16448:1014/173629.055:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[15720:16448:1014/173651.311:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[15720:16448:1014/173741.673:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\time_bazar_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:53196/devtools/browser/8b3c448d-d643-4b9e-8e18-4f750eeba84c
+
+🔍 Scraping sridevi_satta_penal_chart...
+[14860:7956:1014/173930.739:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[14860:7956:1014/173953.623:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[14860:7956:1014/174046.127:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[14860:7956:1014/174209.385:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\sridevi_satta_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:53341/devtools/browser/46b3dfac-6c91-4925-a135-ba58d7ac63de
+
+🔍 Scraping sridevi_night_satta_penal_chart...
+[17832:4528:1014/174221.312:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[17832:4528:1014/174245.497:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[17832:4528:1014/174328.172:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\sridevi_night_satta_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:53414/devtools/browser/dcabb2f9-56d8-4139-ae4a-7d656ba87ec2
+
+🔍 Scraping kalyan_night_penal_chart...
+[3728:17516:1014/174336.028:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[3728:17516:1014/174402.544:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\kalyan_night_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:53478/devtools/browser/36d5aef1-74bb-42ba-a7d8-6dc18358608f
+
+🔍 Scraping kalyan_morning_penal_chart...
+[7280:12096:1014/174438.089:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+✅ Saved: output\kalyan_morning_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:53520/devtools/browser/b1814435-01e4-407c-be7e-32100c89d428
+
+🔍 Scraping madhur_morning_penal_chart...
+[18232:888:1014/174457.204:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[18232:888:1014/174457.267:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[18232:888:1014/174523.564:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: QUOTA_EXCEEDED
+✅ Saved: output\madhur_morning_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:53607/devtools/browser/84d0b761-8ab1-45e4-806b-c537b4e158a5
+
+🔍 Scraping milan_day_penal_chart...
+[1032:1588:1014/174632.871:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[1032:1588:1014/174655.671:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[1032:1588:1014/174748.572:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\milan_day_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:53702/devtools/browser/c0f39c6c-b8b6-43fd-b73f-ec95e88ce597
+
+🔍 Scraping milan_night_penal_chart...
+[16748:8884:1014/174819.398:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[16748:8884:1014/174843.845:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: QUOTA_EXCEEDED
+✅ Saved: output\milan_night_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:53786/devtools/browser/fbb55560-1316-480d-adb9-64f02290eb4c
+
+🔍 Scraping madhur_day_panel_chart...
+✅ Saved: output\madhur_day_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:53897/devtools/browser/30f135d7-37e3-4dee-b7c2-d4e639548a88
+
+🔍 Scraping madhur_night_panel_chart...
+[8096:12424:1014/175228.607:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[8096:12424:1014/175256.172:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[8096:12424:1014/175339.686:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\madhur_night_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:54005/devtools/browser/964f0d45-6c5e-49a5-80f9-cc13c70de713
+
+🔍 Scraping supreme_day_panel_chart...
+[7600:7644:1014/175434.654:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[7600:7644:1014/175504.531:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[7600:7644:1014/175601.405:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\supreme_day_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:54099/devtools/browser/962cc42b-feba-4285-9d6f-1d7c764fc0a3
+
+🔍 Scraping supreme_night_panel_chart...
+[8700:14012:1014/175626.255:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[8700:14012:1014/175651.629:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[8700:14012:1014/175736.116:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\supreme_night_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:54190/devtools/browser/610ab2b3-0b22-4c73-82c4-d2fd353dc785
+
+🔍 Scraping rajdhani_day_penal_chart...
+[17996:7432:1014/175816.548:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[17996:7432:1014/175839.893:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[17996:7432:1014/175925.776:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\rajdhani_day_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:54267/devtools/browser/efc3efcc-2a07-4c93-b5dd-e064b515f98d
+
+🔍 Scraping rajdhani_night_penal_chart...
+[8836:11976:1014/175951.923:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[8836:11976:1014/180020.041:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\rajdhani_night_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:54343/devtools/browser/38f9cf2c-21a8-44b3-8b08-807c206dd5f1
+
+🔍 Scraping syndicate_night_penal_chart...
+[12324:7900:1014/180126.409:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[12324:7900:1014/180147.199:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[12324:7900:1014/180239.854:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\syndicate_night_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:54433/devtools/browser/a04fe897-abd3-415d-bc40-66e17dfbf056
+
+🔍 Scraping morning_syndicate_penal_chart...
+[16172:14400:1014/180320.714:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[16172:14400:1014/180345.450:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[16172:14400:1014/180427.611:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\morning_syndicate_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:54522/devtools/browser/2a3fb83c-fa4e-4032-aa65-2ffe367abb92
+
+🔍 Scraping dabra_penal_chart...
+[14944:16052:1014/180512.749:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[14944:16052:1014/180538.074:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[14944:16052:1014/180634.881:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\dabra_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:54605/devtools/browser/4a4aae88-c2ef-4f85-88bf-ddb1d75f024a
+
+🔍 Scraping deluxe_panel_chart...
+[17156:4620:1014/180654.008:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[17628:15524:1014/180713.992:ERROR:gpu\command_buffer\service\shared_image\shared_image_manager.cc:521] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.
+[17628:15524:1014/180713.992:ERROR:gpu\command_buffer\service\shared_image\shared_image_manager.cc:521] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.
+[17628:15524:1014/180713.992:ERROR:gpu\command_buffer\service\shared_image\shared_image_manager.cc:521] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.
+[17156:4620:1014/180714.880:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[17628:15524:1014/180715.037:ERROR:gpu\command_buffer\service\shared_image\shared_image_manager.cc:521] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.
+[17628:15524:1014/180715.037:ERROR:gpu\command_buffer\service\shared_image\shared_image_manager.cc:521] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.
+[17628:15524:1014/180715.037:ERROR:gpu\command_buffer\service\shared_image\shared_image_manager.cc:521] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.
+[17628:15524:1014/180715.045:ERROR:gpu\command_buffer\service\shared_image\shared_image_manager.cc:521] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.
+[17628:15524:1014/180715.045:ERROR:gpu\command_buffer\service\shared_image\shared_image_manager.cc:521] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.
+[17628:15524:1014/180715.045:ERROR:gpu\command_buffer\service\shared_image\shared_image_manager.cc:521] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.
+[17628:15524:1014/180715.308:ERROR:gpu\command_buffer\service\shared_image\shared_image_manager.cc:521] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.
+[17628:15524:1014/180715.308:ERROR:gpu\command_buffer\service\shared_image\shared_image_manager.cc:521] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.
+[17628:15524:1014/180715.308:ERROR:gpu\command_buffer\service\shared_image\shared_image_manager.cc:521] SharedImageManager::ProduceMemory: Trying to Produce a Memory representation from a non-existent mailbox.
+[17156:4620:1014/180805.656:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\deluxe_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:54681/devtools/browser/60ceca6e-e733-4f7e-9573-caf27a5bdfe9
+
+🔍 Scraping khajana_panel_chart...
+[18060:10976:1014/180822.690:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[18060:10976:1014/180843.180:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\khajana_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:54739/devtools/browser/bf58c4a4-1767-4b3a-904d-afda38aafd90
+
+🔍 Scraping prabhat_panel_chart...
+[11576:2080:1014/180914.234:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR
+Created TensorFlow Lite XNNPACK delegate for CPU.
+✅ Saved: output\prabhat_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:54793/devtools/browser/67be88e0-f652-4b4b-b175-d0819c82b92b
+
+🔍 Scraping maharani_panel_chart...
+[15956:16656:1014/180944.900:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[15956:16656:1014/180944.955:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR
+[15956:16656:1014/180944.955:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR
+Created TensorFlow Lite XNNPACK delegate for CPU.
+✅ Saved: output\maharani_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:54836/devtools/browser/19d9e452-b18d-4592-baf8-cb425c565a7a
+
+🔍 Scraping amar_jyoti_penal_chart...
+[17012:3608:1014/181015.970:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[17012:3608:1014/181044.529:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[17012:3608:1014/181125.891:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\amar_jyoti_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:54915/devtools/browser/0bb9a4f6-849c-4327-a7f9-eb41c35c91ed
+
+🔍 Scraping star_morning_panel_chart...
+[16388:11836:1014/181147.609:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[16388:11836:1014/181214.419:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\star_morning_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:54972/devtools/browser/e43c4b0e-b51a-44ab-9502-97c782ac59be
+
+🔍 Scraping prabhat_night_panel_chart...
+[17632:1744:1014/181242.485:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+✅ Saved: output\prabhat_night_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:55012/devtools/browser/ccb16516-b86f-4fc6-b5ff-8fe90fb35f36
+
+🔍 Scraping kbc_bombay_penal_chart...
+[16536:6876:1014/181307.707:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[16536:6876:1014/181328.056:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[16536:6876:1014/181410.406:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\kbc_bombay_penal_chart.csv
+
+DevTools listening on ws://127.0.0.1:55089/devtools/browser/057a75d5-41af-46cf-8bfe-9cf8960d17f4
+
+🔍 Scraping karnataka_day_panel_chart...
+[17004:11388:1014/181441.008:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[17004:11388:1014/181510.870:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\karnataka_day_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:55171/devtools/browser/5cc00870-d374-4439-a5d3-f5292f58713d
+
+🔍 Scraping karnataka_night_panel_chart...
+[11856:12364:1014/181557.321:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[11856:12364:1014/181623.383:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[11856:12364:1014/181709.861:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\karnataka_night_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:55257/devtools/browser/d553c400-4215-4f27-90f0-659e2a118d79
+
+🔍 Scraping maharani_day_panel_chart...
+[11960:7904:1014/181718.497:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[11960:7904:1014/181741.464:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\maharani_day_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:55303/devtools/browser/29752208-5aba-4503-92dd-fea91ec57128
+
+🔍 Scraping maharani_night_panel_chart...
+[2848:15556:1014/181753.383:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+[2848:15556:1014/181753.462:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: PHONE_REGISTRATION_ERROR
+Created TensorFlow Lite XNNPACK delegate for CPU.
+✅ Saved: output\maharani_night_panel_chart.csv
+
+DevTools listening on ws://127.0.0.1:55342/devtools/browser/3c114af2-28a6-4179-9299-31900123e7c2
+
+🔍 Scraping raja_rani_morning_panel_chart...
+[3020:18068:1014/181820.676:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+Created TensorFlow Lite XNNPACK delegate for CPU.
+[3020:18068:1014/181847.627:ERROR:google_apis\gcm\engine\registration_request.cc:291] Registration response error message: DEPRECATED_ENDPOINT
+✅ Saved: output\raja_rani_morning_panel_chart.csv
+
+🎉 DONE: All markets attempted!
+✅ Done: multi_market_scraperrr.py
+
+▶️ Running: C:\Users\VCOM\AppData\Local\Programs\Python\Python313\python.exe aggregate_history.py
+  • Loaded 2450 rows for 'amar_jyoti_penal_chart'
+  • Loaded 101 rows for 'bombay_night_panel_chart'
+  • Loaded 61 rows for 'chetak_day_panel_chart'
+  • Loaded 53 rows for 'chetak_night_panel_chart'
+  • Loaded 706 rows for 'dabra_night_penal_chart'
+  • Loaded 2780 rows for 'dabra_penal_chart'
+  • Loaded 118 rows for 'dadar_day_panel_chart'
+  • Loaded 1990 rows for 'deluxe_panel_chart'
+  • Loaded 959 rows for 'dhan_express_panel_chart'
+  • Loaded 44 rows for 'kalyan_morning_penal_chart'
+  • Loaded 1611 rows for 'kalyan_night_penal_chart'
+  • Loaded 3943 rows for 'kalyan_penal_chart'
+  • Loaded 320 rows for 'kanak_day_panel_chart'
+  • Loaded 1780 rows for 'karnataka_day_panel_chart'
+  • Loaded 1778 rows for 'karnataka_night_panel_chart'
+  • Loaded 2402 rows for 'kbc_bombay_penal_chart'
+  • Loaded 1204 rows for 'khajana_panel_chart'
+  • Loaded 4102 rows for 'madhur_day_panel_chart'
+  • Loaded 2613 rows for 'madhur_morning_penal_chart'
+  • Loaded 3528 rows for 'madhur_night_panel_chart'
+  • Loaded 386 rows for 'maharani_day_panel_chart'
+  • Loaded 385 rows for 'maharani_night_panel_chart'
+  • Loaded 387 rows for 'maharani_panel_chart'
+  • Loaded 1596 rows for 'main_bazar_panel_chart'
+  • Loaded 965 rows for 'main_bombay_panel_chart'
+  • Loaded 1596 rows for 'main_ratan_penal_chart'
+  • Loaded 121 rows for 'matashri_panel_chart'
+  • Loaded 2851 rows for 'milan_day_penal_chart'
+  • Loaded 2442 rows for 'milan_night_penal_chart'
+  • Loaded 3136 rows for 'morning_syndicate_penal_chart'
+  • Loaded 319 rows for 'prabhat_night_panel_chart'
+  • Loaded 320 rows for 'prabhat_panel_chart'
+  • Loaded 1024 rows for 'raja_rani_morning_panel_chart'
+  • Loaded 2486 rows for 'rajdhani_day_penal_chart'
+  • Loaded 2406 rows for 'rajdhani_night_penal_chart'
+  • Loaded 120 rows for 'rithi_sridevi_panel_chart'
+  • Loaded 433 rows for 'sivaji_night_panel_chart'
+  • Loaded 433 rows for 'sivaji_panel_chart'
+  • Loaded 96 rows for 'special_sridevi_panel_chart'
+  • Loaded 52 rows for 'sridevi_morning_panel_chart'
+  • Loaded 2416 rows for 'sridevi_night_satta_penal_chart'
+  • Loaded 2781 rows for 'sridevi_satta_penal_chart'
+  • Loaded 1024 rows for 'star_morning_panel_chart'
+  • Loaded 2990 rows for 'supreme_day_panel_chart'
+  • Loaded 2969 rows for 'supreme_night_panel_chart'
+  • Loaded 3094 rows for 'syndicate_night_penal_chart'
+  • Loaded 2886 rows for 'time_bazar_panel_chart'
+  • Loaded 333 rows for 'tirtha_day_panel_chart'
+  • Loaded 258 rows for 'tirtha_night_panel_chart'
+  • Loaded 1709 rows for 'worli_day_panel_chart'
+
+✅ Aggregated 50 markets into 'all_markets_history.json'
+✅ Done: aggregate_history.py
+
+▶️ Running: C:\Users\VCOM\AppData\Local\Programs\Python\Python313\python.exe prediction_engine_v4.py
+2025-10-14 18:19:12,015 [INFO] ✅ Using history file: C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\all_markets_history.json (markets=50)
+2025-10-14 18:19:12,041 [INFO] Archived existing todays_predictions.json -> C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\output\history\predictions_2025-10-14.json
+2025-10-14 18:19:12,063 [INFO] ✅ Updated yesterday pointer -> C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\output\yesterday_results.json
+2025-10-14 18:19:12,064 [INFO] Archived previous todays_predictions.json -> C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\output\history\predictions_2025-10-14.json
+2025-10-14 18:19:12,161 [INFO] Saved today's predictions archive -> predictions_2025-10-14.json
+
+✅ Written todays_predictions.json to:
+ - C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\todays_predictions.json
+ - C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\output\todays_predictions.json
+ - C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\sattaboss-data\data\todays_predictions.json
+ - C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\kalyan\assets\todays_predictions.json
+ - C:\Users\VCOM\AndroidStudioProjects\multi_market_predictions_v3\assets\todays_predictions.json
+ - C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\predictions_v4.json
+ - C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\output\predictions_v4.json
+✅ Done: prediction_engine_v4.py
+
+▶️ Running: C:\Users\VCOM\AppData\Local\Programs\Python\Python313\python.exe generate_yesterday_results.py
+✅ Written 50 records to Flutter assets:
+   C:\Users\VCOM\AndroidStudioProjects\multi_market_predictions_v3\assets\yesterday_results.json
+✅ Copied to Pages data folder:
+   C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\sattaboss-data\data\yesterday_results.json
+✅ Done: generate_yesterday_results.py
+
+▶️ Running: C:\Users\VCOM\AppData\Local\Programs\Python\Python313\python.exe score_only_json_verbose.py --pred sattaboss-data\data\todays_predictions.json --yest sattaboss-data\data\yesterday_results.json
+  File "C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\score_only_json_verbose.py", line 520
+    print("ℹ️ Skipping git push from script (handled by GitHub Actions workflow).")
+SyntaxError: expected 'except' or 'finally' block
+❌ Script failed: score_only_json_verbose.py (exit 1)
+Γ¥î run_full_pipeline.py failed

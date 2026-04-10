@@ -1,0 +1,292 @@
+Launching lib\main.dart on A142 in debug mode...
+Running Gradle task 'assembleDebug'...
+√ Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk...
+I/flutter (14426): [IMPORTANT:flutter/shell/platform/android/android_context_vk_impeller.cc(61)] Using the Impeller rendering backend (Vulkan).
+Debug service listening on ws://127.0.0.1:52820/NuG_wbF7l2U=/ws
+Syncing files to device A142...
+D/ProfileInstaller(14426): Installing profile for com.example.multi_market_predictions_v3
+W/_predictions_v3(14426): ClassLoaderContext classpath size mismatch. expected=1, found=0 (DLC[];PCL[base.apk*723402788]{PCL[/system/framework/org.apache.http.legacy.jar*437079508]#PCL[/system/framework/com.android.media.remotedisplay.jar*2042759013]#PCL[/system/framework/com.android.location.provider.jar*3414091812]#PCL[/system_ext/framework/androidx.window.extensions.jar*4137455312]#PCL[/system_ext/framework/androidx.window.sidecar.jar*2805092603]} | DLC[];PCL[])
+I/DynamiteModule(14426): Considering local module com.google.android.gms.ads.dynamite:0 and remote module com.google.android.gms.ads.dynamite:253405700
+I/DynamiteModule(14426): Selected remote version of com.google.android.gms.ads.dynamite, version >= 253405700
+W/System  (14426): ClassLoader referenced unknown path: 
+D/nativeloader(14426): Configuring clns-11 for other apk . target_sdk_version=36, uses_libraries=, library_path=/data/app/~~HOgz-XaNz6mVz2aB4JScTQ==/com.google.android.gms-V_ufyeYjjSF9Rh4G-HyjGQ==/lib/arm64:/data/app/~~HOgz-XaNz6mVz2aB4JScTQ==/com.google.android.gms-V_ufyeYjjSF9Rh4G-HyjGQ==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms
+D/CompatChangeReporter(14426): Compat change id reported: 312399441; UID 10328; state: ENABLED
+W/_predictions_v3(14426): ClassLoaderContext type mismatch. expected=PCL, found=DLC (PCL[] | DLC[];PCL[/data/app/~~EkyIgbnyZ-5F7NaAk_8EBw==/com.example.multi_market_predictions_v3-TG4-MjzELBMerjmayDqAvg==/base.apk*2224214394]{PCL[/system_ext/framework/androidx.window.extensions.jar*4137455312]#PCL[/system_ext/framework/androidx.window.sidecar.jar*2805092603]})
+D/DynamitePackage(14426): Instantiated singleton DynamitePackage.
+D/DynamitePackage(14426): Instantiating com.google.android.gms.ads.ChimeraMobileAdsSettingManagerCreatorImpl
+I/Ads     (14426): Updating ad debug logging enablement.
+W/Ads     (14426): Update ad debug logging enablement as false
+I/WebViewFactory(14426): Loading com.google.android.webview version 140.0.7339.207 (code 733920733)
+V/ResourcesManager(14426): The following library key has been added: ResourcesKey{ mHash=4685c3e mResDir=null mSplitDirs=[] mOverlayDirs=[/product/overlay/NavigationBarModeGestural/NavigationBarModeGesturalOverlay.apk,/data/resource-cache/com.android.systemui-neutral-iDCG.frro,/data/resource-cache/com.android.systemui-accent-bnhY.frro,/data/resource-cache/com.android.systemui-dynamic-VlaC.frro] mLibDirs=[/data/app/~~_cnfQtSmvpRF50C_aPELQw==/com.google.android.webview-2aHEXxPF1Q6fkFtEil_gWQ==/base.apk,/data/app/~~48PHRbElLjzvHJiSe3wSwA==/com.google.android.trichromelibrary_733920733-ZHTt0aaSLTyHWTx8tG-Xtg==/base.apk,/system_ext/framework/androidx.window.extensions.jar] mDisplayId=0 mOverrideConfig=v35 mCompatInfo={420dpi always-compat} mLoaders=[]}
+W/_predictions_v3(14426): Failed to find entry 'classes.dex': Entry not found
+D/nativeloader(14426): Configuring clns-12 for other apk /data/app/~~48PHRbElLjzvHJiSe3wSwA==/com.google.android.trichromelibrary_733920733-ZHTt0aaSLTyHWTx8tG-Xtg==/base.apk. target_sdk_version=36, uses_libraries=ALL, library_path=/data/app/~~_cnfQtSmvpRF50C_aPELQw==/com.google.android.webview-2aHEXxPF1Q6fkFtEil_gWQ==/lib/arm64:/data/app/~~_cnfQtSmvpRF50C_aPELQw==/com.google.android.webview-2aHEXxPF1Q6fkFtEil_gWQ==/base.apk!/lib/arm64-v8a:/data/app/~~48PHRbElLjzvHJiSe3wSwA==/com.google.android.trichromelibrary_733920733-ZHTt0aaSLTyHWTx8tG-Xtg==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand
+D/nativeloader(14426): Extending system_exposed_libraries: libapuwareapusys.mtk.so:libapuwareapusys_v2.mtk.so:libapuwarexrp.mtk.so:libapuwarexrp_v2.mtk.so:libapuwareutils.mtk.so:libapuwareutils_v2.mtk.so:libapuwarehmp.mtk.so:libneuron_graph_delegate.mtk.so:libneuronusdk_adapter.mtk.so:libtflite_mtk.mtk.so:libarmnn_ndk.mtk.so:libcmdl_ndk.mtk.so:libnir_neon_driver_ndk.mtk.so:libmvpu_runtime.mtk.so:libmvpu_runtime_pub.mtk.so:libmvpu_engine_pub.mtk.so:libmvpu_pattern_pub.mtk.so:libmvpuop_mtk_cv.mtk.so:libmvpuop_mtk_nn.mtk.so:libmvpu_runtime_25.mtk.so:libmvpu_runtime_25_pub.mtk.so:libmvpu_engine_25_pub.mtk.so:libmvpu_pattern_25_pub.mtk.so:libmvpuop25_mtk_cv.mtk.so:libmvpuop25_mtk_nn.mtk.so:libmvpu_config.mtk.so:libteeservice_client.trustonic.so
+D/ApplicationLoaders(14426): Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+W/_predictions_v3(14426): Loading /data/app/~~_cnfQtSmvpRF50C_aPELQw==/com.google.android.webview-2aHEXxPF1Q6fkFtEil_gWQ==/oat/arm64/base.odex non-executable as it requires an image which we failed to load
+D/nativeloader(14426): Configuring clns-13 for other apk /data/app/~~_cnfQtSmvpRF50C_aPELQw==/com.google.android.webview-2aHEXxPF1Q6fkFtEil_gWQ==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~_cnfQtSmvpRF50C_aPELQw==/com.google.android.webview-2aHEXxPF1Q6fkFtEil_gWQ==/lib/arm64:/data/app/~~_cnfQtSmvpRF50C_aPELQw==/com.google.android.webview-2aHEXxPF1Q6fkFtEil_gWQ==/base.apk!/lib/arm64-v8a:/data/app/~~48PHRbElLjzvHJiSe3wSwA==/com.google.android.trichromelibrary_733920733-ZHTt0aaSLTyHWTx8tG-Xtg==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand
+I/cr_WVCFactoryProvider(14426): version=140.0.7339.207 (733920733) minSdkVersion=29 multiprocess=true packageId=2 splits=<none>
+D/nativeloader(14426): Load /data/app/~~48PHRbElLjzvHJiSe3wSwA==/com.google.android.trichromelibrary_733920733-ZHTt0aaSLTyHWTx8tG-Xtg==/base.apk!/lib/arm64-v8a/libmonochrome_64.so using class loader ns clns-13 (caller=/data/app/~~_cnfQtSmvpRF50C_aPELQw==/com.google.android.webview-2aHEXxPF1Q6fkFtEil_gWQ==/base.apk): ok
+D/nativeloader(14426): Load /system/lib64/libwebviewchromium_plat_support.so using class loader ns clns-13 (caller=/data/app/~~_cnfQtSmvpRF50C_aPELQw==/com.google.android.webview-2aHEXxPF1Q6fkFtEil_gWQ==/base.apk): ok
+I/cr_LibraryLoader(14426): Successfully loaded native library
+I/cr_CachingUmaRecorder(14426): Flushed 14 samples from 14 histograms, 0 samples were dropped.
+I/cr_CombinedPProvider(14426): #registerProvider() provider:WV.zj@84fe21b isPolicyCacheEnabled:false policyProvidersSize:0
+I/cr_PolicyProvider(14426): #setManagerAndSource() 0
+I/cr_CombinedPProvider(14426): #linkNativeInternal() 1
+I/cr_AppResProvider(14426): #getApplicationRestrictionsFromUserManager() Bundle[EMPTY_PARCEL]
+I/cr_PolicyProvider(14426): #notifySettingsAvailable() 0
+I/cr_CombinedPProvider(14426): #onSettingsAvailable() 0
+I/cr_CombinedPProvider(14426): #flushPolicies()
+W/chromium(14426): [WARNING:android_webview/browser/network_service/net_helpers.cc:143] HTTP Cache size is: 20971520
+I/CameraManagerGlobal(14426): Connecting to camera service
+E/_predictions_v3(14426): Invalid resource ID 0x00000000.
+W/System.err(14426): android.content.res.Resources$NotFoundException: String resource ID #0x0
+W/System.err(14426): 	at android.content.res.Resources.getText(Resources.java:472)
+W/System.err(14426): 	at android.content.res.Resources.getString(Resources.java:565)
+W/System.err(14426): 	at com.nothing.experience.sdk.NothingExperience.getAppName(NothingExperience.java:81)
+W/System.err(14426): 	at com.nothing.experience.sdk.NothingExperience.<init>(NothingExperience.java:49)
+W/System.err(14426): 	at com.nothing.experience.sdk.NothingExperience.getInstance(NothingExperience.java:65)
+W/System.err(14426): 	at com.nothing.experience.AppTracking.<init>(AppTracking.java:20)
+W/System.err(14426): 	at com.nothing.experience.AppTracking.getInstance(AppTracking.java:27)
+W/System.err(14426): 	at com.nothing.performance.NtPerformanceDataTrackingImpl$pjy.run(go/retraceme 429c33afc2ff3fc9b63af58c066dd4342728a6e9f25a5d200e0f8911ab123def:128)
+W/System.err(14426): 	at android.os.Handler.handleCallback(Handler.java:959)
+W/System.err(14426): 	at android.os.Handler.dispatchMessage(Handler.java:100)
+W/System.err(14426): 	at android.os.Looper.loopOnce(Looper.java:267)
+W/System.err(14426): 	at android.os.Looper.loop(Looper.java:371)
+W/System.err(14426): 	at android.os.HandlerThread.run(HandlerThread.java:94)
+W/cr_media(14426): BLUETOOTH_CONNECT permission is missing.
+D/libMEOW (14426): meow new tls: 0xb400007a6b96d2e0
+D/libMEOW (14426): applied 1 plugins for [com.example.multi_market_predictions_v3]:
+D/libMEOW (14426):   plugin 1: [libMEOW_gift.so]:
+W/cr_media(14426): getBluetoothAdapter() requires BLUETOOTH permission
+W/cr_media(14426): registerBluetoothIntentsIfNeeded: Requires BLUETOOTH permission
+I/_predictions_v3(14426): hiddenapi: Accessing hidden field Landroid/content/pm/ApplicationInfo;->primaryCpuAbi:Ljava/lang/String; (runtime_flags=0, domain=platform, api=unsupported) from Lorg/chromium/android_webview/SystemStateUtil; (domain=app) using reflection: allowed
+D/vulkan  (14426): searching for layers in '/data/app/~~EkyIgbnyZ-5F7NaAk_8EBw==/com.example.multi_market_predictions_v3-TG4-MjzELBMerjmayDqAvg==/lib/arm64'
+D/vulkan  (14426): searching for layers in '/data/app/~~EkyIgbnyZ-5F7NaAk_8EBw==/com.example.multi_market_predictions_v3-TG4-MjzELBMerjmayDqAvg==/base.apk!/lib/arm64-v8a'
+I/flutter (14426): 🔔 FCM Token: f9NLLoU-TkinKjVtk5I3zD:APA91bE48-WliKs3AL5B3xJ1OOVmozLvB4yhUM1DbkAVP83rAPONkeLujUdRojvV6rGcU4mlIGe375Ev72DQj5hhTG-wpOxvKnR7hMtJJSxUg9m_V8JecV8
+I/GrallocExtra(14426): gralloc_extra_query:is_SW3D 0
+D/BLASTBufferQueue(14426): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:0,a:1) acquireNextBufferLocked size=1084x2412 mFrameNumber=1 applyTransaction=true mTimestamp=158117934865501(auto) mPendingTransactions.size=0 graphicBufferId=61959198212106 transform=0
+D/_predictions_v3(14426): Can't load libmbrainSDK
+I/Choreographer(14426): Skipped 61 frames!  The application may be doing too much work on its main thread.
+D/DynamitePackage(14426): Instantiating com.google.android.gms.ads.ChimeraAdManagerCreatorImpl
+W/AudioCapabilities(14426): Unsupported mime audio/x-adpcm-dvi-ima
+W/AudioCapabilities(14426): Unsupported mime audio/x-adpcm-dvi-ima
+W/AudioCapabilities(14426): Unsupported mime audio/x-adpcm-ms
+W/AudioCapabilities(14426): Unsupported mime audio/x-adpcm-ms
+W/AudioCapabilities(14426): Unsupported mime audio/alac
+W/AudioCapabilities(14426): Unsupported mime audio/alac
+I/Ads     (14426): This request is sent from a test device.
+W/VideoCapabilities(14426): Unsupported mime image/vnd.android.heic
+W/VideoCapabilities(14426): Unsupported mime image/vnd.android.heic
+W/VideoCapabilities(14426): Unsupported mime image/vnd.android.heic
+W/VideoCapabilities(14426): Unsupported mime image/vnd.android.heic
+W/VideoCapabilities(14426): Unrecognized profile/level 32768/256 for video/mp4v-es
+W/VideoCapabilities(14426): Unrecognized profile/level 32768/256 for video/mp4v-es
+W/DynamiteModule(14426): Local module descriptor class for com.google.android.gms.providerinstaller.dynamite not found.
+I/DynamiteModule(14426): Considering local module com.google.android.gms.providerinstaller.dynamite:0 and remote module com.google.android.gms.providerinstaller.dynamite:0
+W/ProviderInstaller(14426): Failed to load providerinstaller module: No acceptable module com.google.android.gms.providerinstaller.dynamite found. Local version is 0 and remote version is 0.
+W/ProviderInstaller(14426): Failed to report request stats: com.google.android.gms.common.security.ProviderInstallerImpl.reportRequestStats [class android.content.Context, long, long]
+D/nativeloader(14426): Configuring clns-14 for other apk . target_sdk_version=35, uses_libraries=ALL, library_path=, permitted_path=/data:/mnt/expand
+D/nativeloader(14426): Extending system_exposed_libraries: libapuwareapusys.mtk.so:libapuwareapusys_v2.mtk.so:libapuwarexrp.mtk.so:libapuwarexrp_v2.mtk.so:libapuwareutils.mtk.so:libapuwareutils_v2.mtk.so:libapuwarehmp.mtk.so:libneuron_graph_delegate.mtk.so:libneuronusdk_adapter.mtk.so:libtflite_mtk.mtk.so:libarmnn_ndk.mtk.so:libcmdl_ndk.mtk.so:libnir_neon_driver_ndk.mtk.so:libmvpu_runtime.mtk.so:libmvpu_runtime_pub.mtk.so:libmvpu_engine_pub.mtk.so:libmvpu_pattern_pub.mtk.so:libmvpuop_mtk_cv.mtk.so:libmvpuop_mtk_nn.mtk.so:libmvpu_runtime_25.mtk.so:libmvpu_runtime_25_pub.mtk.so:libmvpu_engine_25_pub.mtk.so:libmvpu_pattern_25_pub.mtk.so:libmvpuop25_mtk_cv.mtk.so:libmvpuop25_mtk_nn.mtk.so:libmvpu_config.mtk.so:libteeservice_client.trustonic.so
+E/GoogleApiManager(14426): Failed to get service from broker. 
+E/GoogleApiManager(14426): java.lang.SecurityException: Unknown calling package name 'com.google.android.gms'.
+E/GoogleApiManager(14426): 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3242)
+E/GoogleApiManager(14426): 	at android.os.Parcel.createException(Parcel.java:3226)
+E/GoogleApiManager(14426): 	at android.os.Parcel.readException(Parcel.java:3209)
+E/GoogleApiManager(14426): 	at android.os.Parcel.readException(Parcel.java:3151)
+E/GoogleApiManager(14426): 	at bbrc.a(:com.google.android.gms@254031035@25.40.31 (260400-816341114):36)
+E/GoogleApiManager(14426): 	at bbpd.z(:com.google.android.gms@254031035@25.40.31 (260400-816341114):143)
+E/GoogleApiManager(14426): 	at bavu.run(:com.google.android.gms@254031035@25.40.31 (260400-816341114):42)
+E/GoogleApiManager(14426): 	at android.os.Handler.handleCallback(Handler.java:959)
+E/GoogleApiManager(14426): 	at android.os.Handler.dispatchMessage(Handler.java:100)
+E/GoogleApiManager(14426): 	at cmsh.mC(:com.google.android.gms@254031035@25.40.31 (260400-816341114):1)
+E/GoogleApiManager(14426): 	at cmsh.dispatchMessage(:com.google.android.gms@254031035@25.40.31 (260400-816341114):5)
+E/GoogleApiManager(14426): 	at android.os.Looper.loopOnce(Looper.java:267)
+E/GoogleApiManager(14426): 	at android.os.Looper.loop(Looper.java:371)
+E/GoogleApiManager(14426): 	at android.os.HandlerThread.run(HandlerThread.java:94)
+W/FlagRegistrar(14426): Failed to register com.google.android.gms.providerinstaller#com.example.multi_market_predictions_v3
+W/FlagRegistrar(14426): fsio: 17: 17: API: Phenotype.API is not available on this device. Connection failed with: ConnectionResult{statusCode=DEVELOPER_ERROR, resolution=null, message=null, clientMethodKey=null}
+W/FlagRegistrar(14426): 	at fsiq.a(:com.google.android.gms@254031035@25.40.31 (260400-816341114):13)
+W/FlagRegistrar(14426): 	at gpjr.d(:com.google.android.gms@254031035@25.40.31 (260400-816341114):3)
+W/FlagRegistrar(14426): 	at gpjt.run(:com.google.android.gms@254031035@25.40.31 (260400-816341114):130)
+W/FlagRegistrar(14426): 	at gpma.execute(:com.google.android.gms@254031035@25.40.31 (260400-816341114):1)
+W/FlagRegistrar(14426): 	at gpkb.f(:com.google.android.gms@254031035@25.40.31 (260400-816341114):1)
+W/FlagRegistrar(14426): 	at gpkb.m(:com.google.android.gms@254031035@25.40.31 (260400-816341114):99)
+W/FlagRegistrar(14426): 	at gpkb.r(:com.google.android.gms@254031035@25.40.31 (260400-816341114):17)
+W/FlagRegistrar(14426): 	at fknw.hy(:com.google.android.gms@254031035@25.40.31 (260400-816341114):35)
+W/FlagRegistrar(14426): 	at eyda.run(:com.google.android.gms@254031035@25.40.31 (260400-816341114):12)
+W/FlagRegistrar(14426): 	at gpma.execute(:com.google.android.gms@254031035@25.40.31 (260400-816341114):1)
+W/FlagRegistrar(14426): 	at eydb.b(:com.google.android.gms@254031035@25.40.31 (260400-816341114):18)
+W/FlagRegistrar(14426): 	at eydq.b(:com.google.android.gms@254031035@25.40.31 (260400-816341114):36)
+W/FlagRegistrar(14426): 	at eyds.d(:com.google.android.gms@254031035@25.40.31 (260400-816341114):25)
+W/FlagRegistrar(14426): 	at batd.c(:com.google.android.gms@254031035@25.40.31 (260400-816341114):9)
+W/FlagRegistrar(14426): 	at bavs.q(:com.google.android.gms@254031035@25.40.31 (260400-816341114):48)
+W/FlagRegistrar(14426): 	at bavs.d(:com.google.android.gms@254031035@25.40.31 (260400-816341114):10)
+W/FlagRegistrar(14426): 	at bavs.g(:com.google.android.gms@254031035@25.40.31 (260400-816341114):192)
+W/FlagRegistrar(14426): 	at bavs.onConnectionFailed(:com.google.android.gms@254031035@25.40.31 (260400-816341114):2)
+W/FlagRegistrar(14426): 	at bavu.run(:com.google.android.gms@254031035@25.40.31 (260400-816341114):70)
+W/FlagRegistrar(14426): 	at android.os.Handler.handleCallback(Handler.java:959)
+W/FlagRegistrar(14426): 	at android.os.Handler.dispatchMessage(Handler.java:100)
+W/FlagRegistrar(14426): 	at cmsh.mC(:com.google.android.gms@254031035@25.40.31 (260400-816341114):1)
+W/FlagRegistrar(14426): 	at cmsh.dispatchMessage(:com.google.android.gms@254031035@25.40.31 (260400-816341114):5)
+W/FlagRegistrar(14426): 	at android.os.Looper.loopOnce(Looper.java:267)
+W/FlagRegistrar(14426): 	at android.os.Looper.loop(Looper.java:371)
+W/FlagRegistrar(14426): 	at android.os.HandlerThread.run(HandlerThread.java:94)
+W/FlagRegistrar(14426): Caused by: bark: 17: API: Phenotype.API is not available on this device. Connection failed with: ConnectionResult{statusCode=DEVELOPER_ERROR, resolution=null, message=null, clientMethodKey=null}
+W/FlagRegistrar(14426): 	at bbop.a(:com.google.android.gms@254031035@25.40.31 (260400-816341114):15)
+W/FlagRegistrar(14426): 	at batg.a(:com.google.android.gms@254031035@25.40.31 (260400-816341114):1)
+W/FlagRegistrar(14426): 	at batd.c(:com.google.android.gms@254031035@25.40.31 (260400-816341114):5)
+W/FlagRegistrar(14426): 	... 12 more
+I/_predictions_v3(14426): hiddenapi: Accessing hidden method Ldalvik/system/VMStack;->getStackClass2()Ljava/lang/Class; (runtime_flags=0, domain=core-platform, api=unsupported) from Lgkfv; (domain=app) using reflection: allowed
+W/Ads     (14426): Invoke Firebase method getInstance error.
+W/Ads     (14426): The Google Mobile Ads SDK will not integrate with Firebase. Admob/Firebase integration requires the latest Firebase SDK jar, but Firebase SDK is either missing or out of date
+W/ServiceBindIntentUtils(14426): Dynamic lookup for intent failed for action: com.google.android.gms.ads.service.CACHE
+D/nativeloader(14426): Load /data/user/0/com.example.multi_market_predictions_v3/app_pccache/5/6D8DFE5A7E736B59EEF1FDF8D2FF55E7A1CEC401/pcam.jar!/libd8CC7059165C4.so using isolated ns clns-14 (caller=/data/user/0/com.example.multi_market_predictions_v3/app_pccache/5/6D8DFE5A7E736B59EEF1FDF8D2FF55E7A1CEC401/pcam.jar): ok
+D/BLASTBufferQueue(14426): [VRI[MainActivity]#0](f:0,a:1) acquireNextBufferLocked size=1084x2412 mFrameNumber=1 applyTransaction=true mTimestamp=158118243859962(auto) mPendingTransactions.size=0 graphicBufferId=61959198212114 transform=0
+I/DynamiteModule(14426): Considering local module com.google.android.gms.ads.dynamite:0 and remote module com.google.android.gms.ads.dynamite:253405700
+I/DynamiteModule(14426): Selected remote version of com.google.android.gms.ads.dynamite, version >= 253405700
+V/DynamiteModule(14426): Dynamite loader version >= 2, using loadModule2NoCrashUtils
+I/Ads     (14426): JS: The jsLoaded GMSG has been sent (https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html:997)
+I/chromium(14426): [INFO:CONSOLE:997] "The jsLoaded GMSG has been sent", source: https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html (997)
+D/nativeloader(14426): Load /data/app/~~HOgz-XaNz6mVz2aB4JScTQ==/com.google.android.gms-V_ufyeYjjSF9Rh4G-HyjGQ==/base.apk!/lib/arm64-v8a/libconscrypt_gmscore_jni.so using class loader ns clns-10 (caller=/data/app/~~HOgz-XaNz6mVz2aB4JScTQ==/com.google.android.gms-V_ufyeYjjSF9Rh4G-HyjGQ==/base.apk): ok
+I/Ads     (14426): This request is sent from a test device.
+V/NativeCrypto(14426): Registering com/google/android/gms/org/conscrypt/NativeCrypto's 319 native methods...
+D/NtViewRootImpl(14426): mPopUpViewOffsets: offset=(0.0, 0.0), scale=(1.0, 1.0)
+W/Ads     (14426): Not retrying to fetch app settings
+W/ServiceBindIntentUtils(14426): Dynamic lookup for intent failed for action: com.google.android.gms.ads.service.START
+I/_predictions_v3(14426): hiddenapi: Accessing hidden method Ljava/security/spec/ECParameterSpec;->getCurveName()Ljava/lang/String; (runtime_flags=0, domain=core-platform, api=unsupported) from Lcom/google/android/gms/org/conscrypt/Platform; (domain=app) using reflection: allowed
+W/Ads     (14426): Not retrying to fetch app settings
+I/ProviderInstaller(14426): Installed default security provider GmsCore_OpenSSL
+I/_predictions_v3(14426): hiddenapi: Accessing hidden method Ljava/security/spec/ECParameterSpec;->setCurveName(Ljava/lang/String;)V (runtime_flags=0, domain=core-platform, api=unsupported) from Lcom/google/android/gms/org/conscrypt/Platform; (domain=app) using reflection: allowed
+I/_predictions_v3(14426): hiddenapi: Accessing hidden field Ljava/net/Socket;->impl:Ljava/net/SocketImpl; (runtime_flags=0, domain=core-platform, api=unsupported) from Lcom/google/android/gms/org/conscrypt/Platform; (domain=app) using reflection: allowed
+I/flutter (14426): ! Remote predictions fetch returned 404
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+I/flutter (14426): Skipping invalid prediction entry: type 'String' is not a subtype of type 'List<dynamic>' in type cast
+W/Firestore(14426): (25.1.4) [WatchStream]: (abb152f) Stream closed with status: Status{code=PERMISSION_DENIED, description=Cloud Firestore API has not been used in project sattamatkaai-77102 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/firestore.googleapis.com/overview?project=sattamatkaai-77102 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry., cause=null}.
+W/Firestore(14426): (25.1.4) [OnlineStateTracker]: Could not reach Cloud Firestore backend. Connection failed 1 times. Most recent error: Status{code=PERMISSION_DENIED, description=Cloud Firestore API has not been used in project sattamatkaai-77102 before or it is disabled. Enable it by visiting https://console.developers.google.com/apis/api/firestore.googleapis.com/overview?project=sattamatkaai-77102 then retry. If you enabled this API recently, wait a few minutes for the action to propagate to our systems and retry., cause=null}
+W/Firestore(14426): This typically indicates that your device does not have a healthy Internet connection at the moment. The client will operate in offline mode until it is able to successfully connect to the backend.
+I/flutter (14426): ❌ Firestore read error: [cloud_firestore/unavailable] The service is currently unavailable. This is a most likely a transient condition and may be corrected by retrying with a backoff.
+I/flutter (14426): #0      FirebaseFirestoreHostApi.documentReferenceGet (package:cloud_firestore_platform_interface/src/pigeon/messages.pigeon.dart:1086:7)
+I/flutter (14426): <asynchronous suspension>
+I/flutter (14426): #1      MethodChannelDocumentReference.get (package:cloud_firestore_platform_interface/src/method_channel/method_channel_document_reference.dart:72:22)
+I/flutter (14426): <asynchronous suspension>
+I/flutter (14426): #2      _JsonDocumentReference.get (package:cloud_firestore/src/document_reference.dart:148:7)
+I/flutter (14426): <asynchronous suspension>
+I/flutter (14426): #3      _testFirestoreRead (package:SattaMatkaAi/main.dart:34:18)
+I/flutter (14426): <asynchronous suspension>
+W/_predictions_v3(14426): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~_cnfQtSmvpRF50C_aPELQw==/com.google.android.webview-2aHEXxPF1Q6fkFtEil_gWQ==/base.apk' with 2 weak references
+E/Ads     (14426): JS: Error: <svg> attribute viewBox: Expected number, "0 0 413px 232px". (https://googleads.g.doubleclick.net/mads/gma?eid=318500618%2C318486317%2C318491267%2C95368592%2C318482077%2C318483611%2C318484497%2C318523836%2C318503827%2C318515546%2C318522351%2C318523455%2C318522186%2C318516088&format=interstitial_mb&heap_free=22787280&heap_max=268435456&heap_total=67108864&js=afma-sdk-a-v253405999.250930000.1&msid=com.example.multi_market_predictions_v3&preqs=1&seq_num=2&target_api=35#eid=318500618%252C318486317%252C318491267%252C95368592%252C318482077%252C318483611%252C318484497%252C318523836%252C318503827%252C318515546%252C318522351%252C318523455%252C318522186%252C318516088&format=interstitial_mb&heap_free=22787280&heap_max=268435456&heap_total=67108864&js=afma-sdk-a-v253405999.250930000.1&msid=com.example.multi_market_predictions_v3&preqs=1&seq_num=2&target_api=35:1)
+I/chromium(14426): [INFO:CONSOLE:1] "Error: <svg> attribute viewBox: Expected number, "0 0 413px 232px".", source: https://googleads.g.doubleclick.net/mads/gma?eid=318500618%2C318486317%2C318491267%2C95368592%2C318482077%2C318483611%2C318484497%2C318523836%2C318503827%2C318515546%2C318522351%2C318523455%2C318522186%2C318516088&format=interstitial_mb&heap_free=22787280&heap_max=268435456&heap_total=67108864&js=afma-sdk-a-v253405999.250930000.1&msid=com.example.multi_market_predictions_v3&preqs=1&seq_num=2&target_api=35#eid=318500618%252C318486317%252C318491267%252C95368592%252C318482077%252C318483611%252C318484497%252C318523836%252C318503827%252C318515546%252C318522351%252C318523455%252C318522186%252C318516088&format=interstitial_mb&heap_free=22787280&heap_max=268435456&heap_total=67108864&js=afma-sdk-a-v253405999.250930000.1&msid=com.example.multi_market_predictions_v3&preqs=1&seq_num=2&target_api=35 (1)
+E/Ads     (14426): JS: Error: <svg> attribute viewBox: Expected number, "0 0 413px 232px". (https://googleads.g.doubleclick.net/mads/gma?eid=318500618%2C318486317%2C318491267%2C95368592%2C318482077%2C318483611%2C318484497%2C318523836%2C318503827%2C318515546%2C318522351%2C318523455%2C318522186%2C318516088&format=interstitial_mb&heap_free=22787280&heap_max=268435456&heap_total=67108864&js=afma-sdk-a-v253405999.250930000.1&msid=com.example.multi_market_predictions_v3&preqs=1&seq_num=2&target_api=35#eid=318500618%252C318486317%252C318491267%252C95368592%252C318482077%252C318483611%252C318484497%252C318523836%252C318503827%252C318515546%252C318522351%252C318523455%252C318522186%252C318516088&format=interstitial_mb&heap_free=22787280&heap_max=268435456&heap_total=67108864&js=afma-sdk-a-v253405999.250930000.1&msid=com.example.multi_market_predictions_v3&preqs=1&seq_num=2&target_api=35:1)
+I/chromium(14426): [INFO:CONSOLE:1] "Error: <svg> attribute viewBox: Expected number, "0 0 413px 232px".", source: https://googleads.g.doubleclick.net/mads/gma?eid=318500618%2C318486317%2C318491267%2C95368592%2C318482077%2C318483611%2C318484497%2C318523836%2C318503827%2C318515546%2C318522351%2C318523455%2C318522186%2C318516088&format=interstitial_mb&heap_free=22787280&heap_max=268435456&heap_total=67108864&js=afma-sdk-a-v253405999.250930000.1&msid=com.example.multi_market_predictions_v3&preqs=1&seq_num=2&target_api=35#eid=318500618%252C318486317%252C318491267%252C95368592%252C318482077%252C318483611%252C318484497%252C318523836%252C318503827%252C318515546%252C318522351%252C318523455%252C318522186%252C318516088&format=interstitial_mb&heap_free=22787280&heap_max=268435456&heap_total=67108864&js=afma-sdk-a-v253405999.250930000.1&msid=com.example.multi_market_predictions_v3&preqs=1&seq_num=2&target_api=35 (1)
+I/Ads     (14426): JS: The jsLoaded GMSG has been sent (https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html:997)
+I/chromium(14426): [INFO:CONSOLE:997] "The jsLoaded GMSG has been sent", source: https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html (997)
+W/Ads     (14426): GET LOCATION COMPILED
+D/CompatChangeReporter(14426): Compat change id reported: 63938206; UID 10328; state: ENABLED
+I/DynamiteModule(14426): Considering local module com.google.android.gms.ads.dynamite:0 and remote module com.google.android.gms.ads.dynamite:253405700
+I/DynamiteModule(14426): Selected remote version of com.google.android.gms.ads.dynamite, version >= 253405700
+W/IPCThreadState(14426): Transaction failed because process frozen.
+E/JavaBinder(14426): !!! FAILED BINDER TRANSACTION !!!  (parcel size = 116)
+W/IPCThreadState(14426): Transaction failed because process frozen.
+D/ActivityThread(14426): Too many transaction errors, throttling freezer binder callback.
+E/JavaBinder(14426): !!! FAILED BINDER TRANSACTION !!!  (parcel size = 136)
+I/_predictions_v3(14426): Compiler allocated 4135KB to compile void android.widget.TextView.<init>(android.content.Context, android.util.AttributeSet, int, int)
+I/PlatformViewsController(14426): Hosting view in view hierarchy for platform view: 0
+I/PlatformViewsController(14426): PlatformView is using SurfaceProducer backend
+D/BufferQueueConsumer(14426): [](id:385a00000002,api:0,p:-1,c:14426) connect: controlledByApp=true
+D/Surface (14426): lockHardwareCanvas
+D/BufferQueueConsumer(14426): [](id:385a00000003,api:0,p:-1,c:14426) connect: controlledByApp=true
+D/Surface (14426): lockHardwareCanvas
+I/ContentCaptureHelper(14426): Setting logging level to OFF
+D/Surface (14426): lockHardwareCanvas
+W/Ads     (14426): GET LOCATION COMPILED
+D/Surface (14426): lockHardwareCanvas
+E/GPUAUX  (14426): [AUX]GuiExtAuxCheckAuxPath:682: Null anb
+D/BufferQueueConsumer(14426): [ImageReader-1x1f22m6-14426-0](id:385a00000002,api:0,p:-1,c:14426) disconnect
+D/Surface (14426): lockHardwareCanvas
+I/DynamiteModule(14426): Considering local module com.google.android.gms.ads.dynamite:0 and remote module com.google.android.gms.ads.dynamite:253405700
+I/DynamiteModule(14426): Selected remote version of com.google.android.gms.ads.dynamite, version >= 253405700
+D/Surface (14426): lockHardwareCanvas
+D/Surface (14426): lockHardwareCanvas
+D/Surface (14426): lockHardwareCanvas
+D/Surface (14426): lockHardwareCanvas
+D/Surface (14426): lockHardwareCanvas
+D/Surface (14426): lockHardwareCanvas
+D/Surface (14426): lockHardwareCanvas
+D/Surface (14426): lockHardwareCanvas
+D/Surface (14426): lockHardwareCanvas
+D/Surface (14426): lockHardwareCanvas
+D/Surface (14426): lockHardwareCanvas
+D/Surface (14426): lockHardwareCanvas
+D/Surface (14426): lockHardwareCanvas
+D/Surface (14426): lockHardwareCanvas
+D/Surface (14426): lockHardwareCanvas
+D/Surface (14426): lockHardwareCanvas
+D/Surface (14426): lockHardwareCanvas
+E/GoogleApiManager(14426): Failed to get service from broker. 
+E/GoogleApiManager(14426): java.lang.SecurityException: Unknown calling package name 'com.google.android.gms'.
+E/GoogleApiManager(14426): 	at android.os.Parcel.createExceptionOrNull(Parcel.java:3242)
+E/GoogleApiManager(14426): 	at android.os.Parcel.createException(Parcel.java:3226)
+E/GoogleApiManager(14426): 	at android.os.Parcel.readException(Parcel.java:3209)
+E/GoogleApiManager(14426): 	at android.os.Parcel.readException(Parcel.java:3151)
+E/GoogleApiManager(14426): 	at bbrc.a(:com.google.android.gms@254031035@25.40.31 (260400-816341114):36)
+E/GoogleApiManager(14426): 	at bbpd.z(:com.google.android.gms@254031035@25.40.31 (260400-816341114):143)
+E/GoogleApiManager(14426): 	at bavu.run(:com.google.android.gms@254031035@25.40.31 (260400-816341114):42)
+E/GoogleApiManager(14426): 	at android.os.Handler.handleCallback(Handler.java:959)
+E/GoogleApiManager(14426): 	at android.os.Handler.dispatchMessage(Handler.java:100)
+E/GoogleApiManager(14426): 	at cmsh.mC(:com.google.android.gms@254031035@25.40.31 (260400-816341114):1)
+E/GoogleApiManager(14426): 	at cmsh.dispatchMessage(:com.google.android.gms@254031035@25.40.31 (260400-816341114):5)
+E/GoogleApiManager(14426): 	at android.os.Looper.loopOnce(Looper.java:267)
+E/GoogleApiManager(14426): 	at android.os.Looper.loop(Looper.java:371)
+E/GoogleApiManager(14426): 	at android.os.HandlerThread.run(HandlerThread.java:94)
+E/FilePhenotypeFlags(14426): Config package com.google.android.gms.clearcut_client#com.example.multi_market_predictions_v3 cannot use FILE backing without declarative registration. See go/phenotype-android-integration#phenotype for more information. This will lead to stale flags.
+I/ScrollIdentify(14426): on fling
+I/ScrollIdentify(14426): on fling

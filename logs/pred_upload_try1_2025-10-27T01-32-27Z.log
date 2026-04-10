@@ -1,0 +1,55 @@
+=== PRED_UPLOAD_TRY1 START 2025-10-27T01:32:27Z ===
+C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\unified_prediction_uploader.py:211: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  "generated_at": datetime.utcnow().isoformat() + "Z",
+Engine module: None
+DB path: app_data/todays_predictions
+Dry run: False
+âœ… Using predictions file: C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\output\predictions_v4.json
+Normalized prediction entries count: 50
+Sample first item:
+ {
+  "market": "amar_jyoti_penal_chart",
+  "p": {
+    "Date": "2025-10-16",
+    "Open Digits": [
+      "9",
+      "2",
+      "4"
+    ],
+    "Close Digits": [
+      "9",
+      "7",
+      "0"
+    ],
+    "Open Pannas": [
+      "112",
+      "200",
+      "289",
+      "110",
+      "347",
+      "346",
+      "236"
+    ],
+    "Close Pannas": [
+      "115",
+      "360",
+      "450",
+      "278",
+      "680",
+      "479",
+      "146"
+    ],
+    "Jodis": [
+      "90",
+      "49",
+      "29",
+      "20",
+      "99",
+      "27"
+    ]
+  }
+}
+Initializing firebase_admin...
+Uploaded predictions to RTDB path: app_data/todays_predictions
+Done successfully.
+=== PRED_UPLOAD_TRY1 END rc=0 2025-10-27T01:32:29Z ===

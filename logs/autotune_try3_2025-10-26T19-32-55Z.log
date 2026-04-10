@@ -1,0 +1,15 @@
+=== AUTOTUNE_TRY3 START 2025-10-26T19:32:55Z ===
+C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\auto_tune_params.py:34: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  data["_meta"]["last_updated"] = datetime.utcnow().isoformat(timespec="seconds") + "Z"
+Traceback (most recent call last):
+  File "C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\auto_tune_params.py", line 106, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\auto_tune_params.py", line 103, in main
+    print(f"\u2705 Auto-tuned params for {updated} markets \u2192 {PARAMS_PATH}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\VCOM\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 0: character maps to <undefined>
+=== AUTOTUNE_TRY3 END rc=1 2025-10-26T19:32:55Z ===

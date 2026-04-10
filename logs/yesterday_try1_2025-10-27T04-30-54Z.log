@@ -1,0 +1,5 @@
+=== YESTERDAY_TRY1 START 2025-10-27T04:30:54Z ===
+📅 Date distribution: {'2024-08-11': 1, '2025-10-02': 1, '2025-08-15': 2, '2025-08-07': 1, '2025-10-24': 2, '2025-10-11': 1, '2025-10-26': 12, '2025-10-25': 2, '2023-12-06': 1, '2023-10-28': 1, '2025-07-18': 1, '2025-08-22': 1, '2025-10-19': 2, '2024-01-25': 1, '2025-10-23': 1, '2023-12-05': 2, '2019-09-28': 1, '2025-08-26': 1, '2025-08-31': 1, '2024-07-17': 1, '2025-09-01': 2, '2024-08-29': 1, '2023-03-12': 1, '2025-04-26': 2, '2025-08-13': 1, '2025-09-21': 1, '2025-10-18': 1, '2025-09-29': 1, '2025-10-05': 1, '2025-08-28': 1, '2025-08-30': 1, '2025-10-06': 1}  → chosen: 2025-10-26
+✅ Prepared yesterday_results.json → 50 markets, node date: 2025-10-26
+❌ Firebase upload failed: HTTPSConnectionPool(host='oauth2.googleapis.com', port=443): Max retries exceeded with url: /token (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x0000021C9DBFBC50>: Failed to resolve 'oauth2.googleapis.com' ([Errno 11001] getaddrinfo failed)"))
+=== YESTERDAY_TRY1 END rc=0 2025-10-27T04:30:56Z ===

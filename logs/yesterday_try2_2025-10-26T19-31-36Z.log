@@ -1,0 +1,15 @@
+=== YESTERDAY_TRY2 START 2025-10-26T19:31:36Z ===
+Traceback (most recent call last):
+  File "C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\generate_yesterday_results.py", line 133, in <module>
+    generate_yesterday_results()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\generate_yesterday_results.py", line 104, in generate_yesterday_results
+    publish_date = _choose_publish_date(latest_rows)
+  File "C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\generate_yesterday_results.py", line 70, in _choose_publish_date
+    print(f"\U0001f4c5 Date distribution: {dict(counts)}  \u2192 chosen: {chosen}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\VCOM\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f4c5' in position 0: character maps to <undefined>
+=== YESTERDAY_TRY2 END rc=1 2025-10-26T19:31:37Z ===

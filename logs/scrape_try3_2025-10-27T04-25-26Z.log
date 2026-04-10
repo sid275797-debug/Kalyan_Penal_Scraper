@@ -1,0 +1,69 @@
+=== SCRAPE_TRY3 START 2025-10-27T04:25:26Z ===
+
+🔍 Scraping raja_rani_morning_panel_chart...
+✅ Saved: output\raja_rani_morning_panel_chart.csv
+
+🔍 Scraping sridevi_morning_panel_chart...
+✅ Saved: output\sridevi_morning_panel_chart.csv
+
+🔍 Scraping karnataka_day_panel_chart...
+✅ Saved: output\karnataka_day_panel_chart.csv
+
+🔍 Scraping dhan_express_panel_chart...
+✅ Saved: output\dhan_express_panel_chart.csv
+
+🔍 Scraping shagun_day_panel_chart...
+⚠️ No data for shagun_day_panel_chart
+
+🔍 Scraping madhur_morning_penal_chart...
+✅ Saved: output\madhur_morning_penal_chart.csv
+
+🔍 Scraping sridevi_satta_penal_chart...
+Traceback (most recent call last):
+  File "C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\multi_market_scraperrr.py", line 104, in <module>
+    scrape_market(m['name'], m['url'])
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\multi_market_scraperrr.py", line 27, in scrape_market
+    driver.get(url)
+    ~~~~~~~~~~^^^^^
+  File "C:\Users\VCOM\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 472, in get
+    self.execute(Command.GET, {"url": url})
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\VCOM\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 447, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\VCOM\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 232, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.WebDriverException: Message: unknown error: net::ERR_INTERNET_DISCONNECTED
+  (Session info: chrome=141.0.7390.78)
+Stacktrace:
+	GetHandleVerifier [0x0x7ff6705fe8e5+80021]
+	GetHandleVerifier [0x0x7ff6705fe940+80112]
+	(No symbol) [0x0x7ff67038060f]
+	(No symbol) [0x0x7ff67037d0bf]
+	(No symbol) [0x0x7ff67036dae9]
+	(No symbol) [0x0x7ff67036f94e]
+	(No symbol) [0x0x7ff67036e0d2]
+	(No symbol) [0x0x7ff67036d859]
+	(No symbol) [0x0x7ff67036d51d]
+	(No symbol) [0x0x7ff67036b08c]
+	(No symbol) [0x0x7ff67036b91c]
+	(No symbol) [0x0x7ff6703846da]
+	(No symbol) [0x0x7ff67042a47e]
+	(No symbol) [0x0x7ff67040122a]
+	(No symbol) [0x0x7ff67042968a]
+	(No symbol) [0x0x7ff670401003]
+	(No symbol) [0x0x7ff6703c95d1]
+	(No symbol) [0x0x7ff6703ca3f3]
+	GetHandleVerifier [0x0x7ff6708bdc7d+2960429]
+	GetHandleVerifier [0x0x7ff6708b7f3a+2936554]
+	GetHandleVerifier [0x0x7ff6708d8977+3070247]
+	GetHandleVerifier [0x0x7ff6706183ce+185214]
+	GetHandleVerifier [0x0x7ff67061fe1f+216527]
+	GetHandleVerifier [0x0x7ff670607b24+117460]
+	GetHandleVerifier [0x0x7ff670607cdf+117903]
+	GetHandleVerifier [0x0x7ff6705edbb8+11112]
+	BaseThreadInitThunk [0x0x7ffd5dc87374+20]
+	RtlUserThreadStart [0x0x7ffd5eadcc91+33]
+
+=== SCRAPE_TRY3 END rc=1 2025-10-27T04:30:09Z ===

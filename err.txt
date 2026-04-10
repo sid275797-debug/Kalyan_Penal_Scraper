@@ -1,0 +1,825 @@
+Launching lib\main.dart on A142 in debug mode...
+Running Gradle task 'assembleDebug'...
+I/flutter ( 3916): NtLifecycle->scheduledWakeUp tag:KeepAlive,length:Instance of 'BluetoothHelper',Instance of 'NtWatchWorker'
+√ Built build\app\outputs\flutter-apk\app-debug.apk
+Installing build\app\outputs\flutter-apk\app-debug.apk...
+I/flutter (15245): [IMPORTANT:flutter/shell/platform/android/android_context_vk_impeller.cc(61)] Using the Impeller rendering backend (Vulkan).
+Debug service listening on ws://127.0.0.1:59243/b8BYh2fNJ-Y=/ws
+Syncing files to device A142...
+W/_predictions_v3(15245): ClassLoaderContext classpath size mismatch. expected=1, found=0 (DLC[];PCL[base.apk*677424407]{PCL[/system/framework/org.apache.http.legacy.jar*437079508]#PCL[/system/framework/com.android.media.remotedisplay.jar*2042759013]#PCL[/system/framework/com.android.location.provider.jar*3414091812]#PCL[/system_ext/framework/androidx.window.extensions.jar*4137455312]#PCL[/system_ext/framework/androidx.window.sidecar.jar*2805092603]} | DLC[];PCL[])
+I/DynamiteModule(15245): Considering local module com.google.android.gms.ads.dynamite:0 and remote module com.google.android.gms.ads.dynamite:253405700
+I/DynamiteModule(15245): Selected remote version of com.google.android.gms.ads.dynamite, version >= 253405700
+W/System  (15245): ClassLoader referenced unknown path: 
+D/nativeloader(15245): Configuring clns-11 for other apk . target_sdk_version=36, uses_libraries=, library_path=/data/app/~~46alIkuEICFfl_FT0zvKRA==/com.google.android.gms-m2_tcwK8usAxsbxxwWEvpw==/lib/arm64:/data/app/~~46alIkuEICFfl_FT0zvKRA==/com.google.android.gms-m2_tcwK8usAxsbxxwWEvpw==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand:/data/user/0/com.google.android.gms
+D/CompatChangeReporter(15245): Compat change id reported: 312399441; UID 10330; state: ENABLED
+W/_predictions_v3(15245): ClassLoaderContext type mismatch. expected=PCL, found=DLC (PCL[] | DLC[];PCL[/data/app/~~3CfJ5PeUcK-BnZjg3ot8MQ==/com.example.multi_market_predictions_v3-7hTJElA9QXiNa9QvdLA3Ng==/base.apk*253839446]{PCL[/system_ext/framework/androidx.window.extensions.jar*4137455312]#PCL[/system_ext/framework/androidx.window.sidecar.jar*2805092603]})
+D/DynamitePackage(15245): Instantiated singleton DynamitePackage.
+D/DynamitePackage(15245): Instantiating com.google.android.gms.ads.ChimeraMobileAdsSettingManagerCreatorImpl
+I/Ads     (15245): Updating ad debug logging enablement.
+W/Ads     (15245): Update ad debug logging enablement as false
+I/WebViewFactory(15245): Loading com.google.android.webview version 141.0.7390.97 (code 739009733)
+V/ResourcesManager(15245): The following library key has been added: ResourcesKey{ mHash=d402cd8a mResDir=null mSplitDirs=[] mOverlayDirs=[/product/overlay/NavigationBarModeGestural/NavigationBarModeGesturalOverlay.apk,/data/resource-cache/com.android.systemui-neutral-iDCG.frro,/data/resource-cache/com.android.systemui-accent-bnhY.frro,/data/resource-cache/com.android.systemui-dynamic-VlaC.frro] mLibDirs=[/data/app/~~FSybqvIkhRg0rly7Zq1tpA==/com.google.android.webview-Yg0M6dPKHk18YyZUKEE7Bw==/base.apk,/data/app/~~Twh8mWNglF3t_-j2yebqSA==/com.google.android.trichromelibrary_739009733-VsI-piFceGYQ5q8adsjyRw==/base.apk,/system_ext/framework/androidx.window.extensions.jar] mDisplayId=0 mOverrideConfig=v35 mCompatInfo={420dpi always-compat} mLoaders=[]}
+W/_predictions_v3(15245): Failed to find entry 'classes.dex': Entry not found
+D/nativeloader(15245): Configuring clns-12 for other apk /data/app/~~Twh8mWNglF3t_-j2yebqSA==/com.google.android.trichromelibrary_739009733-VsI-piFceGYQ5q8adsjyRw==/base.apk. target_sdk_version=36, uses_libraries=ALL, library_path=/data/app/~~FSybqvIkhRg0rly7Zq1tpA==/com.google.android.webview-Yg0M6dPKHk18YyZUKEE7Bw==/lib/arm64:/data/app/~~FSybqvIkhRg0rly7Zq1tpA==/com.google.android.webview-Yg0M6dPKHk18YyZUKEE7Bw==/base.apk!/lib/arm64-v8a:/data/app/~~Twh8mWNglF3t_-j2yebqSA==/com.google.android.trichromelibrary_739009733-VsI-piFceGYQ5q8adsjyRw==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand
+D/nativeloader(15245): Extending system_exposed_libraries: libapuwareapusys.mtk.so:libapuwareapusys_v2.mtk.so:libapuwarexrp.mtk.so:libapuwarexrp_v2.mtk.so:libapuwareutils.mtk.so:libapuwareutils_v2.mtk.so:libapuwarehmp.mtk.so:libneuron_graph_delegate.mtk.so:libneuronusdk_adapter.mtk.so:libtflite_mtk.mtk.so:libarmnn_ndk.mtk.so:libcmdl_ndk.mtk.so:libnir_neon_driver_ndk.mtk.so:libmvpu_runtime.mtk.so:libmvpu_runtime_pub.mtk.so:libmvpu_engine_pub.mtk.so:libmvpu_pattern_pub.mtk.so:libmvpuop_mtk_cv.mtk.so:libmvpuop_mtk_nn.mtk.so:libmvpu_runtime_25.mtk.so:libmvpu_runtime_25_pub.mtk.so:libmvpu_engine_25_pub.mtk.so:libmvpu_pattern_25_pub.mtk.so:libmvpuop25_mtk_cv.mtk.so:libmvpuop25_mtk_nn.mtk.so:libmvpu_config.mtk.so:libteeservice_client.trustonic.so
+D/ApplicationLoaders(15245): Returning zygote-cached class loader: /system_ext/framework/androidx.window.extensions.jar
+W/_predictions_v3(15245): Loading /data/app/~~FSybqvIkhRg0rly7Zq1tpA==/com.google.android.webview-Yg0M6dPKHk18YyZUKEE7Bw==/oat/arm64/base.odex non-executable as it requires an image which we failed to load
+D/nativeloader(15245): Configuring clns-13 for other apk /data/app/~~FSybqvIkhRg0rly7Zq1tpA==/com.google.android.webview-Yg0M6dPKHk18YyZUKEE7Bw==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~FSybqvIkhRg0rly7Zq1tpA==/com.google.android.webview-Yg0M6dPKHk18YyZUKEE7Bw==/lib/arm64:/data/app/~~FSybqvIkhRg0rly7Zq1tpA==/com.google.android.webview-Yg0M6dPKHk18YyZUKEE7Bw==/base.apk!/lib/arm64-v8a:/data/app/~~Twh8mWNglF3t_-j2yebqSA==/com.google.android.trichromelibrary_739009733-VsI-piFceGYQ5q8adsjyRw==/base.apk!/lib/arm64-v8a, permitted_path=/data:/mnt/expand
+I/cr_WVCFactoryProvider(15245): version=141.0.7390.97 (739009733) minSdkVersion=29 multiprocess=true packageId=2 splits=<none>
+D/nativeloader(15245): Load /data/app/~~Twh8mWNglF3t_-j2yebqSA==/com.google.android.trichromelibrary_739009733-VsI-piFceGYQ5q8adsjyRw==/base.apk!/lib/arm64-v8a/libmonochrome_64.so using class loader ns clns-13 (caller=/data/app/~~FSybqvIkhRg0rly7Zq1tpA==/com.google.android.webview-Yg0M6dPKHk18YyZUKEE7Bw==/base.apk): ok
+D/nativeloader(15245): Load /system/lib64/libwebviewchromium_plat_support.so using class loader ns clns-13 (caller=/data/app/~~FSybqvIkhRg0rly7Zq1tpA==/com.google.android.webview-Yg0M6dPKHk18YyZUKEE7Bw==/base.apk): ok
+E/chromium(15245): [1027/013638.507109:ERROR:android_webview/browser/variations/variations_seed_loader.cc:39] Seed missing signature.
+I/cr_LibraryLoader(15245): Successfully loaded native library
+I/cr_CachingUmaRecorder(15245): Flushed 16 samples from 16 histograms, 0 samples were dropped.
+I/cr_CombinedPProvider(15245): #registerProvider() provider:WV.ak@4d6247c isPolicyCacheEnabled:false policyProvidersSize:0
+I/cr_PolicyProvider(15245): #setManagerAndSource() 0
+I/cr_CombinedPProvider(15245): #linkNativeInternal() 1
+I/cr_AppResProvider(15245): #getApplicationRestrictionsFromUserManager() Bundle[EMPTY_PARCEL]
+I/cr_PolicyProvider(15245): #notifySettingsAvailable() 0
+I/cr_CombinedPProvider(15245): #onSettingsAvailable() 0
+I/cr_CombinedPProvider(15245): #flushPolicies()
+W/chromium(15245): [WARNING:android_webview/browser/network_service/net_helpers.cc:143] HTTP Cache size is: 20971520
+I/Choreographer(15245): Skipped 31 frames!  The application may be doing too much work on its main thread.
+E/_predictions_v3(15245): Invalid resource ID 0x00000000.
+W/System.err(15245): android.content.res.Resources$NotFoundException: String resource ID #0x0
+I/CameraManagerGlobal(15245): Connecting to camera service
+W/System.err(15245): 	at android.content.res.Resources.getText(Resources.java:472)
+W/System.err(15245): 	at android.content.res.Resources.getString(Resources.java:565)
+W/System.err(15245): 	at com.nothing.experience.sdk.NothingExperience.getAppName(NothingExperience.java:81)
+W/System.err(15245): 	at com.nothing.experience.sdk.NothingExperience.<init>(NothingExperience.java:49)
+W/System.err(15245): 	at com.nothing.experience.sdk.NothingExperience.getInstance(NothingExperience.java:65)
+W/System.err(15245): 	at com.nothing.experience.AppTracking.<init>(AppTracking.java:20)
+W/System.err(15245): 	at com.nothing.experience.AppTracking.getInstance(AppTracking.java:27)
+W/System.err(15245): 	at com.nothing.performance.NtPerformanceDataTrackingImpl$pjy.run(go/retraceme 429c33afc2ff3fc9b63af58c066dd4342728a6e9f25a5d200e0f8911ab123def:128)
+W/System.err(15245): 	at android.os.Handler.handleCallback(Handler.java:959)
+W/System.err(15245): 	at android.os.Handler.dispatchMessage(Handler.java:100)
+W/System.err(15245): 	at android.os.Looper.loopOnce(Looper.java:267)
+W/System.err(15245): 	at android.os.Looper.loop(Looper.java:371)
+W/System.err(15245): 	at android.os.HandlerThread.run(HandlerThread.java:94)
+W/cr_media(15245): BLUETOOTH_CONNECT permission is missing.
+W/cr_media(15245): getBluetoothAdapter() requires BLUETOOTH permission
+W/cr_media(15245): registerBluetoothIntentsIfNeeded: Requires BLUETOOTH permission
+D/libMEOW (15245): meow new tls: 0xb400007bb7bcf130
+D/libMEOW (15245): applied 1 plugins for [com.example.multi_market_predictions_v3]:
+D/libMEOW (15245):   plugin 1: [libMEOW_gift.so]:
+I/_predictions_v3(15245): hiddenapi: Accessing hidden field Landroid/content/pm/ApplicationInfo;->primaryCpuAbi:Ljava/lang/String; (runtime_flags=0, domain=platform, api=unsupported) from Lorg/chromium/android_webview/SystemStateUtil; (domain=app) using reflection: allowed
+D/vulkan  (15245): searching for layers in '/data/app/~~3CfJ5PeUcK-BnZjg3ot8MQ==/com.example.multi_market_predictions_v3-7hTJElA9QXiNa9QvdLA3Ng==/lib/arm64'
+D/vulkan  (15245): searching for layers in '/data/app/~~3CfJ5PeUcK-BnZjg3ot8MQ==/com.example.multi_market_predictions_v3-7hTJElA9QXiNa9QvdLA3Ng==/base.apk!/lib/arm64-v8a'
+I/flutter (15245): 🔔 FCM Token: eR2mdQkmRdSLf_ToavZ8-E:APA91bHDj32xfGRe4bRLawMT4b1QanEyDris4Fc7Vt2_kR_HuOy3YGJ95hvA5Wvktgve3yI0rwB5yiWZggoAKoxcV75gVROEo7wp8HqZ7NldE8Bt336ZsDk
+W/AudioCapabilities(15245): Unsupported mime audio/x-adpcm-dvi-ima
+W/AudioCapabilities(15245): Unsupported mime audio/x-adpcm-dvi-ima
+W/AudioCapabilities(15245): Unsupported mime audio/x-adpcm-ms
+W/AudioCapabilities(15245): Unsupported mime audio/x-adpcm-ms
+W/AudioCapabilities(15245): Unsupported mime audio/alac
+W/AudioCapabilities(15245): Unsupported mime audio/alac
+W/VideoCapabilities(15245): Unsupported mime image/vnd.android.heic
+W/VideoCapabilities(15245): Unsupported mime image/vnd.android.heic
+W/VideoCapabilities(15245): Unsupported mime image/vnd.android.heic
+W/VideoCapabilities(15245): Unsupported mime image/vnd.android.heic
+W/VideoCapabilities(15245): Unrecognized profile/level 32768/256 for video/mp4v-es
+W/VideoCapabilities(15245): Unrecognized profile/level 32768/256 for video/mp4v-es
+I/Ads     (15245): JS: The jsLoaded GMSG has been sent (https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html:1006)
+I/chromium(15245): [INFO:CONSOLE:1006] "The jsLoaded GMSG has been sent", source: https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html (1006)
+D/ProfileInstaller(15245): Installing profile for com.example.multi_market_predictions_v3
+I/flutter (15245): [PredictionService] RTDB snap exists=true, type=_Map<Object?, Object?>
+I/flutter (15245): [PredictionService] returning 50 predictions
+I/flutter (15245): 🔎 PredictionService returned 50 items
+I/flutter (15245): 🔎 first item JSON: {market: amar_jyoti_penal_chart, p: {close_pannas: [115, 360, 450, 278, 680, 479, 146], close_digits: [9, 7, 0], open_digits: [9, 2, 4], open_pannas: [112, 200, 289, 110, 347, 346, 236], date: 2025-10-16, jodis: [90, 49, 29, 20, 99, 27]}, score: 0.0, passed: false}
+I/GrallocExtra(15245): gralloc_extra_query:is_SW3D 0
+D/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:0,a:1) acquireNextBufferLocked size=1084x2412 mFrameNumber=1 applyTransaction=true mTimestamp=357555265388926(auto) mPendingTransactions.size=0 graphicBufferId=65476776427530 transform=0
+D/_predictions_v3(15245): Can't load libmbrainSDK
+I/Choreographer(15245): Skipped 52 frames!  The application may be doing too much work on its main thread.
+D/DynamitePackage(15245): Instantiating com.google.android.gms.ads.ChimeraAdManagerCreatorImpl
+I/Ads     (15245): This request is sent from a test device.
+D/BLASTBufferQueue(15245): [VRI[MainActivity]#0](f:0,a:1) acquireNextBufferLocked size=1084x2412 mFrameNumber=1 applyTransaction=true mTimestamp=357555338553541(auto) mPendingTransactions.size=0 graphicBufferId=65476776427538 transform=0
+D/NtViewRootImpl(15245): mPopUpViewOffsets: offset=(0.0, 0.0), scale=(1.0, 1.0)
+E/_predictions_v3(15245): Unable to resolve path '/data/app/~~eI3w4mQpJMTAHL69XmgljQ==/com.example.multi_market_predictions_v3-3p1KzJQqaa7Bw4eqoszqMw==/base.apk': No such file or directory
+W/_predictions_v3(15245): ClassLoaderContext classpath element mismatch. expected=/data/app/~~eI3w4mQpJMTAHL69XmgljQ==/com.example.multi_market_predictions_v3-3p1KzJQqaa7Bw4eqoszqMw==/base.apk, found=/data/app/~~3CfJ5PeUcK-BnZjg3ot8MQ==/com.example.multi_market_predictions_v3-7hTJElA9QXiNa9QvdLA3Ng==/base.apk (PCL[];PCL[/data/app/~~eI3w4mQpJMTAHL69XmgljQ==/com.example.multi_market_predictions_v3-3p1KzJQqaa7Bw4eqoszqMw==/base.apk*253839446]{PCL[/system_ext/framework/androidx.window.extensions.jar*4137455312]#PCL[/system_ext/framework/androidx.window.sidecar.jar*2805092603]} | PCL[];PCL[/data/app/~~3CfJ5PeUcK-BnZjg3ot8MQ==/com.example.multi_market_predictions_v3-7hTJElA9QXiNa9QvdLA3Ng==/base.apk*253839446]{PCL[/system_ext/framework/androidx.window.extensions.jar*4137455312]#PCL[/system_ext/framework/androidx.window.sidecar.jar*2805092603]})
+W/Ads     (15245): Invoke Firebase method getInstance error.
+W/Ads     (15245): The Google Mobile Ads SDK will not integrate with Firebase. Admob/Firebase integration requires the latest Firebase SDK jar, but Firebase SDK is either missing or out of date
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+D/nativeloader(15245): Configuring clns-14 for other apk . target_sdk_version=35, uses_libraries=ALL, library_path=, permitted_path=/data:/mnt/expand
+D/nativeloader(15245): Extending system_exposed_libraries: libapuwareapusys.mtk.so:libapuwareapusys_v2.mtk.so:libapuwarexrp.mtk.so:libapuwarexrp_v2.mtk.so:libapuwareutils.mtk.so:libapuwareutils_v2.mtk.so:libapuwarehmp.mtk.so:libneuron_graph_delegate.mtk.so:libneuronusdk_adapter.mtk.so:libtflite_mtk.mtk.so:libarmnn_ndk.mtk.so:libcmdl_ndk.mtk.so:libnir_neon_driver_ndk.mtk.so:libmvpu_runtime.mtk.so:libmvpu_runtime_pub.mtk.so:libmvpu_engine_pub.mtk.so:libmvpu_pattern_pub.mtk.so:libmvpuop_mtk_cv.mtk.so:libmvpuop_mtk_nn.mtk.so:libmvpu_runtime_25.mtk.so:libmvpu_runtime_25_pub.mtk.so:libmvpu_engine_25_pub.mtk.so:libmvpu_pattern_25_pub.mtk.so:libmvpuop25_mtk_cv.mtk.so:libmvpuop25_mtk_nn.mtk.so:libmvpu_config.mtk.so:libteeservice_client.trustonic.so
+D/nativeloader(15245): Load /data/user/0/com.example.multi_market_predictions_v3/app_pccache/5/A676523B3E46DAB04C3DAC7B4C5781491E6DC27A/pcam.jar!/libdE9CCDAF38955.so using isolated ns clns-14 (caller=/data/user/0/com.example.multi_market_predictions_v3/app_pccache/5/A676523B3E46DAB04C3DAC7B4C5781491E6DC27A/pcam.jar): ok
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+W/ServiceBindIntentUtils(15245): Dynamic lookup for intent failed for action: com.google.android.gms.ads.service.CACHE
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+I/DynamiteModule(15245): Considering local module com.google.android.gms.ads.dynamite:0 and remote module com.google.android.gms.ads.dynamite:253405700
+I/DynamiteModule(15245): Selected remote version of com.google.android.gms.ads.dynamite, version >= 253405700
+V/DynamiteModule(15245): Dynamite loader version >= 2, using loadModule2NoCrashUtils
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+W/Ads     (15245): Not retrying to fetch app settings
+I/Ads     (15245): This request is sent from a test device.
+W/ServiceBindIntentUtils(15245): Dynamic lookup for intent failed for action: com.google.android.gms.ads.service.START
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+W/Ads     (15245): Not retrying to fetch app settings
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+I/flutter (15245): [PredictionService] RTDB snap exists=true, type=_Map<Object?, Object?>
+I/flutter (15245): [PredictionService] returning 50 predictions
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+I/flutter (15245): ✅ RTDB: Loaded 50 Yesterday markets for 2025-10-26
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+I/flutter (15245): [ScoreService] RTDB fetch: https://sattamatkaai-77102-default-rtdb.firebaseio.com/app_data/prediction_score_report -> exists=true, type=_Map<Object?, Object?>
+I/flutter (15245): [ScoreService] normalized from full report (https://sattamatkaai-77102-default-rtdb.firebaseio.com/app_data/prediction_score_report) -> hits=50
+I/flutter (15245): 🌐 RTDB read test — exists: true
+I/flutter (15245): 🌐 RTDB snapshot value type: _Map<Object?, Object?>
+I/flutter (15245): 🌐 RTDB snapshot value: {data: [{market: amar_jyoti_penal_chart, p: {Close Pannas: [115, 360, 450, 278, 680, 479, 146], Close Digits: [9, 7, 0], Open Digits: [9, 2, 4], Open Pannas: [112, 200, 289, 110, 347, 346, 236], Date: 2025-10-16, Jodis: [90, 49, 29, 20, 99, 27]}}, {market: bombay_night_panel_chart, p: {Close Pannas: [256, 100, 227, 230, 111, 145, 123], Close Digits: [5, 3, 0], Open Digits: [5, 3, 6], Open Pannas: [113, 780, 788, 138, 110, 377, 123], Date: 2025-10-16, Jodis: [50, 35, 53, 30, 60, 33]}}, {market: chetak_day_panel_chart, p: {Close Pannas: [777, 115, 168, 340, 799, 140, 344], Close Digits: [7, 5, 3], Open Digits: [1, 5, 9], Open Pannas: [113, 100, 560, 500, 350, 490, 189], Date: 2025-10-16, Jodis: [57, 15, 97, 13, 53, 55]}}, {market: chetak_night_panel_chart, p: {Close Pannas: [112, 348, 355, 780, 455, 167, 199], Close Digits: [4, 9, 2], Open Digits: [8, 6, 9], Open Pannas: [100, 279, 150, 228, 220, 117, 146], Date: 2025-10-16, Jodis: [94, 69, 92, 62, 99, 82]}}, {market: dabra_night_pena
+I/flutter (15245): [ScoreService] RTDB fetch: https://sattamatkaai-77102-default-rtdb.firebaseio.com/app_data/prediction_score_report -> exists=true, type=_Map<Object?, Object?>
+I/flutter (15245): [ScoreService] normalized from full report (https://sattamatkaai-77102-default-rtdb.firebaseio.com/app_data/prediction_score_report) -> hits=50
+I/flutter (15245): [ScorePredictor] annotated count=50
+I/flutter (15245): [ScorePredictor] filtered (passed) count=0
+I/flutter (15245): [ScorePredictor] returning 0 items to UI
+D/CompatChangeReporter(15245): Compat change id reported: 63938206; UID 10330; state: ENABLED
+I/DynamiteModule(15245): Considering local module com.google.android.gms.ads.dynamite:0 and remote module com.google.android.gms.ads.dynamite:253405700
+I/DynamiteModule(15245): Selected remote version of com.google.android.gms.ads.dynamite, version >= 253405700
+I/_predictions_v3(15245): Compiler allocated 4135KB to compile void android.widget.TextView.<init>(android.content.Context, android.util.AttributeSet, int, int)
+I/Ads     (15245): JS: The jsLoaded GMSG has been sent (https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html:1006)
+I/chromium(15245): [INFO:CONSOLE:1006] "The jsLoaded GMSG has been sent", source: https://googleads.g.doubleclick.net/mads/static/sdk/native/sdk-core-v40.html (1006)
+I/ExoPlayerImpl(15245): Init d0bb605 [AndroidXMedia3/1.8.0] [Pacman, A142, Nothing, 35]
+I/_predictions_v3(15245): hiddenapi: Accessing hidden method Landroid/media/AudioTrack;->getLatency()I (runtime_flags=0, domain=platform, api=unsupported) from Lm84/we; (domain=app) using reflection: allowed
+I/Ads     (15245): ExoPlayerAdapter initialized.
+I/PlatformViewsController(15245): Hosting view in view hierarchy for platform view: 0
+I/PlatformViewsController(15245): PlatformView is using SurfaceProducer backend
+D/BufferQueueConsumer(15245): [](id:3b8d00000002,api:0,p:-1,c:15245) connect: controlledByApp=true
+D/Surface (15245): lockHardwareCanvas
+D/BufferQueueConsumer(15245): [](id:3b8d00000003,api:0,p:-1,c:15245) connect: controlledByApp=true
+D/Surface (15245): lockHardwareCanvas
+I/ContentCaptureHelper(15245): Setting logging level to OFF
+D/Surface (15245): lockHardwareCanvas
+D/Surface (15245): lockHardwareCanvas
+I/DMCodecAdapterFactory(15245): Creating an asynchronous MediaCodec adapter for track type audio
+D/MediaCodec(15245): CreateByComponentName: name c2.android.aac.decoder
+D/MediaCodec(15245): processName: com.example.multi_market_predictions_v3
+D/CCodecBufferChannel(15245): mBufferCountDebug=0 mIsUserLoad=1
+D/MBrainDateManager(15245): MBrainDataManager Constructor caller
+D/MBrainManager(15245): mMBrainSupport 0, return NULL
+D/MBrainDateManager(15245): mMBrainManager = nullptr
+D/CCodecBufferChannel(15245): new MBrainDataManager() fail
+D/MBrainDateManager(15245): MBrainDataManager Constructor clear
+D/MediaCodec(15245): [0xb400007be7d58a00] init: CCodec 0xb400007bf7bcf540, CCodecBufferChannel 0xb400007ca7bddfe0
+D/MediaCodec(15245): [0xb400007be7d58a00] setState: 1
+D/CCodec  (15245): allocate(c2.android.aac.decoder)
+E/GPUAUX  (15245): [AUX]GuiExtAuxCheckAuxPath:682: Null anb
+I/Codec2Client(15245): Available Codec2 services: "default" "software"
+I/CCodec  (15245): setting up 'default' as default (vendor) store
+D/Surface (15245): lockHardwareCanvas
+D/BufferQueueConsumer(15245): [ImageReader-1x1f22m6-15245-0](id:3b8d00000002,api:0,p:-1,c:15245) disconnect
+I/CCodec  (15245): Created component [c2.android.aac.decoder]
+D/CCodecBufferChannel(15245): [0xb400007ca7bddfe0] setComponent: mName c2.android.aac.decoder#790, mPipelineWatcher 0xb400007ca7bde4c8
+D/CCodecBufferChannel(15245): PipelineWatcher debug info [c2.android.aac.decoder#790] enable=0
+D/CCodecConfig(15245): read media type: audio/mp4a-latm
+D/ReflectedParamUpdater(15245): extent() != 1 for single value type: algo.buffers.max-count.values
+D/ReflectedParamUpdater(15245): extent() != 1 for single value type: output.subscribed-indices.values
+D/ReflectedParamUpdater(15245): extent() != 1 for single value type: input.buffers.allocator-ids.values
+D/ReflectedParamUpdater(15245): extent() != 1 for single value type: output.buffers.allocator-ids.values
+D/ReflectedParamUpdater(15245): extent() != 1 for single value type: algo.buffers.allocator-ids.values
+D/ReflectedParamUpdater(15245): extent() != 1 for single value type: output.buffers.pool-ids.values
+D/ReflectedParamUpdater(15245): extent() != 1 for single value type: algo.buffers.pool-ids.values
+I/CCodecConfig(15245): query failed after returning 21 values (BAD_INDEX)
+D/CCodecConfig(15245): c2 config diff is Dict {
+D/CCodecConfig(15245):   c2::u32 coded.aac-packaging.value = 0
+D/CCodecConfig(15245):   c2::u32 coded.bitrate.value = 64000
+D/CCodecConfig(15245):   c2::u32 coded.pl.level = 0
+D/CCodecConfig(15245):   c2::u32 coded.pl.profile = 8192
+D/CCodecConfig(15245):   c2::i32 coding.drc.album-mode.value = 0
+D/CCodecConfig(15245):   c2::float coding.drc.attenuation-factor.value = 1
+D/CCodecConfig(15245):   c2::float coding.drc.boost-factor.value = 1
+D/CCodecConfig(15245):   c2::i32 coding.drc.compression-mode.value = 3
+D/CCodecConfig(15245):   c2::i32 coding.drc.effect-type.value = 3
+D/CCodecConfig(15245):   c2::float coding.drc.encoded-level.value = 0.25
+D/CCodecConfig(15245):   c2::float coding.drc.reference-level.value = -16
+D/CCodecConfig(15245):   c2::u32 input.buffers.max-size.value = 8192
+D/CCodecConfig(15245):   c2::u32 input.delay.value = 0
+D/CCodecConfig(15245):   string input.media-type.value = "audio/mp4a-latm"
+D/CCodecConfig(15245):   c2::u32 output.delay.value = 2
+D/CCodecConfig(15245):   c2::float output.drc.output-loudness.value = 0.25
+D/CCodecConfig(15245):   c2::u32 output.large-frame.max-size = 0
+D/CCodecConfig(15245):   c2::u32 output.large-frame.threshold-size = 0
+D/CCodecConfig(15245):   string output.media-type.value = "audio/raw"
+D/CCodecConfig(15245):   c2::u32 raw.channel-count.value = 1
+D/CCodecConfig(15245):   c2::u32 raw.channel-mask.value = 0
+D/CCodecConfig(15245):   c2::u32 raw.max-channel-count.value = 8
+D/CCodecConfig(15245):   c2::u32 raw.sample-rate.value = 44100
+D/CCodecConfig(15245): }
+D/MediaCodec(15245): [0xb400007be7d58a00] setState: 2
+W/_predictions_v3(15245): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~FSybqvIkhRg0rly7Zq1tpA==/com.google.android.webview-Yg0M6dPKHk18YyZUKEE7Bw==/base.apk' with 2 weak references
+I/MediaCodec(15245): MediaCodec will operate in async mode
+D/MediaCodec(15245): [0xb400007be7d58a00] [c2.android.aac.decoder] configure
+D/MediaCodec(15245): [0xb400007be7d58a00] setState: 3
+D/CCodec  (15245): [c2.android.aac.decoder] buffers are bound to CCodec for this session
+D/CCodecConfig(15245): no c2 equivalents for log-session-id
+D/CCodecConfig(15245): no c2 equivalents for importance
+D/CCodecConfig(15245): no c2 equivalents for flags
+D/CCodecConfig(15245): c2 config diff is   c2::u32 raw.channel-count.value = 2
+W/Codec2Client(15245): query -- param skipped: index = 1107298332.
+D/CCodec  (15245): encoding statistics level = 0
+D/CCodec  (15245): setup formats input: AMessage(what = 0x00000000) = {
+D/CCodec  (15245):   int32_t aac-drc-album-mode = 0
+D/CCodec  (15245):   int32_t aac-drc-boost-level = 127
+D/CCodec  (15245):   int32_t aac-drc-cut-level = 127
+D/CCodec  (15245):   int32_t aac-drc-effect-type = 3
+D/CCodec  (15245):   int32_t aac-encoded-target-level = -1
+D/CCodec  (15245):   int32_t aac-max-output-channel_count = 8
+D/CCodec  (15245):   int32_t aac-target-ref-level = 64
+D/CCodec  (15245):   int32_t bitrate = 64000
+D/CCodec  (15245):   int32_t channel-count = 2
+D/CCodec  (15245):   int32_t channel-mask = 0
+D/CCodec  (15245):   int32_t level = 0
+D/CCodec  (15245):   int32_t max-input-size = 8192
+D/CCodec  (15245):   int32_t max-output-channel-count = 8
+D/CCodec  (15245):   string mime = "audio/mp4a-latm"
+D/CCodec  (15245):   int32_t profile = 2
+D/CCodec  (15245):   int32_t sample-rate = 44100
+D/CCodec  (15245): }
+D/CCodec  (15245): setup formats output: AMessage(what = 0x00000000) = {
+D/CCodec  (15245):   int32_t aac-drc-album-mode = 0
+D/CCodec  (15245):   int32_t aac-drc-boost-level = 127
+D/CCodec  (15245):   int32_t aac-drc-cut-level = 127
+D/CCodec  (15245):   int32_t aac-drc-effect-type = 3
+D/CCodec  (15245):   int32_t aac-drc-output-loudness = -1
+D/CCodec  (15245):   int32_t aac-encoded-target-level = -1
+D/CCodec  (15245):   int32_t aac-max-output-channel_count = 8
+D/CCodec  (15245):   int32_t aac-target-ref-level = 64
+D/CCodec  (15245):   int32_t buffer-batch-max-output-size = 0
+D/CCodec  (15245):   int32_t buffer-batch-threshold-output-size = 0
+D/CCodec  (15245):   int32_t channel-count = 2
+D/CCodec  (15245):   int32_t channel-mask = 0
+D/CCodec  (15245):   int32_t max-output-channel-count = 8
+D/CCodec  (15245):   string mime = "audio/raw"
+D/CCodec  (15245):   int32_t sample-rate = 44100
+D/CCodec  (15245):   int32_t android._config-pcm-encoding = 2
+D/CCodec  (15245): }
+I/CCodecConfig(15245): query failed after returning 21 values (BAD_INDEX)
+D/MediaCodec(15245): [0xb400007be7d58a00] setState: 4
+D/MediaCodec(15245): keep callback message for reclaim
+D/MediaCodec(15245): [0xb400007be7d58a00] setState: 5
+W/Codec2Client(15245): query -- param skipped: index = 1342179345.
+W/Codec2Client(15245): query -- param skipped: index = 2415921170.
+W/Codec2Client(15245): query -- param skipped: index = 1610614798.
+D/C2Store (15245): Using DMABUF Heaps
+D/CCodecBufferChannel(15245): [c2.android.aac.decoder#790] Created input block pool with allocatorID 16 => poolID 17 - OK (0)
+I/CCodecBufferChannel(15245): [c2.android.aac.decoder#790] Created output block pool with allocatorID 16 => poolID 11846 - OK
+D/CCodecBufferChannel(15245): [c2.android.aac.decoder#790] Configured output block pool ids 11846 => OK
+D/CCodecBufferChannel(15245): [0xb400007ca7bddfe0] [c2.android.aac.decoder#790] start: output->outputDelay 2, output->numSlots 6
+D/CCodecBuffers(15245): [c2.android.aac.decoder#790:1D-Output.Impl[N]] converted 0 buffers to array mode of 6
+I/DMABUFHEAPS(15245): Using DMA-BUF heap named: mtk_mm
+D/MediaCodec(15245): [0xb400007be7d58a00] setState: 6
+D/CCodecBufferChannel(15245): The csd Sample queue
+I/DMCodecAdapterFactory(15245): Creating an asynchronous MediaCodec adapter for track type video
+D/MediaCodec(15245): CreateByComponentName: name c2.mtk.vp9.decoder
+D/MediaCodec(15245): processName: com.example.multi_market_predictions_v3
+D/CCodecBufferChannel(15245): mBufferCountDebug=0 mIsUserLoad=1
+D/MBrainDateManager(15245): MBrainDataManager Constructor caller
+D/MBrainManager(15245): mMBrainSupport 0, return NULL
+D/MBrainDateManager(15245): mMBrainManager = nullptr
+D/CCodecBufferChannel(15245): new MBrainDataManager() fail
+D/MBrainDateManager(15245): MBrainDataManager Constructor clear
+D/MediaCodec(15245): [0xb400007be7d5f940] init: CCodec 0xb400007bf7c234d0, CCodecBufferChannel 0xb400007ca7bcc4a0
+D/MediaCodec(15245): [0xb400007be7d5f940] setState: 1
+D/CCodec  (15245): allocate(c2.mtk.vp9.decoder)
+I/CCodec  (15245): setting up 'default' as default (vendor) store
+D/CCodecConfig(15245): c2 config diff is   c2::u32 raw.channel-mask.value = 12
+D/CCodecBuffers(15245): [c2.android.aac.decoder#790:Output[N]] popFromStashAndRegister: at 1000000000000us, output format changed to AMessage(what = 0x00000000) = {
+D/CCodecBuffers(15245):   int32_t aac-drc-album-mode = 0
+D/CCodecBuffers(15245):   int32_t aac-drc-boost-level = 127
+D/CCodecBuffers(15245):   int32_t aac-drc-cut-level = 127
+D/CCodecBuffers(15245):   int32_t aac-drc-effect-type = 3
+D/CCodecBuffers(15245):   int32_t aac-drc-output-loudness = -1
+D/CCodecBuffers(15245):   int32_t aac-encoded-target-level = -1
+D/CCodecBuffers(15245):   int32_t aac-max-output-channel_count = 8
+D/CCodecBuffers(15245):   int32_t aac-target-ref-level = 64
+D/CCodecBuffers(15245):   int32_t buffer-batch-max-output-size = 0
+D/CCodecBuffers(15245):   int32_t buffer-batch-threshold-output-size = 0
+D/CCodecBuffers(15245):   int32_t channel-count = 2
+D/CCodecBuffers(15245):   int32_t channel-mask = 12
+D/CCodecBuffers(15245):   int32_t max-output-channel-count = 8
+D/CCodecBuffers(15245):   string mime = "audio/raw"
+D/CCodecBuffers(15245):   int32_t sample-rate = 44100
+D/CCodecBuffers(15245):   int32_t android._config-pcm-encoding = 2
+D/CCodecBuffers(15245): }
+I/CCodec  (15245): Created component [c2.mtk.vp9.decoder]
+D/CCodecBufferChannel(15245): [0xb400007ca7bcc4a0] setComponent: mName c2.mtk.vp9.decoder#128, mPipelineWatcher 0xb400007ca7bcc988
+D/CCodecBufferChannel(15245): PipelineWatcher debug info [c2.mtk.vp9.decoder#128] enable=0
+D/CCodecConfig(15245): read media type: video/x-vnd.on2.vp9
+D/ReflectedParamUpdater(15245): extent() != 1 for single value type: algo.buffers.max-count.values
+D/ReflectedParamUpdater(15245): extent() != 1 for single value type: output.subscribed-indices.values
+D/ReflectedParamUpdater(15245): extent() != 1 for single value type: input.buffers.allocator-ids.values
+D/ReflectedParamUpdater(15245): extent() != 1 for single value type: output.buffers.allocator-ids.values
+D/ReflectedParamUpdater(15245): extent() != 1 for single value type: algo.buffers.allocator-ids.values
+D/ReflectedParamUpdater(15245): extent() != 1 for single value type: output.buffers.pool-ids.values
+D/ReflectedParamUpdater(15245): extent() != 1 for single value type: algo.buffers.pool-ids.values
+D/ReflectedParamUpdater(15245): ignored struct field coded.color-format.locations
+D/CCodecConfig(15245): ignoring local param raw.size (0xd2001800) as it is already supported
+D/CCodecConfig(15245): ignoring local param raw.crop (0xd2001801) as it is already supported
+D/CCodecConfig(15245): ignoring local param default.color (0x5200180b) as it is already supported
+D/CCodecConfig(15245): ignoring local param raw.hdr-static-info (0xd200180a) as it is already supported
+I/CCodecConfig(15245): query failed after returning 18 values (BAD_INDEX)
+D/CCodecConfig(15245): c2 config diff is Dict {
+D/CCodecConfig(15245):   c2::u32 algo.low-latency.value = 0
+D/CCodecConfig(15245):   c2::i32 algo.priority.value = 1
+D/CCodecConfig(15245):   c2::float algo.rate.value = 0
+D/CCodecConfig(15245):   c2::float coded.frame-rate.value = 0
+D/CCodecConfig(15245):   c2::u32 coded.pl.level = 28680
+D/CCodecConfig(15245):   c2::u32 coded.pl.profile = 20481
+D/CCodecConfig(15245):   c2::u32 coded.vui.color.matrix = 0
+D/CCodecConfig(15245):   c2::u32 coded.vui.color.primaries = 0
+D/CCodecConfig(15245):   c2::u32 coded.vui.color.range = 2
+D/CCodecConfig(15245):   c2::u32 coded.vui.color.transfer = 0
+D/CCodecConfig(15245):   c2::u32 default.color.matrix = 0
+D/CCodecConfig(15245):   c2::u32 default.color.primaries = 0
+D/CCodecConfig(15245):   c2::u32 default.color.range = 0
+D/CCodecConfig(15245):   c2::u32 default.color.transfer = 0
+D/CCodecConfig(15245):   c2::u32 input.buffers.max-size.value = 2097152
+D/CCodecConfig(15245):   c2::u32 input.delay.value = 0
+D/CCodecConfig(15245):   string input.media-type.value = "video/x-vnd.on2.vp9"
+D/CCodecConfig(15245):   c2::u32 output.delay.value = 12
+D/CCodecConfig(15245):   string output.media-type.value = "video/raw"
+D/CCodecConfig(15245):   c2::u32 raw.color.matrix = 0
+D/CCodecConfig(15245):   c2::u32 raw.color.primaries = 0
+D/CCodecConfig(15245):   c2::u32 raw.color.range = 2
+D/CCodecConfig(15245):   c2::u32 raw.color.transfer = 0
+D/CCodecConfig(15245):   c2::u32 raw.crop.height = 239
+D/CCodecConfig(15245):   c2::u32 raw.crop.left = 0
+D/CCodecConfig(15245):   c2::u32 raw.crop.top = 0
+D/CCodecConfig(15245):   c2::u32 raw.crop.width = 319
+D/CCodecConfig(15245):   c2::float raw.hdr-static-i
+W/ColorUtils(15245): expected specified color aspects (2:0:0:0)
+D/MediaCodec(15245): [0xb400007be7d5f940] setState: 2
+I/MediaCodec(15245): MediaCodec will operate in async mode
+D/MediaCodec(15245): [0xb400007be7d5f940] [c2.mtk.vp9.decoder] configure
+D/BufferQueueConsumer(15245): [](id:3b8d00000004,api:0,p:-1,c:15245) connect: controlledByApp=false
+D/MediaCodec(15245): [0xb400007be7d5f940] [c2.mtk.vp9.decoder] connectToSurface: surface 0xb400007c77b9d710, mSurface 0x0
+D/SurfaceUtils(15245): connecting to surface 0xb400007c77b9d720, reason connectToSurface
+I/MediaCodec(15245): [c2.mtk.vp9.decoder] setting surface generation to 15610881
+D/SurfaceUtils(15245): disconnecting from surface 0xb400007c77b9d720, reason connectToSurface(reconnect)
+D/SurfaceUtils(15245): connecting to surface 0xb400007c77b9d710, reason connectToSurface(reconnect-with-listener)
+D/MediaCodec(15245): [0xb400007be7d5f940] setState: 3
+D/MediaCodec(15245): [c2.mtk.vp9.decoder] config set c2 sleep timeout 500 kC2SleepTimeoutMs=500
+D/CCodec  (15245): [c2.mtk.vp9.decoder] buffers are bound to CCodec for this session
+D/CCodecConfig(15245): no c2 equivalents for log-session-id
+D/CCodecConfig(15245): no c2 equivalents for importance
+D/CCodecConfig(15245): no c2 equivalents for color-standard
+D/CCodecConfig(15245): no c2 equivalents for native-window
+D/CCodecConfig(15245): no c2 equivalents for native-window-generation
+D/CCodecConfig(15245): no c2 equivalents for flags
+D/CCodecConfig(15245): c2 config diff is   c2::i32 algo.priority.value = 0
+D/CCodecConfig(15245):   c2::u32 default.color.matrix = 1
+D/CCodecConfig(15245):   c2::u32 default.color.primaries = 1
+D/CCodecConfig(15245):   c2::u32 default.color.range = 2
+D/CCodecConfig(15245):   c2::u32 default.color.transfer = 3
+D/CCodecConfig(15245):   c2::u32 input.buffers.max-size.value = 2094080
+D/CCodecConfig(15245):   c2::u32 raw.max-size.height = 360
+D/CCodecConfig(15245):   c2::u32 raw.max-size.width = 640
+D/CCodecConfig(15245):   c2::u32 raw.pixel-format.value = 34
+D/CCodecConfig(15245):   c2::u32 raw.size.height = 360
+D/CCodecConfig(15245):   c2::u32 raw.size.width = 640
+D/CCodecConfig(15245):   c2::u32 vendor.mtk.vdec.buffer.fetch.timeout.ms.value = 500
+W/Codec2Client(15245): query -- param skipped: index = 1107298332.
+D/CCodec  (15245): client requested max input size 86400, which is smaller than what component recommended (2094080); overriding with component recommendation.
+W/CCodec  (15245): This behavior is subject to change. It is recommended that app developers double check whether the requested max input size is in reasonable range.
+D/CCodec  (15245): encoding statistics level = 0
+D/CCodec  (15245): setup formats input: AMessage(what = 0x00000000) = {
+D/CCodec  (15245):   int32_t max-input-size = 2094080
+D/CCodec  (15245):   int32_t width = 640
+D/CCodec  (15245):   int32_t priority = 0
+D/CCodec  (15245):   string mime = "video/x-vnd.on2.vp9"
+D/CCodec  (15245):   int32_t frame-rate = 0
+D/CCodec  (15245):   int32_t height = 360
+D/CCodec  (15245):   int32_t level = 256
+D/CCodec  (15245):   Rect crop(0, 0, 318, 238)
+D/CCodec  (15245): }
+D/CCodec  (15245): setup formats output: AMessage(what = 0x00000000) = {
+D/CCodec  (15245):   int32_t android._color-format = 2130708361
+D/CCodec  (15245):   int32_t android._video-scaling = 1
+D/CCodec  (15245):   int32_t sar-width = 1
+D/CCodec  (15245):   int32_t color-standard = 4
+D/CCodec  (15245):   int32_t color-range = 2
+D/CCodec  (15245):   int32_t color-transfer = 3
+D/CCodec  (15245):   int32_t android._dataspace = 259
+D/CCodec  (15245):   int32_t width = 640
+D/CCodec  (15245):   int32_t rotation-degrees = 0
+D/CCodec  (15245):   int32_t sar-height = 1
+D/CCodec  (15245):   int32_t max-width = 640
+D/CCodec  (15245):   int32_t max-height = 360
+D/CCodec  (15245):   int32_t priority = 0
+D/CCodec  (15245):   string mime = "video/raw"
+D/CCodec  (15245):   Rect crop(0, 0, 318, 238)
+D/CCodec  (15245):   Buffer hdr-static-info = {
+D/CCodec  (15245):     00000000:  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  ................
+D/CCodec  (15245):     00000010:  00 00 00 00 00 00 00 00  00                       .........
+D/CCodec  (15245):   }
+D/CCodec  (15245):   int32_t frame-rate = 0
+D/CCodec  (15245):   int32_t height = 360
+D/CCodec  (15245):   int32_t color-format = 2130708361
+D/CCodec  (15245): }
+I/CCodecConfig(15245): query failed after returning 19 values (BAD_INDEX)
+D/CCodecConfig(15245): c2 config diff is   c2::u32 raw.color.matrix = 1
+D/CCodecConfig(15245):   c2::u32 raw.color.primaries = 1
+D/CCodecConfig(15245):   c2::u32 raw.color.transfer = 3
+D/MediaCodec(15245): [0xb400007be7d5f940] setState: 4
+D/MediaCodec(15245): keep callback message for reclaim
+D/MediaCodec(15245): [0xb400007be7d5f940] setState: 5
+W/Codec2Client(15245): query -- param skipped: index = 1342179345.
+W/Codec2Client(15245): query -- param skipped: index = 2415921170.
+W/Codec2Client(15245): query -- param skipped: index = 1610614798.
+D/CCodecBufferChannel(15245): [c2.mtk.vp9.decoder#128] Created input block pool with allocatorID 16 => poolID 18 - OK (0)
+D/CCodecBufferChannel(15245): [c2.mtk.vp9.decoder#128] Query output surface allocator returned 0 params => BAD_INDEX (6)
+I/CCodecBufferChannel(15245): [c2.mtk.vp9.decoder#128] Created output block pool with allocatorID 18 => poolID 3846 - OK
+D/CCodecBufferChannel(15245): [c2.mtk.vp9.decoder#128] Configured output block pool ids 3846 => OK
+D/CCodecBufferChannel(15245): [0xb400007ca7bcc4a0] [c2.mtk.vp9.decoder#128] start: output->outputDelay 12, output->numSlots 16
+D/Codec2-OutputBufferQueue(15245): remote graphic buffer migration 0/0
+D/Codec2Client(15245): setOutputSurface -- generation=15610881 consumer usage=0x900
+D/Codec2Client(15245): Surface configure completed
+D/MediaCodec(15245): [0xb400007be7d5f940] setState: 6
+D/CCodecBufferChannel(15245): [c2.mtk.vp9.decoder#128] send inputSlots num:4 to codec
+D/AudioTrack(15245): INSP: type=audio,case=1,set=0xb400007ca7b76300,stream_type=-1,sample_rate=44100,format=0x1,channel_mask=0x3,frame_count=22620,flags=0x0,notification_frames=0,session_id=54745,transfer_type=3,uid=10330,pid=15245
+D/AudioTrack(15245): INSP: type=audio,case=1,attributes=1,content_type=0,usage=1,source=-1,flags=0xa00
+D/AudioTrack(15245): set(): streamType -1, sampleRate 44100, format 0x1, channelMask 0x3, frameCount 22620, flags 0, notificationFrames 0, sessionId 54745, transferType 3, uid 10330, pid 15245
+D/AudioTrack(15245): createTrack_l(9139): 0xb400007ca7b76300, mCblk = 0x7ba09de000, mLatency = 640, mAfLatency = 128, frameCount = 22620, mSampleRate = 44100, mFlags = 0x8, mReqFrameCount = 22620, mNotificationFramesAct = 1881
+E/AudioTrack(15245): createTrack_l(9139) on outputId 21 : 0xb400007ca7b76300, mCblk = 0x7ba09de000, mLatency = 640, mAfLatency = 128, frameCount = 22620, mSampleRate = 44100, mFlags = 00000008, mReqFrameCount = 22620, mNotificationFramesAct = 1881
+D/CCodecConfig(15245): c2 config diff is   c2::u32 input.delay.value = 4
+D/AudioTrack(15245): setVolume(9139): 0xb400007ca7b76300, left = 1.000000, right = 1.000000
+D/CCodecConfig(15245): c2 config diff is   c2::u32 output.delay.value = 17
+D/Codec2-OutputBufferQueue(15245): set max dequeue count 24 from update
+D/AudioSystem(15245): +setParameters(): MAGT-Process=15245;MAGT-AudioThread=15638 
+D/CCodecBufferChannel(15245): [c2.mtk.vp9.decoder#128] Ignoring stale input buffer done callback: last flush index = 0, frameIndex = 0
+D/CCodecBufferChannel(15245): [c2.mtk.vp9.decoder#128] send inputSlots num:8 to codec
+D/PipelineWatcher(15245): [0xb400007ca7bde4c8] pipelineFull: too many frames in pipeline (6)
+D/PipelineWatcher(15245): [0xb400007ca7bde4c8] pipelineFull: too many frames in pipeline (6)
+D/CCodecConfig(15245): c2 config diff is   c2::u32 raw.crop.height = 360
+D/CCodecConfig(15245):   c2::u32 raw.crop.width = 640
+D/CCodecConfig(15245):   c2::u32 raw.pixel-format.value = 4096
+D/CCodecBuffers(15245): [c2.mtk.vp9.decoder#128:2D-Output] popFromStashAndRegister: at 1000000000000us, output format changed to AMessage(what = 0x00000000) = {
+D/CCodecBuffers(15245):   int32_t android._color-format = 4096
+D/CCodecBuffers(15245):   int32_t android._video-scaling = 1
+D/CCodecBuffers(15245):   int32_t sar-width = 1
+D/CCodecBuffers(15245):   int32_t color-standard = 1
+D/CCodecBuffers(15245):   int32_t color-range = 2
+D/CCodecBuffers(15245):   int32_t color-transfer = 3
+D/CCodecBuffers(15245):   int32_t android._dataspace = 260
+D/CCodecBuffers(15245):   int32_t width = 640
+D/CCodecBuffers(15245):   int32_t rotation-degrees = 0
+D/CCodecBuffers(15245):   int32_t sar-height = 1
+D/CCodecBuffers(15245):   int32_t max-width = 640
+D/CCodecBuffers(15245):   int32_t max-height = 360
+D/CCodecBuffers(15245):   int32_t priority = 0
+D/CCodecBuffers(15245):   string mime = "video/raw"
+D/CCodecBuffers(15245):   Rect crop(0, 0, 639, 359)
+D/CCodecBuffers(15245):   Buffer hdr-static-info = {
+D/CCodecBuffers(15245):     00000000:  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  ................
+D/CCodecBuffers(15245):     00000010:  00 00 00 00 00 00 00 00  00                       .........
+D/CCodecBuffers(15245):   }
+D/CCodecBuffers(15245):   int32_t frame-rate = 0
+D/CCodecBuffers(15245):   int32_t height = 360
+D/CCodecBuffers(15245):   int32_t color-format = 2130708361
+D/CCodecBuffers(15245): }
+D/PipelineWatcher(15245): [0xb400007ca7bde4c8] pipelineFull: too many frames in pipeline (6)
+I/DynamiteModule(15245): Considering local module com.google.android.gms.ads.dynamite:0 and remote module com.google.android.gms.ads.dynamite:253405700
+I/DynamiteModule(15245): Selected remote version of com.google.android.gms.ads.dynamite, version >= 253405700
+D/PipelineWatcher(15245): onWorkDone: frameIndex not found (0); ignored
+D/CCodecBufferChannel(15245): [c2.mtk.vp9.decoder#128] receive c2 sleep hint!
+D/PipelineWatcher(15245): onWorkDone: frameIndex not found (0); ignored
+D/CCodecBufferChannel(15245): [c2.mtk.vp9.decoder#128] ignore dup c2 sleep hint!
+D/CCodecBufferChannel(15245): [c2.mtk.vp9.decoder#128] queue dummy work to c2!
+D/PipelineWatcher(15245): [0xb400007ca7bde4c8] pipelineFull: too many frames in pipeline (6)
+D/Surface (15245): lockHardwareCanvas
+D/Surface (15245): lockHardwareCanvas
+D/Surface (15245): lockHardwareCanvas
+D/Surface (15245): lockHardwareCanvas
+D/Surface (15245): lockHardwareCanvas
+D/Surface (15245): lockHardwareCanvas
+D/Surface (15245): lockHardwareCanvas
+D/Surface (15245): lockHardwareCanvas
+D/Surface (15245): lockHardwareCanvas
+D/Surface (15245): lockHardwareCanvas
+D/Surface (15245): lockHardwareCanvas
+D/Surface (15245): lockHardwareCanvas
+D/Surface (15245): lockHardwareCanvas
+D/Surface (15245): lockHardwareCanvas
+D/Surface (15245): lockHardwareCanvas
+D/Surface (15245): lockHardwareCanvas
+D/Surface (15245): lockHardwareCanvas
+D/PipelineWatcher(15245): onWorkDone: frameIndex not found (0); ignored
+D/CCodecBufferChannel(15245): [c2.mtk.vp9.decoder#128] receive c2 sleep hint!
+D/PipelineWatcher(15245): onWorkDone: frameIndex not found (0); ignored
+D/CCodecBufferChannel(15245): [c2.mtk.vp9.decoder#128] ignore dup c2 sleep hint!
+D/CCodecBufferChannel(15245): [c2.mtk.vp9.decoder#128] queue dummy work to c2!
+D/PipelineWatcher(15245): onWorkDone: frameIndex not found (0); ignored
+D/CCodecBufferChannel(15245): [c2.mtk.vp9.decoder#128] receive c2 sleep hint!
+D/PipelineWatcher(15245): onWorkDone: frameIndex not found (0); ignored
+D/CCodecBufferChannel(15245): [c2.mtk.vp9.decoder#128] ignore dup c2 sleep hint!
+D/CCodecBufferChannel(15245): [c2.mtk.vp9.decoder#128] queue dummy work to c2!
+D/PipelineWatcher(15245): onWorkDone: frameIndex not found (0); ignored
+D/CCodecBufferChannel(15245): [c2.mtk.vp9.decoder#128] receive c2 sleep hint!
+D/PipelineWatcher(15245): onWorkDone: frameIndex not found (0); ignored
+D/CCodecBufferChannel(15245): [c2.mtk.vp9.decoder#128] ignore dup c2 sleep hint!
+D/BufferPoolAccessor2.0(15245): bufferpool2 0xb400007bf7b2ab78 : 5(40960 size) total buffers - 0(0 size) used buffers - 17/23 (recycle/alloc) - 8/23 (fetch/transfer)
+D/BufferPoolAccessor2.0(15245): bufferpool2 0xb400007bf7b6ea58 : 9(18846720 size) total buffers - 8(16752640 size) used buffers - 21/30 (recycle/alloc) - 11/30 (fetch/transfer)
+D/BufferPoolAccessor2.0(15245): evictor expired: 2, evicted: 2
+I/_predictions_v3(15245): hiddenapi: Accessing hidden method Ldalvik/system/VMStack;->getStackClass2()Ljava/lang/Class; (runtime_flags=0, domain=core-platform, api=unsupported) from LWV/r6; (domain=app) using reflection: allowed
+E/FilePhenotypeFlags(15245): Config package com.google.android.gms.clearcut_client#com.example.multi_market_predictions_v3 cannot use FILE backing without declarative registration. See go/phenotype-android-integration#phenotype for more information. This will lead to stale flags.
+I/ScrollIdentify(15245): on fling
+I/ScrollIdentify(15245): on fling
+I/ScrollIdentify(15245): on fling
+I/ScrollIdentify(15245): on fling
+I/ScrollIdentify(15245): on fling
+I/ScrollIdentify(15245): on fling
+I/ScrollIdentify(15245): on fling
+I/ScrollIdentify(15245): on fling
+I/ScrollIdentify(15245): on fling
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+W/WindowOnBackDispatcher(15245): OnBackInvokedCallback is not enabled for the application.
+W/WindowOnBackDispatcher(15245): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+I/UrlLauncher(15245): component name for upi://pay?pa=paytm.s1ai0xt%40pty&pn=SattaMatkaAi&am=500.00&cu=INR&tn=premium%20unlock&tr=SMAI-1761509236878 is null
+I/UrlLauncher(15245): component name for upi://pay?pa=paytm.s1ai0xt%40pty&pn=SattaMatkaAi&am=500.00&cu=INR&tn=premium%20unlock&tr=SMAI-1761509257514 is null
+D/NtViewRootImpl(15245): mPopUpViewOffsets: offset=(0.0, 0.0), scale=(1.0, 1.0)
+I/UrlLauncher(15245): component name for upi://pay?pa=paytm.s1ai0xt%40pty&pn=SattaMatkaAi&am=500.00&cu=INR&tn=premium%20unlock&tr=SMAI-1761509271341 is null
+D/VRI[MainActivity](15245): visibilityChanged oldVisibility=true newVisibility=false
+D/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1](f:0,a:4) destructor()
+D/BufferQueueConsumer(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#1(BLAST Consumer)1](id:3b8d00000001,api:0,p:-1,c:15245) disconnect
+D/BLASTBufferQueue(15245): [VRI[MainActivity]#0](f:0,a:5) destructor()
+D/BufferQueueConsumer(15245): [VRI[MainActivity]#0(BLAST Consumer)0](id:3b8d00000000,api:0,p:-1,c:15245) disconnect
+D/BufferQueueConsumer(15245): [](id:3b8d00000005,api:0,p:-1,c:15245) connect: controlledByApp=false
+D/BLASTBufferQueue(15245): [VRI[MainActivity]#2](f:0,a:0) constructor()
+D/BLASTBufferQueue(15245): [VRI[MainActivity]#2](f:0,a:0) update width=1084 height=2412 format=-3 mTransformHint=0
+D/BufferQueueConsumer(15245): [](id:3b8d00000006,api:0,p:-1,c:15245) connect: controlledByApp=false
+D/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:0,a:0) constructor()
+D/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:0,a:0) update width=1084 height=2412 format=4 mTransformHint=0
+E/mali_gralloc(15245): ERROR: Format allocation info not found for format: 38
+E/mali_gralloc(15245): ERROR: Format allocation info not found for format: 0
+E/_predictions_v3(15245): Invalid base format! req_base_format = 0x0, req_format = 0x38
+E/mali_gralloc(15245): ERROR: Unrecognized and/or unsupported format 0x38 and usage 0xb00
+E/mali_gralloc(15245): ERROR: Format allocation info not found for format: 3b
+E/mali_gralloc(15245): ERROR: Format allocation info not found for format: 0
+E/_predictions_v3(15245): Invalid base format! req_base_format = 0x0, req_format = 0x3b
+E/mali_gralloc(15245): ERROR: Unrecognized and/or unsupported format 0x3b and usage 0xb00
+E/mali_gralloc(15245): ERROR: Format allocation info not found for format: 38
+E/mali_gralloc(15245): ERROR: Format allocation info not found for format: 0
+E/_predictions_v3(15245): Invalid base format! req_base_format = 0x0, req_format = 0x38
+E/mali_gralloc(15245): ERROR: Unrecognized and/or unsupported format 0x38 and usage 0xb00
+E/mali_gralloc(15245): ERROR: Format allocation info not found for format: 3b
+E/mali_gralloc(15245): ERROR: Format allocation info not found for format: 0
+E/_predictions_v3(15245): Invalid base format! req_base_format = 0x0, req_format = 0x3b
+E/mali_gralloc(15245): ERROR: Unrecognized and/or unsupported format 0x3b and usage 0xb00
+I/SurfaceView(15245): surfaceview vote min fps
+D/Surface (15245): lockHardwareCanvas
+D/BLASTBufferQueue(15245): [VRI[MainActivity]#2](f:0,a:1) acquireNextBufferLocked size=1084x2412 mFrameNumber=1 applyTransaction=true mTimestamp=357631017552238(auto) mPendingTransactions.size=0 graphicBufferId=65476776427619 transform=0
+E/FrameEvents(15245): addRelease: Did not find frame.
+D/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:0,a:1) acquireNextBufferLocked size=1084x2412 mFrameNumber=1 applyTransaction=true mTimestamp=357631079272546(auto) mPendingTransactions.size=0 graphicBufferId=65476776427611 transform=0
+I/Choreographer(15245): Skipped 75 frames!  The application may be doing too much work on its main thread.
+D/Surface (15245): lockHardwareCanvas
+D/NtViewRootImpl(15245): mPopUpViewOffsets: offset=(0.0, 0.0), scale=(1.0, 1.0)
+D/Surface (15245): lockHardwareCanvas
+E/GPUAUX  (15245): [AUX]GuiExtAuxCheckAuxPath:682: Null anb
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+V/VRI[MainActivity](15245): [ANR Warning]Input routeing takes more than 6000ms since 1970-01-01 05:30:00.000, this = com.mediatek.view.impl.ViewDebugManagerImpl@726ad28
+V/VRI[MainActivity](15245): Input event delivered to android.view.ViewRootImpl$ViewPostImeInputStage@abe850a at 2025-10-27 01:37:58.339
+V/VRI[MainActivity](15245): Input event delivered to android.view.ViewRootImpl$ViewPreImeInputStage@abdd6c5 at 2025-10-27 01:37:58.328
+V/VRI[MainActivity](15245): Input event delivered to android.view.ViewRootImpl$ImeInputStage@ba2a81a at 2025-10-27 01:37:58.328
+V/VRI[MainActivity](15245): Input event delivered to android.view.ViewRootImpl$SyntheticInputStage@f63e17b at 2025-10-27 01:37:58.340
+V/VRI[MainActivity](15245): Input event delivered to android.view.ViewRootImpl$NativePostImeInputStage@dfc5175 at 2025-10-27 01:37:58.339
+V/VRI[MainActivity](15245): Input event delivered to android.view.ViewRootImpl$EarlyPostImeInputStage@35730ac at 2025-10-27 01:37:58.339
+V/VRI[MainActivity](15245): Input event delivered to android.view.ViewRootImpl$NativePreImeInputStage@7e1393c at 2025-10-27 01:37:58.328
+V/VRI[MainActivity](15245): [ANR Warning]Input routeing takes more than 6000ms since 1970-01-01 05:30:00.000, this = com.mediatek.view.impl.ViewDebugManagerImpl@726ad28
+V/VRI[MainActivity](15245): Input event delivered to android.view.ViewRootImpl$ViewPostImeInputStage@abe850a at 2025-10-27 01:37:58.348
+V/VRI[MainActivity](15245): Input event delivered to android.view.ViewRootImpl$SyntheticInputStage@f63e17b at 2025-10-27 01:37:58.354
+V/VRI[MainActivity](15245): Input event delivered to android.view.ViewRootImpl$NativePostImeInputStage@dfc5175 at 2025-10-27 01:37:58.348
+V/VRI[MainActivity](15245): Input event delivered to android.view.ViewRootImpl$EarlyPostImeInputStage@35730ac at 2025-10-27 01:37:58.348
+D/NtViewRootImpl(15245): mPopUpViewOffsets: offset=(0.0, 0.0), scale=(1.0, 1.0)
+W/WindowOnBackDispatcher(15245): OnBackInvokedCallback is not enabled for the application.
+W/WindowOnBackDispatcher(15245): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+I/UrlLauncher(15245): component name for upi://pay?pa=paytm.s1ai0xt%40pty&pn=SattaMatkaAi&am=500.00&cu=INR&tn=premium%20unlock&tr=SMAI-1761509290878 is null
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+I/UrlLauncher(15245): component name for upi://pay?pa=paytm.s1ai0xt%40pty&pn=SattaMatkaAi&am=500.00&cu=INR&tn=premium%20unlock&tr=SMAI-1761509300320 is null
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+D/NtViewRootImpl(15245): mPopUpViewOffsets: offset=(0.0, 0.0), scale=(1.0, 1.0)
+D/VRI[MainActivity](15245): visibilityChanged oldVisibility=true newVisibility=false
+D/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3](f:0,a:4) destructor()
+D/BufferQueueConsumer(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#3(BLAST Consumer)3](id:3b8d00000006,api:0,p:-1,c:15245) disconnect
+D/BLASTBufferQueue(15245): [VRI[MainActivity]#2](f:0,a:5) destructor()
+D/BufferQueueConsumer(15245): [VRI[MainActivity]#2(BLAST Consumer)2](id:3b8d00000005,api:0,p:-1,c:15245) disconnect
+W/_predictions_v3(15245): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~E9yfmDjgo-9X8FPOUNr9Fg==/com.google.android.marvin.talkback-uPfDVlYb3a8FGMcwsnjkNw==/base.apk' with 1 weak references
+W/_predictions_v3(15245): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~E9yfmDjgo-9X8FPOUNr9Fg==/com.google.android.marvin.talkback-uPfDVlYb3a8FGMcwsnjkNw==/split_config.arm64_v8a.apk' with 1 weak references
+W/_predictions_v3(15245): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~CydND6jfntpP9YeXMrPI2w==/com.openai.chatgpt-a6mym0JR6GJdvfip7hwSqw==/base.apk' with 1 weak references
+W/_predictions_v3(15245): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~CydND6jfntpP9YeXMrPI2w==/com.openai.chatgpt-a6mym0JR6GJdvfip7hwSqw==/split_config.arm64_v8a.apk' with 1 weak references
+W/_predictions_v3(15245): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~CydND6jfntpP9YeXMrPI2w==/com.openai.chatgpt-a6mym0JR6GJdvfip7hwSqw==/split_config.en.apk' with 1 weak references
+W/_predictions_v3(15245): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~CydND6jfntpP9YeXMrPI2w==/com.openai.chatgpt-a6mym0JR6GJdvfip7hwSqw==/split_config.xxhdpi.apk' with 1 weak references
+W/_predictions_v3(15245): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~jsWt72ir549GcxskKl6E9Q==/com.reddit.frontpage-uZzQfv9eg_LC3qNv3nFtAw==/base.apk' with 1 weak references
+W/_predictions_v3(15245): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~jsWt72ir549GcxskKl6E9Q==/com.reddit.frontpage-uZzQfv9eg_LC3qNv3nFtAw==/split_config.arm64_v8a.apk' with 1 weak references
+W/_predictions_v3(15245): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~jsWt72ir549GcxskKl6E9Q==/com.reddit.frontpage-uZzQfv9eg_LC3qNv3nFtAw==/split_config.en.apk' with 1 weak references
+W/_predictions_v3(15245): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~jsWt72ir549GcxskKl6E9Q==/com.reddit.frontpage-uZzQfv9eg_LC3qNv3nFtAw==/split_config.xxhdpi.apk' with 1 weak references
+W/_predictions_v3(15245): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~F347wG_bW_rl-MTiHQHbwg==/com.truecaller-JlObwEJtnSXcuRD88C6SYw==/base.apk' with 1 weak references
+W/_predictions_v3(15245): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~F347wG_bW_rl-MTiHQHbwg==/com.truecaller-JlObwEJtnSXcuRD88C6SYw==/split_config.arm64_v8a.apk' with 1 weak references
+W/_predictions_v3(15245): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~F347wG_bW_rl-MTiHQHbwg==/com.truecaller-JlObwEJtnSXcuRD88C6SYw==/split_config.xxhdpi.apk' with 1 weak references
+W/_predictions_v3(15245): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~F347wG_bW_rl-MTiHQHbwg==/com.truecaller-JlObwEJtnSXcuRD88C6SYw==/split_insights_category_model.apk' with 1 weak references
+W/_predictions_v3(15245): ApkAssets: Deleting an ApkAssets object '<empty> and /data/app/~~F347wG_bW_rl-MTiHQHbwg==/com.truecaller-JlObwEJtnSXcuRD88C6SYw==/split_insights_category_model.config.arm64_v8a.apk' with 1 weak references
+D/BufferQueueConsumer(15245): [](id:3b8d00000007,api:0,p:-1,c:15245) connect: controlledByApp=false
+D/BLASTBufferQueue(15245): [VRI[MainActivity]#4](f:0,a:0) constructor()
+D/BLASTBufferQueue(15245): [VRI[MainActivity]#4](f:0,a:0) update width=1084 height=2412 format=-3 mTransformHint=0
+D/BufferQueueConsumer(15245): [](id:3b8d00000008,api:0,p:-1,c:15245) connect: controlledByApp=false
+D/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#5](f:0,a:0) constructor()
+D/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#5](f:0,a:0) update width=1084 height=2412 format=4 mTransformHint=0
+E/mali_gralloc(15245): ERROR: Format allocation info not found for format: 38
+E/mali_gralloc(15245): ERROR: Format allocation info not found for format: 0
+E/_predictions_v3(15245): Invalid base format! req_base_format = 0x0, req_format = 0x38
+E/mali_gralloc(15245): ERROR: Unrecognized and/or unsupported format 0x38 and usage 0xb00
+E/mali_gralloc(15245): ERROR: Format allocation info not found for format: 3b
+E/mali_gralloc(15245): ERROR: Format allocation info not found for format: 0
+E/_predictions_v3(15245): Invalid base format! req_base_format = 0x0, req_format = 0x3b
+E/mali_gralloc(15245): ERROR: Unrecognized and/or unsupported format 0x3b and usage 0xb00
+E/mali_gralloc(15245): ERROR: Format allocation info not found for format: 38
+E/mali_gralloc(15245): ERROR: Format allocation info not found for format: 0
+E/_predictions_v3(15245): Invalid base format! req_base_format = 0x0, req_format = 0x38
+E/mali_gralloc(15245): ERROR: Unrecognized and/or unsupported format 0x38 and usage 0xb00
+E/mali_gralloc(15245): ERROR: Format allocation info not found for format: 3b
+E/mali_gralloc(15245): ERROR: Format allocation info not found for format: 0
+E/_predictions_v3(15245): Invalid base format! req_base_format = 0x0, req_format = 0x3b
+E/mali_gralloc(15245): ERROR: Unrecognized and/or unsupported format 0x3b and usage 0xb00
+I/SurfaceView(15245): surfaceview vote min fps
+D/Surface (15245): lockHardwareCanvas
+D/BLASTBufferQueue(15245): [VRI[MainActivity]#4](f:0,a:1) acquireNextBufferLocked size=1084x2412 mFrameNumber=1 applyTransaction=true mTimestamp=357697589393473(auto) mPendingTransactions.size=0 graphicBufferId=65476776427646 transform=0
+D/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#5](f:0,a:1) acquireNextBufferLocked size=1084x2412 mFrameNumber=1 applyTransaction=true mTimestamp=357697624185242(auto) mPendingTransactions.size=0 graphicBufferId=65476776427637 transform=0
+D/Surface (15245): lockHardwareCanvas
+D/NtViewRootImpl(15245): mPopUpViewOffsets: offset=(0.0, 0.0), scale=(1.0, 1.0)
+D/Surface (15245): lockHardwareCanvas
+E/GPUAUX  (15245): [AUX]GuiExtAuxCheckAuxPath:682: Null anb
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#5](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#5](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+D/Surface (15245): lockHardwareCanvas
+W/ImageReader_JNI(15245): Unable to acquire a buffer item, very likely client tried to acquire more than maxImages buffers
+I/ScrollIdentify(15245): on fling
+V/VRI[MainActivity](15245): [ANR Warning]Input routeing takes more than 6000ms since 1970-01-01 05:30:00.000, this = com.mediatek.view.impl.ViewDebugManagerImpl@726ad28
+V/VRI[MainActivity](15245): Input event delivered to android.view.ViewRootImpl$ViewPostImeInputStage@abe850a at 2025-10-27 01:39:05.195
+V/VRI[MainActivity](15245): Input event delivered to android.view.ViewRootImpl$ViewPreImeInputStage@abdd6c5 at 2025-10-27 01:39:05.193
+V/VRI[MainActivity](15245): Input event delivered to android.view.ViewRootImpl$ImeInputStage@ba2a81a at 2025-10-27 01:39:05.193
+V/VRI[MainActivity](15245): Input event delivered to android.view.ViewRootImpl$SyntheticInputStage@f63e17b at 2025-10-27 01:39:05.195
+V/VRI[MainActivity](15245): Input event delivered to android.view.ViewRootImpl$NativePostImeInputStage@dfc5175 at 2025-10-27 01:39:05.195
+V/VRI[MainActivity](15245): Input event delivered to android.view.ViewRootImpl$EarlyPostImeInputStage@35730ac at 2025-10-27 01:39:05.195
+V/VRI[MainActivity](15245): Input event delivered to android.view.ViewRootImpl$NativePreImeInputStage@7e1393c at 2025-10-27 01:39:05.193
+V/VRI[MainActivity](15245): [ANR Warning]Input routeing takes more than 6000ms since 1970-01-01 05:30:00.000, this = com.mediatek.view.impl.ViewDebugManagerImpl@726ad28
+V/VRI[MainActivity](15245): Input event delivered to android.view.ViewRootImpl$ViewPostImeInputStage@abe850a at 2025-10-27 01:39:05.195
+V/VRI[MainActivity](15245): Input event delivered to android.view.ViewRootImpl$SyntheticInputStage@f63e17b at 2025-10-27 01:39:05.196
+V/VRI[MainActivity](15245): Input event delivered to android.view.ViewRootImpl$NativePostImeInputStage@dfc5175 at 2025-10-27 01:39:05.195
+V/VRI[MainActivity](15245): Input event delivered to android.view.ViewRootImpl$EarlyPostImeInputStage@35730ac at 2025-10-27 01:39:05.195
+W/WindowOnBackDispatcher(15245): OnBackInvokedCallback is not enabled for the application.
+W/WindowOnBackDispatcher(15245): Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#5](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+I/UrlLauncher(15245): component name for upi://pay?pa=paytm.s1ai0xt%40pty&pn=SattaMatkaAi&am=500.00&cu=INR&tn=premium%20unlock&tr=SMAI-1761509353581 is null
+I/UrlLauncher(15245): component name for upi://pay?pa=paytm.s1ai0xt%40pty&pn=SattaMatkaAi&am=500.00&cu=INR&tn=premium%20unlock&tr=SMAI-1761509360194 is null
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#5](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#5](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#5](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#5](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#5](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#5](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#5](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#5](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#5](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#5](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#5](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2
+E/BLASTBufferQueue(15245): [SurfaceView[com.example.multi_market_predictions_v3/com.example.multi_market_predictions_v3.MainActivity]#5](f:1,a:7) acquireNextBufferLocked: Can't acquire next buffer. Already acquired max frames 7 max:5 + 2

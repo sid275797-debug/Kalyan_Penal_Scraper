@@ -1,0 +1,35 @@
+[Fri 04/10/2026  8:00:01.42] Meta Uploader started  
+python: can't open file 'C:\\Users\\VCOM\\Desktop\\Kalyan_Penal_Scraper\\meta_auto_uploader_v2.py': [Errno 2] No such file or directory
+[Fri 04/10/2026 18:50:59.09] Meta Uploader started  
+python: can't open file 'C:\\Users\\VCOM\\Desktop\\Kalyan_Penal_Scraper\\meta_auto_uploader_v2.py': [Errno 2] No such file or directory
+[Fri 04/10/2026 18:51:09.96] Meta Uploader started  
+python: can't open file 'C:\\Users\\VCOM\\Desktop\\Kalyan_Penal_Scraper\\meta_auto_uploader_v2.py': [Errno 2] No such file or directory
+[Fri 04/10/2026 18:51:34.76] Meta Uploader started  
+python: can't open file 'C:\\Users\\VCOM\\Desktop\\Kalyan_Penal_Scraper\\meta_auto_uploader_v2.py': [Errno 2] No such file or directory
+[Fri 04/10/2026 18:51:57.61] Meta Uploader started  
+python: can't open file 'C:\\Users\\VCOM\\Desktop\\Kalyan_Penal_Scraper\\meta_auto_uploader_v2.py': [Errno 2] No such file or directory
+[Fri 04/10/2026 18:56:25.00] Meta Uploader started  
+[2026-04-10 18:56:29] OK Page token loaded and valid
+[2026-04-10 18:56:29] i  =======================================================
+[2026-04-10 18:56:29] i    Sattamatkaai Meta Auto Uploader v2
+[2026-04-10 18:56:29] i    Page     : Sattamatkaai (836377599555364)
+[2026-04-10 18:56:29] i    Facebook : Enabled
+[2026-04-10 18:56:29] i    Instagram: Enabled
+[2026-04-10 18:56:29] i    Folder   : C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\video_output\2026-04-10
+[2026-04-10 18:56:29] i    Videos   : 29 total (29 premium FIRST, 0 regular)
+[2026-04-10 18:56:29] i    New      : 29 to upload
+[2026-04-10 18:56:29] i  =======================================================
+[2026-04-10 18:56:29] i  
+[1/29] KALYAN_1775766609315.mp4
+[2026-04-10 18:56:29] i  Processing: KALYAN_1775766609315.mp4 (3.7 MB)
+[2026-04-10 18:56:29] i  Facebook upload: KALYAN_1775766609315.mp4
+[2026-04-10 18:56:29] i    File size: 3.7 MB
+[2026-04-10 18:56:38] OK Facebook video published! ID: 919558837525301
+[2026-04-10 18:56:38] i  Instagram upload: KALYAN_1775766609315.mp4
+[2026-04-10 18:56:38] i    Local HTTP server on port 26709
+[2026-04-10 18:56:46] OK   Cloudflare tunnel: https://responded-ten-accuracy-flashers.trycloudflare.com/KALYAN_1775766609315_ig.mp4
+[2026-04-10 18:56:49] i    Container created: 17878077399559031, waiting...
+[2026-04-10 18:57:01] i    IG processing: IN_PROGRESS
+[2026-04-10 18:57:13] i    IG processing: IN_PROGRESS
+^Cusage: meta_auto_uploader.py [-h] [--set-token] [--date DATE] [--watch]
+meta_auto_uploader.py: error: argument --date: expected one argument

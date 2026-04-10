@@ -1,0 +1,331 @@
+
+PS C:\Windows\system32> Set-Location -Path "C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper"
+>> pwd
+
+Path
+----
+C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper
+
+
+PS C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper> Get-Content .github\workflows\update-data.yml -TotalCount 60
+name: update-data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 2 * * *'  # runs daily at 02:00 UTC
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo (persist credentials)
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Run full pipeline (from repo root)
+        run: |
+          set -euo pipefail
+          pwd
+          ls -la
+          ls -la sattaboss-data || true
+          python3 data/run_full_pipeline.py
+
+      - name: Commit & push updated JSON files
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add sattaboss-data/data/todays_predictions.json \
+                  sattaboss-data/data/yesterday_results.json \
+                  sattaboss-data/data/prediction_score_report.json \
+                  sattaboss-data/data/score_hits.json || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: automated JSON update (from pipeline)"
+            git push origin HEAD:main
+          else
+            echo "No changes to commit."
+          fi
+PS C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper> git status --porcelain
+>> git branch --show-current
+>> git remote -v
+warning: could not open directory 'Application Data/': Permission denied
+warning: could not open directory 'Cookies/': Permission denied
+warning: could not open directory 'Local Settings/': Permission denied
+warning: could not open directory 'My Documents/': Permission denied
+warning: could not open directory 'NetHood/': Permission denied
+warning: could not open directory 'PrintHood/': Permission denied
+warning: could not open directory 'Recent/': Permission denied
+warning: could not open directory 'SendTo/': Permission denied
+warning: could not open directory 'Start Menu/': Permission denied
+warning: could not open directory 'Templates/': Permission denied
+ M Desktop/Kalyan_Penal_Scraper/.github/workflows/update-data.yml
+ M Desktop/Kalyan_Penal_Scraper/all_markets_history.json
+ M Desktop/Kalyan_Penal_Scraper/kalyan/assets/todays_predictions.json
+ M Desktop/Kalyan_Penal_Scraper/output/history/predictions_2025-10-13.json
+ M Desktop/Kalyan_Penal_Scraper/output/predictions_v4.json
+ M Desktop/Kalyan_Penal_Scraper/output/todays_predictions.json
+ M Desktop/Kalyan_Penal_Scraper/output/yesterday_results.json
+ M Desktop/Kalyan_Penal_Scraper/prediction_params.json
+ M Desktop/Kalyan_Penal_Scraper/predictions_v4.json
+ M Desktop/Kalyan_Penal_Scraper/todays_predictions.json
+?? .android/
+?? .cache/
+?? .emulator_console_auth_token
+?? .gitconfig
+?? .gradle/
+?? .lesshst
+?? .m2/
+?? .skiko/
+?? .vscode/
+?? .wdm/
+?? "3D Objects/"
+?? AndroidStudioProjects/
+?? AppData/
+?? Contacts/
+?? Desktop/Desserts/
+?? "Desktop/Diet Menu/"
+?? Desktop/Excel.lnk
+?? "Desktop/Kalyan_Penal_Scraper (2).zip"
+?? "Desktop/Kalyan_Penal_Scraper (3).zip"
+?? Desktop/Kalyan_Penal_Scraper.rar
+?? Desktop/Kalyan_Penal_Scraper.zip
+?? "Desktop/Kalyan_Penal_Scraper/Multi Market Scraper.txt"
+?? Desktop/Kalyan_Penal_Scraper/Single_Market_CSVs/
+?? Desktop/Kalyan_Penal_Scraper/__pycache__/
+?? Desktop/Kalyan_Penal_Scraper/aggregate_history.py
+?? "Desktop/Kalyan_Penal_Scraper/all markets names.txt"
+?? "Desktop/Kalyan_Penal_Scraper/all open close jodi numbers fixed.txt"
+?? Desktop/Kalyan_Penal_Scraper/all_market_individual_reels.py
+?? Desktop/Kalyan_Penal_Scraper/all_market_indivisual_reels.py
+?? Desktop/Kalyan_Penal_Scraper/ap.txt
+?? "Desktop/Kalyan_Penal_Scraper/app code after parsing json.txt"
+?? "Desktop/Kalyan_Penal_Scraper/app file.txt"
+?? "Desktop/Kalyan_Penal_Scraper/app full code.txt"
+?? Desktop/Kalyan_Penal_Scraper/appssss.txt
+?? Desktop/Kalyan_Penal_Scraper/assets/logo.png
+?? Desktop/Kalyan_Penal_Scraper/auto_tune_params.py
+?? Desktop/Kalyan_Penal_Scraper/backend_api.py
+?? Desktop/Kalyan_Penal_Scraper/build_history_json.py
+?? Desktop/Kalyan_Penal_Scraper/chromedriver.exe
+?? Desktop/Kalyan_Penal_Scraper/dashboard.py
+?? Desktop/Kalyan_Penal_Scraper/diagnose_data_files.py
+?? Desktop/Kalyan_Penal_Scraper/diagnose_predictions_vs_yesterday.py
+?? Desktop/Kalyan_Penal_Scraper/error.txt
+?? "Desktop/Kalyan_Penal_Scraper/final app code before sangam generator.txt"
+?? "Desktop/Kalyan_Penal_Scraper/final design only 3 panna show.txt"
+?? "Desktop/Kalyan_Penal_Scraper/final edit before design appp.txt"
+?? Desktop/Kalyan_Penal_Scraper/full_scrape_log.txt
+?? Desktop/Kalyan_Penal_Scraper/generate_yesterday_results.py
+?? Desktop/Kalyan_Penal_Scraper/kalyan_penal_chart_cleaned.csv
+?? Desktop/Kalyan_Penal_Scraper/kalyan_penal_chart_cleaned_final.csv
+?? Desktop/Kalyan_Penal_Scraper/kalyan_penal_chart_raw.csv
+?? Desktop/Kalyan_Penal_Scraper/logs/
+?? "Desktop/Kalyan_Penal_Scraper/main dart.txt"
+?? Desktop/Kalyan_Penal_Scraper/model_close.pkl
+?? Desktop/Kalyan_Penal_Scraper/model_open.pkl
+?? Desktop/Kalyan_Penal_Scraper/multi_market_scraper.py
+?? Desktop/Kalyan_Penal_Scraper/multi_market_scraper_corrected.py
+?? Desktop/Kalyan_Penal_Scraper/multi_market_scraper_final.py
+?? Desktop/Kalyan_Penal_Scraper/multi_market_scraperrr.py
+?? Desktop/Kalyan_Penal_Scraper/output.zip
+?? Desktop/Kalyan_Penal_Scraper/output/amar_jyoti_penal_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/bombay_night_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/chetak_day_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/chetak_night_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/dabra_night_penal_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/dabra_penal_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/dadar_day_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/deluxe_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/dhan_express_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/history/predictions_2025-10-14.json
+?? Desktop/Kalyan_Penal_Scraper/output/kalyan_morning_penal_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/kalyan_night_penal_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/kalyan_penal_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/kanak_day_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/karnataka_day_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/karnataka_night_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/kbc_bombay_penal_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/khajana_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/madhur_day_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/madhur_morning_penal_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/madhur_night_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/maharani_day_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/maharani_night_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/maharani_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/main_bazar_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/main_bombay_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/main_ratan_penal_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/matashri_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/milan_day_penal_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/milan_night_penal_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/morning_syndicate_penal_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/prabhat_night_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/prabhat_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/raja_rani_morning_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/rajdhani_day_penal_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/rajdhani_night_penal_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/rithi_sridevi_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/sivaji_night_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/sivaji_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/special_sridevi_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/sridevi_morning_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/sridevi_night_satta_penal_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/sridevi_satta_penal_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/star_morning_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/supreme_day_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/supreme_night_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/syndicate_night_penal_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/time_bazar_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/tirtha_day_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/tirtha_night_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/output/worli_day_panel_chart.csv
+?? Desktop/Kalyan_Penal_Scraper/panna_pattern_analyzer.py
+?? Desktop/Kalyan_Penal_Scraper/prediction_api.py
+?? Desktop/Kalyan_Penal_Scraper/prediction_engine.py
+?? Desktop/Kalyan_Penal_Scraper/prediction_engine_v2.py
+?? Desktop/Kalyan_Penal_Scraper/prediction_engine_v3.py
+?? Desktop/Kalyan_Penal_Scraper/prediction_engine_v4.py
+?? Desktop/Kalyan_Penal_Scraper/prediction_enginev4_dupli.py
+?? Desktop/Kalyan_Penal_Scraper/python
+?? "Desktop/Kalyan_Penal_Scraper/python diagnose_data_files.py"
+?? Desktop/Kalyan_Penal_Scraper/reels_builder_all_markets.py
+?? Desktop/Kalyan_Penal_Scraper/reels_premium_builder.py
+?? Desktop/Kalyan_Penal_Scraper/reels_premium_builder_individual.py
+?? Desktop/Kalyan_Penal_Scraper/reels_premium_builder_individual_all.py
+?? Desktop/Kalyan_Penal_Scraper/reels_type2_score_summary.py
+?? Desktop/Kalyan_Penal_Scraper/reels_type2_score_summary_v2.py
+?? Desktop/Kalyan_Penal_Scraper/reels_type2_score_summary_v3.py
+?? Desktop/Kalyan_Penal_Scraper/run.log
+?? Desktop/Kalyan_Penal_Scraper/run_daily.bat
+?? Desktop/Kalyan_Penal_Scraper/run_full_pipeline.py
+?? Desktop/Kalyan_Penal_Scraper/run_history_builder.bat
+?? Desktop/Kalyan_Penal_Scraper/run_pipeline.bat
+?? Desktop/Kalyan_Penal_Scraper/run_predictions.bat
+?? Desktop/Kalyan_Penal_Scraper/run_scheduler.bat
+?? Desktop/Kalyan_Penal_Scraper/run_scraper.bat
+?? Desktop/Kalyan_Penal_Scraper/sattaboss-data/
+?? "Desktop/Kalyan_Penal_Scraper/score old code.txt"
+?? Desktop/Kalyan_Penal_Scraper/score_for_engine_with_train_eval.py
+?? Desktop/Kalyan_Penal_Scraper/score_only_json_verbose.py
+?? Desktop/Kalyan_Penal_Scraper/single_slide_test.py
+?? Desktop/Kalyan_Penal_Scraper/start_prediction_api.bat
+?? Desktop/Kalyan_Penal_Scraper/type1_full_free_video.py
+?? Desktop/Kalyan_Penal_Scraper/type1_slide_v2.py
+?? Desktop/Kalyan_Penal_Scraper/unified_kalyan_scraper.py
+?? Desktop/Kalyan_Penal_Scraper/video_reels_final.py
+?? Desktop/Kalyan_Penal_Scraper/video_reels_type1.py
+?? Desktop/Kalyan_Penal_Scraper/video_reels_type1.py.bak
+?? Desktop/Kalyan_Penal_Scraper/working_video_file.txt
+?? "Desktop/Personal Front.docx"
+?? "Desktop/Protein menu zomato.pdf"
+?? Desktop/SCST_Complaint.docx
+?? "Desktop/Savoury dishes/"
+?? "Desktop/SnackBar Dishes/"
+?? Desktop/Snacks/
+?? "Desktop/Wondershare Filmora 14.lnk"
+?? Desktop/Word.lnk
+?? "Desktop/Zoom Workplace.lnk"
+?? "Desktop/backup kalyan scraper/"
+?? Desktop/breakfast/
+?? Desktop/desktop.ini
+?? "Desktop/digital meal plans.rar"
+?? "Desktop/digital meal plans.zip"
+?? "Desktop/digital meal plans/"
+?? "Desktop/dish images/"
+?? "Desktop/fitfuel-chatbot (2).zip"
+?? "Desktop/fitfuel-chatbot (3).zip"
+?? "Desktop/fitfuel-chatbot (3)/"
+?? "Desktop/fitfuel-chatbot (4).zip"
+?? Desktop/fitfuel-chatbot.zip
+?? Desktop/fitfuel-chatbot/
+?? Desktop/fitfuel-landing-page.css
+?? Desktop/folders/
+?? Desktop/frontpage.zip
+?? Desktop/frontpage/
+?? Desktop/images/
+?? "Desktop/ingredients folder/"
+?? "Desktop/insta influencer list.xlsx"
+?? "Desktop/layout code for product page.zip"
+?? "Desktop/layout code for product page/"
+?? "Desktop/light bill.pdf"
+?? "Desktop/live scrapper/"
+?? "Desktop/main digital meals folder.zip"
+?? "Desktop/main digital meals folder/"
+?? "Desktop/multi_market_predictions_v3 (2).zip"
+?? Desktop/multi_market_predictions_v3.rar
+?? Desktop/multi_market_predictions_v3.zip
+?? Desktop/multi_market_predictions_v3/
+?? "Desktop/new meal plans/"
+?? "Desktop/other ideas/"
+?? "Desktop/recipes folder/"
+?? Desktop/recipes/
+?? "Desktop/salads recipes/"
+?? "Desktop/sample menu page for digital meal plan.zip"
+?? "Desktop/sample menu page for digital meal plan/"
+?? "Desktop/smoothies and drinks/"
+?? Desktop/tai/
+?? "Desktop/xl files/"
+?? "Desktop/zomato Weight loss Meal.docx"
+?? "Desktop/zomato Weight loss Meal.pdf"
+?? "Desktop/zomato menu recipies.zip"
+?? "Desktop/zomato menu recipies/"
+?? "Desktop/zomato menu.docx"
+?? "Desktop/zomato menu.pdf"
+?? "Desktop/\360\237\223\201 MarketScraper/"
+?? Documents/
+?? Downloads/
+?? Favorites/
+?? IntelGraphicsProfiles/
+?? Links/
+?? Music/
+?? NTUSER.DAT
+?? NTUSER.DAT{53b39e88-18c4-11ea-a811-000d3aa4692b}.TM.blf
+?? NTUSER.DAT{53b39e88-18c4-11ea-a811-000d3aa4692b}.TMContainer00000000000000000001.regtrans-ms
+?? NTUSER.DAT{53b39e88-18c4-11ea-a811-000d3aa4692b}.TMContainer00000000000000000002.regtrans-ms
+?? OneDrive/
+?? Pictures/
+?? "Saved Games/"
+?? Searches/
+?? Videos/
+?? _netrc
+?? cd
+?? java_error_in_studio64_14952.log
+?? java_error_in_studio64_20688.log
+?? java_error_in_studio64_27528.log
+?? ntuser.dat.LOG1
+?? ntuser.dat.LOG2
+?? ntuser.ini
+?? python
+?? rmdir
+main
+origin  https://github.com/pranitborkar98/sattaboss-data.git (fetch)
+origin  https://github.com/pranitborkar98/sattaboss-data.git (push)
+PS C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper> git add .github/workflows/update-data.yml
+warning: in the working copy of 'Desktop/Kalyan_Penal_Scraper/.github/workflows/update-data.yml', LF will be replaced by CRLF the next time Git touches it
+PS C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper> git commit -m "ci: restore update-data workflow (automated)" 2>&1
+[main 3d1c5e5] ci: restore update-data workflow (automated)
+ 1 file changed, 37 insertions(+), 8 deletions(-)
+PS C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper> git push origin main 2>&1
+git : To https://github.com/pranitborkar98/sattaboss-data.git
+At line:1 char:1
++ git push origin main 2>&1
++ ~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (To https://gith...taboss-data.git:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+
+   686204a..3d1c5e5  main -> main
+PS C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper>

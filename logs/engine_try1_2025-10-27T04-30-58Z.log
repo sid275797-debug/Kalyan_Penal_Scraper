@@ -1,0 +1,19 @@
+=== ENGINE_TRY1 START 2025-10-27T04:30:58Z ===
+2025-10-27 10:00:58,712 [INFO] ✅ Using history file: C:\Users\VCOM\Desktop\all_markets_history.json (markets=50)
+2025-10-27 10:00:58,735 [INFO] Archived existing todays_predictions.json -> C:\Users\VCOM\Desktop\output\history\predictions_2025-10-27.json
+2025-10-27 10:00:58,756 [INFO] ✅ Updated yesterday pointer -> C:\Users\VCOM\Desktop\output\yesterday_results.json
+2025-10-27 10:00:58,756 [INFO] Archived previous todays_predictions.json -> C:\Users\VCOM\Desktop\output\history\predictions_2025-10-27.json
+2025-10-27 10:00:58,866 [INFO] Saved today's predictions archive -> predictions_2025-10-27.json
+
+✅ Written todays_predictions.json to:
+ - C:\Users\VCOM\Desktop\todays_predictions.json
+ - C:\Users\VCOM\Desktop\output\todays_predictions.json
+ - C:\Users\VCOM\Desktop\sattaboss-data\data\todays_predictions.json
+ - C:\Users\VCOM\Desktop\kalyan\assets\todays_predictions.json
+ - C:\Users\VCOM\AndroidStudioProjects\multi_market_predictions_v3\assets\todays_predictions.json
+ - C:\Users\VCOM\Desktop\output\history\todays_predictions.json
+ - C:\Users\VCOM\Desktop\predictions_v4.json
+ - C:\Users\VCOM\Desktop\output\predictions_v4.json
+ - C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\output\todays_predictions.json
+ - C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\output\history\todays_predictions.json
+=== ENGINE_TRY1 END rc=0 2025-10-27T04:30:58Z ===

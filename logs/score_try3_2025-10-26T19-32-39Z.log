@@ -1,0 +1,13 @@
+=== SCORE_TRY3 START 2025-10-26T19:32:39Z ===
+Traceback (most recent call last):
+  File "C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\score_only_json_verbose.py", line 600, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\score_only_json_verbose.py", line 343, in main
+    print(f"\U0001f50e Using local predictions: {pred_path}")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\VCOM\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\U0001f50e' in position 0: character maps to <undefined>
+=== SCORE_TRY3 END rc=1 2025-10-26T19:32:39Z ===

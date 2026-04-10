@@ -1,0 +1,670 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+r"""
+Reels Video Builder — Final Visual Edition (complete script)
+
+Features:
+- Upgraded typography, color accents, glow + shadow
+- Improved pill/chip visuals (rounded gradient + inner shadow)
+- Entrance/pop animation (subtle zoom + fade)
+- Pulse/pop overlays for Jodi chips
+- Intro + outro cards
+- Progress bar overlay
+- Thumbnail export
+- Premium locked-preview support (blur + lock pill)
+Compatible with Pillow, numpy and MoviePy (moviepy.editor)
+"""
+
+import os, re, json, math, datetime, tempfile, uuid
+from typing import Dict, Any, List, Tuple, Optional
+import numpy as np
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
+
+# MoviePy editor import (broad compatibility)
+from moviepy import ImageClip, AudioFileClip, concatenate_videoclips, CompositeVideoClip, VideoClip
+
+
+# ======= CONFIG =======
+DEBUG = False
+SHOW_VERSION = False
+
+# ---- Paths (use raw string to avoid unicodeescape issues)
+BASE_DIR    = r"C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper"
+JSON_PATH   = os.path.join(BASE_DIR, "sattaboss-data", "data", "todays_predictions.json")
+ASSETS_DIR  = os.path.join(BASE_DIR, "assets")
+MUSIC_DIR   = os.path.join(BASE_DIR, "music")
+LOGO_PATH   = os.path.join(ASSETS_DIR, "logo.png")
+OUT_ROOT    = os.path.join(BASE_DIR, "video_output")
+
+PREFERRED_MUSIC_NAME = "bgm.mp3"
+AUDIO_EXTS = (".mp3", ".m4a", ".aac", ".wav", ".ogg", ".flac")
+EXCLUDE_FILE = os.path.join(ASSETS_DIR, "exclude_markets.txt")
+
+# If True: skip rendering premium markets entirely (old behaviour).
+# If False: include premium markets as blurred locked slides (recommended).
+SKIP_PREMIUM = False
+
+# ---- Market selection
+TEST_MARKET_SUBSTR = ""      # filter substring
+MAX_MARKETS        = 12      # None = all
+
+# ---- Video params
+W, H = 1080, 1920
+FPS = 30
+PER_SLIDE_SEC = 3.6
+INTRO_SEC = 2.0
+OUTRO_SEC = 1.8
+POP_DUR = 0.58  # chip pop duration
+POP_SCALE_START = 0.8
+POP_SCALE_PEAK = 1.12
+
+# ---- Canvas + Colors
+PAD  = 84
+SAFE_TOP, SAFE_BOTTOM = 100, 170
+BG_TOP=(8,10,18); BG_BOT=(2,3,7)
+WHITE=(255,255,255); DIM=(210,214,223)
+ACCENT_CYAN=(0,220,255)
+ACCENT_MAG=(255,45,185)
+ACCENT_YELLOW=(255,210,60)
+CARD_BG=(12,16,26,240)
+CARD_ST=(ACCENT_CYAN[0], ACCENT_CYAN[1], ACCENT_CYAN[2], 70)
+PILL_BG=(16,18,28,240);  PILL_ST=(0,180,220,220)
+
+# ---- Fonts
+PRIMARY_FONT_CANDS = [
+    r"C:\Windows\Fonts\Orbitron-Bold.ttf",
+    r"C:\Windows\Fonts\AUDIOWIDE-REGULAR.TTF",
+    r"C:\Windows\Fonts\Exo2-Bold.ttf",
+    r"C:\Windows\Fonts\Montserrat-Bold.ttf",
+    r"C:\Windows\Fonts\arialbd.ttf",
+]
+SECONDARY_FONT_CANDS = [
+    r"C:\Windows\Fonts\Exo2-Regular.ttf",
+    r"C:\Windows\Fonts\Montserrat-Regular.ttf",
+    r"C:\Windows\Fonts\arial.ttf",
+    r"C:\Windows\Fonts\arialbd.ttf",
+]
+
+# ---- Sizes
+BASE = {
+    "title": 86, "date": 56, "tag": 48,
+    "open": 160, "close": 160,
+    "jodi": 80, "chip_h": 112, "chip_gap": 20, "chip_pad_x": 48,
+    "pill": 48, "pill_h": 86, "pill_gap": 18,
+    "pad": 28, "gap_s": 14, "gap_m": 26, "gap_l": 34
+}
+LIMITS = {"jodi_cap": 10, "pill_cap": 12}
+
+# ===== Helpers =====
+def ensure_dir(p): os.makedirs(p, exist_ok=True)
+
+def load_font(cands, size):
+    for fp in cands:
+        if os.path.exists(fp):
+            try: return ImageFont.truetype(fp, size)
+            except: pass
+    return ImageFont.load_default()
+
+def tw(draw, font, s): return int(draw.textlength(s, font=font))
+def th(font):
+    try: b = font.getbbox("Hg0123456789"); return int(b[3] - b[1])
+    except: a, d = font.getmetrics(); return int(a + d)
+
+def bg_make(size):
+    w,h = size
+    t = np.linspace(0,1,h)[:,None,None]
+    top = np.array(BG_TOP,dtype=np.float32)[None,None,:]
+    bot = np.array(BG_BOT,dtype=np.float32)[None,None,:]
+    grad = top*(1-t)+bot*t
+    arr = np.repeat(grad,w,axis=1).astype(np.uint8)
+    img = Image.fromarray(arr, mode="RGB").convert("RGBA")
+    sl = Image.new("RGBA",(w,h),(0,0,0,0)); d=ImageDraw.Draw(sl)
+    for yy in range(0,h,10):
+        d.line([(0,yy),(w,yy)], fill=(255,255,255,8), width=1)
+    img.alpha_composite(sl); return img
+
+def draw_text_with_glow_and_shadow(canvas, draw, xy, text, font, fill, glow_color, shadow_offset=(4,6), glow_radius=8, shadow_alpha=120):
+    if not text: return
+    sx = int(xy[0] + shadow_offset[0]); sy = int(xy[1] + shadow_offset[1])
+    g = Image.new("RGBA", canvas.size, (0,0,0,0)); gd = ImageDraw.Draw(g)
+    gd.text((sx,sy), text, font=font, fill=(0,0,0,shadow_alpha))
+    g = g.filter(ImageFilter.GaussianBlur(4)); canvas.alpha_composite(g)
+    g2 = Image.new("RGBA", canvas.size, (0,0,0,0)); gd2 = ImageDraw.Draw(g2)
+    gd2.text(xy, text, font=font, fill=(glow_color[0],glow_color[1],glow_color[2],230))
+    g2 = g2.filter(ImageFilter.GaussianBlur(glow_radius)); canvas.alpha_composite(g2)
+    draw.text(xy, text, font=font, fill=fill)
+
+def rounded_rect_on(canvas, xy, radius, fill, outline=None, width=2, blur=0):
+    tmp=Image.new("RGBA",canvas.size,(0,0,0,0)); td=ImageDraw.Draw(tmp)
+    td.rounded_rectangle(xy,radius=radius,fill=fill,outline=outline,width=width)
+    if blur: tmp=tmp.filter(ImageFilter.GaussianBlur(4))
+    canvas.alpha_composite(tmp)
+
+def rounded_gradient_pill(canvas, rect, radius, base_color, border_color=None, border_w=2, inner_shadow=6):
+    x1,y1,x2,y2 = map(int, rect); w=max(1,int(x2-x1)); h=max(1,int(y2-y1))
+    tmp = Image.new("RGBA",(w,h),(0,0,0,0)); td = ImageDraw.Draw(tmp)
+    for i in range(h):
+        t = i/(h-1) if h>1 else 0
+        r = int(base_color[0]*(1-0.06*t)); g = int(base_color[1]*(1-0.06*t)); b = int(base_color[2]*(1-0.06*t))
+        a = base_color[3] if len(base_color)>3 else 255
+        td.line([(0,i),(w,i)], fill=(r,g,b,a))
+    mask = Image.new("L",(w,h),0); md=ImageDraw.Draw(mask)
+    md.rounded_rectangle((0,0,w,h), radius=radius, fill=255)
+    tmp.putalpha(mask)
+    sh = tmp.filter(ImageFilter.GaussianBlur(inner_shadow)).convert("RGBA"); canvas.alpha_composite(sh,(x1,y1))
+    if border_color:
+        bd = Image.new("RGBA",(w,h),(0,0,0,0)); bdd=ImageDraw.Draw(bd)
+        bdd.rounded_rectangle((0,0,w-1,h-1), radius=radius, outline=border_color, width=border_w)
+        canvas.alpha_composite(bd,(x1,y1))
+    canvas.alpha_composite(tmp,(x1,y1))
+
+def clean_market_title(s: str) -> str:
+    s = (s or "").replace("_"," ")
+    s = re.sub(r"(?:\bpanel\b|\bpenal\b|\bchart\b)", "", s, flags=re.I)
+    s = re.sub(r"\s{2,}"," ", s).strip()
+    return s.upper()
+
+def norm_key(s: str) -> str: return re.sub(r'[^a-z0-9]+','', (s or '').lower())
+def listify(v):
+    if v is None: return []
+    if isinstance(v, list): return [str(x).strip() for x in v if str(x).strip()]
+    if isinstance(v, (int,float)): return [str(v)]
+    if isinstance(v, str): return [p for p in re.split(r'[,\s]+', v.strip()) if p]
+    return [str(v)]
+
+def flatten_shallow(d: Dict[str, Any]) -> Dict[str, Any]:
+    flat=dict(d)
+    for k in list(d.keys()):
+        if isinstance(d[k], dict) and norm_key(k) in ("predictions","data","result","values","payload"):
+            for k2,v2 in d[k].items():
+                if k2 not in flat: flat[k2]=v2
+    return flat
+
+def extract_field(flat, aliases):
+    table={norm_key(k):k for k in flat.keys()}
+    for alias in aliases:
+        n=norm_key(alias)
+        if n in table: return listify(flat[table[n]])
+        for nk,orig in table.items():
+            if n in nk or nk in n: return listify(flat[orig])
+    return []
+
+def auto_fit_font(draw, cands, base_size, text, max_width, min_size=36, step=2):
+    size = base_size
+    while size > min_size:
+        f = load_font(cands, size)
+        if tw(draw, f, text) <= max_width: return f
+        size -= step
+    return load_font(cands, max(min_size, 24))
+
+# ===== Exclusions & Music =====
+def load_excluded_markets() -> set:
+    names=set()
+    try:
+        if os.path.exists(EXCLUDE_FILE):
+            with open(EXCLUDE_FILE,"r",encoding="utf-8") as f:
+                for line in f:
+                    s=line.strip()
+                    if s: names.add(s.lower())
+    except Exception as e:
+        print("⚠️ Could not read exclude_markets.txt:", e)
+    return names
+
+def is_premium_entry(flat: Dict[str, Any]) -> bool:
+    for k in ("premium","is_premium","vip"):
+        if k in flat and str(flat[k]).lower() in ("1","true","yes","y"):
+            return True
+    if str(flat.get("tier","")).lower() in ("premium","vip","gold"):
+        return True
+    name = str(flat.get("market") or flat.get("market_name") or "").lower()
+    if any(kw in name for kw in ("kalyan","rajdhani","milan","premium","vip")):
+        return True
+    return False
+
+def _list_audio(dir_path: str) -> List[str]:
+    try:
+        if not os.path.isdir(dir_path): return []
+        return [os.path.join(dir_path, fn) for fn in os.listdir(dir_path) if fn.lower().endswith(AUDIO_EXTS)]
+    except Exception:
+        return []
+
+def pick_music_path() -> Optional[str]:
+    if os.path.isdir(MUSIC_DIR):
+        pref = os.path.join(MUSIC_DIR, PREFERRED_MUSIC_NAME)
+        if os.path.exists(pref): return pref
+        candidates = _list_audio(MUSIC_DIR)
+        if candidates:
+            ranked = sorted(candidates, key=lambda p: (not any(k in os.path.basename(p).lower() for k in ("bgm","music","beat","loop")), os.path.basename(p).lower()))
+            return ranked[0]
+    if os.path.isdir(ASSETS_DIR):
+        pref = os.path.join(ASSETS_DIR, PREFERRED_MUSIC_NAME)
+        if os.path.exists(pref): return pref
+        candidates = _list_audio(ASSETS_DIR)
+        if candidates:
+            ranked = sorted(candidates, key=lambda p: (not any(k in os.path.basename(p).lower() for k in ("bgm","music","beat","loop")), os.path.basename(p).lower()))
+            return ranked[0]
+    return None
+
+# ===== Slide drawing & layout =====
+def draw_header_centered(canvas, d, y, title_txt, date_txt):
+    date_f = auto_fit_font(d, PRIMARY_FONT_CANDS, BASE["date"], date_txt, W - 2*PAD, min_size=38)
+    date_w = tw(d, date_f, date_txt)
+    draw_text_with_glow_and_shadow(canvas, d, ((W - date_w)//2, y), date_txt, date_f, DIM, ACCENT_MAG, shadow_offset=(3,4), glow_radius=6)
+    y += th(date_f) + 10
+    title_f = auto_fit_font(d, PRIMARY_FONT_CANDS, BASE["title"], title_txt, W - 2*PAD, min_size=40)
+    t_w = tw(d, title_f, title_txt)
+    draw_text_with_glow_and_shadow(canvas, d, ((W - t_w)//2, y), title_txt, title_f, WHITE, ACCENT_CYAN, shadow_offset=(3,5), glow_radius=10)
+    y += th(title_f) + BASE["gap_m"]
+    return y
+
+def measure_digits_uniform(draw, font, digits: List[str], tracking: int) -> Tuple[int,int,int]:
+    h = th(font)
+    samples = [str(x) for x in digits if str(x).strip()] or ["0"]
+    max_w = max(tw(draw, font, ch) for ch in samples + list("0123456789"))
+    block_w = len(samples)*max_w + (len(samples)-1)*tracking
+    return block_w, h, max_w
+
+def draw_digits_row_centered(canvas, d, y, label: str, digits: List[str], base_size: int, tracking: int = 30):
+    digits = [str(x) for x in digits if str(x).strip()] or ["—","—","—","—"]
+    size = base_size
+    while size >= 96:
+        f = load_font(PRIMARY_FONT_CANDS, size)
+        block_w, block_h, box_w = measure_digits_uniform(d, f, digits, tracking)
+        if block_w <= (W - 2*PAD): break
+        size -= 4
+    f = load_font(PRIMARY_FONT_CANDS, size)
+    tag_f = load_font(PRIMARY_FONT_CANDS, BASE["tag"])
+    lbl_w = tw(d, tag_f, label)
+    draw_text_with_glow_and_shadow(canvas, d, ((W - lbl_w)//2, y), label, tag_f, DIM, WHITE, shadow_offset=(2,3), glow_radius=4)
+    y += th(tag_f) + BASE["gap_s"] + 2
+    block_w, block_h, box_w = measure_digits_uniform(d, f, digits, tracking)
+    start_x = (W - block_w)//2
+    row_y = y
+    x = start_x
+    for i, ch in enumerate(digits):
+        g_w = tw(d, f, ch)
+        gx = x + (box_w - g_w)//2
+        draw_text_with_glow_and_shadow(canvas, d, (gx, row_y), ch, f, WHITE, ACCENT_CYAN, shadow_offset=(3,5), glow_radius=8)
+        x += box_w
+        if i < len(digits) - 1:
+            x += tracking
+    return row_y + block_h + BASE["gap_l"]
+
+def compute_chip_rects(chips: List[str]) -> List[Tuple[int,int,int,int]]:
+    chips = chips or ["—"]
+    tmp_img = Image.new("RGBA",(100,100),(0,0,0,0)); dd=ImageDraw.Draw(tmp_img)
+    chip_f = load_font(PRIMARY_FONT_CANDS, BASE["jodi"])
+    pad_x = BASE["chip_pad_x"]; gap = BASE["chip_gap"]; h = BASE["chip_h"]
+    chip_w = [tw(dd, chip_f, s) + 2*pad_x for s in chips]
+    inner_w = W - 2*PAD
+    rows = [[]]; used = 0
+    for s,w in zip(chips,chip_w):
+        if not rows[-1]:
+            rows[-1].append((s, min(w, inner_w))); used = min(w, inner_w)
+        else:
+            if used + gap + w <= inner_w:
+                rows[-1].append((s,w)); used += gap + w
+            else:
+                if len(rows) == 2: break
+                rows.append([]); used = 0
+                rows[-1].append((s, min(w, inner_w))); used = min(w, inner_w)
+    dd2 = ImageDraw.Draw(Image.new("RGBA",(W,H),(0,0,0,0)))
+    title_f = load_font(PRIMARY_FONT_CANDS, BASE["title"])
+    date_f = load_font(PRIMARY_FONT_CANDS, BASE["date"])
+    y = SAFE_TOP + th(date_f) + 10 + th(title_f) + BASE["gap_m"]
+    y += th(load_font(PRIMARY_FONT_CANDS, BASE["tag"])) + BASE["gap_s"] + 2
+    y += th(load_font(PRIMARY_FONT_CANDS, BASE["open"])) + BASE["gap_l"]
+    y += th(load_font(PRIMARY_FONT_CANDS, BASE["tag"])) + BASE["gap_s"] + 2
+    y += th(load_font(PRIMARY_FONT_CANDS, BASE["open"])) + BASE["gap_l"]
+    rows_rects=[]
+    cur_y = y
+    for r in rows:
+        row_w = sum(w for _,w in r) + gap*(len(r)-1)
+        x = PAD + (inner_w - row_w)//2
+        for s,w in r:
+            rect = (int(x), int(cur_y + th(load_font(PRIMARY_FONT_CANDS, BASE["tag"])) + BASE["gap_s"]), int(x+w), int(cur_y + th(load_font(PRIMARY_FONT_CANDS, BASE["tag"])) + BASE["gap_s"] + h))
+            rows_rects.append(rect)
+            x += w + gap
+        cur_y += h + (BASE["chip_gap"])
+    return rows_rects
+
+def draw_jodi_flow(canvas, d, y, chips: List[str]):
+    tag_f = load_font(PRIMARY_FONT_CANDS, BASE["tag"])
+    ttl = "JODI"
+    ttl_w = tw(d, tag_f, ttl)
+    draw_text_with_glow_and_shadow(canvas, d, ((W - ttl_w)//2, y), ttl, tag_f, DIM, ACCENT_YELLOW, shadow_offset=(2,3), glow_radius=4)
+    y += th(tag_f) + BASE["gap_s"]
+    inner_w = W - 2*PAD
+    chip_f = load_font(PRIMARY_FONT_CANDS, BASE["jodi"])
+    pad_x = BASE["chip_pad_x"]; gap = BASE["chip_gap"]; h = BASE["chip_h"]
+    chips = chips or ["—"]
+    if len(chips) > LIMITS["jodi_cap"]:
+        chips = chips[:LIMITS["jodi_cap"]] + [f"+{len(chips)-LIMITS['jodi_cap']} MORE"]
+    chip_w = [tw(d, chip_f, s) + 2*pad_x for s in chips]
+    rows: List[List[Tuple[str,int]]] = [[]]
+    used=0
+    for s,w in zip(chips,chip_w):
+        if not rows[-1]:
+            rows[-1].append((s,min(w,inner_w))); used=min(w,inner_w)
+        else:
+            if used + gap + w <= inner_w:
+                rows[-1].append((s,w)); used += gap + w
+            else:
+                if len(rows)==2: break
+                rows.append([]); used=0
+                rows[-1].append((s,min(w,inner_w))); used=min(w,inner_w)
+    for r_i, row in enumerate(rows):
+        if not row: continue
+        row_w = sum(w for _,w in row) + gap*(len(row)-1)
+        x = PAD + (inner_w - row_w)//2
+        for s,w in row:
+            rect = (x, y, x+w, y+h)
+            rounded_gradient_pill(canvas, rect, 36, base_color=(18,24,36,230), border_color=(0,160,200,120), border_w=2, inner_shadow=8)
+            draw_text_with_glow_and_shadow(canvas, d, (x + (w - tw(d, chip_f, s))//2, y + (h - th(chip_f))//2), s, chip_f, WHITE, ACCENT_CYAN, shadow_offset=(2,3), glow_radius=5)
+            x += w + gap
+        y += h + (BASE["chip_gap"] if r_i < len(rows)-1 else BASE["gap_l"])
+    return y
+
+def render_slide(entry: Dict[str, Any], date_str: str) -> Image.Image:
+    canvas = bg_make((W,H)); d = ImageDraw.Draw(canvas,"RGBA")
+    title_txt = clean_market_title(entry.get("market",""))
+    date_txt  = f"DATE: {date_str}"
+    y = SAFE_TOP
+    y = draw_header_centered(canvas, d, y, title_txt, date_txt)
+    y = draw_digits_row_centered(canvas, d, y, "OPEN",  entry.get("open_digits",  ["—","—","—","—"]), base_size=BASE["open"],  tracking=30)
+    y = draw_digits_row_centered(canvas, d, y, "CLOSE", entry.get("close_digits", ["—","—","—","—"]), base_size=BASE["close"], tracking=30)
+    y = draw_jodi_flow(canvas, d, y, entry.get("jodis", ["—"]))
+    tag_f = load_font(PRIMARY_FONT_CANDS, BASE["tag"])
+    open_list  = (entry.get("open_pannas")  or ["—"])[:LIMITS["pill_cap"]]
+    close_list = (entry.get("close_pannas") or ["—"])[:LIMITS["pill_cap"]]
+    card_left, card_right = PAD, W - PAD
+    inner_l = card_left + BASE["pad"]; inner_r = card_right - BASE["pad"]
+    inner_w2 = inner_r - inner_l
+    col_w2 = (inner_w2 - BASE["pill_gap"]) // 2
+    rows_o = max(1, math.ceil(len(open_list)/2))
+    rows_c = max(1, math.ceil(len(close_list)/2))
+    tag_h  = th(tag_f)
+    card_h = (BASE["pad"] + tag_h + BASE["gap_s"] +
+              rows_o*BASE["pill_h"] + (rows_o-1)*BASE["pill_gap"] +
+              BASE["gap_m"] + 1 + BASE["gap_m"] +
+              tag_h + BASE["gap_s"] +
+              rows_c*BASE["pill_h"] + (rows_c-1)*BASE["pill_gap"] +
+              BASE["pad"])
+    rounded_rect_on(canvas, (card_left, y, card_right, y+card_h), 28, CARD_BG, CARD_ST, 2, blur=0)
+    pill_f = load_font(SECONDARY_FONT_CANDS, BASE["pill"])
+    yy = y + BASE["pad"]
+    def draw_pills(items: List[str], title: str, yy: int) -> int:
+        draw_text_with_glow_and_shadow(canvas, d, (inner_l, yy), title, tag_f, DIM, ACCENT_CYAN, shadow_offset=(2,3), glow_radius=4)
+        yy += tag_h + BASE["gap_s"]
+        if len(items) % 2: items += [""]
+        xL = inner_l; xR = inner_l + col_w2 + BASE["pill_gap"]
+        for i in range(0, len(items), 2):
+            a,b = items[i], items[i+1]
+            rounded_gradient_pill(canvas, (xL, yy, xL+col_w2, yy+BASE["pill_h"]), 26, base_color=(22,26,36,230), border_color=(0,140,180,110), border_w=2, inner_shadow=6)
+            if a:
+                draw_text_with_glow_and_shadow(canvas, d, (xL+(col_w2 - tw(d, pill_f, a))//2, yy+(BASE["pill_h"]-th(pill_f))//2), a, pill_f, WHITE, ACCENT_CYAN, shadow_offset=(2,3), glow_radius=4)
+            rounded_gradient_pill(canvas, (xR, yy, xR+col_w2, yy+BASE["pill_h"]), 26, base_color=(22,26,36,230), border_color=(0,140,180,110), border_w=2, inner_shadow=6)
+            if b:
+                draw_text_with_glow_and_shadow(canvas, d, (xR+(col_w2 - tw(d, pill_f, b))//2, yy+(BASE["pill_h"]-th(pill_f))//2), b, pill_f, WHITE, ACCENT_CYAN, shadow_offset=(2,3), glow_radius=4)
+            yy += BASE["pill_h"] + BASE["pill_gap"]
+        return yy
+    yy = draw_pills(open_list, "OPEN PANNA", yy)
+    d.line([(inner_l, yy + BASE["gap_m"]//2), (inner_r, yy + BASE["gap_m"]//2)], fill=(255,255,255,42), width=1)
+    yy += BASE["gap_m"] + 1 + BASE["gap_m"]//2
+    yy = draw_pills(close_list, "CLOSE PANNA", yy)
+    if os.path.exists(LOGO_PATH):
+        try:
+            raw = Image.open(LOGO_PATH).convert("RGBA"); w0,h0=raw.size; scale=100/max(1,h0)
+            logo=raw.resize((int(w0*scale), int(h0*scale)), Image.LANCZOS)
+            canvas.alpha_composite(logo, (W-PAD-logo.size[0], H-PAD-logo.size[1]))
+        except: pass
+    if SHOW_VERSION:
+        small = load_font(SECONDARY_FONT_CANDS, 22)
+        draw_text_with_glow_and_shadow(canvas, d, (PAD, H - PAD - 22), "v4.6.2", small, (200,200,200), (0,0,0), shadow_offset=(1,1), glow_radius=2)
+    if DEBUG:
+        dd = ImageDraw.Draw(canvas); dd.rectangle((PAD, SAFE_TOP, W-PAD, H-SAFE_BOTTOM), outline=(255,0,0), width=2)
+    if is_premium_entry(flatten_shallow(entry)):
+        if SKIP_PREMIUM:
+            raise SystemExit("Encountered premium entry while SKIP_PREMIUM=True")
+        try:
+            blurred = canvas.filter(ImageFilter.GaussianBlur(14)).convert("RGBA")
+            overlay = Image.new("RGBA",(W,H),(0,0,0,140)); blurred.alpha_composite(overlay)
+            d2 = ImageDraw.Draw(blurred,"RGBA"); pill_f = load_font(PRIMARY_FONT_CANDS, 44)
+            text = "PREMIUM • UNLOCK IN APP"
+            w0 = tw(d2, pill_f, text); h0 = th(pill_f)
+            rect = ((W - w0 - 64)//2, H//2 - 42, (W + w0 + 64)//2, H//2 + 42)
+            rounded_gradient_pill(blurred, rect, radius=44, base_color=(20,24,30,210), border_color=(255,255,255,40), border_w=2, inner_shadow=6)
+            draw_text_with_glow_and_shadow(blurred, d2, (rect[0]+32, rect[1]+(rect[3]-rect[1]-h0)//2), text, pill_f, (230,230,230), ACCENT_YELLOW, shadow_offset=(2,3), glow_radius=6)
+            return blurred
+        except Exception:
+            pass
+    return canvas
+
+# ===== Data load =====
+def load_entries() -> List[Dict[str, Any]]:
+    with open(JSON_PATH, "r", encoding="utf-8") as f:
+        raw = json.load(f)
+    exclude_names = load_excluded_markets()
+    entries=[]; iterable=[]
+    if isinstance(raw, list): iterable=[(None,x) for x in raw]
+    elif isinstance(raw, dict): iterable=list(raw.items())
+    for i,(k,v) in enumerate(iterable):
+        if not isinstance(v, dict): continue
+        flat = flatten_shallow(v)
+        market = flat.get("market") or flat.get("market_name") or k or f"MARKET_{i}"
+        if market and market.lower() in exclude_names: continue
+        open_digits  = extract_field(flat, ["Open Digit","open_digit","openDigits","opendigit","o_digit","open"])
+        close_digits = extract_field(flat, ["Close Digit","close_digit","closeDigits","closedigit","c_digit","close"])
+        jodis        = extract_field(flat, ["Jodi","jodi","jodis","pair","pair_jodi","jodi_list"])
+        open_pannas  = extract_field(flat, ["Open Panna","open_panna","openPanna","openpanna","open_pannas","o_panna"])
+        close_pannas = extract_field(flat, ["Close Panna","close_panna","closePanna","closepanna","close_pannas","c_panna"])
+        entries.append({
+            "market": market,
+            "open_digits": open_digits, "close_digits": close_digits,
+            "jodis": jodis, "open_pannas": open_pannas, "close_pannas": close_pannas,
+            **flat
+        })
+    t = (TEST_MARKET_SUBSTR or "").lower().strip()
+    if t: entries = [e for e in entries if t in (e["market"] or "").lower()]
+    if MAX_MARKETS: entries = entries[:MAX_MARKETS]
+    return entries
+
+# ===== Animation helpers =====
+def entrance_pop(imgclip, dur=PER_SLIDE_SEC, pop_dur=0.45, start_scale=0.96, peak_scale=1.02):
+    def scale_fn(t):
+        if t < pop_dur:
+            return start_scale + (peak_scale - start_scale) * (1 - (1 - t / pop_dur) ** 2)
+        else:
+            denom = max(1e-6, (dur - pop_dur))
+            return peak_scale - 0.03 * ((t - pop_dur) / denom)
+
+    # Resize/zoom animation (MoviePy 2.x)
+    resized = imgclip.resized(lambda t: scale_fn(t)).with_duration(dur).with_fps(FPS)
+
+    # Opacity function for fade-in + fade-out
+    def opacity_fn_t(t):
+        fade = 0.22
+        if t < fade:
+            return float(min(1.0, t / fade))
+        if t > dur - fade:
+            return float(max(0.0, (dur - t) / fade))
+        return 1.0
+
+    # Build mask frames (grayscale in [0..1]) matching resized clip size
+    w, h = int(resized.w), int(resized.h)
+    def make_mask_frame(t):
+        alpha = max(0.0, min(1.0, opacity_fn_t(t)))
+        # mask must be float in [0..1] or uint8; MoviePy expects floats for ismask=True
+        return (np.ones((h, w), dtype=np.float32) * float(alpha))
+
+    mask = VideoClip(make_frame=make_mask_frame, ismask=True).with_duration(dur).with_fps(FPS)
+    # Attach the mask and return the clip
+    return resized.with_mask(mask)
+def progress_bar_clip(total_duration, height=8, pad_bottom=48):
+    def make_frame(t):
+        arr = np.zeros((height, W, 3), dtype=np.uint8)
+        fill = int((t / total_duration) * W)
+        arr[:, :fill, :] = np.array(ACCENT_CYAN, dtype=np.uint8)
+        bg = (10,12,18)
+        arr2 = np.full((height, W, 3), bg, dtype=np.uint8)
+        arr2[:, :fill, :] = arr[:, :fill, :]
+        return arr2
+    clip = VideoClip(make_frame=make_frame, ismask=False).with_duration(total_duration).with_fps(FPS)
+    return clip.set_position(("center", H - pad_bottom))
+
+def make_pulse_image(radius=220, color=ACCENT_CYAN, strength=180):
+    size = radius*2
+    im = Image.new("RGBA",(size,size),(0,0,0,0)); dr=ImageDraw.Draw(im)
+    cx,cy = size//2, size//2
+    for r in range(radius,0,-2):
+        alpha = int(strength * (r/radius)**2)
+        dr.ellipse((cx-r,cy-r,cx+r,cy+r), fill=(color[0],color[1],color[2], max(0,min(255,alpha))))
+    im = im.filter(ImageFilter.GaussianBlur(radius//6))
+    tmp = os.path.join(tempfile.gettempdir(), f"pulse_{radius}_{uuid.uuid4().hex}.png")
+    im.save(tmp, optimize=True)
+    return tmp
+
+def make_pulse_clip(rect, duration=POP_DUR, offset=0.0):
+    x1, y1, x2, y2 = rect
+    cx = (x1 + x2) // 2
+    cy = (y1 + y2) // 2
+    base_rad = max(x2 - x1, y2 - y1)
+    pulse_png = make_pulse_image(radius=int(base_rad * 1.6))
+    clip = ImageClip(pulse_png).with_duration(duration).with_fps(FPS)
+
+    def scale_fn(t):
+        if t < duration:
+            return POP_SCALE_START + (POP_SCALE_PEAK - POP_SCALE_START) * (1 - (1 - t / duration) ** 2)
+        return 1.0
+
+    def opacity_fn(t):
+        if t < duration:
+            return 1.0 - (t / duration)
+        return 0.0
+
+    # MoviePy 2.x: use .resized() and .with_opacity(), .with_start()
+    clip = clip.resized(lambda t: scale_fn(t)).with_opacity(opacity_fn).with_start(offset)
+    # position: use with_position (or set_position if present) — prefer with_position for MoviePy 2.x
+    try:
+        clip = clip.with_position((cx - clip.w / 2, cy - clip.h / 2))
+    except Exception:
+        clip = clip.set_position((cx - clip.w / 2, cy - clip.h / 2))
+    return clip
+
+# ===== Video build =====
+def build_video(entries_and_imgs: List[Tuple[Dict[str,Any], Image.Image]], out_path: str):
+    ensure_dir(os.path.dirname(out_path))
+    tmp_paths=[]
+    clips=[]
+    now = datetime.datetime.now()
+    date_disp = now.strftime("%d-%m-%Y")
+    intro_img = make_intro_card(date_disp)
+    intro_tmp = os.path.join(tempfile.gettempdir(), f"intro_{uuid.uuid4().hex}.png")
+    intro_img.save(intro_tmp, optimize=True); tmp_paths.append(intro_tmp)
+    intro_clip = ImageClip(intro_tmp).with_duration(INTRO_SEC).with_fps(FPS)
+    clips.append(entrance_pop(intro_clip, dur=INTRO_SEC))
+    for idx,(entry,im) in enumerate(entries_and_imgs):
+        tmp_png = os.path.join(tempfile.gettempdir(), f"slide_{idx}_{uuid.uuid4().hex}.png")
+        im.save(tmp_png, optimize=True); tmp_paths.append(tmp_png)
+        base_clip = ImageClip(tmp_png).with_duration(PER_SLIDE_SEC).with_fps(FPS)
+        chips = entry.get("jodis") or []
+        rects = compute_chip_rects(chips)
+        pulse_clips = []
+        for i,rect in enumerate(rects):
+            offset = 0.06 * (i % 3)
+            try:
+                pulse = make_pulse_clip(rect, duration=min(POP_DUR, PER_SLIDE_SEC), offset=offset)
+                pulse_clips.append(pulse)
+            except Exception:
+                continue
+        all_clips = [entrance_pop(base_clip, dur=PER_SLIDE_SEC)] + pulse_clips
+        composed = CompositeVideoClip(all_clips, size=(W,H)).with_fps(FPS)
+        clips.append(composed)
+    outro_img = bg_make((W,H)); dd=ImageDraw.Draw(outro_img,"RGBA")
+    small = load_font(SECONDARY_FONT_CANDS, 46)
+    draw_text_with_glow_and_shadow(outro_img, dd, ((W - tw(dd, small, "Download SattaMatkaAI — Link in bio"))//2, H//2 - 24),
+                                  "Download SattaMatkaAI — Link in bio", small, WHITE, ACCENT_CYAN, shadow_offset=(2,3), glow_radius=8)
+    outro_tmp = os.path.join(tempfile.gettempdir(), f"outro_{uuid.uuid4().hex}.png"); outro_img.save(outro_tmp, optimize=True); tmp_paths.append(outro_tmp)
+    outro_clip = ImageClip(outro_tmp).with_duration(OUTRO_SEC).with_fps(FPS)
+    clips.append(entrance_pop(outro_clip, dur=OUTRO_SEC, pop_dur=0.28, start_scale=0.98, peak_scale=1.02))
+    if not clips: raise SystemExit("No clips to render")
+    video = concatenate_videoclips(clips).with_fps(FPS)
+    music_path = pick_music_path()
+    if music_path and os.path.exists(music_path):
+        try:
+            music = AudioFileClip(music_path)
+            if music.duration >= video.duration: music = music.subclip(0, video.duration)
+            music = music.audio_fadein(0.6).audio_fadeout(0.9)
+            video = video.set_audio(music.volumex(0.45))
+        except Exception as e:
+            print("⚠️ Audio load failed:", e)
+    else:
+        print("ℹ️ No audio found. Looked here:", MUSIC_DIR, ASSETS_DIR)
+    try:
+        pb = progress_bar_clip(video.duration)
+        final = CompositeVideoClip([video, pb], size=(W,H)).with_fps(FPS)
+        video = final
+    except Exception as e:
+        print("⚠️ Progress overlay failed:", e)
+    ensure_dir(os.path.dirname(out_path))
+    video.write_videofile(out_path, fps=FPS, codec="libx264", audio_codec="aac",
+                          audio=True, threads=4, preset="medium", bitrate="6000k",
+                          ffmpeg_params=["-pix_fmt","yuv420p"], logger="bar")
+    try:
+        if entries_and_imgs:
+            thumb = entries_and_imgs[0][1].copy().resize((1280,720))
+            thumb_path = out_path.replace(".mp4","_thumb.jpg")
+            thumb.save(thumb_path, optimize=True)
+            print("🖼 Thumbnail saved:", thumb_path)
+    except Exception as e:
+        print("⚠️ Thumbnail export failed:", e)
+    for p in tmp_paths:
+        try: os.remove(p)
+        except: pass
+
+# ===== Intro helper =====
+def make_intro_card(date_str):
+    canvas = bg_make((W,H)); d = ImageDraw.Draw(canvas,"RGBA")
+    big = load_font(PRIMARY_FONT_CANDS, 90)
+    small = load_font(SECONDARY_FONT_CANDS, 42)
+    title = "TODAY'S PREDICTIONS"
+    draw_text_with_glow_and_shadow(canvas, d, ((W - tw(d, big, title))//2, SAFE_TOP+40), title, big, WHITE, ACCENT_CYAN, shadow_offset=(3,4), glow_radius=12)
+    draw_text_with_glow_and_shadow(canvas, d, ((W - tw(d, small, date_str))//2, SAFE_TOP+40 + th(big)+16), date_str, small, DIM, ACCENT_MAG, shadow_offset=(2,3), glow_radius=6)
+    if os.path.exists(LOGO_PATH):
+        try:
+            raw = Image.open(LOGO_PATH).convert("RGBA"); w0,h0=raw.size; scale=120/max(1,h0)
+            logo=raw.resize((int(w0*scale), int(h0*scale)), Image.LANCZOS)
+            canvas.alpha_composite(logo, (PAD, H-PAD-logo.size[1]))
+        except: pass
+    return canvas
+
+# ===== Main =====
+def main():
+    now = datetime.datetime.now()
+    date_disp = now.strftime("%d-%m-%Y")
+    out_dir = os.path.join(OUT_ROOT, now.strftime("%Y-%m-%d"))
+    slides_dir = os.path.join(out_dir, "slides_type1")
+    ensure_dir(slides_dir)
+    entries = load_entries()
+    if not entries:
+        raise SystemExit("No entries found in todays_predictions.json")
+    entries_and_imgs = []
+    for e in entries:
+        try:
+            img = render_slide(e, date_disp)
+            safe = re.sub(r"[^a-zA-Z0-9]+","_", clean_market_title(e.get("market") or "")).strip("_") or "MARKET"
+            img.save(os.path.join(slides_dir, f"{safe}.png"), optimize=True)
+            entries_and_imgs.append((e, img))
+        except SystemExit:
+            continue
+        except Exception as ex:
+            print("⚠️ Slide render failed for", e.get("market"), ex)
+    if not entries_and_imgs:
+        raise SystemExit("No renderable entries")
+    video_path = os.path.join(out_dir, f"Reels_FullVisuals_{now.strftime('%Y%m%d_%H%M%S')}.mp4")
+    build_video(entries_and_imgs, video_path)
+    print("✅ Video written:", video_path)
+
+if __name__ == "__main__":
+    main()

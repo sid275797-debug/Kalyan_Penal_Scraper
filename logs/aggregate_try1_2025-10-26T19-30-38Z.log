@@ -1,0 +1,63 @@
+=== AGGREGATE_TRY1 START 2025-10-26T19:30:38Z ===
+  • Loaded 2450 rows for 'amar_jyoti_penal_chart'
+  • Loaded 109 rows for 'bombay_night_panel_chart'
+  • Loaded 61 rows for 'chetak_day_panel_chart'
+  • Loaded 53 rows for 'chetak_night_panel_chart'
+  • Loaded 726 rows for 'dabra_night_penal_chart'
+  • Loaded 2799 rows for 'dabra_penal_chart'
+  • Loaded 133 rows for 'dadar_day_panel_chart'
+  • Loaded 763 rows for 'deluxe_panel_chart'
+  • Loaded 972 rows for 'dhan_express_panel_chart'
+  • Loaded 56 rows for 'kalyan_morning_penal_chart'
+  • Loaded 1620 rows for 'kalyan_night_penal_chart'
+  • Loaded 3954 rows for 'kalyan_penal_chart'
+  • Loaded 320 rows for 'kanak_day_panel_chart'
+  • Loaded 1064 rows for 'karnataka_day_panel_chart'
+  • Loaded 1063 rows for 'karnataka_night_panel_chart'
+  • Loaded 2413 rows for 'kbc_bombay_penal_chart'
+  • Loaded 126 rows for 'khajana_panel_chart'
+  • Loaded 4114 rows for 'madhur_day_panel_chart'
+  • Loaded 2625 rows for 'madhur_morning_penal_chart'
+  • Loaded 3539 rows for 'madhur_night_panel_chart'
+  • Loaded 398 rows for 'maharani_day_panel_chart'
+  • Loaded 396 rows for 'maharani_night_panel_chart'
+  • Loaded 398 rows for 'maharani_panel_chart'
+  • Loaded 1605 rows for 'main_bazar_panel_chart'
+  • Loaded 965 rows for 'main_bombay_panel_chart'
+  • Loaded 1605 rows for 'main_ratan_penal_chart'
+  • Loaded 121 rows for 'matashri_panel_chart'
+  • Loaded 2863 rows for 'milan_day_penal_chart'
+  • Loaded 2453 rows for 'milan_night_penal_chart'
+  • Loaded 3143 rows for 'morning_syndicate_penal_chart'
+  • Loaded 330 rows for 'prabhat_night_panel_chart'
+  • Loaded 330 rows for 'prabhat_panel_chart'
+  • Loaded 679 rows for 'raja_rani_morning_panel_chart'
+  • Loaded 2496 rows for 'rajdhani_day_penal_chart'
+  • Loaded 2415 rows for 'rajdhani_night_penal_chart'
+  • Loaded 133 rows for 'rithi_sridevi_panel_chart'
+  • Loaded 433 rows for 'sivaji_night_panel_chart'
+  • Loaded 433 rows for 'sivaji_panel_chart'
+  • Loaded 96 rows for 'special_sridevi_panel_chart'
+  • Loaded 52 rows for 'sridevi_morning_panel_chart'
+  • Loaded 2428 rows for 'sridevi_night_satta_penal_chart'
+  • Loaded 2792 rows for 'sridevi_satta_penal_chart'
+  • Loaded 679 rows for 'star_morning_panel_chart'
+  • Loaded 1666 rows for 'supreme_day_panel_chart'
+  • Loaded 1658 rows for 'supreme_night_panel_chart'
+  • Loaded 3102 rows for 'syndicate_night_penal_chart'
+  • Loaded 2898 rows for 'time_bazar_panel_chart'
+  • Loaded 333 rows for 'tirtha_day_panel_chart'
+  • Loaded 258 rows for 'tirtha_night_panel_chart'
+  • Loaded 1709 rows for 'worli_day_panel_chart'
+Traceback (most recent call last):
+  File "C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\aggregate_history.py", line 93, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\aggregate_history.py", line 80, in main
+    print(f"\n\u2705 Aggregated {len(history)} markets into '{PRIMARY_JSON}'")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\VCOM\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 2: character maps to <undefined>
+=== AGGREGATE_TRY1 END rc=1 2025-10-26T19:30:50Z ===

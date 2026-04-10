@@ -1,0 +1,144 @@
+// lib/models/prediction.dart
+// A tolerant Prediction model that accepts multiple JSON shapes
+// and provides the fields/methods the app expects.
+
+import 'dart:convert';
+
+class Prediction {
+  final String marketKey; // used across app as unique key/name
+  final Map<String, dynamic> p; // raw predictions map (open_digits, open_pannas, etc)
+  final double score;
+  final bool passed;
+
+  Prediction({
+    required this.marketKey,
+    required this.p,
+    this.score = 0.0,
+    this.passed = false,
+  });
+
+  /// Helper to ensure list-of-strings conversion
+  static List<String> _toStringList(dynamic v) {
+    if (v == null) return <String>[];
+    if (v is List<String>) return v;
+    if (v is List) return v.map((e) => e?.toString() ?? '').where((s) => s.isNotEmpty).toList();
+    if (v is String) {
+      // maybe a comma separated string
+      return v.split(',').map((s) => s.trim()).where((s) => s.isNotEmpty).toList();
+    }
+    return <String>[];
+  }
+
+  /// Factory: tolerant to multiple shapes
+  factory Prediction.fromJson(Map<String, dynamic> json) {
+    // 1) Determine market key - check common fields
+    String marketKey = '';
+    if (json['market'] is String) marketKey = json['market'] as String;
+    else if (json['name'] is String) marketKey = json['name'] as String;
+    else if (json['key'] is String) marketKey = json['key'] as String;
+    else if (json.containsKey('id')) marketKey = json['id'].toString();
+    // fallback: maybe the map itself is { "<market>": {...} } - not covered here
+
+    // 2) Find predictions payload - support 'p', 'predictions', or nested
+    dynamic pRaw;
+    if (json['p'] != null) {
+      pRaw = json['p'];
+    } else if (json['predictions'] != null) {
+      pRaw = json['predictions'];
+    } else if (json['data'] != null) {
+      // sometimes market entry wraps predictions inside 'data'
+      pRaw = json['data'];
+    } else {
+      // maybe the json itself *is* the predictions map
+      // or the map contains keys like 'Open Digits' directly
+      // We'll treat the whole map as p but remove 'market'
+      final clone = Map<String, dynamic>.from(json);
+      clone.remove('market');
+      clone.remove('name');
+      clone.remove('key');
+      clone.remove('id');
+      clone.remove('score');
+      clone.remove('passed');
+      pRaw = clone;
+    }
+
+    Map<String, dynamic> pMap = <String, dynamic>{};
+    if (pRaw is Map<String, dynamic>) {
+      pMap = Map<String, dynamic>.from(pRaw);
+    } else if (pRaw is Map) {
+      // Map<dynamic, dynamic>
+      pMap = pRaw.map((k, v) => MapEntry(k.toString(), v));
+    } else {
+      // unsupported shape -> empty map
+      pMap = <String, dynamic>{};
+    }
+
+    // Normalize common keys to lowercase underscored versions (optional but helpful)
+    final normalized = <String, dynamic>{};
+    pMap.forEach((k, v) {
+      final key = k.trim();
+      final low = key.replaceAll(RegExp(r'\s+'), ' ').toLowerCase();
+      if (low == 'open digits' || low == 'open_digits') normalized['open_digits'] = _toStringList(v);
+      else if (low == 'close digits' || low == 'close_digits') normalized['close_digits'] = _toStringList(v);
+      else if (low == 'open pannas' || low == 'open_pannas') normalized['open_pannas'] = _toStringList(v);
+      else if (low == 'close pannas' || low == 'close_pannas') normalized['close_pannas'] = _toStringList(v);
+      else if (low == 'jodis') normalized['jodis'] = _toStringList(v);
+      else if (low == 'date') normalized['date'] = v?.toString();
+      else normalized[key] = v;
+    });
+
+    // 3) score / passed keys if present on root
+    double score = 0.0;
+    bool passed = false;
+    if (json['score'] != null) {
+      final s = json['score'];
+      if (s is num) score = s.toDouble();
+      else {
+        try {
+          score = double.parse(s.toString());
+        } catch (_) {}
+      }
+    }
+    if (json['passed'] != null) {
+      final pp = json['passed'];
+      if (pp is bool) passed = pp;
+      else if (pp is String) passed = pp.toLowerCase() == 'true';
+      else if (pp is num) passed = pp != 0;
+    }
+
+    // final marketKey fallback: if still empty, try to extract from any market-like property inside pMap
+    if (marketKey.isEmpty) {
+      if (pMap['market'] is String) marketKey = pMap['market'] as String;
+      else if (pMap['name'] is String) marketKey = pMap['name'] as String;
+    }
+
+    return Prediction(
+      marketKey: marketKey ?? '',
+      p: normalized,
+      score: score,
+      passed: passed,
+    );
+  }
+
+  /// copyWith used by main.dart in UI code
+  Prediction copyWith({double? score, bool? passed, Map<String, dynamic>? p, String? marketKey}) {
+    return Prediction(
+      marketKey: marketKey ?? this.marketKey,
+      p: p ?? Map<String, dynamic>.from(this.p),
+      score: score ?? this.score,
+      passed: passed ?? this.passed,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'market': marketKey,
+      'p': p,
+      'score': score,
+      'passed': passed,
+    };
+  }
+
+  @override
+  String toString() => 'Prediction($marketKey, score:$score, passed:$passed, p:${jsonEncode(p)})';
+}

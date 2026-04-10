@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\bny.py", line 287, in main
+    fn()
+    ~~^^
+  File "C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\bny.py", line 225, in step_aggregate
+    if rc != 0: raise RuntimeError("Aggregator failed")
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Aggregator failed

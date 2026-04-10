@@ -1,0 +1,374 @@
+#!/usr/bin/env python3
+"""
+score_predictor_v2.py
+- Read-only score predictor (safe)
+- Shows/Writes ONLY HIT markets (markets with at least one hit)
+- Optional family matching (loads kalyan/families.json or assets/families.json)
+- Optional Line accuracy check only if predictions contain meta.line
+- Produces:
+    - full internal report (prediction_score_report.json)  -- for debugging/archive
+    - hits-only report (score_hits_YYYY-MM-DD.json)       -- visible output
+Usage:
+    python score_predictor_v2.py --pred todays_predictions.json --yest yesterday_results.json
+"""
+
+import json
+import argparse
+import os
+import sys
+from typing import Dict, Any, List, Optional
+from datetime import datetime
+from collections import defaultdict
+
+# ----------------------------- helpers ---------------------------------
+def norm_key(s: str) -> str:
+    return s.strip().lower().replace(" ", "_") if s else ""
+
+def safe_digit(val):
+    """Extract a single 0-9 digit as int from values like '06', 6, '6*', etc."""
+    if val is None: return None
+    s = str(val).strip()
+    if not s: return None
+    for ch in reversed(s):
+        if ch.isdigit():
+            return int(ch)
+    return None
+
+def safe_jodi(val):
+    """Return a 2-char numeric string like '06', '28', or None."""
+    if val is None: return None
+    digits = "".join(ch for ch in str(val) if ch.isdigit())
+    if not digits: return None
+    return digits[-2:].zfill(2)
+
+def to_str(x):
+    return None if x is None else str(x)
+
+def die(msg):
+    print(f"❌ {msg}")
+    sys.exit(1)
+
+def load_json(path: str):
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+# ------------------------- loaders (read-only) -------------------------
+def load_predictions(path: str) -> Dict[str, Dict[str, Any]]:
+    """Load predictions file (expected LIST of markets). Returns dict keyed by normalized market."""
+    arr = load_json(path)
+    if not isinstance(arr, list):
+        die(f"Predictions JSON must be a LIST of markets. Got {type(arr)._name_}")
+    out = {}
+    meta_line_global = None
+    # try to capture a global meta.line if present in the file root (some formats include meta at top)
+    if isinstance(arr, dict) and arr.get("meta"):
+        meta_line_global = arr.get("meta").get("line")
+    for item in arr:
+        mkt_raw = item.get("market") or item.get("Market") or item.get("market_name") or ""
+        mkt = norm_key(mkt_raw)
+        if not mkt:
+            continue
+        preds = item.get("predictions", {}) or {}
+        # keep whole item to allow meta access if present
+        out[mkt] = {
+            "raw": item,
+            "predicted": {
+                "open_digits":  [str(x) for x in preds.get("open_digits", [])],
+                "close_digits": [str(x) for x in preds.get("close_digits", [])],
+                "jodis":        [str(x).zfill(2) for x in preds.get("jodis", [])],
+                "open_pannas":  [str(x).zfill(3) for x in preds.get("open_pannas", [])],
+                "close_pannas": [str(x).zfill(3) for x in preds.get("close_pannas", [])],
+                # families optional (v5)
+                "families":     [str(x) for x in preds.get("families", [])] if preds.get("families") else [],
+            },
+            # allow meta at market level
+            "meta": item.get("meta", {}) or {},
+            "meta_line": (item.get("meta") or {}).get("line") or meta_line_global
+        }
+    return out
+
+def load_yesterday(path: str) -> Dict[str, Dict[str, Any]]:
+    data = load_json(path)
+    out = {}
+    if isinstance(data, list):
+        for item in data:
+            m = item.get("market", "") or item.get("Market", "")
+            out[norm_key(m)] = item
+    elif isinstance(data, dict):
+        # either keyed by market or single market with predictions inside; accept both
+        # If values are dicts and contain panna/jodi keys, assume mapping market->record
+        for k, v in data.items():
+            if isinstance(v, dict) and ("Open Panna" in v or "open_panna" in v or "Open Panna" in v or "open_pannas" in v):
+                out[norm_key(k)] = v
+            else:
+                # fallback: might be flattened single market data
+                out[norm_key(k)] = v
+    else:
+        die(f"Yesterday JSON must be LIST or DICT. Got {type(data)._name_}")
+    return out
+
+# -------------------------- families & line -----------------------------
+def load_families() -> Dict[str, List[str]]:
+    """Try kalyan/families.json then assets/families.json then config/families.json"""
+    candidates = [
+        os.path.join("kalyan", "families.json"),
+        os.path.join("assets", "families.json"),
+        os.path.join("config", "families.json"),
+        os.path.join("families.json"),
+    ]
+    for p in candidates:
+        if os.path.exists(p):
+            try:
+                j = load_json(p)
+                nf = {}
+                for fid, members in j.items():
+                    nf[str(fid)] = [str(m).zfill(3) for m in members]
+                return nf
+            except Exception:
+                continue
+    return {}
+
+def find_family_of_panna(panna: Optional[str], families: Dict[str,List[str]]) -> Optional[str]:
+    if panna is None: 
+        return None
+    panna = str(panna).zfill(3)
+    for fid, members in families.items():
+        if panna in members:
+            return fid
+    return None
+
+# ----------------------------- scoring ---------------------------------
+def score_market(pred: Dict[str, Any], actual: Dict[str, Any], families: Dict[str,List[str]]) -> Dict[str, Any]:
+    """Return scoring info including hits and reasons. Does not mutate or write weights."""
+    predicted = pred["predicted"]
+    od = safe_digit(actual.get("Open Digit"))
+    cd = safe_digit(actual.get("Close Digit"))
+    j  = safe_jodi(actual.get("Jodi"))
+    op = to_str(actual.get("Open Panna")) or to_str(actual.get("open_panna")) or to_str(actual.get("Open Panna"))
+    cp = to_str(actual.get("Close Panna")) or to_str(actual.get("close_panna")) or to_str(actual.get("Close Panna"))
+    # normalize pannas to 3-digit strings where possible
+    op3 = op.zfill(3) if op else None
+    cp3 = cp.zfill(3) if cp else None
+
+    hits = {
+        "open_digit":   (od is not None) and (str(od) in predicted["open_digits"]),
+        "close_digit":  (cd is not None) and (str(cd) in predicted["close_digits"]),
+        "jodi":         (j  is not None) and (j in predicted["jodis"]),
+        "open_panna":   (op3 is not None) and (op3 in predicted["open_pannas"]),
+        "close_panna":  (cp3 is not None) and (cp3 in predicted["close_pannas"]),
+    }
+
+    # family hit: if predictions include families (v5), check membership.
+    family_hit = False
+    matched_families = []
+    if predicted.get("families"):
+        for fid in predicted["families"]:
+            members = families.get(str(fid), [])
+            if op3 and op3 in members:
+                family_hit = True
+                matched_families.append({"family": fid, "member": op3, "side": "open"})
+            if cp3 and cp3 in members:
+                family_hit = True
+                matched_families.append({"family": fid, "member": cp3, "side": "close"})
+    # Additionally — if predictions didn't include families but families.json exists,
+    # we can still check whether actual panna belongs to any family and whether that family
+    # was indirectly referenced by predicted pannas (i.e., predicted had any member of same family).
+    # This is optional and conservative:
+    if not predicted.get("families") and families:
+        # find family for actual open/close
+        fop = find_family_of_panna(op3, families) if op3 else None
+        fcp = find_family_of_panna(cp3, families) if cp3 else None
+        # check whether predicted open_pannas contain any member from that family
+        if fop:
+            for mem in families.get(fop, []):
+                if mem in predicted["open_pannas"]:
+                    family_hit = True
+                    matched_families.append({"family": fop, "member": op3, "side": "open", "matched_via": "predicted_member"})
+                    break
+        if fcp:
+            for mem in families.get(fcp, []):
+                if mem in predicted["close_pannas"]:
+                    family_hit = True
+                    matched_families.append({"family": fcp, "member": cp3, "side": "close", "matched_via": "predicted_member"})
+                    break
+
+    # line accuracy: only if predictions provided meta.line (non-invasive)
+    line_pred = pred.get("meta_line")
+    line_actual = None
+    line_match = None
+    if line_pred:
+        # line_pred expected structure: {"base_digits": [...], "direction": "up"/"down"/"flat"}
+        # compute simple actual direction from actual open panna vs previous if previous provided in actual
+        try:
+            # attempt to extract previous panna from actual (if provided as 'prev_open_panna' or similar)
+            prev = actual.get("prev_open_panna") or actual.get("previous_open_panna") or actual.get("prev_panna")
+            if prev:
+                prev = str(prev).zfill(3)
+                # compare numeric
+                if op3 and prev:
+                    if int(op3) > int(prev):
+                        line_actual = "up"
+                    elif int(op3) < int(prev):
+                        line_actual = "down"
+                    else:
+                        line_actual = "flat"
+            # else if predictions carried their own line and we cannot compute actual, leave None
+        except Exception:
+            line_actual = None
+        # compare predicted direction with actual direction if available
+        if line_actual:
+            line_match = (line_pred.get("direction") == line_actual)
+    # aggregate hits: mark if any hit present (open/close digit/panna/jodi/family/line)
+    any_hit = any(hits.values()) or family_hit or (line_match is True)
+    market_score = {
+        "hits": hits,
+        "family_hit": family_hit,
+        "matched_families": matched_families,
+        "line_predicted": line_pred,
+        "line_actual": line_actual,
+        "line_match": line_match,
+        "any_hit": any_hit,
+        "actual": {
+            "open_digit": od,
+            "close_digit": cd,
+            "jodi": j,
+            "open_panna": op3,
+            "close_panna": cp3
+        },
+        "predicted": predicted
+    }
+    return market_score
+
+# ------------------------------ main -----------------------------------
+def main():
+    ap = argparse.ArgumentParser(
+        description="Score predictions vs yesterday (READ-ONLY). Writes JSON report and HITs-only JSON."
+    )
+    ap.add_argument("--pred", required=True, help="Path to todays_predictions.json")
+    ap.add_argument("--yest", required=True, help="Path to yesterday_results.json")
+    ap.add_argument("--out", help="Output JSON path for full report. Default: same folder as --yest named prediction_score_report.json")
+    args = ap.parse_args()
+
+    pred_path = os.path.abspath(args.pred)
+    yest_path = os.path.abspath(args.yest)
+    print("🔎 Using files:")
+    print(f"   predictions : {pred_path}")
+    print(f"   yesterday   : {yest_path}")
+
+    if not os.path.exists(pred_path):
+        die("Predictions file DOES NOT EXIST at the path above. Check the path.")
+    if not os.path.exists(yest_path):
+        die("Yesterday file DOES NOT EXIST at the path above. Check the path.")
+
+    # Read & parse
+    try:
+        preds = load_predictions(pred_path)
+    except json.JSONDecodeError as e:
+        die(f"Predictions JSON parse error: {e}")
+    try:
+        yest  = load_yesterday(yest_path)
+    except json.JSONDecodeError as e:
+        die(f"Yesterday JSON parse error: {e}")
+
+    print(f"📦 Markets in predictions: {len(preds)}")
+    print(f"📦 Markets in yesterday : {len(yest)}")
+
+    # load families (optional)
+    families = load_families()
+    if families:
+        print(f"🧩 Loaded families ({len(families)} families).")
+    else:
+        print("🧩 No families.json found — family checks disabled.")
+
+    # Intersect markets
+    pred_keys = set(preds.keys())
+    yest_keys = set(yest.keys())
+    common = sorted(pred_keys & yest_keys)
+    only_in_yest = sorted(yest_keys - pred_keys)[:10]
+    only_in_pred = sorted(pred_keys - yest_keys)[:10]
+    print(f"🔗 Overlapping markets   : {len(common)}")
+    if only_in_yest:
+        print(f"   (First 10) in yesterday only: {only_in_yest}")
+    if only_in_pred:
+        print(f"   (First 10) in predictions only: {only_in_pred}")
+
+    # Score
+    per_market = {}
+    hits_only = {}
+    totals = {"open_digit":0, "close_digit":0, "jodi":0, "open_panna":0, "close_panna":0, "markets":0, "markets_with_hits":0}
+
+    for mkt in common:
+        actual = yest[mkt]
+        scored = score_market(preds[mkt], actual, families)
+        per_market[mkt] = scored
+        totals["markets"] += 1
+        if scored.get("any_hit"):
+            hits_only[mkt] = scored
+            totals["markets_with_hits"] += 1
+        # accumulate counts for summary (we count across all markets whether hit or not)
+        for k,v in scored["hits"].items():
+            totals[k] += int(bool(v))
+
+    n = max(1, totals["markets"])
+    summary = {
+        "markets_scored": totals["markets"],
+        "markets_with_hits": totals["markets_with_hits"],
+        "hit_counts": {
+            "open_digit": totals["open_digit"],
+            "close_digit": totals["close_digit"],
+            "jodi": totals["jodi"],
+            "open_panna": totals["open_panna"],
+            "close_panna": totals["close_panna"],
+        },
+        "hit_rates": {
+            "open_digit": round(totals["open_digit"]/n, 4),
+            "close_digit": round(totals["close_digit"]/n, 4),
+            "jodi": round(totals["jodi"]/n, 4),
+            "open_panna": round(totals["open_panna"]/n, 4),
+            "close_panna": round(totals["close_panna"]/n, 4),
+        },
+    }
+
+    report = {
+        "generated_at": datetime.utcnow().isoformat(timespec="seconds") + "Z",
+        "inputs": {
+            "predictions_path": pred_path,
+            "yesterday_path": yest_path,
+        },
+        "summary": summary,
+        "markets": per_market,   # full internal record (kept for archive)
+    }
+
+    # Output path: same folder as --yest if not given
+    out_path = args.out
+    if not out_path:
+        base_dir = os.path.dirname(yest_path)
+        out_path = os.path.join(base_dir, "prediction_score_report.json")
+    out_path = os.path.abspath(out_path)
+
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(report, f, ensure_ascii=False, indent=2)
+
+    # Also write hits-only JSON (visible output)
+    ts = datetime.utcnow().strftime("%Y%m%d")
+    hits_out = os.path.join(os.path.dirname(out_path), f"score_hits_{ts}.json")
+    with open(hits_out, "w", encoding="utf-8") as f:
+        json.dump({
+            "generated_at": datetime.utcnow().isoformat(timespec="seconds") + "Z",
+            "inputs": {"predictions_path": pred_path, "yesterday_path": yest_path},
+            "summary": summary,
+            "hits": hits_only
+        }, f, ensure_ascii=False, indent=2)
+
+    # Console summary (concise)
+    print("\n✅ DONE")
+    print(f"   Saved full JSON report → {out_path}")
+    print(f"   Saved HITS-only JSON    → {hits_out}")
+    print(f"   Markets scored: {summary['markets_scored']}")
+    print(f"   Markets with HITs: {summary['markets_with_hits']} ({summary['markets_with_hits']*100.0/max(1,summary['markets_scored']):.1f}%)")
+    print(f"   Open panna hit rate:  {summary['hit_rates']['open_panna']*100:.1f}%")
+    print(f"   Close panna hit rate: {summary['hit_rates']['close_panna']*100:.1f}%")
+    print(f"   Jodi hit rate:        {summary['hit_rates']['jodi']*100:.1f}%")
+
+if _name_ == "_main_":
+    main()

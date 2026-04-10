@@ -1,0 +1,10 @@
+[Sat 03/28/2026  5:40:24.28] === CLEAN BUILD STARTED === 
+Root: C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\ 
+[Sat 03/28/2026  5:40:24.33] Flutter: SKIPPED 
+[Sat 03/28/2026  5:40:24.35] pycache: C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\__pycache__ 
+WARNING: No matching packages
+Files removed: 0 (0 bytes)
+[Sat 03/28/2026  5:40:29.34] Python: DONE 
+[Sat 03/28/2026  5:40:29.43] Android: SKIPPED 
+[Sat 03/28/2026  5:40:29.44] Android+Gradle: DONE 
+npm warn using --force Recommended protections disabled.

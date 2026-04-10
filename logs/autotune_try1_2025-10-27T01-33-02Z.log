@@ -1,0 +1,5 @@
+=== AUTOTUNE_TRY1 START 2025-10-27T01:33:02Z ===
+C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\auto_tune_params.py:34: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+  data["_meta"]["last_updated"] = datetime.utcnow().isoformat(timespec="seconds") + "Z"
+âœ… Auto-tuned params for 50 markets â†’ C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\prediction_params.json
+=== AUTOTUNE_TRY1 END rc=0 2025-10-27T01:33:03Z ===

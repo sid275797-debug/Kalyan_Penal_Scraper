@@ -1,0 +1,17 @@
+{
+  "generated_at": "2025-10-06T12:58:04.691217",
+  "open_eval": {
+    "note": "trained_sgd_streaming",
+    "train_rows_seen": 13756167,
+    "valid_rows": 724008,
+    "precision_at_5": 0.04669046965119473,
+    "precision_at_8": 0.07415545179895633
+  },
+  "close_eval": {
+    "note": "trained_sgd_streaming",
+    "train_rows_seen": 13756167,
+    "valid_rows": 724008,
+    "precision_at_5": 0.04421862125789618,
+    "precision_at_8": 0.07168360340565778
+  }
+}

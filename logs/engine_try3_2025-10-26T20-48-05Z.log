@@ -1,0 +1,18 @@
+=== ENGINE_TRY3 START 2025-10-26T20:48:05Z ===
+2025-10-27 02:18:05,787 [INFO] \u2705 Using history file: C:\Users\VCOM\Desktop\all_markets_history.json (markets=50)
+2025-10-27 02:18:05,798 [INFO] Archived existing todays_predictions.json -> C:\Users\VCOM\Desktop\output\history\predictions_2025-10-27.json
+2025-10-27 02:18:05,809 [INFO] \u2705 Updated yesterday pointer -> C:\Users\VCOM\Desktop\output\yesterday_results.json
+2025-10-27 02:18:05,809 [INFO] Archived previous todays_predictions.json -> C:\Users\VCOM\Desktop\output\history\predictions_2025-10-27.json
+2025-10-27 02:18:05,859 [INFO] Saved today's predictions archive -> predictions_2025-10-27.json
+Traceback (most recent call last):
+  File "C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\prediction_engine_v4.py", line 470, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\VCOM\Desktop\Kalyan_Penal_Scraper\prediction_engine_v4.py", line 461, in main
+    print("\n\u2705 Written todays_predictions.json to:")
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\VCOM\AppData\Local\Programs\Python\Python313\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2705' in position 2: character maps to <undefined>
+=== ENGINE_TRY3 END rc=1 2025-10-26T20:48:05Z ===
